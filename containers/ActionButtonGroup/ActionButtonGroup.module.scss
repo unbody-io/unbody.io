@@ -1,0 +1,11 @@
+.actionButtonGroup{
+  //display: grid;
+  //grid-template-columns: 1fr 1fr;
+  //grid-column-gap: 16px;
+  &>*{
+    display: inline-block;
+    &:first-child{
+      margin-right: 16px;
+    }
+  }
+}

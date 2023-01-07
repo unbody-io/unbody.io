@@ -1,0 +1,97 @@
+.providerCard{
+  border: 1px solid;
+  box-sizing: border-box;
+  padding: 0.5em 12px;
+  height: 440px;
+  position: relative;
+  transition: all 500ms;
+  cursor: pointer;
+
+  &:hover{
+    background: var(--foreground);
+    color: var(--background);
+    *{color: black!important; border-color: black!important;}
+    transform-origin: center;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  .providerLogo{
+    margin-bottom: 0.5em;
+    flex: 0 0 auto;
+
+  }
+  .providerName{
+    margin-bottom: 1em;
+    flex: 0 0 auto;
+  }
+  .status{
+    position: absolute;
+    top: 0.5em;
+    right: 12px;
+  }
+  .desc{
+    flex: 1 1 auto;
+    font-size: var(--font-size-regularB);
+    line-height: 116%;
+  }
+
+  .footer{
+    flex: 0 0 auto;
+
+    .tags{
+      margin-bottom: 2em;
+      >*:not(:last-child){
+        margin-right: 1em;
+      }
+    }
+    .arrow{
+    }
+  }
+
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .providerCard{
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px !important;
+
+    >*:not(:last-child){
+      margin-right: 12px;
+    }
+  }
+  .providerName{
+    width: 150px;
+    align-items: center;
+    display: flex;
+    flex: auto;
+    margin: 0 !important;
+    transform: translateY(2px);
+  }
+  .providerLogo{
+    width: 30px;
+    height: 30px;
+    background: white;
+    overflow: hidden;
+    flex: auto;
+    margin: 0 12px 0 0 !important;
+    img, svg{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .status{
+    position: relative !important;
+    right: 0 !important;
+    top: 0 !important;
+  }
+  .footer{
+  }
+  .desc, .tags{
+    display: none;
+  }
+}

@@ -1,0 +1,41 @@
+.wrapper{
+  .header{
+    padding: 0.5em 0;
+    text-align: right;
+    span{
+      cursor: pointer;
+    }
+  }
+  .slider {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sliderInner {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+
+      > * {
+        flex: 0 0 calc(calc(100% - calc(3 * 37px)) / 4);
+      }
+    }
+  }
+
+}
+
+@media (max-width: 754px) {
+  .sliderInner{
+    > * {
+      flex: 0 0 100% !important;
+    }
+  }
+}

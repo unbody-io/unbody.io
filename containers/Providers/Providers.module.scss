@@ -1,0 +1,27 @@
+.providers {
+  border-bottom: 1px solid;
+  padding-bottom: 3em;
+  .mobile{
+    display: none;
+  }
+
+  >h3{
+    border-bottom: 1px solid;
+    padding: 0.5em 0;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 754px) {
+  .mobile{
+    padding-top: 1em;
+    display: grid !important;
+    //grid-row-gap: 1em;
+    //height: calc(200px + 3em);
+    //overflow-x: hidden;
+  }
+  .desktop{
+    display: none;
+  }
+}

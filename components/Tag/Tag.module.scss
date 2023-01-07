@@ -1,0 +1,19 @@
+.tag {
+  display: inline-block;
+  font-size: var(--font-size-small);
+  border-radius: var(--border-radius);
+  padding: 4px 12px 4px 12px;
+  box-sizing: border-box;
+  line-height: 1em;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+}
+
+.solid {
+  background-color: var(--foreground);
+  color: var(--background);
+}

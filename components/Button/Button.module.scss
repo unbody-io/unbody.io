@@ -1,0 +1,40 @@
+.button {
+  display: inline-block;
+  border: none;
+  border-radius: 1px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.small {
+  font-size: var(--font-size-small);
+  padding: 4px 8px;
+}
+
+.medium {
+  font-size: var(--font-size-regular);
+  padding: 8px 16px;
+}
+
+.large {
+  font-size: var(--font-size-large);
+  padding: 12px 24px;
+}
+
+.transparent {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.filled {
+  background-color: white;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
