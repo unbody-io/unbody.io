@@ -130,6 +130,10 @@ img, video{
   grid-column: span 4;
 }
 
+.col-3{
+  grid-column: span 3;
+}
+
 .col-8 {
   grid-column: span 8;
 }

@@ -1,0 +1,18 @@
+.footer {
+  padding-top: 2em;
+  padding-bottom: 10em;
+  .catTitle {
+    margin-bottom: 1em;
+    display: block;
+  }
+
+  .catItems{
+   >*{
+     display: block;
+   }
+  }
+
+  > * {
+    white-space: pre-wrap;
+  }
+}

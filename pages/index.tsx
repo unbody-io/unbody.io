@@ -8,26 +8,19 @@ import {GetStaticProps, NextPage} from "next";
 
 import {Render} from "@9gustin/react-notion-render";
 
-import {
-    BlockObjectResponse,
-    PageObjectResponse,
-} from "@notionhq/client/build/src/api-endpoints";
-
 import InfoSection from "../containers/InfoSection/InfoSection";
 import {NotionBlock} from "@9gustin/react-notion-render/dist/types/NotionBlock";
 import DisplaySection from "../containers/DisplaySection/DisplaySection";
 import Tabs from "../components/Tabs/Tabs";
 import FeaturePanel from "../components/FeaturePanel/FeaturePanel"
 
-import {NotionDatabaseProp, SelectPropertyResponse} from "../lib/notion.types";
-import {FeatureProp, ProviderProp} from "../lib/data.types";
+import {SelectPropertyResponse} from "../lib/notion.types";
+import {FeatureProp, ISection, ProviderProp, UseCasesProps} from "../lib/data.types";
 import Providers from "../containers/Providers/Providers";
+import {getPropValue, getSectionTitle} from "../lib/utils.notion";
+import {ArrowRight} from "../components/Arrow";
+import UseCases from "../containers/Usecases/Usecases";
 
-interface ISection {
-    page: PageObjectResponse
-    content: BlockObjectResponse[]
-    key: string
-}
 
 interface IProps {
     sections: {
@@ -41,49 +34,11 @@ interface IProps {
     features: FeatureProp[]
     providers: ProviderProp[]
     files: ProviderProp[]
+    useCases: UseCasesProps[]
 }
 
-
-const getTableItemTextValue = (p: PageObjectResponse): null | string => {
-    if (!p.properties.title) return null;
-    if (!("title" in p.properties.title)) return null;
-    if (!p.properties.title.title.length) return null;
-    return p.properties.title.title[0.].plain_text
-}
-const getSectionTitle = (section: ISection): string | null => {
-    return getTableItemTextValue(section.page)
-}
-
-
-function getPropValue(prop: NotionDatabaseProp){
-    switch (prop.type) {
-        case "rich_text":
-            return prop.rich_text.map(rt => {
-                switch (rt.type) {
-                    case "text":
-                        return rt.text.content
-                    case "equation":
-                        return rt.plain_text
-                    case "mention":
-                        return rt.plain_text
-                    default:
-                        return []
-                }
-            });
-        case "title":
-            return prop.title.map(t => t.plain_text)
-        case "url":
-            return prop.url
-        case "select":
-            return prop.select
-        case "multi_select":
-            return prop.multi_select
-        default:
-            return []
-    }
-}
-
-const Home: NextPage<IProps> = ({sections, features, providers, files}) => {
+const Home: NextPage<IProps> = (props) => {
+    const {sections, features, providers, files, useCases} = props;
     //@ts-ignore
     const headline = sections.moto.content[0].paragraph.rich_text[0].plain_text
     //@ts-ignore
@@ -135,6 +90,11 @@ const Home: NextPage<IProps> = ({sections, features, providers, files}) => {
                     <Providers data={providers} title={"Supported Providers"}/>
                     <Providers data={files} title={"Supported Files"}/>
                 </DisplaySection>
+                <InfoSection label={"USE-CASES"}
+                             learnMoreLink={"/docs/use-cases"}
+                >
+                    <UseCases data={useCases}/>
+                </InfoSection>
             </main>
         </>
     )
@@ -231,11 +191,35 @@ export const getStaticProps: GetStaticProps = async (context) => {
             return []
         })
 
+
+    const useCases = await getDatabase(notionPageIds.USECASES)
+        .then((res) => {
+            return res.map((f) => {
+                if (!("properties" in f)) return null;
+
+                const rawTitle = getPropValue(f.properties.title) as string[]
+                const rawCopy = getPropValue(f.properties.outline) as string[]
+                const rawLink = getPropValue(f.properties.link) as string;
+
+                return {
+                    notionId: f.id,
+                    title: rawTitle.join(" ").trim(),
+                    outline: rawCopy.join(" ").trim(),
+                    link: rawLink
+                }
+            }).filter((f) => f != null).reverse()
+        })
+        .catch(e => {
+            console.log(e);
+            return []
+        })
+
     return {
         props: {
             providers,
             files,
             features,
+            useCases,
             sections: sections
                 .filter((s => s.key))
                 .reduce(

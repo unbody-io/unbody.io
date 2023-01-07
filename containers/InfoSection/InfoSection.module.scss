@@ -1,7 +1,7 @@
 .infoSection{
   h2{
   }
-  .infoBody{
+  .infoBody:not(:first-child){
     margin-top: 1em;
     margin-bottom: 4em;
   }

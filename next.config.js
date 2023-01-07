@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const createNextPluginPreval = require('next-plugin-preval/config');
+const withNextPluginPreval = createNextPluginPreval();
+
 const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
@@ -11,4 +14,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withNextPluginPreval(nextConfig)
