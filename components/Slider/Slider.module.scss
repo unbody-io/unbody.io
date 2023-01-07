@@ -1,9 +1,17 @@
 .wrapper{
   .header{
     padding: 0.5em 0;
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
     span{
       cursor: pointer;
+    }
+    >div{
+      opacity: 0;
+      transition: opacity 500ms;
+      &.active{
+        opacity: 1;
+      }
     }
   }
   .slider {

@@ -1,6 +1,17 @@
 .footer {
   padding-top: 2em;
-  padding-bottom: 10em;
+  font-size: var(--font-size-regularB);
+  .footerLinks{
+    padding-bottom: 10em;
+  }
+  .copy{
+    padding: 1em 0;
+    text-align: center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin: 1em 0;
+  }
+
   .catTitle {
     margin-bottom: 1em;
     display: block;

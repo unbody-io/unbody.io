@@ -21,3 +21,12 @@ export const ArrowRight: React.FC<Props> = ({className}) => {
         </span>
     );
 };
+
+
+export const ArrowLeft: React.FC<Props> = ({className}) => {
+    return (
+        <span className={`${styles.arrow} ${styles.left} ${className}`}>
+            ←
+        </span>
+    );
+};

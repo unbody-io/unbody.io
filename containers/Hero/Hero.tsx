@@ -2,6 +2,7 @@ import * as React from "react";
 import Banner from "../../public/images/banner.svg";
 
 import styles from "./Hero.module.scss";
+import {AsciiBanner} from "./AsciiBanner";
 
 interface Props {
     headline: string;
@@ -16,9 +17,7 @@ const Hero: React.FC<Props> = (props) => {
             <p>{description}</p>
             <hr/>
             <hr/>
-            <div className={styles.banner}>
-                <img src={"/images/banner.svg"}/>
-            </div>
+            <AsciiBanner/>
         </section>
     );
 };
