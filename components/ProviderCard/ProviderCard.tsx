@@ -1,11 +1,9 @@
 import * as React from "react";
 
-import GoogleDriveLogo from "../../public/images/provider-logos/Google-Drive-black.svg";
 import styles from "./ProviderCard.module.scss";
 import {ProviderProp} from "../../lib/data.types";
 import Tag from "../Tag/Tag";
 import {ArrowRight} from "../Arrow";
-import Button from "../Button/Button";
 import Link from "next/link";
 
 
@@ -18,7 +16,10 @@ const ProviderCard: React.FC<Props> = (props) => {
     return (
         <div className={`${styles.providerCard}`}>
             <div className={styles.providerLogo}>
-                <GoogleDriveLogo/>
+                {
+                    (data.logo&&data.logo[1])&&
+                    <img src={data.logo[1]} alt={data.name} />
+                }
             </div>
             <div className={styles.providerName}>
                 <h3>{data.name}</h3>
@@ -26,7 +27,7 @@ const ProviderCard: React.FC<Props> = (props) => {
             {
                 data.status&&
                 <div className={styles.status}>
-                    <Tag isTransparent={false}>{data.status}</Tag>
+                    <Tag isTransparent={false}>{data.status.name}</Tag>
                 </div>
             }
             <div className={styles.desc}>
@@ -35,7 +36,7 @@ const ProviderCard: React.FC<Props> = (props) => {
             <div className={styles.footer}>
                 <div className={styles.tags}>
                     {
-                        data.tags.map((t, i) => <Tag key={`t-${t}-${i}-${data.name}`} isTransparent={true}>{t}</Tag>)
+                        data.tags.map((t, i) => <Tag key={`t-${t}-${i}-${data.name}`} isTransparent={true}>{t.name}</Tag>)
                     }
                 </div>
                 <div className={styles.arrow}>

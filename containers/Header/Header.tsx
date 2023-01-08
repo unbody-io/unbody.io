@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren, useState} from 'react';
 import styles from './Header.module.scss';
 import Tag from "../../components/Tag/Tag";
+import Link from "next/link";
 
 interface NavItem {
     label: string;
@@ -11,6 +12,7 @@ const navItems: NavItem[] = [
     { label: 'Pricing', href: '/pricing' },
     { label: 'Docs', href: '/docs' },
     { label: 'Xbody', href: '/xbody' },
+    { label: 'Blog', href: '/blog'}
 ];
 
 interface HeaderProps {
@@ -45,9 +47,9 @@ const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
                 <div className={styles.menuOverlay} onClick={() => setMenuOpen(false)}>
                     <div className={styles.menu}>
                         {navItems.map((item) => (
-                            <a key={item.label} href={item.href}>
+                            <Link key={item.label} href={item.href}>
                                 {item.label}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>

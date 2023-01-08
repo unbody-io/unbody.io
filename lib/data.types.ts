@@ -1,21 +1,60 @@
-import {BlockObjectResponse, PageObjectResponse} from "@notionhq/client/build/src/api-endpoints";
+import {
+    BlockObjectResponse,
+    PageObjectResponse,
+    PersonUserObjectResponse
+} from "@notionhq/client/build/src/api-endpoints";
+import {SelectPropertyResponse} from "./notion.types";
 
-export interface FeatureProp {
+export interface NotionDatabaseProps{
+    id: string;
+}
+
+export interface FeatureProp extends NotionDatabaseProps{
     notionId: string;
     title: string;
     key: string;
-    benefits: string[];
+    benefits: string;
     video: string;
 }
 
-export interface ProviderProp{
-    notionId: string;
+export interface ProviderProp extends NotionDatabaseProps{
     name: string;
-    tags: string[];
-    status: string|null;
+    tags: SelectPropertyResponse[];
+    status: SelectPropertyResponse;
     copy_description: string;
-    logo: string|null
+    logo: string[]|null
 }
+
+export interface FooterItemProps extends NotionDatabaseProps{
+    name: string;
+    link: string;
+    cat: SelectPropertyResponse;
+    external: boolean
+}
+
+export interface UseCasesProps extends NotionDatabaseProps{
+    title: string;
+    link: string;
+    outline: string;
+}
+
+export interface BlogPostProps extends NotionDatabaseProps{
+    title: string
+    subtitle: string
+    slug: string
+    tags: SelectPropertyResponse[]
+    purpose: string
+    author: SelectPropertyResponse[]
+    published: boolean
+    seotags: SelectPropertyResponse[]
+    audience: SelectPropertyResponse
+    outline: string;
+}
+
+export interface GlobalData{
+    footer: FooterItemProps[]
+}
+
 
 export interface ISection {
     page: PageObjectResponse
@@ -23,18 +62,4 @@ export interface ISection {
     key: string
 }
 
-export type FooterItemProps = {
-    name: string;
-    link: string;
-    cat: string;
-    external: boolean
-}
-
-export interface GlobalData{
-    footer: FooterItemProps[]
-}
-export interface UseCasesProps{
-    title: string;
-    link: string;
-    outline: string;
-}
+export type PropValue<K extends string, V> = Record<K, V>

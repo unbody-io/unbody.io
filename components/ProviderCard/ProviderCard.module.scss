@@ -20,7 +20,11 @@
   .providerLogo{
     margin-bottom: 0.5em;
     flex: 0 0 auto;
-
+    img{
+      height: 80px;
+      width: auto;
+      max-width: 80px;
+    }
   }
   .providerName{
     margin-bottom: 1em;

@@ -8,7 +8,6 @@ import {FooterItemProps} from "../lib/data.types";
 import Footer from "../containers/Footer/Footer";
 
 export default function App({Component, pageProps}: AppProps) {
-
     return (
         <div className={"container"}>
             <Header tagline={"Unbody beta (v0)"}/>

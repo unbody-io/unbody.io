@@ -12,9 +12,10 @@ const notion = new Client({
     auth: process.env.NOTION_TOKEN,
 })
 
-export const getDatabase = async (databaseId: string) => {
+export const getDatabase = async (databaseId: string, bp: any = {}) => {
     const response = await notion.databases.query({
         database_id: databaseId,
+        ...bp
     });
     return response.results;
 };

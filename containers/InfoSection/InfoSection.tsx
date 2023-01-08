@@ -8,7 +8,7 @@ import SectionFooter from "../SectionFooter/SectionFooter";
 interface Props {
     label: string;
     title?: string;
-    learnMoreLink: string;
+    learnMoreLink?: string;
 }
 
 const InfoSection: React.FC<React.PropsWithChildren<Props>> = (props) => {
@@ -28,7 +28,10 @@ const InfoSection: React.FC<React.PropsWithChildren<Props>> = (props) => {
                     <div className={styles.infoBody}>
                         {children}
                     </div>
-                    <ActionButtonGroup learnMoreLink={learnMoreLink}/>
+                    {
+                        learnMoreLink&&
+                        <ActionButtonGroup learnMoreLink={learnMoreLink}/>
+                    }
                 </div>
             </div>
             <SectionFooter/>

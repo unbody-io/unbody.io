@@ -14,11 +14,9 @@ import DisplaySection from "../containers/DisplaySection/DisplaySection";
 import Tabs from "../components/Tabs/Tabs";
 import FeaturePanel from "../components/FeaturePanel/FeaturePanel"
 
-import {SelectPropertyResponse} from "../lib/notion.types";
 import {FeatureProp, ISection, ProviderProp, UseCasesProps} from "../lib/data.types";
 import Providers from "../containers/Providers/Providers";
-import {getPropValue, getSectionTitle} from "../lib/utils.notion";
-import {ArrowRight} from "../components/Arrow";
+import {getDatabasePropsValue, getPropValue, getSectionTitle} from "../lib/utils.notion";
 import UseCases from "../containers/Usecases/Usecases";
 
 
@@ -118,108 +116,43 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }))
     )
 
-    const features = await getDatabase(notionPageIds.FEATURES)
-        .then((res) => {
-            return res.map((f) => {
-                if (!("properties" in f)) return null;
-                const rawTitle = getPropValue(f.properties["title"]) as string[]
-                const rawBenefits = getPropValue(f.properties["key-benefits"]) as string[]
-                const rawKey = getPropValue(f.properties["key"]) as string[]
-                const rawVideo = getPropValue(f.properties.video) as string;
-                return {
-                    key: rawKey?.join(" ").trim(),
-                    title: rawTitle.join(" ").trim(),
-                    benefits: rawBenefits?.join("").split('\n').map(k => k.trim()).filter(c => c.length>0),
-                    id: f.id,
-                    video: rawVideo
-                }
-            }).filter((f) => f !== null);
-        })
-        .catch(e => {
-            console.log(e);
-            return []
-        })
+    const features = await getDatabasePropsValue(notionPageIds.FEATURES, {
+        key: null,
+        benefits: null,
+        video: null,
+        title: null
+    })
+
+    const providers = await getDatabasePropsValue(notionPageIds.PROVIDERS, {
+        name: null,
+        tags: null,
+        status: null,
+        copy_description: null,
+        logo: null
+    })
+
+    const files = await getDatabasePropsValue(notionPageIds.FILES, {
+        name: null,
+        tags: null,
+        status: null,
+        copy_description: null,
+        logo: null
+    })
 
 
-    const providers = await getDatabase(notionPageIds.PROVIDERS)
-        .then((res) => {
-            return res.map((f) => {
-                if (!("properties" in f)) return null;
+    const useCases = await getDatabasePropsValue(notionPageIds.USECASES, {
+        title: null,
+        outline: null,
+        link: null,
+    })
 
-                const rawName = getPropValue(f.properties.name) as string[]
-                const rawTags = getPropValue(f.properties["tags"]) as Array<SelectPropertyResponse>;
-                const rawCopy = getPropValue(f.properties["copy_description"]) as string[]
-                const rawStatus = getPropValue(f.properties["status"]) as SelectPropertyResponse
-
-                return {
-                    notionId: f.id,
-                    name: rawName.join(" ").trim(),
-                    tags: rawTags.map(t => t.name),
-                    copy_description: rawCopy.join(" ").trim(),
-                    status: rawStatus? rawStatus.name: null,
-                    logo:""
-                }
-            }).filter((f) => f != null).reverse()
-        })
-        .catch(e => {
-            console.log(e);
-            return []
-        })
-
-    const files = await getDatabase(notionPageIds.FILES)
-        .then((res) => {
-            return res.map((f) => {
-                if (!("properties" in f)) return null;
-
-                const rawName = getPropValue(f.properties.name) as string[]
-                const rawTags = getPropValue(f.properties["tags"]) as Array<SelectPropertyResponse>;
-                const rawCopy = getPropValue(f.properties["copy_description"]) as string[]
-                const rawStatus = getPropValue(f.properties["status"]) as SelectPropertyResponse
-
-                return {
-                    notionId: f.id,
-                    name: rawName.join(" ").trim(),
-                    tags: rawTags.map(t => t.name),
-                    copy_description: rawCopy.join(" ").trim(),
-                    status: rawStatus? rawStatus.name: null,
-                    logo:""
-                }
-            }).filter((f) => f != null).reverse()
-        })
-        .catch(e => {
-            console.log(e);
-            return []
-        })
-
-
-    const useCases = await getDatabase(notionPageIds.USECASES)
-        .then((res) => {
-            return res.map((f) => {
-                if (!("properties" in f)) return null;
-
-                const rawTitle = getPropValue(f.properties.title) as string[]
-                const rawCopy = getPropValue(f.properties.outline) as string[]
-                const rawLink = getPropValue(f.properties.link) as string;
-
-                return {
-                    notionId: f.id,
-                    title: rawTitle.join(" ").trim(),
-                    outline: rawCopy.join(" ").trim(),
-                    link: rawLink
-                }
-            }).filter((f) => f != null).reverse()
-        })
-        .catch(e => {
-            console.log(e);
-            return []
-        })
 
     return {
         props: {
-            providers,
-            files,
-            features,
-            useCases,
+            providers: providers.reverse(),
+            files: files,
+            features: features,
+            useCases: useCases,
             sections: sections
                 .filter((s => s.key))
                 .reduce(
