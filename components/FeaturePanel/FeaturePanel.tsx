@@ -31,7 +31,7 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
                 <ActionButtonGroup learnMoreLink={`/docs/features/${key}`}/>
             </div>
             <div className={`col-8 ${styles.video}`}>
-                <video src={video} autoPlay={true} controls={false} muted={true}/>
+                <video src={video} autoPlay={true} controls={false} muted={true} loop={true}/>
             </div>
         </div>
     );
