@@ -4,11 +4,11 @@ import {notionPageIds} from "./lib/config";
 import {getDatabasePropsValue} from "./lib/utils.notion";
 
 async function getData() {
-    const footerData = await getDatabasePropsValue(notionPageIds.FILES, {
+    const footerData = await getDatabasePropsValue(notionPageIds.FOOTER, {
         name: null,
         link: null,
         external: null,
-        cat: null,
+        category: null,
     })
     return { footerData };
 }

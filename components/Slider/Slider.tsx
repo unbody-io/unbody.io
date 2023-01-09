@@ -24,7 +24,6 @@ const Slider: React.FC<React.PropsWithChildren<Props>> = (props) => {
             const dx = box.width+(box2.left-box.right);
             const nextScroll = (dx*dir)+(sliderRef.current.scrollLeft-1);
 
-            console.log(sliderRef.current.scrollLeft, nextScroll)
             setCanNext(sliderRef.current.scrollLeft+sliderRef.current.offsetWidth < sliderRef.current.scrollWidth)
             setCanBack(sliderRef.current.scrollLeft>0 || nextScroll>sliderRef.current.scrollLeft)
 
@@ -47,8 +46,6 @@ const Slider: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const handleScrollRight = () => {
         handleScroll(-1)
     }
-
-    console.log(canBack)
 
     return (
         <div className={`${styles.wrapper} ${className}`}>

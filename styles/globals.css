@@ -1,6 +1,7 @@
 :root {
   --max-width: 1440px;
   --border-radius: 20px;
+  --body-padding: 36px;
   --border: 2px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -74,7 +75,7 @@ h3, h4{
 }
 
 strong{
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 hr{
@@ -108,6 +109,10 @@ section{
   text-transform: uppercase;
 }
 
+.serif{
+  font-family: serif;
+}
+
 img, video{
   max-width: 100%;
   width: 100%;
@@ -117,7 +122,11 @@ img, video{
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 36px;
+  padding: 0 var(--body-padding);
+}
+
+.contentContainer{
+  padding: 2em 0;
 }
 
 .grid{
@@ -171,11 +180,13 @@ img, video{
 
   :root{
     --font-size-small: 12px;
-    --font-size-regular: 16px;
+    --font-size-regular: 18px;
     --font-size-large: 28px;
 
     --font-size-h1: 52px;
     --font-size-h2: 28px;
+
+    --body-padding: 16px;
   }
 }
 

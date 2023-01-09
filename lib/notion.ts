@@ -1,12 +1,5 @@
 import {Client} from "@notionhq/client";
-// import {NotionAPI} from 'notion-client'
-// import {
-//     BlockObjectResponse,
-//     ListBlockChildrenResponse,
-//     PartialBlockObjectResponse
-// } from "@notionhq/client/build/src/api-endpoints";
 
-// export const notionx = new NotionAPI()
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,

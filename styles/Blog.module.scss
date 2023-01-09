@@ -1,20 +1,29 @@
 .blog{
-  .post{
+  //font-size: var(--font-size-regularB);
+  //line-height: 116%;
+
+  .postCard{
     margin-bottom: 3em;
-    .date{
-      font-size: var(--font-size-small);
+    time{
+      font-size: var(--font-size-regularB);
     }
     .title{
       margin-bottom: 0.5em;
+      display: block;
     }
     .subtitle{
       font-family: serif;
       margin-bottom: 1em;
-      font-size: var(--font-size-regularB);
+      font-size: var(--font-size-regular);
     }
     .outline{
 
     }
   }
 
+}
+@media only screen and (max-width: 767px) {
+  .subtitle{
+    display: none;
+  }
 }

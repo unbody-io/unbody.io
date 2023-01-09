@@ -39,6 +39,9 @@ export function getPropValue(prop: NotionDatabaseProp){
             return prop.select
         case "multi_select":
             return prop.multi_select
+        case "formula":
+            //@ts-ignore
+            return prop.formula.string
         case "files":
             return prop.files.map(f => {
                 switch (f.type) {
@@ -71,6 +74,7 @@ export const getDatabasePropsValue = async (id: string, props: PropValue<string,
                 }
             })
             thisProps.id = r.id;
+            thisProps.updated = r.last_edited_time;
             return thisProps;
         }).filter(n => n!=null) as (PropValue<any, any>)[]
     }catch (e){

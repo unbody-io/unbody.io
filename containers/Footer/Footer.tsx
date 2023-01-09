@@ -11,7 +11,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = (props) => {
     const {data} = props;
-    const cats = groupBy<FooterItemProps>(data, (d) => d.cat);
+    const cats = groupBy<FooterItemProps>(data, (d) => d.category.name);
 
     return (
         <footer className={`${styles.footer}`}>
@@ -28,8 +28,8 @@ const Footer: FC<FooterProps> = (props) => {
                                 {
                                     items.map(item => (
                                         item.external?
-                                            <a href={item.link} className={"cap"}>{item.name}</a>:
-                                            <Link href={item.link} className={"cap"}>{item.name}</Link>
+                                            <a key={item.name} href={item.link} className={"cap"}>{item.name}</a>:
+                                            <Link key={item.name} href={item.link} className={"cap"}>{item.name}</Link>
                                     ))
                                 }
                             </div>

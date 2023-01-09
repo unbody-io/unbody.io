@@ -1,12 +1,12 @@
 import {
     BlockObjectResponse,
     PageObjectResponse,
-    PersonUserObjectResponse
 } from "@notionhq/client/build/src/api-endpoints";
 import {SelectPropertyResponse} from "./notion.types";
 
 export interface NotionDatabaseProps{
     id: string;
+    updated: string;
 }
 
 export interface FeatureProp extends NotionDatabaseProps{
@@ -28,7 +28,7 @@ export interface ProviderProp extends NotionDatabaseProps{
 export interface FooterItemProps extends NotionDatabaseProps{
     name: string;
     link: string;
-    cat: SelectPropertyResponse;
+    category: SelectPropertyResponse;
     external: boolean
 }
 
@@ -49,6 +49,15 @@ export interface BlogPostProps extends NotionDatabaseProps{
     seotags: SelectPropertyResponse[]
     audience: SelectPropertyResponse
     outline: string;
+}
+
+export interface SinglePageProps extends NotionDatabaseProps{
+    slug: string;
+    title: string
+    subtitle:string;
+    display_title: string
+    published: boolean
+    outline: string
 }
 
 export interface GlobalData{

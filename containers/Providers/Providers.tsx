@@ -19,14 +19,14 @@ const Providers: React.FC<Props> = (props) => {
             <div className={styles.desktop}>
                 <Slider>
                     {
-                        data.map(p => <ProviderCard key={p.notionId} data={p}/>)
+                        data.map(p => <ProviderCard key={p.id} data={p}/>)
                     }
                 </Slider>
             </div>
             <div className={styles.mobile}>
                 <List className={styles.mobileList} itemsPerPage={4}>
                     {
-                        data.map(p => <ProviderCard key={p.notionId} data={p}/>)
+                        data.map(p => <ProviderCard key={p.id} data={p}/>)
                     }
                 </List>
             </div>

@@ -9,8 +9,8 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Docs', href: '/docs' },
+    // { label: 'Pricing', href: '/pricing' },
+    // { label: 'Docs', href: '/docs' },
     { label: 'Xbody', href: '/xbody' },
     { label: 'Blog', href: '/blog'}
 ];
@@ -25,11 +25,11 @@ const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.left}>
+            <Link className={styles.left} href={"/"}>
                 <Tag>
                     {tagline}
                 </Tag>
-            </div>
+            </Link>
             <nav className={styles.right}>
                 {navItems.map((item) => (
                     <a key={item.label} href={item.href}>
