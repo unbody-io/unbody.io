@@ -22,12 +22,15 @@
     }
   }
 
-  @media (max-width: 600px) {
-    .right {
+  @media (max-width: 754px) {
+    .right a{
       display: none;
     }
     .menuButton {
       display: block;
+    }
+    button{
+      font-size: var(--font-size-large) !important;
     }
   }
 }
@@ -72,16 +75,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  color: #333;
+  background-color: var(--foreground);
+  color: var(--background);
   width: 80%;
-  max-width: 400px;
-  padding: 16px;
+  //height: 100%;
+  padding: var(--body-padding);
+
   a {
+    font-size: var(--font-size-large);
     display: block;
-    color: #333;
-    text-decoration: none;
-    margin-bottom: 8px;
+    margin-bottom: 0.5em;
     &:hover {
       text-decoration: underline;
     }

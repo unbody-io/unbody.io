@@ -169,8 +169,26 @@ img, video{
   color: black;
 }
 
+article>a.title>h2{
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+article>a.title>h3{
+  margin-left: var(--body-padding);
+}
+
 /* Mobile styles */
 @media only screen and (max-width: 767px) {
+  .contentContainer{
+    padding-top: 1em;
+  }
+  .pageLabel{
+    display: none;
+  }
+  body{
+    line-height: 130%;
+  }
   .grid{
     grid-template-columns: repeat(4, 1fr);
   }

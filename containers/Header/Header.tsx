@@ -40,7 +40,7 @@ const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
                     className={styles.menuButton}
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
-                    {menuOpen ? 'Close' : 'Menu'}
+                    {menuOpen ? '⨯' : '☰'}
                 </button>
             </nav>
             {menuOpen && (

@@ -9,16 +9,17 @@ import Link from "next/link";
 
 interface Props {
     data: ProviderProp
+    type: "file"|"provider"
 }
 
 const ProviderCard: React.FC<Props> = (props) => {
-    const {data} = props;
+    const {data, type} = props;
     return (
-        <div className={`${styles.providerCard}`}>
+        <div className={`${styles.providerCard} ${styles[type]}`}>
             <div className={styles.providerLogo}>
                 {
-                    (data.logo&&data.logo[1])&&
-                    <img src={data.logo[1]} alt={data.name} />
+                    (data.logo&&data.logo[0])&&
+                    <img src={data.logo[0]} alt={data.name} />
                 }
             </div>
             <div className={styles.providerName}>
@@ -40,7 +41,7 @@ const ProviderCard: React.FC<Props> = (props) => {
                     }
                 </div>
                 <div className={styles.arrow}>
-                    <Link href={`/docs/providers/${data.name}`}>
+                    <Link href={`/docs/${type}s/${data.name.toLowerCase()}`}>
                         <ArrowRight/>
                     </Link>
                 </div>

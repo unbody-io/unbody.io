@@ -1,17 +1,23 @@
 .wrapper{
   .header{
+    border-top: 1px solid;
+    //border-bottom: 1px solid;
+    //margin-bottom: 1em;
     padding: 0.5em 0;
     display: flex;
     justify-content: space-between;
     span{
       cursor: pointer;
     }
-    >div{
+    >div:not(.headerTitle){
       opacity: 0;
       transition: opacity 500ms;
       &.active{
         opacity: 1;
       }
+    }
+    .headerTitle{
+      text-align: center;
     }
   }
   .slider {

@@ -1,11 +1,11 @@
-.providers {
-  border-bottom: 1px solid;
-  padding-bottom: 3em;
+.container {
+  padding-bottom: 2em;
   .mobile{
     display: none;
   }
 
   >h3{
+    border-top: 1px solid;
     border-bottom: 1px solid;
     padding: 0.5em 0;
     margin-bottom: 0.5em;
@@ -14,12 +14,21 @@
 }
 
 @media (max-width: 754px) {
+  .container{
+    &.provider{
+      .mobileList{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    &.file{
+      .mobileList{
+        grid-template-columns: 100%;
+      }
+    }
+  }
   .mobile{
     padding-top: 1em;
     display: grid !important;
-    //grid-row-gap: 1em;
-    //height: calc(200px + 3em);
-    //overflow-x: hidden;
   }
   .desktop{
     display: none;

@@ -13,7 +13,7 @@ interface Props{
 const SinglePage: NextPage<Props> = ({page, content}) => {
     return (
         <div className={"singlePage grid contentContainer"}>
-            <div className={"col-4"}>{page.title}</div>
+            <div className={"col-4 upper pageLabel"}>{page.title}</div>
             <article className={"col-8"}>
                 <h1>{page.display_title}</h1>
                 <br/>

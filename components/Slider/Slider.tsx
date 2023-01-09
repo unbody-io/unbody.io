@@ -6,10 +6,11 @@ import {ArrowLeft, ArrowRight} from "../Arrow";
 
 interface Props {
     className? :string
+    header: string;
 }
 
 const Slider: React.FC<React.PropsWithChildren<Props>> = (props) => {
-    const {children, className} = props;
+    const {children, className, header} = props;
     const sliderRef = useRef<HTMLDivElement>(null);
     const sliderInnerRef = useRef<HTMLDivElement>(null);
 
@@ -52,6 +53,9 @@ const Slider: React.FC<React.PropsWithChildren<Props>> = (props) => {
             <div className={styles.header}>
                 <div className={canBack? styles.active: ""} onClick={handleScrollRight}>
                     <ArrowLeft/>
+                </div>
+                <div className={`${styles.headerTitle}`}>
+                    {header}
                 </div>
                 <div className={canNext? styles.active: ""} onClick={handleScrollLeft}>
                     <ArrowRight/>

@@ -17,7 +17,7 @@ const InfoSection: React.FC<React.PropsWithChildren<Props>> = (props) => {
         <section className={`${styles.infoSection}`}>
             <div className={"grid"}>
                 <div className={"col col-4"}>
-                    <span className={"cap"}>{label}</span>
+                    <span className={`upper ${styles.sectionLabel}`}>{label}</span>
                 </div>
                 <div className={"col col-8"}>
                     {

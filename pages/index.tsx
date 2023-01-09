@@ -18,6 +18,7 @@ import {FeatureProp, ISection, ProviderProp, UseCasesProps} from "../lib/data.ty
 import Providers from "../containers/Providers/Providers";
 import {getDatabasePropsValue, getPropValue, getSectionTitle} from "../lib/utils.notion";
 import UseCases from "../containers/Usecases/Usecases";
+import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
 
 
 interface IProps {
@@ -86,7 +87,12 @@ const Home: NextPage<IProps> = (props) => {
                                 className={"providers"}
                 >
                     <Providers data={providers} title={"Supported Providers"}/>
-                    <Providers data={files} title={"Supported Files"}/>
+                    <Providers data={files} type={"file"} title={"Supported Files"}/>
+
+                    <div style={{textAlign: "center"}}>
+                        <br/>
+                        <ActionButtonGroup learnMoreLink={"/docs/sources"}/>
+                    </div>
                 </DisplaySection>
                 <InfoSection label={"USE-CASES"}
                              learnMoreLink={"/docs/use-cases"}
