@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dl-remote-files": "rm -rf ./public/remotes && mkdir ./public/remotes && node ./scripts/dl-remote-files",
+    "prebuild": "rm -rf ./public/remotes && mkdir ./public/remotes && node ./scripts/dl-remote-files",
     "dev": "next dev",
-    "build": "dl-remote-files && next build",
-    "start": "dl-remote-files && next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
