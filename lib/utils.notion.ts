@@ -2,6 +2,7 @@ import {PageObjectResponse} from "@notionhq/client/build/src/api-endpoints";
 import {NotionDatabaseProp} from "./notion.types";
 import {ISection, PropValue} from "./data.types";
 import {getDatabase} from "./notion";
+import {getRemoteFilePath} from "./utils";
 
 
 export const getTableItemTextValue = (p: PageObjectResponse): null | string => {
@@ -10,11 +11,12 @@ export const getTableItemTextValue = (p: PageObjectResponse): null | string => {
     if (!p.properties.title.title.length) return null;
     return p.properties.title.title[0.].plain_text
 }
+
 export const getSectionTitle = (section: ISection): string | null => {
     return getTableItemTextValue(section.page)
 }
 
-export function getPropValue(prop: NotionDatabaseProp){
+export async function getPropValue(prop: NotionDatabaseProp) {
     switch (prop.type) {
         case "rich_text":
             return prop.rich_text.map(rt => {
@@ -46,13 +48,14 @@ export function getPropValue(prop: NotionDatabaseProp){
             return prop.files.map(f => {
                 switch (f.type) {
                     case "external":
-                        return f.external.url
+                            return getRemoteFilePath(f.external.url)
                     case "file":
-                        return f.file.url
+                        return getRemoteFilePath(f.file.url)
                     default:
                         return null
                 }
-            }).filter(f => f!==null)
+            })
+                .filter(f => f !== null);
         case "people":
             return prop.people
         default:
@@ -61,23 +64,25 @@ export function getPropValue(prop: NotionDatabaseProp){
 }
 
 export const getDatabasePropsValue = async (id: string, props: PropValue<string, null>, bp?: any): Promise<(PropValue<any, any>)[]> => {
-    try{
-        const records =  await getDatabase(id, bp);
-        return records.map(r => {
-            if (!("properties" in r)) return null;
-            let thisProps: Record<string, any> = {};
-            Object.keys(props).forEach((key) => {
-                try{
-                    thisProps[key] = getPropValue(r.properties[key]);
-                }catch (e){
-                    console.log(`error: could not find ${key} in properties of ${id}`)
+    try {
+        const records = await getDatabase(id, bp);
+        return Promise.all(
+            records.map(async(r) => {
+                if (!("properties" in r)) return null;
+                let thisProps: Record<string, any> = {};
+                for await(const key of Object.keys(props)){
+                    try {
+                        thisProps[key] = await getPropValue(r.properties[key]);
+                    } catch (e) {
+                        console.log(`error: could not find ${key} in properties of ${id}`)
+                    }
                 }
+                thisProps.id = r.id;
+                thisProps.updated = r.last_edited_time;
+                return thisProps;
             })
-            thisProps.id = r.id;
-            thisProps.updated = r.last_edited_time;
-            return thisProps;
-        }).filter(n => n!=null) as (PropValue<any, any>)[]
-    }catch (e){
+        ).then(data => data.filter(n => n != null) as (PropValue<any, any>)[])
+    } catch (e) {
         console.log(e)
         return [];
     }

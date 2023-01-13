@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {FooterItemProps} from "../../lib/data.types";
-import {groupBy} from "../../lib/utils";
+import {groupBy, isValidLink} from "../../lib/utils";
 
 import styles from './Footer.module.scss';
 import Link from "next/link";
@@ -26,7 +26,7 @@ const Footer: FC<FooterProps> = (props) => {
                             <span className={`upper ${styles.catTitle}`}>{key}</span>
                             <div className={styles.catItems}>
                                 {
-                                    items.map(item => (
+                                    items.filter(i => isValidLink(i.link)).map(item => (
                                         item.external?
                                             <a key={item.name} href={item.link} className={"cap"}>{item.name}</a>:
                                             <Link key={item.name} href={item.link} className={"cap"}>{item.name}</Link>
