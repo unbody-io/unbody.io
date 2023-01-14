@@ -22,8 +22,14 @@ export const Blog: NextPage<Props> = (props) => {
 
     return (
         <div className={styles.blog}>
+
             {
-                Object.entries(groups).map(([audience, posts]) => (
+                props.posts.length===0?
+                    <div>
+                        Sorry, no blog posts found!
+                    </div>
+                :
+                    Object.entries(groups).map(([audience, posts]) => (
                     <InfoSection label={`For ${audience}`}
                                  key={audience}
                     >

@@ -178,6 +178,12 @@ article>a.title>h3{
   margin-left: var(--body-padding);
 }
 
+.disabled{
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  border-color: rgba(255,255,255,0.5) !important;
+}
+
 /* Mobile styles */
 @media only screen and (max-width: 767px) {
   .contentContainer{

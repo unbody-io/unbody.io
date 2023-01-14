@@ -1,10 +1,12 @@
 import React, {FC, PropsWithChildren} from 'react';
 import styles from './Button.module.scss';
 
-interface ButtonProps{
+interface ButtonProps {
     size?: 'small' | 'medium' | 'large';
     style?: 'transparent' | 'filled';
     onClick?: () => void;
+    className?: string
+    htmlProps?: React.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
@@ -12,16 +14,22 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
         size = "medium",
         style = "transparent",
         onClick = ()=>{},
-        children
+        children,
+        className,
+        htmlProps = {}
     } = props;
-    const className = [
+    const classNames = [
         styles.button,
         styles[size],
         style === 'transparent' ? styles.transparent : styles.filled,
+        className
     ].join(' ');
 
     return (
-        <button className={className} onClick={onClick}>
+        <button className={classNames}
+                onClick={onClick}
+                {...htmlProps}
+        >
             {children}
         </button>
     );

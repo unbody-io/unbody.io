@@ -18,8 +18,8 @@ const UseCases: React.FC<Props> = (props) => {
                     <div key={u.title} className={`${styles.useCaseCard} cap`}>
                         <h2>{u.title}</h2>
                         <p dangerouslySetInnerHTML={{__html: u.outline}}/>
-                        <Button size={"small"}>
-                            <a href={u.link}>Read more <ArrowRight/></a>
+                        <Button size={"small"} className={"disabled"}>
+                            <a href={"javascript:;"} className={"disabled"}>Read more <ArrowRight/></a>
                         </Button>
                     </div>
                 ))

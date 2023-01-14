@@ -5,7 +5,7 @@
   padding: 8px 16px;
   cursor: pointer;
   transition: all 0.2s;
-  &:hover {
+  &:not(:global(.disabled)):hover {
     opacity: 0.8;
   }
 }

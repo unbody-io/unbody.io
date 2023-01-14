@@ -41,7 +41,7 @@ const ProviderCard: React.FC<Props> = (props) => {
                     }
                 </div>
                 <div className={styles.arrow}>
-                    <Link href={`/docs/${type}s/${data.name.toLowerCase()}`}>
+                    <Link href={`javascript:;`} className={"disabled"}>
                         <ArrowRight/>
                     </Link>
                 </div>
