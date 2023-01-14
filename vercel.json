@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/docs/**/*",
+      "source": "/docs",
+      "destination": "https://unbody-docs.vercel.app"
+    },
+    {
+      "source": "/docs/(.*)",
       "destination": "https://unbody-docs.vercel.app"
     }
   ]
