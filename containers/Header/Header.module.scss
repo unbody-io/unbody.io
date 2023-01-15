@@ -6,6 +6,21 @@
   font-size: var(--font-size-small);
   border-bottom: 1px solid;
 
+  .logo{
+    svg{
+      display: none;
+    }
+  }
+
+  .left {
+    font-size: var(--font-size-regularB);
+    display: flex;
+    align-items: center;
+    >*{
+      margin-right: 8px;
+    }
+  }
+
   nav{
     a{
       padding: 0 8px;
@@ -32,12 +47,21 @@
     button{
       font-size: var(--font-size-large) !important;
     }
+    .logo{
+      svg{
+        display: block;
+      }
+      .logoText{
+        display: none !important;
+      }
+    }
   }
+
 }
 
-.left {
-  font-size: 24px;
-}
+
+
+
 
 .right {
   display: flex;

@@ -12,7 +12,7 @@ export default function App({Component, pageProps}: AppProps) {
     return (
         <div className={"container"}>
             <NextNProgress color={"white"} height={1}/>
-            <Header tagline={"Unbody beta (v0)"}/>
+            <Header tagline={"beta"}/>
             <Component {...pageProps} />
             <Footer data={globalData.footerData as Array<FooterItemProps>}/>
         </div>

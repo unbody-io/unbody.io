@@ -11,7 +11,7 @@ interface Props {
 const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         data:{
-            key, title, benefits, video
+            slug, title, benefits, video
         }
     } = props;
 
@@ -28,7 +28,7 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
                         ))
                     }
                 </ul>
-                <ActionButtonGroup learnMoreLink={`/docs/features/${key}`}/>
+                <ActionButtonGroup learnMoreLink={`/features/${slug}`}/>
             </div>
             <div className={`col-8 ${styles.video}`}>
                 <video src={video} autoPlay={true} controls={false} muted={true} loop={true}/>

@@ -1,8 +1,8 @@
 import * as React from "react";
-import Banner from "../../public/images/banner.svg";
 
 import styles from "./Hero.module.scss";
-import {AsciiBanner} from "./AsciiBanner";
+import Button from "../../components/Button/Button";
+
 
 interface Props {
     headline: string;
@@ -17,7 +17,21 @@ const Hero: React.FC<Props> = (props) => {
             <p>{description}</p>
             <hr/>
             <hr/>
-            <AsciiBanner/>
+            {/*<AsciiBanner/>*/}
+            <div className={`${styles.banner}`}>
+                <div className={`grid ${styles.bannerImage}`}>
+                    <div className={"col-4"}/>
+                    <div className={`${styles.imageHolder} col-8`}>
+                        <img src={"/images/banner-desktop.svg"} className={styles.desktop}/>
+                        <img src={"/images/banner-mobile.svg"} className={styles.mobile}/>
+                    </div>
+                </div>
+                <div className={styles.action}>
+                    <Button style={"filled"}>
+                        <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"} target={"_blank"}>JOIN WAITINGLIST</a>
+                    </Button>
+                </div>
+            </div>
         </section>
     );
 };

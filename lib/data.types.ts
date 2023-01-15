@@ -7,14 +7,17 @@ import {SelectPropertyResponse} from "./notion.types";
 export interface NotionDatabaseProps{
     id: string;
     updated: string;
+    order?: number
 }
 
 export interface FeatureProp extends NotionDatabaseProps{
-    notionId: string;
+    id: string;
     title: string;
     key: string;
     benefits: string;
     video: string;
+    slug: string;
+    outline: string
 }
 
 export interface ProviderProp extends NotionDatabaseProps{

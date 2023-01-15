@@ -12,3 +12,11 @@ export const notionPageIds = {
 
 export const isDev =
     process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+
+export const AppConfig = {
+    site_name: 'Unbody',
+    title: `Unbody - We don't need CMS!`,
+    description: 'Unbody lets you use any existing interface to manage your website\'s content without learning a new CMS.',
+    siteUrl: "https://unbody.io",
+    image: "https://unbody.io/unbody.jpg"
+};

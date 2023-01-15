@@ -1,27 +1,51 @@
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import {getDatabasePropsValue} from "../lib/utils.notion";
-import {notionPageIds} from "../lib/config";
+import {AppConfig, notionPageIds} from "../lib/config";
 import {getBlocks} from "../lib/notion";
 import {SinglePageProps} from "../lib/data.types";
 import {NotionBlock} from "@9gustin/react-notion-render/dist/types/NotionBlock";
-import {Render} from "@9gustin/react-notion-render";
+import {indexGenerator, Render, rnrSlugify} from "@9gustin/react-notion-render";
+import styles from "../styles/SinglePage.module.scss";
+import Link from "next/link";
+import TwoColumnPage from "../containers/TwoColumnPage/TwoColumnPage";
+import {Meta} from "../components/Meta";
 
-interface Props{
+interface Props {
     page: SinglePageProps;
     content: NotionBlock[]
 }
+
 const SinglePage: NextPage<Props> = ({page, content}) => {
     return (
-        <div className={"singlePage grid contentContainer"}>
-            <div className={"col-4 upper pageLabel"}>{page.title}</div>
-            <article className={"col-8"}>
+        <>
+            <Meta title={`${page.display_title} - ${AppConfig.site_name}`}
+                  description={page.outline}
+            />
+            <TwoColumnPage backLink={"/"}
+                           withToc={true}
+                           backLinkText={"HOME"}
+                           className={styles.pageContainer}
+                           leftPanelContent={
+                               <ul className={styles.toc}>
+                                   {
+                                       indexGenerator(content)
+                                           .map(({id, plainText, type}) => (
+                                               <li key={id} className={styles[`${type}`]}>
+                                                   <Link href={`#${rnrSlugify(plainText)}`}>
+                                                       <span>{plainText}</span>
+                                                   </Link>
+                                               </li>
+                                           ))
+                                   }
+                               </ul>
+                           }
+            >
                 <h1>{page.display_title}</h1>
-                <br/>
                 <strong className={`serif`}>{page.subtitle}</strong>
                 <br/><br/>
                 <Render blocks={content} emptyBlocks/>
-            </article>
-        </div>
+            </TwoColumnPage>
+        </>
     )
 }
 

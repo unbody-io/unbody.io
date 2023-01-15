@@ -1,6 +1,6 @@
 import {GetStaticProps, NextPage} from "next";
 import {getDatabasePropsValue} from "../../lib/utils.notion";
-import {notionPageIds} from "../../lib/config";
+import {AppConfig, notionPageIds} from "../../lib/config";
 import {BlogPostProps} from "../../lib/data.types";
 import {groupBy} from "../../lib/utils";
 import InfoSection from "../../containers/InfoSection/InfoSection";
@@ -11,6 +11,8 @@ import styles from "../../styles/Blog.module.scss"
 import Button from "../../components/Button/Button";
 import dayjs from "dayjs";
 import {DateComponent} from "../../components/DateComponent";
+import {Meta} from "../../components/Meta";
+import * as React from "react";
 
 interface Props {
     posts: BlogPostProps[]
@@ -22,7 +24,9 @@ export const Blog: NextPage<Props> = (props) => {
 
     return (
         <div className={styles.blog}>
-
+            <Meta title={`Blog - ${AppConfig.site_name}`}
+                  description={"Find stories and articles about Unbody"}
+            />
             {
                 props.posts.length===0?
                     <div>

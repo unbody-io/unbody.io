@@ -1,0 +1,29 @@
+.pageContainer{
+
+  .toc{
+    list-style: none;
+    font-size: var(--font-size-regularB);
+    line-height: 1em;
+    li{
+      max-width: 250px;
+    }
+    li+li{
+      margin-top: 0.5em;
+    }
+    .heading_3{
+      margin-left: calc(var(--body-padding) / 2);
+    }
+    .heading_2{
+
+    }
+  }
+}
+
+@media (max-width: 754px) {
+  .toc{
+    font-size: var(--font-size-sub-title) !important;
+    .heading_3{
+      margin-left: calc(var(--body-padding)) !important;
+    }
+  }
+}

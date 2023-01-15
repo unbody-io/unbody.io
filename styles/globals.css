@@ -30,7 +30,6 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
@@ -60,7 +59,7 @@ h1, .headline{
 h2{
   font-size: var(--font-size-h2);
   line-height: 104%;
-  max-width: 520px;
+  max-width: 590px;
 }
 
 h3{
@@ -126,7 +125,7 @@ img, video{
 }
 
 .contentContainer{
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 .grid{
@@ -160,8 +159,8 @@ img, video{
 .whiteTheme{
   background: white;
   /*position: absolute;*/
-  /*left: 0;*/
-  /*width: 100%;*/
+  left: 0;
+  width: 100%;
   /*padding: 2em calc(calc(calc(100% - var(--max-width)) / 2) + 32px);*/
 }
 
@@ -187,7 +186,7 @@ article>a.title>h3{
 /* Mobile styles */
 @media only screen and (max-width: 767px) {
   .contentContainer{
-    padding-top: 1em;
+    padding-top: 0em;
   }
   .pageLabel{
     display: none;

@@ -1,0 +1,35 @@
+.container{
+  .content{
+    padding: 1em 0 15em 0;
+    strong{
+      display: block;
+      font-size: var(--font-size-large);
+      margin: 0.5em 0 1em 0;
+    }
+    h2{
+      margin-top: 1em;
+    }
+  }
+  .leftPanel{
+    padding-top: 1em;
+    font-size: var(--font-size-regularB);
+
+    .back{
+      > *{
+        margin-right: 8px;
+      }
+    }
+    .leftPanelContent{
+      margin-top: 2em;
+
+      position: sticky;
+      top: 2em;
+      left: 0;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .content{
+    padding: 2em 0 4em 0;
+  }
+}

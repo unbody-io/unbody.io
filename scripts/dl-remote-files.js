@@ -1,6 +1,5 @@
 const { loadEnvConfig } = require('@next/env');
 loadEnvConfig(process.cwd())
-console.log(process.env.NOTION_TOKEN);
 
 const {createWriteStream} = require('fs');
 const {get}= require('https');
@@ -55,7 +54,6 @@ const sources = [
                     const url = prop.type === "external"? file.external.url: file.file.url;
                     const path = getRemoteFilePath(url);
                     await downloadFile(url, path);
-                    console.log("download", path)
                 }
             }
         } catch (e) {
