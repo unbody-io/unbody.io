@@ -57,12 +57,12 @@ const Meta = (props: IMetaProps) => {
                 description={props.description}
                 twitter={{
                     handle: "unbody_io",
-                    site: AppConfig.siteUrl
+                    site: "unbody_io"
                 }}
                 openGraph={{
                     title: props.title,
                     description: props.description,
-                    url: AppConfig.siteUrl,
+                    url: `${AppConfig.siteUrl}${router.asPath}`,
                     site_name: AppConfig.site_name,
                     images: [
                         {
