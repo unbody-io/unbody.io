@@ -3,7 +3,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Hero from "../containers/Hero/Hero";
 import {getBlocks, getDatabase} from "../lib/notion";
-import {notionPageIds} from "../lib/config";
+import {AppConfig, notionPageIds} from "../lib/config";
 import {GetStaticProps, NextPage} from "next";
 
 import {Render} from "@9gustin/react-notion-render";
@@ -46,7 +46,7 @@ const Home: NextPage<IProps> = (props) => {
 
     return (
         <>
-            <Meta title={"Unbody"}
+            <Meta title={AppConfig.title}
                   description={`${headline}. ${description}`}
             />
             <main className={styles.main}>

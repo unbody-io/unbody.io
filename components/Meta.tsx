@@ -68,7 +68,7 @@ const Meta = (props: IMetaProps) => {
                     site_name: AppConfig.site_name,
                     images: [
                         {
-                            url: `${process.env.NEXT_PUBLIC_BASE_URL as string}/api/og&title=${props.title}`,
+                            url: `https://unbody-io.vercel.app/api/og&title=${props.title}`,
                             width: 1200,
                             height: 630
                         }

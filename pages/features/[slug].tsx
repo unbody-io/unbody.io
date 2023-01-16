@@ -21,7 +21,7 @@ const FeaturePage: NextPage<Props> = (props) => {
     const {page, content} = props;
     return (
         <>
-            <Meta title={`${page.title} - ${AppConfig.site_name}`}
+            <Meta title={`${page.title}`}
                   description={page.outline}
             />
             <TwoColumnPage withToc={false}

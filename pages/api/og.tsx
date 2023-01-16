@@ -58,8 +58,8 @@ export default function handler(req: NextRequest) {
 
             ),
             {
-                width: 800,
-                height: 400,
+                width: 1200,
+                height: 630,
             },
         )
 

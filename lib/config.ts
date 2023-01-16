@@ -15,7 +15,7 @@ export const isDev =
 
 export const AppConfig = {
     site_name: 'Unbody',
-    title: `Unbody - We don't need CMS!`,
+    title: `We don't need CMS!`,
     description: 'Unbody lets you use any existing interface to manage your website\'s content without learning a new CMS.',
     siteUrl: "https://unbody.io",
     image: "https://unbody.io/unbody.jpg"
