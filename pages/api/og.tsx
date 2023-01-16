@@ -51,7 +51,8 @@ export default function handler(req: NextRequest) {
                             color: 'transparent',
                             fontSize: "120px",
                             maxWidth: "70%",
-                            lineHeight: "90%"
+                            lineHeight: "90%",
+                            fontWeight: "bold"
                         }}
                     >
                         {title}
