@@ -47,7 +47,7 @@ const Home: NextPage<IProps> = (props) => {
     return (
         <>
             <Meta title={AppConfig.title}
-                  description={`${headline}. ${description}`}
+                  description={`${description}`}
             />
             <main className={styles.main}>
                 <Hero headline={headline || "We do not need CMS"}
