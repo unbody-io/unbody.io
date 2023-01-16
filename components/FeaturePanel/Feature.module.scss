@@ -4,8 +4,6 @@
       margin-bottom: 1em;
     }
   }
-  .video{
-  }
 
   ul{
     list-style-type: "→";
@@ -14,5 +12,11 @@
     li:not(:last-child){
       margin-bottom: 0.5em;
     }
+  }
+}
+
+@media (max-width: 754px) {
+  .video{
+    margin-top: 2em;
   }
 }

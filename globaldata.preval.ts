@@ -9,6 +9,7 @@ async function getData() {
         link: null,
         external: null,
         category: null,
+        order: null
     })
     return { footerData };
 }

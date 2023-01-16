@@ -92,7 +92,7 @@ const Home: NextPage<IProps> = (props) => {
                     </div>
                 </DisplaySection>
                 <InfoSection label={"USE-CASES"}
-                             learnMoreLink={"/docs/use-cases"}
+                             learnMoreLink={"/about"}
                 >
                     <UseCases data={useCases}/>
                 </InfoSection>

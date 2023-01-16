@@ -11,7 +11,7 @@ interface FooterProps {
 
 const Footer: FC<FooterProps> = (props) => {
     const {data} = props;
-    const cats = groupBy<FooterItemProps>(data, (d) => d.category.name);
+    const cats = groupBy<FooterItemProps>(data.filter(i => isValidLink(i.link)), (d) => d.category.name);
 
     return (
         <footer className={`${styles.footer}`}>
@@ -21,12 +21,16 @@ const Footer: FC<FooterProps> = (props) => {
                     <small>hello@unbody.io</small>
                 </div>
                 {
-                    Object.entries(cats).map(([key, items]) => (
+                    Object.entries(cats)
+                        .filter(([key, items]) => items.length>0)
+                        .map(([key, items]) => (
                         <div className={"col-3"} key={key}>
                             <span className={`upper ${styles.catTitle}`}>{key}</span>
                             <div className={styles.catItems}>
                                 {
-                                    items.filter(i => isValidLink(i.link)).map(item => (
+                                    items
+                                        .sort((a,b) => (a.order||-1)-(b.order||-1))
+                                        .map(item => (
                                         item.external?
                                             <a key={item.name} href={item.link} target={"_blank"} className={"cap"}>{item.name}</a>:
                                             <Link key={item.name} href={item.link} className={"cap"}>{item.name}</Link>

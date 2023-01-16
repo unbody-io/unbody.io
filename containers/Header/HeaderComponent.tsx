@@ -20,7 +20,7 @@ interface HeaderProps {
     tagline: string;
 }
 
-const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
+const HeaderComponent: FC<PropsWithChildren<HeaderProps>> = (props) => {
     const {tagline} = props;
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -62,4 +62,4 @@ const Header: FC<PropsWithChildren<HeaderProps>> = (props) => {
     );
 };
 
-export default Header
+export default HeaderComponent
