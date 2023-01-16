@@ -11,6 +11,7 @@ type IMetaProps = {
 
 const Meta = (props: IMetaProps) => {
     const router = useRouter();
+    const image = `https://unbody.io/api/og?title=${props.title}`;
 
     return (
         <>
@@ -49,10 +50,7 @@ const Meta = (props: IMetaProps) => {
                       href="/site.webmanifest"
                 />
                 <title>{props.title}</title>
-                {/*<meta*/}
-                {/*    property="og:image"*/}
-                {/*    content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"*/}
-                {/*/>*/}
+
             </Head>
             <NextSeo
                 title={props.title}
@@ -68,7 +66,7 @@ const Meta = (props: IMetaProps) => {
                     site_name: AppConfig.site_name,
                     images: [
                         {
-                            url: `https://unbody.io/api/og?title=${props.title}`,
+                            url: `${image}`,
                             width: 1200,
                             height: 630
                         }
