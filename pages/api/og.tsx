@@ -55,7 +55,7 @@ export default function handler(req: NextRequest) {
                             lineHeight: "90%"
                         }}
                     >
-                        We don't need CMS.
+                        {title}
                     </h1>
                 </div>
 
