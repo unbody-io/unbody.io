@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = await getDatabasePropsValue(notionPageIds.BLOGPOSTS, {slug: null, id: null});
+    const posts = await getDatabasePropsValue(notionPageIds.BLOGPOSTS, {slug: null});
 
     return {
         paths: posts.filter(p => p.slug && p.slug.length > 0).map((p) => ({params: {slug: p.slug}})),

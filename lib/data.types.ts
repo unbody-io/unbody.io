@@ -15,7 +15,7 @@ export interface FeatureProp extends NotionDatabaseProps{
     title: string;
     key: string;
     benefits: string;
-    video: string;
+    video: string[];
     slug: string;
     outline: string
 }

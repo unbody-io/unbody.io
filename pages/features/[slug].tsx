@@ -10,6 +10,7 @@ import styles from "../../styles/FeaturePage.module.scss"
 import TwoColumnPage from "../../containers/TwoColumnPage/TwoColumnPage";
 import * as React from "react";
 import {Meta} from "../../components/Meta";
+import NotionVideo from "../../components/NotionVideo/NotionVideo";
 
 interface Props {
     content: NotionBlock[];
@@ -29,7 +30,7 @@ const FeaturePage: NextPage<Props> = (props) => {
                            className={styles.container}
             >
                 <h1 className={styles.title}>{page.title}</h1>
-                <video src={page.video} autoPlay={true} controls={false} muted={true} loop={true}/>
+                <NotionVideo video={page.video}/>
                 <Render blocks={content} emptyBlocks/>
             </TwoColumnPage>
         </>
@@ -72,7 +73,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = await getDatabasePropsValue(notionPageIds.FEATURES, {slug: null, id: null});
+    const posts = await getDatabasePropsValue(notionPageIds.FEATURES, {slug: null});
     return {
         paths: posts.filter(p => p.slug && p.slug.length > 0).map((p) => ({params: {slug: p.slug}})),
         fallback: false, // can also be true or 'blocking'

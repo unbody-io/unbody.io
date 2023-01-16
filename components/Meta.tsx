@@ -49,6 +49,10 @@ const Meta = (props: IMetaProps) => {
                       href="/site.webmanifest"
                 />
                 <title>{props.title}</title>
+                {/*<meta*/}
+                {/*    property="og:image"*/}
+                {/*    content="https://inthepocket.tech/api/og-image?name=Next.js&stage=adopt"*/}
+                {/*/>*/}
             </Head>
             <NextSeo
                 title={props.title}
@@ -64,11 +68,18 @@ const Meta = (props: IMetaProps) => {
                     site_name: AppConfig.site_name,
                     images: [
                         {
-                            url: props.image||AppConfig.image,
-                            width: 1100,
-                            height: 438
+                            url: `${process.env.NEXT_PUBLIC_BASE_URL as string}/api/og&title=${props.title}`,
+                            width: 1200,
+                            height: 630
                         }
                     ]
+                    // images: [
+                    //     {
+                    //         url: props.image||AppConfig.image,
+                    //         width: 1100,
+                    //         height: 438
+                    //     }NEXT_PUBLIC_BASE_URL
+                    // ]
                 }}
             />
         </>

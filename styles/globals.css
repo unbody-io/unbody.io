@@ -168,13 +168,37 @@ img, video{
   color: black;
 }
 
-article>a.title>h2{
-  margin-top: 2em;
+article>a.title{
+  margin-top: 1rem;
   margin-bottom: 1em;
+  display: block;
 }
 
-article>a.title>h3{
-  margin-left: var(--body-padding);
+article>a.title>*{
+  padding-top: 2rem
+}
+
+article> ul,
+article> ol{
+  padding-left: var(--body-padding);
+  font-size: var(--font-size-regularB);
+}
+
+article> ul > li,
+article> ol > li {
+  margin-bottom: 1rem;
+}
+article> ul > li strong,
+article> ol > li strong{
+  font-size: 20px;
+}
+article blockquote{
+  margin-bottom: 3rem;
+  font-family: serif;
+}
+
+article blockquote{
+  margin-top: 0.5em !important;
 }
 
 .disabled{

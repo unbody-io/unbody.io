@@ -66,7 +66,7 @@ const Home: NextPage<IProps> = (props) => {
                     <Render blocks={sections.how.content as NotionBlock[]}/>
                 </InfoSection>
                 <DisplaySection label={"features"}
-                                title={`Super Powers 🦸<br/>↯<br/>All you need, right out-of-the-box`}
+                                title={`Super Powers ✨<br/>↯<br/>All you need, right out-of-the-box`}
                 >
                     <Tabs tabs={
                         features.map(f => {
@@ -74,7 +74,7 @@ const Home: NextPage<IProps> = (props) => {
                                 id: f.key,
                                 title: f.key,
                                 content: (
-                                    <FeaturePanel data={f}/>
+                                    <FeaturePanel data={f} key={f.key}/>
                                 )
                             }
                         })
@@ -86,7 +86,6 @@ const Home: NextPage<IProps> = (props) => {
                 >
                     <Providers data={providers} title={"Supported Providers"}/>
                     <Providers data={files} type={"file"} title={"Supported Files"}/>
-
                     <div style={{textAlign: "center"}}>
                         <br/>
                         <ActionButtonGroup learnMoreLink={"/docs/sources"}/>
@@ -126,7 +125,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
         video: null,
         title: null,
         slug: null,
-        id: null,
         order: null
     })
 

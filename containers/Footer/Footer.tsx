@@ -18,7 +18,7 @@ const Footer: FC<FooterProps> = (props) => {
             <div className={`${styles.footerLinks} grid`}>
                 <div className={"col-4"}>
                     <h3>Unbody</h3>
-                    <small>hi@unbody.io</small>
+                    <small>hello@unbody.io</small>
                 </div>
                 {
                     Object.entries(cats).map(([key, items]) => (
@@ -28,7 +28,7 @@ const Footer: FC<FooterProps> = (props) => {
                                 {
                                     items.filter(i => isValidLink(i.link)).map(item => (
                                         item.external?
-                                            <a key={item.name} href={item.link} className={"cap"}>{item.name}</a>:
+                                            <a key={item.name} href={item.link} target={"_blank"} className={"cap"}>{item.name}</a>:
                                             <Link key={item.name} href={item.link} className={"cap"}>{item.name}</Link>
                                     ))
                                 }

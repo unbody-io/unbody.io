@@ -3,6 +3,7 @@ import * as React from "react";
 import styles from "./Feature.module.scss";
 import ActionButtonGroup from "../../containers/ActionButtonGroup/ActionButtonGroup";
 import {FeatureProp} from "../../lib/data.types";
+import NotionVideo from "../NotionVideo/NotionVideo";
 
 interface Props {
     data: FeatureProp
@@ -31,7 +32,7 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
                 <ActionButtonGroup learnMoreLink={`/features/${slug}`}/>
             </div>
             <div className={`col-8 ${styles.video}`}>
-                <video src={video} autoPlay={true} controls={false} muted={true} loop={true}/>
+                <NotionVideo video={video}/>
             </div>
         </div>
     );

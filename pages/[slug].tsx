@@ -4,11 +4,11 @@ import {AppConfig, notionPageIds} from "../lib/config";
 import {getBlocks} from "../lib/notion";
 import {SinglePageProps} from "../lib/data.types";
 import {NotionBlock} from "@9gustin/react-notion-render/dist/types/NotionBlock";
-import {indexGenerator, Render, rnrSlugify} from "@9gustin/react-notion-render";
+import {Render} from "@9gustin/react-notion-render";
 import styles from "../styles/SinglePage.module.scss";
-import Link from "next/link";
 import TwoColumnPage from "../containers/TwoColumnPage/TwoColumnPage";
 import {Meta} from "../components/Meta";
+import Toc from "../components/Toc/Toc";
 
 interface Props {
     page: SinglePageProps;
@@ -25,20 +25,7 @@ const SinglePage: NextPage<Props> = ({page, content}) => {
                            withToc={true}
                            backLinkText={"HOME"}
                            className={styles.pageContainer}
-                           leftPanelContent={
-                               <ul className={styles.toc}>
-                                   {
-                                       indexGenerator(content)
-                                           .map(({id, plainText, type}) => (
-                                               <li key={id} className={styles[`${type}`]}>
-                                                   <Link href={`#${rnrSlugify(plainText)}`}>
-                                                       <span>{plainText}</span>
-                                                   </Link>
-                                               </li>
-                                           ))
-                                   }
-                               </ul>
-                           }
+                           leftPanelContent={<Toc content={content}/>}
             >
                 <h1>{page.display_title}</h1>
                 <strong className={`serif`}>{page.subtitle}</strong>
