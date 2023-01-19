@@ -41,9 +41,10 @@ const ProviderCard: React.FC<Props> = (props) => {
                     }
                 </div>
                 <div className={styles.arrow}>
-                    <Link href={`javascript:;`} className={"disabled"}>
-                        <ArrowRight/>
-                    </Link>
+                    <ArrowRight/>
+                    {/*<Link href={``} className={"disabled"}>*/}
+
+                    {/*</Link>*/}
                 </div>
             </div>
         </div>
