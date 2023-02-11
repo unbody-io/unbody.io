@@ -7,20 +7,26 @@ import {isValidLink} from "../../lib/utils";
 
 interface Props{
     learnMoreLink: string;
+    learnMoreAlt?: string
 }
 
 const ActionButtonGroup: React.FC<Props> = (props) => {
-    const {learnMoreLink} = props;
+    const {learnMoreLink, learnMoreAlt=""} = props;
     return (
         <div className={styles.actionButtonGroup}>
             <Button style={"filled"}>
-                <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"} className={"mono"} target={"_blank"}>JOIN WAITLIST</a>
+                <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"}
+                    title={"JOIN WAITLIST of Unbody"}
+                   className={"mono"} target={"_blank"}>JOIN WAITLIST</a>
             </Button>
             {
                 isValidLink(learnMoreLink)&&
                 <Button style={"transparent"}>
                     {
-                        <Link href={learnMoreLink} aria-disabled={true} className={isValidLink(learnMoreLink)? "":"disabled"}>LEARN MORE</Link>
+                        <Link href={learnMoreLink}
+                              className={isValidLink(learnMoreLink)? "":"disabled"}
+                              title={learnMoreAlt}
+                        >LEARN MORE</Link>
                     }
                 </Button>
             }

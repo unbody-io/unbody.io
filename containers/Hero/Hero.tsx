@@ -23,8 +23,8 @@ const Hero: React.FC<Props> = (props) => {
                 <div className={`grid ${styles.bannerImage}`}>
                     <div className={"col-4"}/>
                     <div className={`${styles.imageHolder} col-8`}>
-                        <img src={"/images/banner-desktop.svg"} className={styles.desktop}/>
-                        <img src={"/images/banner-mobile.svg"} className={styles.mobile}/>
+                        <img src={"/images/banner-desktop.svg"} className={styles.desktop} alt={"with Unbody, we do not need CMS."}/>
+                        <img src={"/images/banner-mobile.svg"} className={styles.mobile} alt={"with Unbody, we do not need CMS."}/>
                     </div>
                 </div>
                 <div className={styles.action}>

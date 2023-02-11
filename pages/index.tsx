@@ -56,12 +56,14 @@ const Home: NextPage<IProps> = (props) => {
                 <InfoSection label={"WHY"}
                              title={getSectionTitle(sections.why) || ":("}
                              learnMoreLink={"/about/#why-unbody"}
+                             learnMoreAlt={"Learn more why using Unbody?"}
                 >
                     <Render blocks={sections.why.content as NotionBlock[]}/>
                 </InfoSection>
                 <InfoSection label={"HOW"}
                              title={getSectionTitle(sections.how) || ":("}
                              learnMoreLink={"/about/#how-unbody-works"}
+                             learnMoreAlt={"Learn more about how Unbody works"}
                 >
                     <Render blocks={sections.how.content as NotionBlock[]}/>
                 </InfoSection>
@@ -93,6 +95,7 @@ const Home: NextPage<IProps> = (props) => {
                 </DisplaySection>
                 <InfoSection label={"USE-CASES"}
                              learnMoreLink={"/about"}
+                             learnMoreAlt={"Learn more about Unbody's usecases"}
                 >
                     <UseCases data={useCases}/>
                 </InfoSection>
