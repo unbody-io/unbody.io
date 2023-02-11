@@ -2,8 +2,6 @@ import * as React from "react";
 
 import styles from "./Usecases.module.scss";
 import {UseCasesProps} from "../../lib/data.types";
-import {ArrowRight} from "../../components/Arrow";
-import Button from "../../components/Button/Button";
 
 interface Props {
     data: UseCasesProps[]
@@ -15,7 +13,7 @@ const UseCases: React.FC<Props> = (props) => {
         <>
             {
                 data.map((u)=>(
-                    <div key={u.title} className={`${styles.useCaseCard} cap`}>
+                    <div key={u.title} className={`${styles.useCaseCard}`}>
                         <h2>{u.title}</h2>
                         <p dangerouslySetInnerHTML={{__html: u.outline}}/>
                         {/*<Button size={"small"}>*/}
