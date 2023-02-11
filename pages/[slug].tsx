@@ -28,7 +28,8 @@ const SinglePage: NextPage<Props> = ({page, content}) => {
                            leftPanelContent={<Toc content={content}/>}
             >
                 <h1>{page.display_title}</h1>
-                <strong className={`serif`}>{page.subtitle}</strong>
+                <br/>
+                <h2 className={`serif`}>{page.subtitle}</h2>
                 <br/><br/>
                 <Render blocks={content} emptyBlocks/>
             </TwoColumnPage>

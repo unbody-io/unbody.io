@@ -55,13 +55,13 @@ const Home: NextPage<IProps> = (props) => {
                 />
                 <InfoSection label={"WHY"}
                              title={getSectionTitle(sections.why) || ":("}
-                             learnMoreLink={"/about/#why"}
+                             learnMoreLink={"/about/#why-unbody"}
                 >
                     <Render blocks={sections.why.content as NotionBlock[]}/>
                 </InfoSection>
                 <InfoSection label={"HOW"}
                              title={getSectionTitle(sections.how) || ":("}
-                             learnMoreLink={"/about/#how"}
+                             learnMoreLink={"/about/#how-unbody-works"}
                 >
                     <Render blocks={sections.how.content as NotionBlock[]}/>
                 </InfoSection>
@@ -88,7 +88,7 @@ const Home: NextPage<IProps> = (props) => {
                     <Providers data={files} type={"file"} title={"Supported Files"}/>
                     <div style={{textAlign: "center"}}>
                         <br/>
-                        <ActionButtonGroup learnMoreLink={"/docs/sources"}/>
+                        <ActionButtonGroup learnMoreLink={""}/>
                     </div>
                 </DisplaySection>
                 <InfoSection label={"USE-CASES"}

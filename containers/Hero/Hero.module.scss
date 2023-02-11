@@ -24,7 +24,6 @@
     }
     .action{
       text-align: center;
-      margin-bottom: 2em;
     }
   }
   //
@@ -41,7 +40,6 @@
   //        backdrop-filter: invert(100%);
   //      }
   //    }
-  //
   //    &.desktop{
   //      .clickBox{
   //        top: 78%;
@@ -66,10 +64,16 @@
 }
 
 @media (max-width: 754px){
-  //.asciiBanner{
-  //  padding-top: 1em !important;
-  //}
+  .hero{
+    p{
+      //display: none;
+    }
+  }
+  .banner{
+    padding-top: 2em;
+  }
   .bannerImage{
+    display: none;
     padding: 2em 0 3em 0 !important;
     .desktop{
       display: none;

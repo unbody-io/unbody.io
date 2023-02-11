@@ -2,6 +2,7 @@ import * as React from "react";
 
 import styles from "./Hero.module.scss";
 import Button from "../../components/Button/Button";
+import SectionFooter from "../SectionFooter/SectionFooter";
 
 
 interface Props {
@@ -32,6 +33,7 @@ const Hero: React.FC<Props> = (props) => {
                     </Button>
                 </div>
             </div>
+            <SectionFooter/>
         </section>
     );
 };

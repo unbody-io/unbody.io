@@ -190,7 +190,7 @@ article> ol > li {
 }
 article> ul > li strong,
 article> ol > li strong{
-  font-size: 20px;
+  font-size: var(--font-size-regular)
 }
 article blockquote{
   margin-bottom: 3rem;
@@ -223,6 +223,12 @@ article blockquote{
   }
   .col-4 .col-8 .col-16{
     grid-column: span 4;
+  }
+
+  h1{
+    font-size: calc(100vw / 2.5);
+    line-height: 82%;
+    text-align: justify;
   }
 
   :root{

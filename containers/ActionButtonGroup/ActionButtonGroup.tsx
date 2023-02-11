@@ -16,11 +16,15 @@ const ActionButtonGroup: React.FC<Props> = (props) => {
             <Button style={"filled"}>
                 <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"} className={"mono"} target={"_blank"}>JOIN WAITLIST</a>
             </Button>
-            <Button style={"transparent"}>
-                {
-                    <Link href={learnMoreLink} aria-disabled={true} className={isValidLink(learnMoreLink)? "":"disabled"}>LEARN MORE</Link>
-                }
-            </Button>
+            {
+                isValidLink(learnMoreLink)&&
+                <Button style={"transparent"}>
+                    {
+                        <Link href={learnMoreLink} aria-disabled={true} className={isValidLink(learnMoreLink)? "":"disabled"}>LEARN MORE</Link>
+                    }
+                </Button>
+            }
+
         </div>
     );
 };

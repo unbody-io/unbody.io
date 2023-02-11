@@ -13,7 +13,7 @@ interface Props {
 }
 
 const TwoColumnPage: React.FC<React.PropsWithChildren<Props>> = (props) => {
-    const {children, withToc = false, backLink, className, leftPanelContent = null, backLinkText="/"} = props;
+    const {children, backLink, className, leftPanelContent = null, backLinkText="/"} = props;
     return (
         <div className={`${styles.container} ${className} contentContainer grid`}>
             <div className={`col-4 ${styles.leftPanel}`}>

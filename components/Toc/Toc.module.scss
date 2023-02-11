@@ -4,8 +4,8 @@
   line-height: 1em;
   .tocItem{
     max-width: 250px;
-    opacity: 0.3;
     transition: opacity 500ms;
+    opacity: 0.5;
     &.active{
       opacity: 1;
     }
@@ -18,7 +18,6 @@
     &.heading_2{
 
     }
-
   }
 }
 

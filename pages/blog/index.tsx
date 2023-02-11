@@ -30,7 +30,7 @@ export const Blog: NextPage<Props> = (props) => {
             {
                 props.posts.length===0?
                     <div>
-                        Sorry, no blog posts found!
+                        No blog posts found!
                     </div>
                 :
                     Object.entries(groups).map(([audience, posts]) => (
