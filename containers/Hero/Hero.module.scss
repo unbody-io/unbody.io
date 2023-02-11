@@ -65,8 +65,10 @@
 
 @media (max-width: 754px){
   .hero{
-    p{
-      //display: none;
+    h1{
+      font-size: calc(100vw / 2.5);
+      line-height: 82%;
+      text-align: justify;
     }
   }
   .banner{

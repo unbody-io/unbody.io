@@ -225,12 +225,6 @@ article blockquote{
     grid-column: span 4;
   }
 
-  h1{
-    font-size: calc(100vw / 2.5);
-    line-height: 82%;
-    text-align: justify;
-  }
-
   :root{
     --font-size-small: 12px;
     --font-size-regular: 18px;
