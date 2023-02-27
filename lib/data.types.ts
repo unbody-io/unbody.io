@@ -18,6 +18,7 @@ export interface FeatureProp extends NotionDatabaseProps{
     video: string[];
     slug: string;
     outline: string
+    disabled: boolean;
 }
 
 export interface ProviderProp extends NotionDatabaseProps{

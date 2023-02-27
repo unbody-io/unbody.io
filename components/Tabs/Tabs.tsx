@@ -5,6 +5,7 @@ import styles from "./Tabs.module.scss"
 type Tab = {
     id: string,
     title: string,
+    disabled?: boolean,
     content: React.ReactNode,
 };
 
@@ -29,7 +30,6 @@ const Tabs: React.FC<Props> = ({ tabs }) => {
                 ))}
                 <button className={styles.scrollArrow} aria-label="Scroll tabs">
                     &#x279C;
-                    lll
                 </button>
             </div>
             <div className={styles.tabBody}>{activeTab!.content}</div>

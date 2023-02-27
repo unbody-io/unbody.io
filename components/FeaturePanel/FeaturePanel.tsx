@@ -12,7 +12,7 @@ interface Props {
 const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         data:{
-            slug, title, benefits, video
+            slug, title, benefits, video, disabled
         }
     } = props;
 
@@ -20,19 +20,29 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
         <div className={`${styles.feature} grid`}>
             <div className={`col-8 ${styles.info}`}>
                 <h2>{title}</h2>
-                <ul>
-                    {
-                        benefits.split("\n").map(b => b.trim()).filter(b => b.length).map((b, i) => (
-                            <li key={`b-${i}`}>
-                                <h3>{b}</h3>
-                            </li>
-                        ))
-                    }
-                </ul>
-                <ActionButtonGroup learnMoreLink={`/features/${slug}`}/>
+                {
+                    disabled?
+                        <div>Coming soon ...</div>
+                        :
+                        <>
+                            <ul>
+                                {
+                                    benefits.split("\n").map(b => b.trim()).filter(b => b.length).map((b, i) => (
+                                        <li key={`b-${i}`}>
+                                            <h3>{b}</h3>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <ActionButtonGroup learnMoreLink={`/features/${slug}`}/>
+                        </>
+                }
             </div>
             <div className={`col-8 ${styles.video}`}>
-                <NotionVideo video={video}/>
+                {
+                    (video&&!disabled)&&
+                    <NotionVideo video={video}/>
+                }
             </div>
         </div>
     );

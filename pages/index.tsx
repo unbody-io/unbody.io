@@ -128,7 +128,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         video: null,
         title: null,
         slug: null,
-        order: null
+        order: null,
+        disabled: null
     })
 
     const providers = await getDatabasePropsValue(notionPageIds.PROVIDERS, {
