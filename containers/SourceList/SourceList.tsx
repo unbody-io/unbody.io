@@ -1,25 +1,24 @@
 import * as React from "react";
 
-import styles from "./Providers.module.scss";
-import {ProviderProp} from "../../lib/data.types";
-import ProviderCard from "../../components/ProviderCard/ProviderCard";
+import styles from "./SourceList.module.scss";
 import Slider from "../../components/Slider/Slider";
 import List from "../../components/List/List";
+import SourceCard, {SourceCardProps} from "../../components/SourceCard/SourceCard";
 
 interface Props {
-    data: ProviderProp[]
     title: string;
     type?: "file"|"provider"
+    data: SourceCardProps[]
 }
 
-const Providers: React.FC<Props> = (props) => {
+const SourceList: React.FC<Props> = (props) => {
     const {data, title, type="provider"} = props;
     return (
         <div className={`${styles.container} ${styles[type]}`}>
             <div className={styles.desktop}>
                 <Slider header={title}>
                     {
-                        data.map(p => <ProviderCard type={type} key={p.id} data={p}/>)
+                        data.map(p => <SourceCard key={p.id} {...{...p, type}}/>)
                     }
                 </Slider>
             </div>
@@ -29,14 +28,12 @@ const Providers: React.FC<Props> = (props) => {
                       header={title}
                 >
                     {
-                        data.map(p => <ProviderCard type={type} key={p.id} data={p}/>)
+                        data.map(p => <SourceCard key={p.id} {...{...p, type}}/>)
                     }
                 </List>
             </div>
-
-
         </div>
     );
 };
 
-export default Providers;
+export default SourceList;

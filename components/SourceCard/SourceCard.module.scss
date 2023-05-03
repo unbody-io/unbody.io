@@ -1,4 +1,4 @@
-.providerCard{
+.sourceCard{
   border: 1px solid;
   box-sizing: border-box;
   padding: 0.5em 12px;
@@ -10,7 +10,7 @@
 
   &.provider{
     height: 440px;
-    .providerLogo{
+    .sourceLogo{
       margin-bottom: 0.5em;
       flex: 0 0 auto;
       img{
@@ -19,7 +19,7 @@
         max-width: 80px;
       }
     }
-    .providerName{
+    .sourceName{
       margin-bottom: 1em;
       flex: 0 0 auto;
     }
@@ -42,12 +42,12 @@
     grid-template-rows: 60px;
     grid-row-gap: 1em;
 
-    .providerLogo{
+    .sourceLogo{
       //width: 30px;
       padding-right: 10px;
     }
 
-    .providerName{
+    .sourceName{
       transform: translateY(20px);
       text-transform: uppercase;
     }
@@ -78,7 +78,6 @@
     }
   }
 
-
   .footer{
     flex: 0 0 auto;
     .tags{
@@ -93,7 +92,7 @@
 
 /* Mobile styles */
 @media (max-width: 767px) {
-  .providerCard{
+  .sourceCard{
     height: auto !important;
     text-align: center;
 
@@ -115,7 +114,7 @@
         align-items: center;
         justify-content: flex-end;
       }
-      .providerName{
+      .sourceName{
         transform: translateY(0) !important;
       }
       .status, .desc{

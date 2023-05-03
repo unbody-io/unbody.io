@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import styles from '../styles/Home.module.css'
 import Hero from "../containers/Hero/Hero";
 import {getBlocks, getDatabase} from "../lib/notion";
@@ -14,12 +12,12 @@ import DisplaySection from "../containers/DisplaySection/DisplaySection";
 import Tabs from "../components/Tabs/Tabs";
 import FeaturePanel from "../components/FeaturePanel/FeaturePanel"
 
-import {FeatureProp, ISection, ProviderProp, UseCasesProps} from "../lib/data.types";
-import Providers from "../containers/Providers/Providers";
-import {getDatabasePropsValue, getPropValue, getSectionTitle} from "../lib/utils.notion";
+import {FeatureProp, FileProp, ISection, ProviderProp, UseCasesProps} from "../lib/data.types";
+import {getDatabasePropsValue, getSectionTitle} from "../lib/utils.notion";
 import UseCases from "../containers/Usecases/Usecases";
 import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
 import {Meta} from "../components/Meta";
+import SourceList from '../containers/SourceList/SourceList';
 
 
 interface IProps {
@@ -33,7 +31,7 @@ interface IProps {
     }
     features: FeatureProp[]
     providers: ProviderProp[]
-    files: ProviderProp[]
+    files: FileProp[]
     useCases: UseCasesProps[]
 }
 
@@ -86,8 +84,30 @@ const Home: NextPage<IProps> = (props) => {
                                 title={`Flexible 🌊<br/>↯<br/>Use the apps and files you love`}
                                 className={"providers"}
                 >
-                    <Providers data={providers} title={"Supported Providers"}/>
-                    <Providers data={files} type={"file"} title={"Supported Files"}/>
+                    <SourceList data={
+                        providers.map(p => ({
+                            name: p.name,
+                            type: "provider",
+                            status: p.status,
+                            logo: p.logo,
+                            copy_description: p.copy_description,
+                            tags: p.tags,
+                            id: p.id
+                        }))
+                    }
+                                title={"Supported Providers"}
+                    />
+                    <SourceList data={
+                        files.map(p => ({
+                            name: p.name,
+                            type: "file",
+                            status: p.status,
+                            logo: p.logo,
+                            copy_description: p.copy_description,
+                            tags: p.formats,
+                            id: p.id
+                        }))
+                    }    type={"file"} title={"Supported Files"}/>
                     <div style={{textAlign: "center"}}>
                         <br/>
                         <ActionButtonGroup learnMoreLink={""}/>
@@ -138,16 +158,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
         status: null,
         copy_description: null,
         logo: null,
-        order: null
+        order: null,
+        supported_files: null,
+        supported_file_types: null,
     })
 
     const files = await getDatabasePropsValue(notionPageIds.FILES, {
         name: null,
-        tags: null,
+        formats: null,
         status: null,
         copy_description: null,
         logo: null,
-        order: null
+        order: null,
+        supported_providers: null,
     })
 
 
@@ -160,10 +183,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return {
         props: {
-            providers: providers.sort((a,b) => (a.order||-1)-(b.order||-1)),
-            files: files.sort((a,b) => (a.order||-1)-(b.order||-1)),
-            features: features.sort((a,b) => (a.order||-1)-(b.order||-1)),
-            useCases: useCases.sort((a,b) => (a.order||-1)-(b.order||-1)),
+            providers: providers.sort((a,b) => (a.order||1)-(b.order||10)),
+            files: files.sort((a,b) => (a.order||10)-(b.order||10)),
+            features: features.sort((a,b) => (a.order||10)-(b.order||10)),
+            useCases: useCases.sort((a,b) => (a.order||10)-(b.order||10)),
             sections: sections
                 .filter((s => s.key))
                 .reduce(
