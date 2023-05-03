@@ -17,7 +17,6 @@ export interface SourceCardProps {
 
 const SourceCard: React.FC<SourceCardProps> = (props) => {
     const {name, copy_description, status, tags, logo, type} = props;
-    console.log(props)
     return (
         <div className={`${styles.sourceCard} ${styles[type]}`}>
             <div className={styles.sourceLogo}>

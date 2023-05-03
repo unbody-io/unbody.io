@@ -29,7 +29,7 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
                                 {
                                     benefits.split("\n").map(b => b.trim()).filter(b => b.length).map((b, i) => (
                                         <li key={`b-${i}`}>
-                                            <h3>{b}</h3>
+                                            <h4>{b}</h4>
                                         </li>
                                     ))
                                 }

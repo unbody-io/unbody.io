@@ -52,7 +52,6 @@ const sources = [
                 for await (const file of prop.files){
                     const url = prop.type === "external"? file.external.url: file.file.url;
                     const path = getRemoteFilePath(url);
-                    console.log(path)
                     await downloadFile(url, path);
                 }
             }

@@ -4,10 +4,13 @@
     strong{
       display: block;
     }
+    p a {
+      display: inline-block;
+    }
   }
   .leftPanel{
     padding-top: 1em;
-    font-size: var(--font-size-regularB);
+    font-size: var(--font-size-small);
 
     .back{
       > *{

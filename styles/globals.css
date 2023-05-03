@@ -14,11 +14,12 @@
 
   --font-size-small: 12px;
   --font-size-regularB: 16px;
-  --font-size-regular: 24px;
+  --font-size-regular: 20px;
   --font-size-large: 36px;
 
   --font-size-h1: 96px;
   --font-size-h2: 36px;
+  --font-size-h3: 27px;
 }
 
 * {
@@ -38,7 +39,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--font-size-regular);
   font-weight: 300;
-  line-height: 116%;
+  line-height: 124%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -63,7 +64,7 @@ h2{
 }
 
 h3{
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-h3);
 }
 
 h1, h2{
@@ -186,8 +187,9 @@ article> ol{
 
 article> ul > li,
 article> ol > li {
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
 }
+
 article> ul > li strong,
 article> ol > li strong{
   font-size: var(--font-size-regular)
@@ -232,6 +234,7 @@ article blockquote{
 
     --font-size-h1: 52px;
     --font-size-h2: 28px;
+    --font-size-h3: 22px;
 
     --body-padding: 16px;
   }
