@@ -15,9 +15,13 @@ const ActionButtonGroup: React.FC<Props> = (props) => {
     return (
         <div className={styles.actionButtonGroup}>
             <Button style={"filled"}>
-                <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"}
-                    title={"JOIN WAITLIST of Unbody"}
-                   className={"mono"} target={"_blank"}>JOIN WAITLIST</a>
+                <Link href={"https://app.unbody.io"} passHref={true}>
+                    <a href={"https://app.unbody.io"}
+                       title={"Get Started for Free"}
+                       className={"mono"}>
+                        GET STARTED FOR FREE
+                    </a>
+                </Link>
             </Button>
             {
                 isValidLink(learnMoreLink)&&
@@ -26,7 +30,9 @@ const ActionButtonGroup: React.FC<Props> = (props) => {
                         <Link href={learnMoreLink}
                               className={isValidLink(learnMoreLink)? "":"disabled"}
                               title={learnMoreAlt}
-                        >LEARN MORE</Link>
+                        >
+                            LEARN MORE
+                        </Link>
                     }
                 </Button>
             }
