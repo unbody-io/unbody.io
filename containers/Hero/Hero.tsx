@@ -29,7 +29,7 @@ const Hero: React.FC<Props> = (props) => {
                 </div>
                 <div className={styles.action}>
                     <Button style={"filled"}>
-                        <a href={"https://forms.gle/hnsyh2Ew1DSR7peN6"} target={"_blank"}>JOIN WAITINGLIST</a>
+                        <a href={"https://app.unbody.io"} target={"_blank"}>GET STARTED FOR FREE</a>
                     </Button>
                 </div>
             </div>
