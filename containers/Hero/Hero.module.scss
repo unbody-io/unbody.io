@@ -1,7 +1,14 @@
 .hero{
-  p, h1{
-    max-width: 530px;
+
+  h1{
+    font-size: 8vw;
+    line-height: 1.2;
   }
+
+  p{
+    max-width: 550px;
+  }
+
   p{
     margin-top: 0.5em;
     margin-bottom: 1em;
@@ -9,6 +16,34 @@
   img{
     width: 100%;
   }
+
+  .animatedText{
+    position: relative;
+    width: 32vw;
+    height: 8vw;
+    display: inline-block;
+
+    .text{
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 400ms;
+
+      &.fadeIn{
+        opacity: 1;
+        transform: translateY(0);
+      }
+      &.fadeOut{
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 
   .banner{
     .bannerImage{
@@ -66,9 +101,12 @@
 @media (max-width: 754px){
   .hero{
     h1{
-      font-size: calc(100vw / 2.5);
-      line-height: 82%;
-      text-align: justify;
+      font-size: calc(100vw / 5.5);
+      line-height: 100%;
+    }
+    .animatedText{
+      //width: vw;
+      height: calc(100vw / 7);
     }
   }
   .banner{

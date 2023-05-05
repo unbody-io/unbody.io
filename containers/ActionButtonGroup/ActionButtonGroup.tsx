@@ -15,7 +15,7 @@ const ActionButtonGroup: React.FC<Props> = (props) => {
     return (
         <div className={styles.actionButtonGroup}>
             <Button style={"filled"}>
-                <Link href={"https://app.unbody.io"} passHref={true}>
+                <Link href={""} legacyBehavior>
                     <a href={"https://app.unbody.io"}
                        title={"Get Started for Free"}
                        className={"mono"}>

@@ -28,7 +28,7 @@ const HeaderComponent: FC<PropsWithChildren<HeaderProps>> = (props) => {
         <header className={styles.header}>
             <Link className={styles.left} href={"/"}>
                     <div className={styles.logo}>
-                        <Logo/> <span className={styles.logoText}>Unbody</span>
+                        <Logo/><span className={styles.logoText}>Unbody</span>
                     </div>
                 <Tag>
                     {tagline}
