@@ -16,5 +16,5 @@ export function extractFilenameFromNotionUrl(url: string): string {
 }
 
 export const getRemoteFilePath = (url: string): string => {
-    return `remotes/${extractFilenameFromNotionUrl(url)}`
+    return `/remotes/${extractFilenameFromNotionUrl(url)}`
 }

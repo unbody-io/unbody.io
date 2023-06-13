@@ -7,22 +7,39 @@ import {SelectPropertyResponse} from "./notion.types";
 export interface NotionDatabaseProps{
     id: string;
     updated: string;
+    order?: number
 }
 
 export interface FeatureProp extends NotionDatabaseProps{
-    notionId: string;
+    id: string;
     title: string;
     key: string;
     benefits: string;
-    video: string;
+    video: string[];
+    slug: string;
+    outline: string
+    disabled: boolean;
 }
+
 
 export interface ProviderProp extends NotionDatabaseProps{
     name: string;
     tags: SelectPropertyResponse[];
     status: SelectPropertyResponse;
+    supported_file_types: SelectPropertyResponse[];
+    supported_files: SelectPropertyResponse[];
     copy_description: string;
     logo: string[]|null
+}
+
+export interface FileProp extends NotionDatabaseProps{
+    name: string;
+    formats: SelectPropertyResponse[];
+    supported_providers: SelectPropertyResponse[];
+    status: SelectPropertyResponse;
+    logo: string[]|null
+    copy_description: string;
+    order: number;
 }
 
 export interface FooterItemProps extends NotionDatabaseProps{

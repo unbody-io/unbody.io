@@ -1,17 +1,6 @@
-/** @type {import('next').NextConfig} */
-const createNextPluginPreval = require('next-plugin-preval/config');
-const withNextPluginPreval = createNextPluginPreval();
+const withNextra = require('nextra')({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.tsx',
+})
 
-const nextConfig = {
-  reactStrictMode: true,
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
-    return config
-  },
-}
-
-module.exports = withNextPluginPreval(nextConfig)
+module.exports = withNextra()

@@ -1,0 +1,343 @@
+import {notionPageIds} from "../lib/config";import { useSSG } from 'nextra/ssg'
+import Hero from "../containers/Hero/Hero";
+import {getBlocks, getDatabase} from "../lib/notion";
+import {getDatabasePropsValue, getSectionTitle} from "../lib/utils.notion";
+import InfoSection from "../containers/InfoSection/InfoSection";
+import {Render} from "@9gustin/react-notion-render";
+import DisplaySection from "../containers/DisplaySection/DisplaySection";
+import Tabs from "../components/Tabs/Tabs";
+import FeaturePanel from "../components/FeaturePanel/FeaturePanel";
+import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
+import SourceList from "../containers/SourceList/SourceList";
+import UseCases from "../containers/Usecases/Usecases";
+
+export const getStaticProps = async (context) => {
+    const records = await getDatabase(notionPageIds.LANDING);
+    const sections = await Promise.all(
+        records.map(async (page) => ({
+            page,
+            key:
+                (
+                    "properties" in page
+                    && "rich_text" in page.properties.label
+                    && page.properties.label.rich_text[0]
+                )
+                    ? (page.properties.label.rich_text[0].plain_text || null) : null,
+            content: await getBlocks(page.id)
+        }))
+    )
+
+    const features = await getDatabasePropsValue(notionPageIds.FEATURES, {
+        key: null,
+        benefits: null,
+        video: null,
+        title: null,
+        slug: null,
+        order: null,
+        disabled: null
+    })
+
+    const providers = await getDatabasePropsValue(notionPageIds.PROVIDERS, {
+        name: null,
+        tags: null,
+        status: null,
+        copy_description: null,
+        logo: null,
+        order: null,
+        supported_files: null,
+        supported_file_types: null,
+    })
+
+    const files = await getDatabasePropsValue(notionPageIds.FILES, {
+        name: null,
+        formats: null,
+        status: null,
+        copy_description: null,
+        logo: null,
+        order: null,
+        supported_providers: null,
+    })
+
+
+    const useCases = await getDatabasePropsValue(notionPageIds.USECASES, {
+        title: null,
+        outline: null,
+        link: null,
+        order: null
+    })
+
+    return {
+        props: {
+            ssg: {
+                providers: providers.sort((a,b) => (a.order||1)-(b.order||10)),
+                files: files.sort((a,b) => (a.order||10)-(b.order||10)),
+                features: features.sort((a,b) => (a.order||10)-(b.order||10)),
+                useCases: useCases.sort((a,b) => (a.order||10)-(b.order||10)),
+                sections: sections
+                    .filter((s => s.key))
+                    .reduce(
+                        (obj, item) => Object.assign(obj, {[item.key]: item}), {})
+            }
+        },
+    revalidate: 10
+}
+}
+
+export const PageContent = () => {
+    const {sections, features, providers, files, useCases} = useSSG();
+    //@ts-ignore
+    const headline = sections.moto.content[0].paragraph.rich_text[0].plain_text
+    //@ts-ignore
+    const description = sections.description.content[0].paragraph.rich_text[0].plain_text
+
+    return (
+        <>
+            <Hero headline={headline || "We do not need CMS"}
+                  description={description}
+            />
+            <InfoSection label={"WHY"}
+                         title={getSectionTitle(sections.why) || ":("}
+                         learnMoreLink={"/about/#why-unbody"}
+                         learnMoreAlt={"Learn more why using Unbody?"}
+            >
+                <Render blocks={sections.why.content}/>
+            </InfoSection>
+            <InfoSection label={"HOW"}
+                         title={getSectionTitle(sections.how) || ":("}
+                         learnMoreLink={"/about/#how-unbody-works"}
+                         learnMoreAlt={"Learn more about how Unbody works"}
+            >
+                <Render blocks={sections.how.content}/>
+            </InfoSection>
+            <DisplaySection label={"features"}
+                            title={`Super Powers ✨<br/>↯<br/>All you need, right out-of-the-box`}
+            >
+                <Tabs tabs={
+                    features.map(f => {
+                        return {
+                            id: f.key,
+                            title: f.key,
+                            content: (
+                                <FeaturePanel data={f} key={f.key}/>
+                            )
+                        }
+                    })
+                }/>
+            </DisplaySection>
+            <DisplaySection label={"Providers"}
+                            title={`Flexible 🌊<br/>↯<br/>Use the apps and files you love`}
+                            className={"providers"}
+            >
+                <SourceList data={
+                    providers.map(p => ({
+                        name: p.name,
+                        type: "provider",
+                        status: p.status,
+                        logo: p.logo,
+                        copy_description: p.copy_description,
+                        tags: p.tags,
+                        id: p.id
+                    }))
+                }
+                            title={"Supported Providers"}
+                />
+                <SourceList data={
+                    files.map(p => ({
+                        name: p.name,
+                        type: "file",
+                        status: p.status,
+                        logo: p.logo,
+                        copy_description: p.copy_description,
+                        tags: p.formats,
+                        id: p.id
+                    }))
+                }    type={"file"} title={"Supported Files"}/>
+                <div style={{textAlign: "center"}}>
+                    <br/>
+                    <ActionButtonGroup learnMoreLink={""}/>
+                </div>
+            </DisplaySection>
+            <InfoSection label={"USE-CASES"}
+                         learnMoreLink={"/about"}
+                         learnMoreAlt={"Learn more about Unbody's usecases"}
+            >
+                <UseCases data={useCases}/>
+            </InfoSection>
+        </>
+    )
+}
+
+<div className={"home-content"}>
+    <div className="content-container">
+        <PageContent/>
+    </div>
+    <style jsx>{`
+    .content-container {
+      max-width: 90rem;
+      padding-left: max(env(safe-area-inset-left),1.5rem);
+      padding-right: max(env(safe-area-inset-right),1.5rem);
+      margin: 0 auto;
+    }
+    .features-container {
+      margin: 8rem 0 0;
+      padding: 4rem 0;
+      background-color: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .features-container .content-container {
+      margin-top: -8rem;
+    }
+    :global(.dark) .features-container {
+      background-color: #000;
+      border-bottom: 1px solid rgb(38,38,38);
+    }
+    .nextjs-link {
+      color: currentColor;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    :global(#docs-card) {
+      color: #fff;
+      text-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    }
+    :global(#docs-card img) {
+      object-fit: cover;
+      object-position: left;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      z-index: 0;
+      user-select: none;
+      pointer-events: none;
+    }
+    :global(#docs-card img:nth-child(2)) {
+      display: none;
+    }
+    :global(.dark #docs-card img:nth-child(2)) {
+      display: initial;
+    }
+    :global(.dark #docs-card img:nth-child(1)) {
+      display: none;
+    }
+    :global(#highlighting-card) {
+      min-height: 300px;
+      background-image: linear-gradient(to top, transparent, #fff 50%), url(/assets/syntax-highlighting.svg);
+      background-size: 634px;
+      background-position: -6px calc(100% + 4px);
+      background-repeat: no-repeat;
+    }
+    :global(.dark #highlighting-card) {
+      background-image: linear-gradient(to top, transparent, #202020 50%), url(/assets/syntax-highlighting.svg);
+    }
+    :global(.feat-darkmode) {
+      min-height: 300px;
+    }
+    :global(.feat-darkmode h3) {
+      font-size: 48px;
+    }
+    :global(#search-card) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    :global(#search-card p) {
+      max-width: 320px;
+    }
+    :global(#search-card video) {
+      position: absolute;
+      right: 0;
+      top: 24px;
+      height: 430px;
+      pointer-events: none;
+      max-width: 60%;
+    }
+    :global(#fs-card) {
+      min-height: 240px;
+    }
+    :global(#fs-card h3) {
+      text-align: left;
+      width: min(300px, 41%);
+      min-width: 155px;
+    }
+    :global(#a11y-card) {
+      background-image: url(/assets/high-contrast.png);
+      background-position: -160px 160px;
+    }
+    @media screen and (max-width: 1300px) {
+      :global(#a11y-card) {
+        background-image: linear-gradient(to bottom, white, transparent), url(/assets/high-contrast.png);
+      }
+    }
+    @media screen and (max-width: 1200px) {
+      :global(#highlighting-card) {
+        aspect-ratio: auto;
+      }
+      :global(.feat-darkmode h3) {
+        font-size: 4vw;
+        font-size: min(48px, max(4vw, 30px));
+      }
+      :global(#search-card video) {
+        aspect-ratio: 787/623;
+        height: auto;
+      }
+      .headline {
+        letter-spacing: -.08rem;
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      :global(#docs-card) {
+        aspect-ratio: 135/86;
+      }
+      :global(#search-card) {
+        aspect-ratio: 8/3;
+      }
+      :global(#search-card h3) {
+        text-align: left;
+      }
+      :global(#highlighting-card) {
+        background-size: 136%;
+      }
+      :global(#a11y-card) {
+        background-image: url(/assets/high-contrast.png);
+        background-position: center 160px;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      :global(#docs-card) {
+        min-height: 348px;
+        width: 100%;
+        aspect-ratio: auto;
+      }
+      :global(#docs-card img) {
+        object-position: -26px 0;
+        width: 250%;
+        max-width: initial;
+      }
+    }
+    @media screen and (max-width: 640px) {
+      :global(#search-card) {
+        aspect-ratio: 2.5/2;
+        justify-content: flex-start;
+        align-items: stretch;
+        min-height: 350px;
+      }
+      :global(#search-card h3) {
+        text-align: center;
+      }
+      :global(#search-card p) {
+        max-width: 100%;
+      }
+      :global(#search-card video) {
+        position: relative;
+        margin: .75em -1.75em 0;
+        max-width: calc(100% + 3.5em);
+      }
+      :global(.dark #search-card video) {
+        mix-blend-mode: lighten;
+      }
+    }
+  `}</style>
+</div>

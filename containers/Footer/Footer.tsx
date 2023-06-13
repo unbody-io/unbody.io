@@ -1,50 +1,51 @@
 import React, {FC} from 'react';
 import {FooterItemProps} from "../../lib/data.types";
-import {groupBy, isValidLink} from "../../lib/utils";
 
-import styles from './Footer.module.scss';
+import styles from './Footer.module.css';
 import Link from "next/link";
-
 interface FooterProps {
     data: FooterItemProps[]
 }
 
-const Footer: FC<FooterProps> = (props) => {
-    const {data} = props;
-    const cats = groupBy<FooterItemProps>(data, (d) => d.category.name);
-
+const Footer = () => {
     return (
         <footer className={`${styles.footer}`}>
-            <div className={`${styles.footerLinks} grid`}>
-                <div className={"col-4"}>
+            <div className={`grid ${styles.footerLinks}`}>
+                <div className="col-4">
                     <h3>Unbody</h3>
-                    <small>hi@unbody.io</small>
+                    <small>hello@unbody.io</small>
                 </div>
-                {
-                    Object.entries(cats).map(([key, items]) => (
-                        <div className={"col-3"} key={key}>
-                            <span className={`upper ${styles.catTitle}`}>{key}</span>
-                            <div className={styles.catItems}>
-                                {
-                                    items.filter(i => isValidLink(i.link)).map(item => (
-                                        item.external?
-                                            <a key={item.name} href={item.link} className={"cap"}>{item.name}</a>:
-                                            <Link key={item.name} href={item.link} className={"cap"}>{item.name}</Link>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                    ))
-                }
-
+                <div className="col-3">
+                    <span className={`upper ${styles.catTitle}`}>ABOUT US</span>
+                    <div className={`${styles.catItems}`}>
+                        <Link className="cap" href="/about">About Unbody</Link>
+                        <Link className="cap" href="/xbody">Xbody</Link>
+                        <Link className="cap" href="/faq">FAQ</Link>
+                        <Link className="cap" href="/terms">Terms</Link>
+                        <Link className="cap" href="/privacy">Privacy</Link>
+                    </div>
+                </div>
+                <div className="col-3">
+                    <span className={`upper ${styles.catTitle}`}>GET IN TOUCH</span>
+                    <div className={styles.catItems}>
+                        <a href="https://www.linkedin.com/company/unbody" target="_blank" className="cap">LinkedIn</a>
+                        <a href="https://twitter.com/unbody_io" target="_blank" className="cap">Twitter</a>
+                        <a href="https://github.com/unbody-io" target="_blank" className="cap">Github</a>
+                    </div>
+                </div>
+                <div className="col-3">
+                    <span className={`upper ${styles.catTitle}`}>DOCS &amp; HELP</span>
+                    <div className={styles.catItems}>
+                        <Link className="cap" href="/docs">Documentation</Link>
+                        <Link className="cap" href="/blog">Blog</Link>
+                    </div>
+                </div>
             </div>
             <div>
-                <img src={"/images/ascii-banner-footer.svg"}/>
                 <div className={styles.copy}>
                     <small>©Unbody {new Date().getFullYear()}</small>
                 </div>
             </div>
-
         </footer>
     );
 };

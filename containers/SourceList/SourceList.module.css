@@ -1,0 +1,29 @@
+.container {
+  padding-bottom: 2em;
+}
+.container .mobile {
+  display: none;
+}
+.container > h3 {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 0.5em 0;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+@media (max-width: 754px) {
+  .container.provider .mobileList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container.file .mobileList {
+    grid-template-columns: 100%;
+  }
+  .mobile {
+    padding-top: 1em;
+    display: grid !important;
+  }
+  .desktop {
+    display: none;
+  }
+}
+

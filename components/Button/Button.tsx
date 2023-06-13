@@ -1,12 +1,12 @@
 import React, {FC, PropsWithChildren} from 'react';
-import styles from './Button.module.scss';
+import styles from './Button.module.css';
 
 interface ButtonProps {
     size?: 'small' | 'medium' | 'large';
     style?: 'transparent' | 'filled';
     onClick?: () => void;
     className?: string
-    htmlProps?: React.ButtonHTMLAttributes<HTMLButtonElement>
+    htmlProps?: any
 }
 
 const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {

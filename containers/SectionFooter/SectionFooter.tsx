@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./SectionFooter.module.scss";
+import styles from "./SectionFooter.module.css";
 import {ArrowDown} from "../../components/Arrow";
 
 interface Props {

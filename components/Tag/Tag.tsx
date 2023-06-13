@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./Tag.module.scss";
+import styles from "./Tag.module.css";
 
 interface Props {
     onClick?: () => void;

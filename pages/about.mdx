@@ -1,0 +1,98 @@
+---
+display_title: About unbody
+outline: Unbody is a content management solution that lets you use any existing interface like Google Drive or Slack or just a folder/file on your desktop as a headless CMS. With Unbody, you can connect your content to your website wherever you create it, and each update will be instantly reflected on your site.
+---
+# About
+## All you need to know about unbody
+
+Unbody is a headless content enhancement platform that seeks to rethink the content management landscape. We're not talking about a simple makeover; our vision is to shift the focus from content management to content enhancement, elevating the experience for both creators and audiences. Unbody enhances content and make it accessible regardless of where it is located, whether it’s in a Google Drive doc, a Slack channel, a folder, or a file on your laptop.
+
+We're fully committed to this paradigm shift, and we're bringing it to life through two key strategies:
+
+1. Interface Agnostic Content Management
+2. Empowering Content Enhancement and Enrichment
+
+## **Interface Agnostic Content Management**
+
+Being interface agnostic means that Unbody eliminates interface limitations, remaining agnostic to interface, and empowering users to manage their content using existing interfaces on any platform. This means that whether it's a Google Doc, a Slack channel, or a folder on your laptop, Unbody can enhance your content regardless of where it is being created or stored.
+
+By embracing interface agnosticism, Unbody helps facilitate the shift towards content enhancement by eliminating the constraints of traditional content management systems, thereby enabling creators to focus on producing high-quality content rather than mastering a specific platform.
+
+Unbody's interface agnostic content management works by reading content from any source, such as Google Drive or Slack, and seamlessly integrating it with Unbody's powerful content enhancement capabilities. This allows creators to work with the tools they know and love while benefiting from Unbody's cutting-edge enhancements.
+
+## **Empowering Content Enhancement and Enrichment**
+
+Empowering content enhancement and enrichment means that Unbody focuses on improving the quality and semantic value of content, making it more meaningful and accessible to users. To achieve this, Unbody leverages a range of powerful features and capabilities:
+
+### **Search**
+
+Under the hood, Unbody leverages Large Language Models (LLMs) and a powerful vector databases powered by [Weaviate](https://Weaviate.io), to provide multimodal semantic search and beyond, including generative search and generative Q&A. Thanks to Weaviate's "Retrievers & Vectorizers," Unbody uses modules for processing text and multimedia such as `text2vec` and `multi2vec` which include `text2vec-openai` and `text2vec-contextionary` These advanced technologies work together to enable Unbody's powerful search capabilities, providing users with an unparalleled content discovery experience.
+
+- **Multimodal semantic Search** Unbody enables users to search across different types of media, such as text, image, video, and audio, using its semantic search capabilities.
+- **Generative Search** Unbody's generative search feature produces relevant search results by generating content based on the user's query.
+- **Question Answering** Unbody can provide direct answers to users' questions by utilizing its advanced language understanding capabilities.
+
+### **Content Analysis**
+
+- **Classification** Unbody categorizes content based on its topic or theme, making it easier for users to find and navigate through related content.
+- **Summarization** Unbody employs summarization algorithms like **[bart-large-cnn](https://huggingface.co/facebook/bart-large-cnn)** and **[pegasus-xsum](https://huggingface.co/google/pegasus-xsum)** to create concise summaries of longer content, saving users time and effort.
+
+### **Media Transcription**
+
+Unbody uses [OpenAI's Whisper model](https://openai.com/blog/whisper/), an automatic speech recognition (ASR) system, to extract transcriptions from audio and video content in multiple languages.
+
+### ****Media Processing and Enrichment****
+
+- **Image Caption Generator** Unbody uses advanced machine learning models to generate captions for images automatically. By providing accurate and descriptive captions, Unbody makes your images more accessible and informative, enhancing the overall user experience.
+- **Image, Audio, and Video Processing/Optimization** Unbody employs Imgix is an image and video processing platform that Unbody employs to enable resizing, cropping, and watermarking, as well as creating multiple image variations quickly. For images and videos, enabling resizing, cropping, and watermarking, as well as creating multiple image variations quickly. This improves website performance and user experience through optimized images and videos. Unbody also offers a simple solution for encoding, streaming, and managing videos for a rich and smooth viewing experience.
+
+## **How it works**
+
+Nobody reads the content where you store it. All you need to do is tell Unbody where your content is located (e.g., a folder on Google Drive). After that, Unbody indexes and processes all files within the source. You can then access and perform search actions on the enriched version of your content via the GraphQl endpoint using your API-KEY.
+
+The good thing is that after the initial indexing, Unbody keeps listening to changes on your source. As soon as some content changes or a new file is added or deleted, Unbody indexes and processes it instantly. Like any other headless solution, once a change occurs, Unbody sends a notification to your endpoint via the webhook you configure.
+
+You can create as many projects as you want and each project can have as many as sources you need.
+
+So in short:
+
+1. **Connect to your source**
+2. **Fetch your (enriched) content via GraphQL endpoint**
+3. **Build what you want**
+
+## **Use Cases**
+
+1. **Unifying content across platforms**Unbody can be used to bring together content from various sources and platforms to create unified experiences, making it easier for users to find and consume content.
+2. **Building semantic-rich applications**Developers can take advantage of Unbody's semantic capabilities and LLM-powered modules to build applications that understand and process content more effectively.
+3. **Enhancing content in existing applications**Unbody can be integrated into existing applications to enhance and enrich their content with its advanced processing capabilities, providing users with a more engaging experience.
+4. **Developing AI-powered personal assistants**Unbody can be used to create AI-powered personal assistants that leverage data from various sources to provide users with personalized recommendations and insights.
+
+## Vs other solutions
+
+Unbody offers a unique alternative to traditional Content Management Systems (CMSs) and streamlines the process of publishing content on the web by eliminating the need for a CMS as a content management interface. In the following sections, we'll compare Unbody to other solutions such as CMSs, Zapier, and IFTTT.
+
+### Unbody vs CMS
+
+While Unbody functions like a headless CMS, it's not a CMS in the traditional sense. Unlike other CMSs that come with a built-in interface for managing content, Unbody gives you the flexibility to manage your website's content through any interface of your choice. Other CMSs, such as Contentful, Strapi, and Netlify CMS, all have built-in interfaces for managing content, but they can be limiting and require additional effort to use effectively. With Unbody, you can use the tools and interfaces you're already familiar with, such as Google Drive or Slack, to manage your content.
+
+### Unbody vs Zappier or IFTTT
+
+While Unbody and automation tools like Zapier and IFTTT both automate tasks between apps, Unbody is specifically designed for managing and displaying website content. It offers unique features like semantic search and powerful image processing, and lets you use any platform you already use as your CMS.
+
+## **Limitations**
+
+Unbody is a powerful content management solution, but it has certain limitations that users should be aware of. Here are a few things that Unbody cannot do and is not good for:
+
+### **Limited schema customisability**
+
+Unbody is designed to be simple and straightforward to use, but that also means that it is not as customizable as other CMS solutions. While you can use your favorite web development tools and frameworks to build the rest of your website, the options for customization may be limited.
+
+### **Limited access control**
+
+Unbody currently processes and exposes any content from its entry-points, such as a folder on Google Drive, via its content API. While the content is protected by an API key, Unbody does not currently distinguish between private or public sources. This means that if your source of content includes both private and public folders, Unbody will expose the content in both folders via its content API protected by the API key.
+
+**It's important to keep in mind that Unbody is not a one-size-fits-all solution, and it may not be the best choice for certain types of projects. However, for simple to moderate complexity content, Unbody can be an efficient and cost-effective way to manage website content, but it is not suitable for projects where access control is a critical requirement.**
+
+## ****Embracing the Future of Content Enhancement with Unbody****
+
+As we continue to develop Unbody, our goal is to create a content enhancement platform that supports creators and audiences alike. By focusing on an interface-agnostic approach and harnessing the latest technologies, we strive to make content more accessible, engaging, and meaningful. We appreciate your interest in Unbody and invite you to join us on this exciting journey to transform the way we interact with content. ✨

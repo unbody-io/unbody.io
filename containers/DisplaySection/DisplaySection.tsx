@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./DisplaySection.module.scss";
+import styles from "./DisplaySection.module.css";
 import SectionFooter from "../SectionFooter/SectionFooter";
 
 interface Props {

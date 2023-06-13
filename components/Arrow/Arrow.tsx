@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./Arrow.module.scss";
+import styles from "./Arrow.module.css";
 
 interface Props {
     className?: string;

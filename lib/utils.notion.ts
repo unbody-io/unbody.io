@@ -58,6 +58,8 @@ export async function getPropValue(prop: NotionDatabaseProp) {
                 .filter(f => f !== null);
         case "people":
             return prop.people
+        case "number":
+            return prop.number
         default:
             return []
     }

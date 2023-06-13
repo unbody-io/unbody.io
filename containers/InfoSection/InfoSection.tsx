@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./InfoSection.module.scss";
+import styles from "./InfoSection.module.css";
 import ActionButtonGroup from "../ActionButtonGroup/ActionButtonGroup";
 import {ArrowDown} from "../../components/Arrow";
 import SectionFooter from "../SectionFooter/SectionFooter";
@@ -9,10 +9,11 @@ interface Props {
     label: string;
     title?: string;
     learnMoreLink?: string;
+    learnMoreAlt?: string;
 }
 
 const InfoSection: React.FC<React.PropsWithChildren<Props>> = (props) => {
-    const {children, label, title, learnMoreLink} = props;
+    const {children, label, title, learnMoreLink, learnMoreAlt} = props;
     return (
         <section className={`${styles.infoSection}`}>
             <div className={"grid"}>
@@ -30,7 +31,7 @@ const InfoSection: React.FC<React.PropsWithChildren<Props>> = (props) => {
                     </div>
                     {
                         learnMoreLink&&
-                        <ActionButtonGroup learnMoreLink={learnMoreLink}/>
+                        <ActionButtonGroup learnMoreLink={learnMoreLink} learnMoreAlt={learnMoreAlt}/>
                     }
                 </div>
             </div>

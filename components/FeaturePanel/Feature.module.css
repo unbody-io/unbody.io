@@ -1,0 +1,16 @@
+.feature .info h2 {
+  margin-bottom: 1em;
+}
+.feature ul {
+  list-style-type: "→";
+  margin-left: var(--font-size-regular);
+  margin-bottom: 4em;
+}
+.feature ul li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+@media (max-width: 754px) {
+  .video {
+    margin-top: 2em;
+  }
+}

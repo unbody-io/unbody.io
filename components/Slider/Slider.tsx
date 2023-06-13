@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "./Slider.module.scss";
+import styles from "./Slider.module.css";
 import {useRef, useState} from "react";
 import {ArrowLeft, ArrowRight} from "../Arrow";
 
