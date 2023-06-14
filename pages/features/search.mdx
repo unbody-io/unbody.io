@@ -1,0 +1,36 @@
+---
+outline: Ask questions or make statements, and Unbody will rank and score your documents based on their relevance to your query.
+---
+import NotionVideo from "../../../components/NotionVideo/NotionVideo";
+
+# Semantic search out of the box
+Under the hood, Unbody leverages Large Language Models (LLMs) and a powerful vector databases powered by [Weaviate](https://Weaviate.io), to provide multimodal semantic search and beyond, including generative search and generative Q&A. Thanks to Weaviate's "Retrievers & Vectorizers," Unbody uses modules for processing text and multimedia such as `text2vec` and `multi2vec` which include `text2vec-openai` and `text2vec-contextionary` These advanced technologies work together to enable Unbody's powerful search capabilities, providing users with an unparalleled content discovery experience.
+
+- **Multimodal semantic Search** Unbody enables users to search across different types of media, such as text, image, video, and audio, using its semantic search capabilities.
+- **Generative Search** Unbody's generative search feature produces relevant search results by generating content based on the user's query.
+- **Question Answering** Unbody can provide direct answers to users' questions by utilizing its advanced language understanding capabilities.
+
+<NotionVideo video={["/remotes/search-o.mp4","/remotes/search.mp4","/remotes/search.webm"]}/>
+
+## **Human-like Search**
+This component of Unbody's semantic search allows users to search for content using natural language queries. This means that users can use phrases and sentences that they would use in everyday language, rather than having to use specific keywords or Boolean operators. This makes it easier for users to find the content they're looking for, as they don't have to think about the exact wording that was used to describe the content.
+
+### Examples and use cases
+
+1. **Searching for historical documents** If you are an archiver working with a large collection of historical documents, you can use Unbody's semantic search to easily find and retrieve specific documents based on their content and context. For example, you could search for "letters written by Abraham Lincoln" or "newspaper articles about the Civil War."
+2. **Searching for product information** Imagine you have an e-commerce website with thousands of products. With Unbody's semantic search, you can easily search for products based on their characteristics, such as "red t-shirt" or "size 8 shoes." You can also specify multiple criteria at once, such as "red t-shirt under $50."
+3. **Searching for media assets** If you have a large media library with different types of content, such as images, videos, and audio files, you can use Unbody's semantic search to easily find the specific assets you need based on their content, such as "images with a sunset background" or "audio files with a happy mood."
+4. **Searching for team communications** If you are using a team communication platform like Slack, you can use Unbody's semantic search to easily find relevant conversations and messages based on their content, such as "conversations about the upcoming product launch" or "messages from John Smith about the budget."
+5. **Searching for books** If you are a book collector or a librarian, you can use Unbody's semantic search to easily find and retrieve specific books based on their content and context. For example, you could search for "books written by Jane Austen" or "books about the American Revolution."
+
+## **Human-like Question and Answer**
+
+This component of Unbody's semantic search allows users to ask questions or make statements in order to retrieve content. This means that users can ask questions, such as "What are the latest products in the market?", or make statements, such as "I am looking for a red t-shirt under $50" and Unbody will return the most relevant results. This allows users to find content based on its meaning and context, rather than just its keywords, which improves the accuracy and relevance of the search results.
+
+### Examples and use cases
+
+1. **Retrieving product information** Let's say you're an e-commerce website and you want to retrieve information about a product. A customer can use natural language to ask a question like "What are the specifications of the iPhone 12?" and Unbody will return the most relevant information about the product such as the screen size, storage capacity, camera resolution and so on.
+2. **Retrieving news articles** If you're a news website and you want to retrieve articles about a specific topic, you can use Unbody's human-like question and answer feature to ask a question like "What are the latest news articles about the US Presidential Election?" and Unbody will return a list of the most relevant articles.
+3. **Retrieving customer information** If you're a customer service agent and you want to retrieve information about a customer, you can use Unbody's human-like question and answer feature to ask a question like "Can you provide me with the purchase history of John Smith?" and Unbody will return the most relevant information about the customer's purchase history.
+
+These are just a few examples of how Unbody's human-like question and answer feature can be used to retrieve content in a natural and intuitive way. The feature allows users to ask questions or make statements in order to find content based on its meaning and context, which improves the accuracy and relevance of the search results.

@@ -1,8 +1,6 @@
 import React from 'react'
 import {DocsThemeConfig} from 'nextra-theme-docs'
-import Link from "next/link";
 import Footer from "./containers/Footer/Footer";
-import styles from "./containers/Footer/Footer.module.css";
 
 const logo = (
     <div className={"logo-container"}>

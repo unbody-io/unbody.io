@@ -10,9 +10,9 @@ interface Props {
 }
 
 const DisplaySection: React.FC<React.PropsWithChildren<Props>> = (props) => {
-    const {children, className, title} = props;
+    const {children, className, title, label} = props;
     return (
-        <section className={`${styles.displaySection} ${className}`}>
+        <section className={`${styles.displaySection} ${className}`} id={label}>
             <div className={styles.title}>
                 <h2 className={"headline"} dangerouslySetInnerHTML={{__html: title}}/>
             </div>

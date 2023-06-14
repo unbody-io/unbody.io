@@ -11,6 +11,10 @@
     "title": "About",
     "type": "page"
   },
+  "features": {
+    "title": "Features",
+    "type": "page"
+  },
   "terms": {
     "title": "Terms",
     "type": "page",
