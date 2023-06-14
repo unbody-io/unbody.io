@@ -58,8 +58,15 @@ body {
     --background: rgb(0,0,0);
 }
 
-:is(html[class~=dark] .dark\:nx-bg-neutral-900){
+:is(html[class~=dark] .dark\:nx-bg-neutral-900),
+:is(html[class~=dark] .dark\:nx-bg-dark){
     background-color: var(--background) !important;
+}
+
+:is(html[class~=dark] .dark\:nx-shadow-\[0_-12px_16px_\#111\]){
+    --tw-shadow: 0 -12px 16px rgba(var(--foreground),0.5) !important;
+    --tw-shadow-colored: 0 -12px 16px rgba(var(--foreground),0.5) !important;
+    box-shadow: rgba(var(--foreground),0.5) !important;
 }
 
 body {
