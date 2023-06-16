@@ -75,8 +75,10 @@
 .hero .banner .action {
   text-align: center;
 }
+
 @media (max-width: 754px) {
-  .hero h1 {
+  .hero h1,
+  .hero .animatedText .text{
     font-size: calc(100vw / 5.5);
     line-height: 100%;
   }

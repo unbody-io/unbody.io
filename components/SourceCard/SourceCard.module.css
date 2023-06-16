@@ -104,5 +104,14 @@
   .sourceCard.file .status, .sourceCard.file .desc {
     display: none;
   }
+  .sourceCard.provider .sourceLogo {
+    margin: 0 auto 0.5em;
+  }
+  .sourceCard.provider .sourceLogo img {
+    height: 40px;
+    width: auto;
+    max-width: 40px;
+  }
+
 }
 

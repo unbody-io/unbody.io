@@ -19,13 +19,13 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
     return (
         <div className={`${styles.feature} grid`}>
             <div className={`col-8 ${styles.info}`}>
-                <h2>{title}</h2>
+                <h3>{title}</h3>
                 {
                     disabled?
                         <div>Coming soon ...</div>
                         :
                         <>
-                            <ul>
+                            <ul className={styles.benefits}>
                                 {
                                     benefits.split("\n").map(b => b.trim()).filter(b => b.length).map((b, i) => (
                                         <li key={`b-${i}`}>

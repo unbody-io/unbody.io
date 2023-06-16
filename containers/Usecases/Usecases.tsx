@@ -14,7 +14,7 @@ const UseCases: React.FC<Props> = (props) => {
             {
                 data.map((u)=>(
                     <div key={u.title} className={`${styles.useCaseCard}`}>
-                        <h2>{u.title}</h2>
+                        <h3>{u.title}</h3>
                         <p dangerouslySetInnerHTML={{__html: u.outline}}/>
                         {/*<Button size={"small"}>*/}
                         {/*    <a href={u.link}>Read more <ArrowRight/></a>*/}

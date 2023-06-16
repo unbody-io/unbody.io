@@ -270,5 +270,10 @@ article blockquote{
         --font-size-h3: 22px;
 
         --body-padding: 16px;
+
+    }
+
+    :is(html[class~=dark] .nextra-sidebar-container){
+        background-color: var(--background) !important;
     }
 }

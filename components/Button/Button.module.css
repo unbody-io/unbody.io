@@ -23,12 +23,12 @@
 }
 .transparent {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
 }
 .filled {
-  background-color: white;
-  color: black;
+  background-color: var(--foreground);
+  color: var(--background);;
 }
 .filled:hover {
   text-decoration: underline;

@@ -1,4 +1,4 @@
-import Tag from "./Tag/Tag";
+import Tag from "../Tag/Tag";
 
 export const BlogPostTags = ({tags}: {tags: string[]}) => {
     return(

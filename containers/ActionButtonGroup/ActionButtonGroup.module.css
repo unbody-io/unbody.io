@@ -5,3 +5,18 @@
   margin-right: 16px;
 }
 
+@media (max-width: 767px) {
+  .actionButtonGroup{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+  }
+  .actionButtonGroup > * {
+    display: block;
+    margin-bottom: 16px;
+  }
+  .actionButtonGroup > *:first-child {
+    margin-right: 0;
+  }
+}
+
