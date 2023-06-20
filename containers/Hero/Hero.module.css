@@ -1,10 +1,24 @@
 .hero {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
+.CMS {
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    z-index: 0;
+    width: 110%;
+    height: 0.7vw;
+    background-image: linear-gradient(146deg, var(--foreground), #757a7d);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 
 .subtitle {
@@ -12,19 +26,20 @@
 }
 
 .hero h1,
+.hero .CMS,
 .hero .animatedText .text {
-  font-size: 8vw;
-  line-height: 1.2;
+    font-size: 8vw;
+    line-height: 1.2;
 
-  font-feature-settings: initial;
-  letter-spacing: -.12rem;
-  /*margin-left: -0.2rem;*/
-  /*margin-top: 3.4rem;*/
-  /*line-height: 1.1;*/
-  background-image: linear-gradient(146deg,var(--foreground),#757a7d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+    font-feature-settings: initial;
+    letter-spacing: -.12rem;
+    /*margin-left: -0.2rem;*/
+    /*margin-top: 3.4rem;*/
+    /*line-height: 1.1;*/
+    background-image: linear-gradient(146deg, var(--foreground), #757a7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /*:global(.dark) .hero h1,*/
@@ -34,74 +49,95 @@
 
 
 .hero p {
-  max-width: 550px;
-  font-size: 1.3rem;
-  font-size: min(1.3rem, max(3.5vw, 1.2rem));
-  font-feature-settings: initial;
-  line-height: 1.6;
-  margin-top: 0.5em;
-  margin-bottom: 1em;
+    max-width: 550px;
+    font-size: 1.3rem;
+    font-size: min(1.3rem, max(3.5vw, 1.2rem));
+    font-feature-settings: initial;
+    line-height: 1.6;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 .hero img {
-  width: 100%;
+    width: 100%;
 }
+
 .hero .animatedText {
-  position: relative;
-  width: 31.5vw;
-  height: 8vw;
-  display: inline-block;
+    position: relative;
+    width: 31.5vw;
+    height: 8vw;
+    display: inline-block;
 }
+
 .hero .animatedText .text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 400ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 400ms;
 }
+
 .hero .animatedText .text.fadeIn {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
+
 .hero .animatedText .text.fadeOut {
-  opacity: 0;
-  transform: translateY(-100%);
+    opacity: 0;
+    transform: translateY(-100%);
 }
+
 .hero .banner .bannerImage {
-  padding: 5em 0 3em 0;
+    padding: 5em 0 3em 0;
 }
+
 .hero .banner .bannerImage .imageHolder .mobile {
-  display: none;
+    display: none;
 }
-.hero .banner .action {
-  text-align: center;
+
+.hero .action{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+.hero .action button{
+    /*margin: auto;*/
 }
 
 @media (max-width: 754px) {
-  .hero h1,
-  .hero .animatedText .text{
-    font-size: calc(100vw / 5.5);
-    line-height: 100%;
-  }
-  .hero .animatedText {
-    height: calc(100vw / 7);
-  }
-  .banner {
-    padding-top: 2em;
-  }
-  .bannerImage {
-    display: none;
-    padding: 2em 0 3em 0 !important;
-  }
-  .bannerImage .desktop {
-    display: none;
-  }
-  .bannerImage .imageHolder {
-    text-align: center;
-  }
-  .bannerImage .mobile {
-    display: block !important;
-    width: 46% !important;
-    margin: auto;
-  }
+    .hero h1,
+    .hero .animatedText .text,
+    .hero .CMS{
+        font-size: calc(100vw / 5.5);
+        line-height: 100%;
+    }
+
+    .hero .animatedText {
+        height: calc(100vw / 7);
+    }
+
+    .banner {
+        padding-top: 2em;
+    }
+
+    .bannerImage {
+        display: none;
+        padding: 2em 0 3em 0 !important;
+    }
+
+    .bannerImage .desktop {
+        display: none;
+    }
+
+    .bannerImage .imageHolder {
+        text-align: center;
+    }
+
+    .bannerImage .mobile {
+        display: block !important;
+        width: 46% !important;
+        margin: auto;
+    }
+    .line{
+        height: 1.5vw;
+    }
 }
 
