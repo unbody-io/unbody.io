@@ -1,0 +1,52 @@
+.card{
+    grid-column: span 4;
+}
+
+.avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.avatar img{
+    width: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.name{
+
+}
+
+.title{
+
+}
+
+.linkContainer{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.link{
+    opacity: 0.5;
+}
+
+
+@media screen and (max-width: 768px){
+    .card{
+        grid-column: span 2;
+    }
+    .avatar img{
+        width: 100%;
+    }
+}

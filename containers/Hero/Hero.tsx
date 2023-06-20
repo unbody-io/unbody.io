@@ -63,13 +63,12 @@ const Hero: React.FC<Props> = (props) => {
                 justifyContent: "space-between",
             }}>
                 <h1>
-                    We don't need <s>CMS</s>,<br/>→<AnimatedText texts={whats} interval={2000}/>Content <br/>❋✦Right Where It Is.
+                    We don't need <s className={styles.CMS}>CMS<span className={styles.line}/></s>,<br/>→<AnimatedText texts={whats} interval={2000}/>Content <br/>❋✦Right Where It Is.
                 </h1>
-
             </div>
             <div className={styles.action}>
                 <p>{description}</p>
-                <Button style={"transparent"}>
+                <Button style={"filled"}>
                     <a href={"https://app.unbody.io"} target={"_blank"}>GET STARTED FOR FREE</a>
                 </Button>
                 <SectionFooter/>
