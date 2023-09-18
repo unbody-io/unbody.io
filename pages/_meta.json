@@ -11,6 +11,15 @@
     "title": "About",
     "type": "page"
   },
+  "join-us": {
+    "title": "Join-us",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "pagination": false,
+      "breadcrumb": false
+    }
+  },
   "features": {
     "title": "Features",
     "type": "page"

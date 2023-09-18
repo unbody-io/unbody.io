@@ -76,12 +76,13 @@ const config: DocsThemeConfig = {
         //     imageUrl.searchParams.set("title", title || titleSuffix);
         // }
 
-        const ogTitle = title ? title : "Unbody";
+        const ogTitle = title && title !== "Unbody" ? `${title} - Unbody` : "Unbody";
         const ogDescription = frontMatter.outline || "Unbody empowers you to manage and enrich your content through any existing interface, transcending the limitations of we traditionally know as CMS.";
         // const ogImage = frontMatter.image || imageUrl.toString();
 
         return (
             <>
+                <title>{ogTitle}</title>
                 <meta charSet="UTF-8" key="charset"/>
                 <meta
                     name="viewport"
