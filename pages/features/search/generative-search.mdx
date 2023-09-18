@@ -1,2 +1,33 @@
-# Generative Search
-Unbody's generative search feature produces relevant search results by generating content based on the user's query.
+# Semantic and Contextual Search
+
+Unbody's Semantic and Contextual Search feature combines the power of Large Language Models (LLMs) and Weaviate, a potent vector database, to deliver multimodal semantic search capabilities. This feature transcends the boundaries of traditional keyword-based searches and understands the context and the intent of your queries, offering an unparalleled content discovery experience.
+
+## Technical Details
+
+Under the hood, Unbody's Semantic and Contextual Search leverages the advanced technologies of "Retrievers & Vectorizers" modules provided by Weaviate. These modules, which include text2vec and multi2vec, are capable of processing diverse types of content including text and multimedia. Particularly, the text2vec module utilizes two vectorizers: `text2vec-openai` and `text2vec-contextionary`. These vectorizers allow for nuanced, context-aware searching across various types of content.
+
+## Configuring the Vectorizer
+
+You can choose between the `contextionary` and `openai` text vectorizers through the Unbody Dashboard. Here's how to set it up:
+
+1. Log into your Unbody Dashboard.
+2. Navigate to the 'Settings' tab.
+3. In the 'Search' section, you'll find the 'Vectorizer' dropdown menu.
+4. Choose either `contextionary` or `openai` as per your requirement.
+
+The `contextionary` vectorizer is a fast and efficient vectorizer that performs well for most standard use cases. If you need to handle more complex, nuanced text data, the `openai` vectorizer, powered by Large Language Models, can provide more accurate and contextually aware results.
+
+## Use Cases
+- **Content Management Systems**: Unbody's Semantic and Contextual Search can be implemented in content management systems, improving search efficiency by providing precise results based on the semantic and contextual relevance of the query.
+- **Customer Support Platforms**: Implement this feature in customer support platforms to empower support agents with the ability to find relevant solutions by searching with natural language queries.
+
+## Setup/Usage Instructions
+
+To use the Semantic and Contextual Search feature, ensure that Unbody is correctly set up and integrated within your application. Detailed setup instructions can be found in the [Getting Started Guide](link-to-getting-started-guide).
+
+Post setup, you can use the Semantic and Contextual Search feature by making API calls. Here's a sample:
+
+```bash
+//Sample API call
+//Replace 'your_query' with your search term
+```
