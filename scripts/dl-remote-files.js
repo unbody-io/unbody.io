@@ -56,7 +56,10 @@ const sources = [
                 }
             }
         } catch (e) {
+            console.log("-----")
+            console.log(source);
             console.log(e)
+            console.log("-----")
             return [];
         }
     }
