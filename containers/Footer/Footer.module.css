@@ -31,8 +31,7 @@
   .footerLinks > *:not(:first-child) {
     grid-column: 0.4;
   }
-  .footerLinks .catItems{
+  .footerLinks .catItems {
     margin-bottom: 2em;
   }
 }
-
