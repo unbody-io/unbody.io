@@ -23,6 +23,7 @@
     "@next/env": "^13.4.5",
     "@notionhq/client": "^2.2.3",
     "@vercel/og": "^0.5.17",
+    "@vercel/analytics": "^1.0.2",
     "dayjs": "^1.11.8",
     "next": "^13.0.6",
     "nextra": "latest",

@@ -74,12 +74,14 @@ export const getDatabasePropsValue = async (id: string, props: PropValue<string,
                 let thisProps: Record<string, any> = {};
                 for await(const key of Object.keys(props)){
                     try {
+                        // @ts-ignore
                         thisProps[key] = await getPropValue(r.properties[key]);
                     } catch (e) {
                         console.log(`error: could not find ${key} in properties of ${id}`)
                     }
                 }
                 thisProps.id = r.id;
+                // @ts-ignore
                 thisProps.updated = r.last_edited_time;
                 return thisProps;
             })

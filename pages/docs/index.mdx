@@ -1,3 +1,5 @@
+import { Tabs } from 'nextra/components'
+
 # Getting Started
 ---
 > 🔔 **A Quick Note to Our Users:**
@@ -69,16 +71,71 @@ Now that your content is primed, you can harness Unbody's powerful APIs:
 ## Interacting with Unbody's API Endpoints
 
 ### a. Content-API (GraphQL)
+**Making request**
+<Tabs items={['CURL', 'JavaScript', 'Python']}>
+    <Tabs.Tab>
+            ```bash
+        curl -X POST \
+        -H "Authorization: Bearer <TOKEN_GENERATED_IN_UNBODY_DASHBOARD>" \
+        -H "X-Project-Id: YOUR_PROJECT_ID" \
+        -H "Content-Type: application/json" \
+        -d '{
+            "query": "{ Your GraphQL query here }"
+        }' \
+        https://graphql.unbody.io
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```javascript
+        const token = '<TOKEN_GENERATED_IN_UNBODY_DASHBOARD>';
+        const projectId = 'YOUR_PROJECT_ID';
+        const graphqlQuery = `
+        {
+            // Your GraphQL query here
+        }
+        `;
 
-Ensure the necessary headers are added to your requests:
+        fetch('https://graphql.unbody.io', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'X-Project-Id': projectId,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                query: graphqlQuery
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+        });
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```python
+        import requests
 
-```json
-{
-  "Authorization": "Bearer <TOKEN_GENERATED_IN_UNBODY_DASHBOARD>",
-  "X-Project-Id": "YOUR_PROJECT_ID"
-}
+        url = "https://graphql.unbody.io"
+        headers = {
+        "Authorization": "Bearer <TOKEN_GENERATED_IN_UNBODY_DASHBOARD>",
+        "X-Project-Id": "YOUR_PROJECT_ID",
+        "Content-Type": "application/json"
+    }
+        graphql_query = """
+        {
+            # Your GraphQL query here
+        }
+        """
+        response = requests.post(url, headers=headers, json={"query": graphql_query})
+        print(response.json())
+        ```
+    </Tabs.Tab>
+</Tabs>
 
-```
+Replace placeholders like `<TOKEN_GENERATED_IN_UNBODY_DASHBOARD>` and `YOUR_PROJECT_ID` with the appropriate values. Also, update the GraphQL query sections (`Your GraphQL query here` and `# Your GraphQL query here`) with your specific GraphQL query.
 
 **Examples**
 
@@ -95,7 +152,7 @@ Ensure the necessary headers are added to your requests:
          }
        }
     }
-    
+
     ```
 
 - **Retrieve Media Blocks**:
@@ -117,7 +174,7 @@ Ensure the necessary headers are added to your requests:
          }
        }
     }
-    
+
     ```
 
 - **Semantic Search**:
@@ -136,7 +193,7 @@ Ensure the necessary headers are added to your requests:
          }
        }
     }
-    
+
     ```
 
 - **Advanced Q&A**:
@@ -160,7 +217,7 @@ Ensure the necessary headers are added to your requests:
          }
        }
     }
-    
+
     ```
 
 - **Hybrid Search**:
@@ -189,7 +246,7 @@ Ensure the necessary headers are added to your requests:
          }
        }
     }
-    
+
     ```
 
 
