@@ -20,12 +20,12 @@ export default async function handler(req: NextRequest) {
     const hasMp = searchParams.has("mp");
     const mp = hasMp ? searchParams.get("mp")?.slice(0, 100) : "unbody.io";
 
-    const inter = await fetch(
-      new URL("../../public/fonts/Inter-Regular.ttf", import.meta.url)
+    const DMsans_Light = await fetch(
+      new URL("../../public/fonts/DMSans-Light.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
-    const interbold = await fetch(
-      new URL("../../public/fonts/Inter-SemiBold.ttf", import.meta.url)
+    const DMsans_Bold = await fetch(
+      new URL("../../public/fonts/DMSans-Bold.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
@@ -59,10 +59,10 @@ export default async function handler(req: NextRequest) {
             </svg>
             <span
               style={{
-                margin: "-6.5px 0px 0px -52px",
+                margin: "-6px 0px 0px -52px",
                 color: "white",
-                fontSize: 52,
-                fontFamily: "Inter-SemiBold",
+                fontSize: 48,
+                fontFamily: "DMSans_Bold",
                 fontWeight: 900,
                 textTransform: "uppercase",
               }}
@@ -79,7 +79,7 @@ export default async function handler(req: NextRequest) {
               backgroundClip: "text",
               lineHeight: "100px",
               color: "transparent",
-              fontFamily: "Inter-Regular",
+              fontFamily: "DMSans_Light",
             }}
           >
             {title}
@@ -88,7 +88,7 @@ export default async function handler(req: NextRequest) {
           <div
             style={{
               fontSize: "24px",
-              fontFamily: "Inter-Regular",
+              fontFamily: "DMSans_Light",
               textTransform: "capitalize",
               color: "white",
               alignItems: "flex-end",
@@ -103,13 +103,13 @@ export default async function handler(req: NextRequest) {
         height: 630,
         fonts: [
           {
-            name: "Inter-Regular",
-            data: inter,
+            name: "DMSans_Light",
+            data: DMsans_Light,
             style: "normal",
           },
           {
-            name: "Inter-SemiBold",
-            data: interbold,
+            name: "DMSans_Bold",
+            data: DMsans_Bold,
           },
         ],
       }

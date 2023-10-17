@@ -77,31 +77,19 @@ const config: DocsThemeConfig = {
     const router = useRouter();
     const { frontMatter, title } = useConfig();
 
-    // const imageUrl = new URL("https://unbody.io");
-    //
-    // if (!/\/index\.+/.test(route)) {
-    //     imageUrl.searchParams.set("title", title || titleSuffix);
-    // }
-
     const ogTitle =
       title && title !== "Unbody" ? `${title} - Unbody` : "Unbody";
     const ogDescription =
       frontMatter.outline ||
       "Unbody empowers you to manage and enrich your content through any existing interface, transcending the limitations of we traditionally know as CMS.";
-    // const ogImage = frontMatter.image || imageUrl.toString();
 
     const BASE_PATH = "unbody.io";
     let myPath: string = router.pathname;
     if (myPath == "/") {
       myPath = "";
-    } else if (myPath.includes("about")) {
-      myPath = "/about";
-    } else if (myPath.includes("docs")) {
-      myPath = "/docs";
-    } else if (myPath.includes("features")) {
-      myPath = "/features";
     }
-
+    const desctext = myPath.split("/");
+    let mptext = desctext[1];
     return (
       <>
         <title>{ogTitle}</title>
@@ -144,10 +132,10 @@ const config: DocsThemeConfig = {
         {/*<meta name="twitter:image" content={ogImage} />*/}
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
-        {/*<meta property="og:image" content={ogImage} />*/}
+
         <meta
           property="og:image"
-          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}${myPath}`}
+          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}/${mptext}`}
         />
       </>
     );
