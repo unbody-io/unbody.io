@@ -85,11 +85,15 @@ const config: DocsThemeConfig = {
 
     const BASE_PATH = "unbody.io";
     let myPath: string = router.pathname;
+    let mptext;
     if (myPath == "/") {
       myPath = "";
+      mptext = "";
+    } else {
+      const desctext = myPath.split("/");
+      mptext = desctext[1];
     }
-    const desctext = myPath.split("/");
-    let mptext = desctext[1];
+
     return (
       <>
         <title>{ogTitle}</title>
