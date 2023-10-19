@@ -57,6 +57,11 @@
   },
   "404": {
     "title": "404",
-    "type": "page"
+    "type": "page",
+    "theme": {
+      "breadcrumb": false,
+      "pagination": false,
+      "timestamp": false
+    }
   }
 }

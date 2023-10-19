@@ -37,13 +37,12 @@ export default async function handler(req: NextRequest) {
             display: "flex",
             textAlign: "left",
             alignItems: "stretch",
-            justifyContent: "center",
+            justifyContent: "space-between",
             flexDirection: "column",
             flexWrap: "nowrap",
             backgroundColor: "black",
             backgroundSize: "100px 100px",
-            padding: "0px 80px 0px 80px",
-            gap: 140,
+            padding: "40px 80px 40px 80px",
           }}
         >
           <div style={{ display: "flex" }}>
@@ -65,7 +64,7 @@ export default async function handler(req: NextRequest) {
               backgroundImage:
                 "linear-gradient(400deg, rgb(255, 255, 255), rgb(0, 0, 0))",
               backgroundClip: "text",
-              lineHeight: "120px",
+              lineHeight: "110px",
               color: "transparent",
               fontFamily: "DMSans_Light",
             }}
@@ -79,7 +78,6 @@ export default async function handler(req: NextRequest) {
               fontFamily: "DMSans_Light",
               textTransform: "capitalize",
               color: "white",
-              alignItems: "flex-end",
             }}
           >
             {mp}
