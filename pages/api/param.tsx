@@ -43,7 +43,7 @@ export default async function handler(req: NextRequest) {
             backgroundColor: "black",
             backgroundSize: "100px 100px",
             padding: "0px 80px 0px 80px",
-            gap: 80,
+            gap: 140,
           }}
         >
           <div style={{ display: "flex" }}>
@@ -57,18 +57,6 @@ export default async function handler(req: NextRequest) {
               <path d="M12.2785 0H4.14844V5.47473H12.2785V0Z" />
               <path d="M23.1959 0.00317383H17.7212V5.5809H23.1959V0.00317383Z" />
             </svg>
-            <span
-              style={{
-                margin: "-6px 0px 0px -52px",
-                color: "white",
-                fontSize: 48,
-                fontFamily: "DMSans_Bold",
-                fontWeight: 900,
-                textTransform: "uppercase",
-              }}
-            >
-              nbody
-            </span>
           </div>
 
           <div
