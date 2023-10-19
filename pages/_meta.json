@@ -54,5 +54,9 @@
     "theme": {
       "sidebar": false
     }
+  },
+  "404": {
+    "title": "404",
+    "type": "page"
   }
 }
