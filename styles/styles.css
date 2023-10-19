@@ -3,11 +3,11 @@
   --border-radius: 20px;
   --body-padding: 36px;
   --border: 2px;
-  --font-mono: DMSans, ui-monospace, Menlo, Monaco, "Cascadia Mono",
+  --font-mono: "DM Sans", ui-monospace, Menlo, Monaco, "Cascadia Mono",
     "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  --font-body: DMSans, sans-serif, Helvetica, Araial;
+  --font-body: "DM Sans", sans-serif, Helvetica, Araial;
 
   --foreground: rgb(0, 0, 0);
   --background: rgb(255, 255, 255);

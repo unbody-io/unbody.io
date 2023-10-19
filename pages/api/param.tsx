@@ -65,7 +65,7 @@ export default async function handler(req: NextRequest) {
               backgroundImage:
                 "linear-gradient(400deg, rgb(255, 255, 255), rgb(0, 0, 0))",
               backgroundClip: "text",
-              lineHeight: "100px",
+              lineHeight: "120px",
               color: "transparent",
               fontFamily: "DMSans_Light",
             }}
