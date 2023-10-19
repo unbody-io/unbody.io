@@ -17,11 +17,14 @@ export default async function handler(req: NextRequest) {
     const title = hasTitle ? searchParams.get("title") : "My default title";
     // console.log(searchParams);
 
+    if (title.length > 20) {
+    }
+
     const hasMp = searchParams.has("mp");
     const mp = hasMp ? searchParams.get("mp")?.slice(0, 100) : "unbody.io";
 
     const DMsans_Light = await fetch(
-      new URL("../../public/fonts/DMSans-Light.ttf", import.meta.url)
+      new URL("../../public/fonts/DMSans-Medium.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
     const DMsans_Bold = await fetch(
@@ -47,7 +50,7 @@ export default async function handler(req: NextRequest) {
         >
           <div style={{ display: "flex" }}>
             <svg
-              height={80}
+              height={110}
               viewBox="0 0 75 65"
               fill="white"
               style={{ margin: "0 0px" }}
@@ -60,11 +63,11 @@ export default async function handler(req: NextRequest) {
 
           <div
             style={{
-              fontSize: "100px",
+              fontSize: title.length > 20 ? "60px" : "100px",
+              lineHeight: title.length > 20 ? "70px" : "110px",
               backgroundImage:
                 "linear-gradient(400deg, rgb(255, 255, 255), rgb(0, 0, 0))",
               backgroundClip: "text",
-              lineHeight: "110px",
               color: "transparent",
               fontFamily: "DMSans_Light",
             }}

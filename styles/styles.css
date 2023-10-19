@@ -291,3 +291,8 @@ main h1 {
 .next-error-h1 {
   vertical-align: text-bottom !important;
 }
+
+.featureTitle {
+  padding: "20px 0px 0px 0px";
+  color: "#7F7F7F" !important;
+}
