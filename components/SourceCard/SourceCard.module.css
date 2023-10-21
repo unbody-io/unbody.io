@@ -65,7 +65,9 @@
 .sourceCard:hover.file img {
   filter: invert(100);
 }
-
+.sourceCard:hover .sourceLogo {
+  filter: invert(100);
+}
 .sourceCard .footer {
   flex: 0 0 auto;
 }
