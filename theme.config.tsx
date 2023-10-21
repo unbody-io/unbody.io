@@ -134,7 +134,10 @@ const config: DocsThemeConfig = {
         <meta name="description" content={ogDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@unbody_io" />
-        {/*<meta name="twitter:image" content={ogImage} />*/}
+        <meta
+          name="twitter:image"
+          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}/${mptext}`}
+        />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
 
