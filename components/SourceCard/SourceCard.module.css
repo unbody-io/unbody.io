@@ -65,7 +65,6 @@
 .sourceCard:hover.file img {
   filter: invert(0);
 }
-
 .sourceCard .footer {
   flex: 0 0 auto;
 }
