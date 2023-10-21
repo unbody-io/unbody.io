@@ -293,6 +293,43 @@ main h1 {
 }
 
 .featureTitle {
-  padding: "20px 0px 0px 0px";
-  color: "#7F7F7F" !important;
+  color: #7f7f7f !important;
+}
+
+.Card {
+  border-radius: 0 !important;
+  border: 1px solid #e5e5e5;
+}
+
+.dark .Card {
+  border-radius: 0 !important;
+  border: 1px solid #363636;
+}
+
+.Card:hover {
+  background: var(--foreground);
+  color: var(--background);
+  transform-origin: center;
+}
+.Card:hover * {
+  color: black !important;
+  border-color: black !important;
+}
+
+.Card:hover .CardImage {
+  filter: invert(100);
+}
+
+.CardImage {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  align-items: start;
+  align-content: start;
+  justify-items: start;
+}
+
+.CardTitle {
+  display: flex;
+  flex-direction: column;
 }
