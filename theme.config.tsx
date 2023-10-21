@@ -67,8 +67,9 @@ const config: DocsThemeConfig = {
     link: "https://github.com/unbody-io",
   },
   chat: {
-    link: "https://discord.com",
+    link: "https://discord.com/invite/q2BTSNUD",
   },
+  primarySaturation: 0,
   docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
   footer: {
     text: () => <Footer />,
