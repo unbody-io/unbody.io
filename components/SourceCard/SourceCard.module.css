@@ -63,11 +63,9 @@
   border-color: black !important;
 }
 .sourceCard:hover.file img {
-  filter: invert(100);
+  filter: invert(0);
 }
-.sourceCard:hover .sourceLogo {
-  filter: invert(100);
-}
+
 .sourceCard .footer {
   flex: 0 0 auto;
 }
