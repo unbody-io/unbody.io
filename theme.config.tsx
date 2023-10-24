@@ -84,6 +84,8 @@ const config: DocsThemeConfig = {
       frontMatter.outline ||
       "Unbody empowers you to manage and enrich your content through any existing interface, transcending the limitations of we traditionally know as CMS.";
 
+    const ogImageTitle = title && title !== "Unbody" ? `${title}` : "Unbody";
+
     const BASE_PATH = "unbody.io";
     let myPath: string = router.pathname;
     let mptext;
@@ -143,7 +145,7 @@ const config: DocsThemeConfig = {
 
         <meta
           property="og:image"
-          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}/${mptext}`}
+          content={`/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
         />
       </>
     );
