@@ -67,8 +67,9 @@ const config: DocsThemeConfig = {
     link: "https://github.com/unbody-io",
   },
   chat: {
-    link: "https://discord.com",
+    link: "https://discord.com/invite/q2BTSNUD",
   },
+  primarySaturation: 0,
   docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
   footer: {
     text: () => <Footer />,
@@ -77,29 +78,23 @@ const config: DocsThemeConfig = {
     const router = useRouter();
     const { frontMatter, title } = useConfig();
 
-    // const imageUrl = new URL("https://unbody.io");
-    //
-    // if (!/\/index\.+/.test(route)) {
-    //     imageUrl.searchParams.set("title", title || titleSuffix);
-    // }
-
     const ogTitle =
       title && title !== "Unbody" ? `${title} - Unbody` : "Unbody";
     const ogDescription =
       frontMatter.outline ||
       "Unbody empowers you to manage and enrich your content through any existing interface, transcending the limitations of we traditionally know as CMS.";
-    // const ogImage = frontMatter.image || imageUrl.toString();
+
+    const ogImageTitle = title && title !== "Unbody" ? `${title}` : "Unbody";
 
     const BASE_PATH = "unbody.io";
     let myPath: string = router.pathname;
+    let mptext;
     if (myPath == "/") {
       myPath = "";
-    } else if (myPath.includes("about")) {
-      myPath = "/about";
-    } else if (myPath.includes("docs")) {
-      myPath = "/docs";
-    } else if (myPath.includes("features")) {
-      myPath = "/features";
+      mptext = "";
+    } else {
+      const desctext = myPath.split("/");
+      mptext = desctext[1];
     }
 
     return (
@@ -141,13 +136,16 @@ const config: DocsThemeConfig = {
         <meta name="description" content={ogDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@unbody_io" />
-        {/*<meta name="twitter:image" content={ogImage} />*/}
+        <meta
+          name="twitter:image"
+          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}/${mptext}`}
+        />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
-        {/*<meta property="og:image" content={ogImage} />*/}
+
         <meta
           property="og:image"
-          content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}${myPath}`}
+          content={`/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
         />
       </>
     );

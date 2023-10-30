@@ -17,15 +17,18 @@ export default async function handler(req: NextRequest) {
     const title = hasTitle ? searchParams.get("title") : "My default title";
     // console.log(searchParams);
 
+    if (title.length > 20) {
+    }
+
     const hasMp = searchParams.has("mp");
     const mp = hasMp ? searchParams.get("mp")?.slice(0, 100) : "unbody.io";
 
-    const inter = await fetch(
-      new URL("../../public/fonts/Inter-Regular.ttf", import.meta.url)
+    const DMsans_Light = await fetch(
+      new URL("../../public/fonts/DMSans-Medium.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
-    const interbold = await fetch(
-      new URL("../../public/fonts/Inter-SemiBold.ttf", import.meta.url)
+    const DMsans_Bold = await fetch(
+      new URL("../../public/fonts/DMSans-Bold.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
@@ -37,18 +40,17 @@ export default async function handler(req: NextRequest) {
             display: "flex",
             textAlign: "left",
             alignItems: "stretch",
-            justifyContent: "center",
+            justifyContent: "space-between",
             flexDirection: "column",
             flexWrap: "nowrap",
             backgroundColor: "black",
             backgroundSize: "100px 100px",
-            padding: "0px 80px 0px 80px",
-            gap: 80,
+            padding: "40px 80px 40px 80px",
           }}
         >
           <div style={{ display: "flex" }}>
             <svg
-              height={80}
+              height={110}
               viewBox="0 0 75 65"
               fill="white"
               style={{ margin: "0 0px" }}
@@ -57,29 +59,17 @@ export default async function handler(req: NextRequest) {
               <path d="M12.2785 0H4.14844V5.47473H12.2785V0Z" />
               <path d="M23.1959 0.00317383H17.7212V5.5809H23.1959V0.00317383Z" />
             </svg>
-            <span
-              style={{
-                margin: "-6.5px 0px 0px -52px",
-                color: "white",
-                fontSize: 52,
-                fontFamily: "Inter-SemiBold",
-                fontWeight: 900,
-                textTransform: "uppercase",
-              }}
-            >
-              nbody
-            </span>
           </div>
 
           <div
             style={{
-              fontSize: "100px",
+              fontSize: title.length > 20 ? "60px" : "100px",
+              lineHeight: title.length > 20 ? "70px" : "110px",
               backgroundImage:
                 "linear-gradient(400deg, rgb(255, 255, 255), rgb(0, 0, 0))",
               backgroundClip: "text",
-              lineHeight: "100px",
               color: "transparent",
-              fontFamily: "Inter-Regular",
+              fontFamily: "DMSans_Light",
             }}
           >
             {title}
@@ -88,10 +78,9 @@ export default async function handler(req: NextRequest) {
           <div
             style={{
               fontSize: "24px",
-              fontFamily: "Inter-Regular",
+              fontFamily: "DMSans_Light",
               textTransform: "capitalize",
               color: "white",
-              alignItems: "flex-end",
             }}
           >
             {mp}
@@ -103,13 +92,13 @@ export default async function handler(req: NextRequest) {
         height: 630,
         fonts: [
           {
-            name: "Inter-Regular",
-            data: inter,
+            name: "DMSans_Light",
+            data: DMsans_Light,
             style: "normal",
           },
           {
-            name: "Inter-SemiBold",
-            data: interbold,
+            name: "DMSans_Bold",
+            data: DMsans_Bold,
           },
         ],
       }

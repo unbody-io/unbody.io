@@ -1,0 +1,165 @@
+import { Cards, Card } from "nextra/components";
+import { ArrowRight } from "../../components/Arrow";
+
+import Image from "next/image";
+
+# Features
+
+<div
+  className="featureTitle"
+  style={{ padding: "20px 0px 0px 0px", color: "#7F7F7F" }}
+>
+  GraphQL API
+</div>
+With Unbody's GraphQL API, you can easily fetch your content, and integrate it into your website or application. The API is designed to be stable and performant, and provides a flexible and customizable way to fetch data.
+<Cards>
+  <Card
+    className="Card"
+    icon={<Image className="CardImage" src="/icons/GraphQL-Icon.svg" width={4} height={4} alt="unbudy" />}
+    title="GraphQL API"
+    href="/features/graphql"
+
+/>
+
+</Cards>
+
+---
+
+<div className="featureTitle" style={{ color: "#7F7F7F" }}>
+  Search
+</div>
+Unbody's Search is an intelligent feature that employs Large Language Models (LLMs)
+and a potent vector database, Weaviate, to support multimodal semantic search, generative
+search, and generative Q&A. Experience an unparalleled content discovery journey
+like never before.
+<Cards>
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/GenerativeSearch-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Generative Search"
+    href="/features/search/generative-search"
+  />
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/QuestionAnswering-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Question Answering"
+    href="/features/search/question-answering"
+  />
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/SemanticSearch-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Semantic Search"
+    href="/features/search/semantic-search"
+  />
+</Cards>
+---
+
+<div className="featureTitle" style={{ color: "#7F7F7F" }}>
+  content-analysis
+</div>
+
+<Cards>
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/Classification-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Classification"
+    href="/features/content-analysis/classification"
+  />
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/Summarization-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Summarization"
+    href="/features/content-analysis/summarization"
+  />
+</Cards>
+---
+
+<div className="featureTitle" style={{ color: "#7F7F7F" }}>
+  media-processing
+</div>
+Powerful on-the-fly media processing API
+
+<Cards>
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/AudioEdit-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Audio"
+    href="/features/media-processing/audio"
+  />
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/ImageEdit-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Image"
+    href="/features/media-processing/image"
+  />
+  <Card
+    className="Card"
+    icon={
+      <Image
+        className="CardImage"
+        src="/icons/VideoEdit-Icon.svg"
+        width={4}
+        height={4}
+        alt="unbudy"
+      />
+    }
+    title="Video"
+    href="/features/media-processing/video"
+  />
+</Cards>

@@ -14,6 +14,7 @@
   "join-us": {
     "title": "Join-us",
     "type": "page",
+    "display": "hidden",
     "theme": {
       "sidebar": false,
       "pagination": false,
@@ -53,6 +54,15 @@
     "type": "page",
     "theme": {
       "sidebar": false
+    }
+  },
+  "404": {
+    "title": "404",
+    "type": "page",
+    "theme": {
+      "breadcrumb": false,
+      "pagination": false,
+      "timestamp": false
     }
   }
 }
