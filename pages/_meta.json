@@ -21,10 +21,6 @@
       "breadcrumb": false
     }
   },
-  "features": {
-    "title": "Features",
-    "type": "page"
-  },
   "terms": {
     "title": "Terms",
     "type": "page",

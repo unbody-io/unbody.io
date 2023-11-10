@@ -18,3 +18,13 @@ export function extractFilenameFromNotionUrl(url: string): string {
 export const getRemoteFilePath = (url: string): string => {
     return `/remotes/${extractFilenameFromNotionUrl(url)}`
 }
+
+export const mapRange = (
+    value: number,
+    inMin: number,
+    inMax: number,
+    outMin: number,
+    outMax: number
+) => {
+    return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+};

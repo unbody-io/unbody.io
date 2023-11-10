@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import styles from "./Feature.module.css";
-import ActionButtonGroup from "../../containers/ActionButtonGroup/ActionButtonGroup";
 import {FeatureProp} from "../../lib/data.types";
 import NotionVideo from "../NotionVideo/NotionVideo";
+import {ActionButtonGroup} from "../../containers/ActionButtonGroup/ActionButtonGroup";
 
 interface Props {
     data: FeatureProp
@@ -34,7 +34,7 @@ const FeaturePanel: React.FC<React.PropsWithChildren<Props>> = (props) => {
                                     ))
                                 }
                             </ul>
-                            <ActionButtonGroup learnMoreLink={`/features/${slug}`}/>
+                            <ActionButtonGroup learnMoreLink={`/docs`} learnMoreAlt={"Learn more"}/>
                         </>
                 }
             </div>

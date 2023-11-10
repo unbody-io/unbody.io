@@ -1,13 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --max-width: 1440px;
   --border-radius: 20px;
   --body-padding: 36px;
   --border: 2px;
-  --font-mono: "DM Sans", ui-monospace, Menlo, Monaco, "Cascadia Mono",
+  --font-mono: "Poppins", ui-monospace, Menlo, Monaco, "Cascadia Mono",
     "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  --font-body: "DM Sans", sans-serif, Helvetica, Araial;
+  --font-body: "Poppins", sans-serif, Helvetica, Araial;
 
   --foreground: rgb(0, 0, 0);
   --background: rgb(255, 255, 255);
@@ -52,14 +56,13 @@ body {
   background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
+:is(html[class~="dark"] .dark\:nx-bg-neutral-900), :is(html[class~="dark"] .dark\:nx-bg-dark){
+    background-color: transparent !important;
+}
+
 :is(html[class~="dark"]) {
   --foreground: rgb(255, 255, 255);
   --background: rgb(0, 0, 0);
-}
-
-:is(html[class~="dark"] .dark\:nx-bg-neutral-900),
-:is(html[class~="dark"] .dark\:nx-bg-dark) {
-  background-color: var(--background) !important;
 }
 
 :is(html[class~="dark"] .dark\:nx-shadow-\[0_-12px_16px_\#111\]) {
@@ -336,4 +339,16 @@ main h1 {
 
 .CenterText {
   text-align: center;
+}
+
+.content-container{
+  padding-left: max(env(safe-area-inset-right),1.5rem);
+  padding-right: max(env(safe-area-inset-right),1.5rem);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90rem;
+}
+
+.content-container>section:first-of-type{
+  margin-top: 100vh;
 }
