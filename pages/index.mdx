@@ -1,8 +1,9 @@
 ---
 title: Unbody
 ---
-import {notionPageIds} from "../lib/config";import { useSSG } from 'nextra/ssg'
-import Hero from "../containers/Hero/Hero";
+import {notionPageIds} from "../lib/config";
+import { useSSG } from 'nextra/ssg'
+import NewHero from "../containers/NewHero/NewHero";
 import {getBlocks, getDatabase} from "../lib/notion";
 import {getDatabasePropsValue, getSectionTitle} from "../lib/utils.notion";
 import InfoSection from "../containers/InfoSection/InfoSection";
@@ -95,9 +96,7 @@ export const PageContent = () => {
 
     return (
         <>
-            <Hero headline={headline || "We do not need CMS"}
-                  description={description}
-            />
+            <NewHero/>
             <InfoSection label={"WHY"}
                          title={getSectionTitle(sections.why) || ":("}
                          learnMoreLink={"/about/#why-unbody"}
