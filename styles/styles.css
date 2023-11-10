@@ -1,13 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --max-width: 1440px;
   --border-radius: 20px;
   --body-padding: 36px;
   --border: 2px;
-  --font-mono: "DM Sans", ui-monospace, Menlo, Monaco, "Cascadia Mono",
+  --font-mono: "Poppins", ui-monospace, Menlo, Monaco, "Cascadia Mono",
     "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
     "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  --font-body: "DM Sans", sans-serif, Helvetica, Araial;
+  --font-body: "Poppins", sans-serif, Helvetica, Araial;
 
   --foreground: rgb(0, 0, 0);
   --background: rgb(255, 255, 255);

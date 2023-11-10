@@ -307,8 +307,8 @@ const useActiveFrame = () => {
 const HeroText = () => {
   return (
     <div className="w-full h-full flex flex-col gap-4 justify-center">
-      <span className="text-5xl font-bold flex flex-row ">
-        Build &nbsp;
+      <span className="text-5xl font-semibold flex flex-row ">
+        Build&nbsp;
         <span className="flex flex-row">
           <span className={styles.gradientText}>A.I.</span>
           <Image src="MagicIcon.svg" width={20} height={20} alt="Magical" />
@@ -317,12 +317,12 @@ const HeroText = () => {
       </span>
 
       <span className="flex flex-row">
-        <span className="text-5xl font-bold">
+        <span className="text-5xl font-semibold">
           with
           <span className={styles.gradientText}> your data,</span>
         </span>
       </span>
-      <span className="text-5xl font-bold">no fuss.</span>
+      <span className="text-5xl font-semibold">no fuss.</span>
       <p className="text-paraghraph_gray text-base leading-6">
         An invisible AI layer, a headless API designed to transform diverse
         content from any location or format into knowledge. Our aim is to enable
