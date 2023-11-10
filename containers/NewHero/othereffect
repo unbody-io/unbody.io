@@ -1,0 +1,100 @@
+
+const mapRange = (
+  value: number,
+  inMin: number,
+  inMax: number,
+  outMin: number,
+  outMax: number
+) => {
+  return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+};
+
+const FrameDeck2 = ({ activeFrame }: FrameDeckProps) => {
+  const [boxH, setBoxH] = useState(0);
+  const [containerH, setContainerH] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const activeIndex = frames.findIndex(
+    (frame) => frame.key === activeFrame.key
+  );
+  const [scrollY, setScrollY] = useState(0);
+  const [opacities, setOpacities] = useState<number[]>(frames.map(() => 0));
+
+  const calcPaddingTop = () => {
+    if (!ref.current) return 0;
+    const { height } = ref.current.getBoundingClientRect();
+    const box = ref.current.querySelector(`.${styles.frame}`);
+    const boxHeight = box.getBoundingClientRect().height;
+    return (height - boxHeight) / 2;
+  };
+
+  const handleScroll = () => {
+    if (ref.current) {
+      const containerH = ref.current.getBoundingClientRect().height;
+      setOpacities(
+        opacities.map((_, index) => {
+          const element = ref.current?.querySelector(
+            `.${styles.frame}:nth-child(${index + 1})`
+          );
+          if (element) {
+            const { top, height } = element.getBoundingClientRect();
+            const centerOfElement = top + height / 2;
+            const distance = Math.abs(centerOfElement - containerH / 2);
+            const maxDistance = containerH / 2;
+            return mapRange(distance, 0, maxDistance, 1.3, 0.1);
+          }
+        })
+      );
+    }
+  };
+
+  useEffect(() => {
+    const container = ref.current;
+    const { height } = ref.current.getBoundingClientRect();
+    const box = ref.current.querySelector(`.${styles.frame}`);
+    if (box) {
+      const boxHeight = box.getBoundingClientRect().height;
+      setBoxH(boxHeight);
+      ref.current.style.paddingTop = `${calcPaddingTop()}px`;
+      ref.current.style.paddingBottom = `${height - boxHeight}px`;
+    }
+    setContainerH(height);
+    container?.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      container?.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scroll = () => {
+    const { height } = ref.current.getBoundingClientRect();
+    const scrollTo = boxH * activeIndex - height / 2 + boxH / 2;
+    ref.current.scrollTo({
+      top: Math.max(scrollTo + calcPaddingTop(), 0),
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scroll();
+  }, [activeFrame, boxH, activeIndex]);
+
+  return (
+    <div className={styles.framesContainerWrapper}>
+      <div className={`${styles.framesContainer} ${styles["mode2"]}`} ref={ref}>
+        <div className={styles.framesContainerInner}>
+          {frames.map((frame, index) => (
+            <Frame
+              frame={frame}
+              key={`${frame.key}-index`}
+              active={activeFrame.key === frame.key}
+              style={{
+                opacity: opacities[index],
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
