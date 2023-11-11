@@ -173,16 +173,17 @@
   .scene {
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
     position: relative;
-    column-gap: 1px;
     height: 100%;
     width: 100%;
     overflow: hidden;
-    justify-items: center;
-    justify-content: space-between;
+    justify-items: start;
+    justify-content: start;
     align-items: center;
     z-index: 9;
+    gap: 15px;
   }
   .gradientText {
     line-height: 46px;
@@ -195,19 +196,22 @@
     position: relative;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    order: 3;
+    align-items: start;
+    margin: auto;
+    padding: 0;
   }
 
   .framesContainer {
-    order: 2;
     position: relative;
-    height: 100%;
+    margin-top: 60px;
     width: 100%;
-
+    max-height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+  }
+  .frame .snippet {
+    margin-top: -50px;
   }
 }

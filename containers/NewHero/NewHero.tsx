@@ -10,7 +10,9 @@ import {
   providersInDeck,
 } from "../../lib/hero.config";
 import { mapRange } from "../../lib/utils";
-import ActionButtonGroup from "../ActionButtonGroup/ActionButtonGroup";
+import ActionButtonGroup, {
+  LinkButton,
+} from "../ActionButtonGroup/ActionButtonGroup";
 
 interface Props {}
 
@@ -148,7 +150,7 @@ const useActiveFrame = () => {
 
 const HeroText = () => {
   return (
-    <div className="w-full md:h-full h-[500px] mt-0 md:mt-20 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl">
+    <div className="w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl">
       <span className="text-[40px] md:text-5xl  md:tacking-[0.96px] tracking-[0.8px] leading-[115%] font-semibold flex flex-row ">
         Build&nbsp;
         <span className="flex flex-row">
@@ -177,6 +179,9 @@ const HeroText = () => {
           learnMoreLink={`/docs`}
           learnMoreAlt={"Learn more"}
         />
+      </div>
+      <div className="block md:hidden m-auto p-4">
+        <LinkButton href={"https://app.unbody.io"}>Get started</LinkButton>
       </div>
     </div>
   );
