@@ -1,0 +1,11 @@
+{
+  "semantic-search": "Semantic Search",
+  "semantic-search-adv": "Semantic Search Advanced",
+  "hybrid-search": "Hybrid Search",
+  "hybrid-search-adv": "Hybrid Search Advanced",
+  "visual-search": "Visual Search",
+  "generative-qa": "Generative Q&A",
+  "questionanswering": "Question Answering",
+  "generative-search": "Generative Search",
+  "generative-search-adv": "Generative Search Advanced"
+}

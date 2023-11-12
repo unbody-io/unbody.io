@@ -1,0 +1,75 @@
+import { Tabs, Callout } from "nextra/components";
+
+# Authorization
+
+Unbody makes it easy for you to handle your content through APIs but we also care for your security. Therefore, to securely interact with Unbody's GraphQL API, you need to include your project ID and API key in the request headers.
+
+You can do so using the `Authorization` and `X-Project-Id` headers, respectively. The examples given below demonstrate how to set these headers in different environments.
+
+<Tabs items={['Curl', 'Unbody TypeScript Client', 'JavaScript']}>
+  <Tabs.Tab>
+```bash copy
+# Authorized call to Unbody using CURL
+curl -X POST \\
+-H "Authorization: Bearer <API_KEY>" \\
+-H "X-Project-Id: <PROJECT_ID>" \\
+-H "Content-Type: application/json" \\
+-d '{
+  "query": "{ Your GraphQL query here }"
+}' \\
+<https://graphql.unbody.io>
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx copy
+const u = new Unbody({
+  apiKey: "<API_KEY>",
+  projectId: "<PROJECT_ID>",
+});
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```jsx copy
+// Fetch API
+fetch('<https://graphql.unbody.io>', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'Bearer <API_KEY>',
+        'X-Project-Id': '<PROJECT_ID>',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ query: "{ Your GraphQL query here }" })
+})
+.then(...)
+
+// Axios
+const axios = require('axios');
+
+axios.post('https://graphql.unbody.io', {
+query: "{ Your GraphQL query here }"
+}, {
+headers: {
+'Authorization': 'Bearer <API_KEY>',
+'X-Project-Id': '<PROJECT_ID>',
+'Content-Type': 'application/json'
+}
+})
+.then(...)
+
+```
+</Tabs.Tab>
+</Tabs>
+
+
+
+### Important Notes
+
+<Callout type="info" emoji="ℹ️">
+  Do not forget to replace `<API_KEY>` with your personal API key generated in the Unbody Dashboard.
+</Callout>
+<Callout type="info" emoji="ℹ️">
+  You must also replace `<PROJECT_ID>` with your specific project ID.
+</Callout>
+<Callout type="info" emoji="ℹ️">
+  As a security measure, you must ensure to securely store your API key and never expose it in client-side code. You must use environment variables or server-side code to handle it safely.
+</Callout>

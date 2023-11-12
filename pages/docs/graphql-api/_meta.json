@@ -1,0 +1,9 @@
+{
+  "authorization": "Authorization",
+  "query-methods": "Query Methods",
+  "data-types": "Data Types",
+  "filters": "Filters",
+  "search": "Search",
+  "pagination": "Pagination",
+  "sorting": "Sorting"
+}

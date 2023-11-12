@@ -1,0 +1,9 @@
+{
+  "overview": "Overview",
+  "textblock": "TextBlock",
+  "imageblock": "ImageBlock",
+  "audiofile": " AudioFile",
+  "googledoc": "GoogleDoc",
+  "googlecalendarevent": "GoogleCalendarEvent",
+  "markdownfile": "MarkDownFile"
+}

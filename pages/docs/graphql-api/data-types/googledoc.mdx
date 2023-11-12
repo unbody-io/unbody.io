@@ -1,0 +1,26 @@
+# GoogleDoc
+
+_This type is specifically curated for Google Docs. It keeps all the content and metadata neatly packed._
+
+| Field        | Type                              | Description                          |
+| ------------ | --------------------------------- | ------------------------------------ |
+| \_\_typename | DocumentType.GoogleDoc            | Identifies the type of document.     |
+| blocks       | Array\<IImageBlock or ITextBlock> | Content blocks of the Google Doc.    |
+| createdAt    | string                            | Creation timestamp.                  |
+| html         | string                            | HTML content of the Google Doc.      |
+| mimeType     | string                            | MIME type of the Google Doc.         |
+| modifiedAt   | string                            | Last modification timestamp.         |
+| originalName | string                            | Original file name.                  |
+| path         | Array\<string>                    | File path as an array of strings.    |
+| pathString   | string                            | File path as a string.               |
+| remoteId     | string                            | Remote identifier.                   |
+| slug         | string                            | URL slug.                            |
+| size         | number                            | File size in bytes.                  |
+| sourceId     | string                            | Source identifier.                   |
+| subtitle     | string                            | Subtitle of the Google Doc.          |
+| summary      | string                            | Summary of the Google Doc.           |
+| tags         | Array\<string>                    | Tags associated with the Google Doc. |
+| text         | string                            | Plain text content.                  |
+| title        | string                            | Title of the Google Doc.             |
+| toc          | string or Array\<IToc>            | Table of contents.                   |
+| mentions     | Array\<IMention>                  | Mentions within the Google Doc.      |
