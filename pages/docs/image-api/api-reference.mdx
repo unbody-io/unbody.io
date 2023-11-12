@@ -1,3 +1,5 @@
+import { Tabs } from "nextra/components";
+
 # API reference
 
 Unbody’s Image API, powered by IMGIX, offers developers a seamless way to host, transform, and optimize images for their applications. The API uses IMGIX's robust image processing features, allowing you to deliver high-quality images with minimal loading times.
@@ -18,7 +20,9 @@ Before you begin, make sure you have the following.
 
 Every image synced with Unbody is accessible through our GraphQL endpoint. Given below is a basic query to fetch an image URL.
 
-```graphql
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
 query {
   Get {
     ImageBlock(where: { path: "/your/image/path" }) {
@@ -30,6 +34,13 @@ query {
   }
 }
 ```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
 
 With the `url` obtained, you can perform a variety of operations using IMGIX parameters directly in the URL.
 
@@ -84,7 +95,7 @@ When using the Unbody Image API with IMGIX, you may consider following the best 
 
 Take a look at the Best Practices page given below for more details on best practices.
 
-[Best practices](Best%20practices%20b9f11d98d4aa4336ba9a7776ed0d4c6f.md)
+[Best practices](/docs/image-api/best-practices)
 
 ## Conclusion
 

@@ -1,0 +1,23 @@
+# Keyword Extraction
+
+Keyword extraction enables you to extract key terms and entities from your text data.
+
+The Named Entity Recognition (NER) module classifies tokens in text, identifying entities such as names, locations, and organizations.
+
+There are two types of keyword extraction available as given below.
+
+### On-demand:
+
+- **Usage**: You can manually trigger keyword extraction through API requests, specifying the `tokens` filter in the `_additional` field.
+- **Benefit**: It provides real-time extraction, allowing for flexible application as needed.
+
+### Automatic:
+
+- **Usage**: In this case, keywords are automatically extracted as content is ingested and synchronized, becoming immediately accessible in the `tokens` field.
+- **Benefit**: The benefits include streamlining data retrieval, and offering pre-extracted keywords for efficiency.
+
+| Model Name                                       | Case Sensitive | Training Dataset | Primary Application      | Language     | Description                                                                                                                                      |
+| ------------------------------------------------ | -------------- | ---------------- | ------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| dbmdz-bert-large-cased-finetuned-conll03-english | Yes            | CoNLL-03         | Named Entity Recognition | English      | A BERT model fine-tuned on the CoNLL-03 dataset for Named Entity Recognition. The model is case-sensitive, performing better with proper casing. |
+| dslim-bert-base-NER                              | No             | Unknown          | Named Entity Recognition | Multilingual | A base BERT model optimized for Named Entity Recognition tasks across various languages.                                                         |
+| davlan-bert-base-multilingual-cased-ner-hrl      | Yes            | Unknown          | Named Entity Recognition | Multilingual | A multilingual BERT model fine-tuned for Named Entity Recognition with case sensitivity. Suitable for high-resource languages.                   |

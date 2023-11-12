@@ -53,7 +53,7 @@ With the query given below, you can retrieve the name and text content from a Go
 
 <Tabs items={['GraphQL', 'TypeScript']}>
   <Tabs.Tab>
-  ```graphql
+  ```graphql copy
 query {
   Get {
     GoogleDoc {
@@ -77,7 +77,7 @@ To access URLs and attributes for ImageBlocks and AudioFiles, you can use the qu
 
 <Tabs items={['GraphQL', 'TypeScript']}>
   <Tabs.Tab>
-  ```graphql
+  ```graphql copy
 query {
   Get {
     ImageBlock {
@@ -107,7 +107,7 @@ You can perform the search operation using the query given below. For example, t
 
 <Tabs items={['GraphQL', 'TypeScript']}>
   <Tabs.Tab>
-```graphql
+```graphql copy
 query {
   Get {
     TextBlock(nearText: { concepts: ["fashion"] }) {
@@ -130,7 +130,7 @@ The query given below helps you extract a specific answer from a Google Doc.
 
 <Tabs items={['GraphQL', 'TypeScript']}>
   <Tabs.Tab>
-```graphql
+```graphql copy
 query {
   Get {
     GoogleDoc(

@@ -1,3 +1,5 @@
+import { Tabs, Callout } from "nextra/components";
+
 # Google Drive
 
 Google Drive, when paired with the indexing and query capabilities of Unbody, becomes an even more robust tool for content management.
@@ -34,7 +36,10 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
   - 2022_Projects_Highlights
   ```
   In this structure, all the files for a particular category are stored in one folder without subfolders. To find drafts for the year 2023, you can form you query like given below:
-  ```graphql
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+  ```graphql copy
   {
     query {
       Get {
@@ -51,10 +56,19 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
     }
   }
   ```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs> 
+  
+  
 - **Hierarchical Folder Organization**
   If you have a more complex collection of files, a nested structure can provide better organization. Here's an example using the published, draft, and highlights context.
-  ```
-  jsxCopy code
+
+```
   - Projects
     -- 2023
       --- Published
@@ -65,27 +79,37 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
       --- Drafts
       --- Highlights
 
-  ```
-  This setup allows you to manage files according to their status and the year. To select all highlights from the year 2023, you can form your query like given below.
-  ```graphql
-  graphqlCopy code
-  {
-    query {
-      Get {
-        GoogleDrive(
-          where: {
-            path: "Projects/2023/Highlights",
-            operator: Like,
-            valueString: "*"
-          }
-        ) {
-          ...
+```
+
+This setup allows you to manage files according to their status and the year. To select all highlights from the year 2023, you can form your query like given below.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  query {
+    Get {
+      GoogleDrive(
+        where: {
+          path: "Projects/2023/Highlights",
+          operator: Like,
+          valueString: "*"
         }
+      ) {
+        ...
       }
     }
   }
+}
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
 
-  ```
 - **Descriptive and Consistent Naming Conventions**
   You should adopt a clear naming convention for files and folders, excluding spaces, and use underscores or hyphens for separation. For instance,
   - Dates, titles, and version indicators (e.g. `2023-10-31-Project-Proposal-v2`).
@@ -107,12 +131,14 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
 
 ### **Limitations**
 
-<aside>
-💡 The Google Drive API does not offer functionality for starring or tagging files. As a workaround, employ a structured naming system with unique identifiers within file names to signify importance or categorization.
+<Callout type="warning" emoji="⚠️">
+  The Google Drive API does not offer functionality for starring or tagging
+  files. As a workaround, employ a structured naming system with unique
+  identifiers within file names to signify importance or categorization.
+</Callout>
 
-</aside>
-
-<aside>
-💡 Directly embedding images within Google Sheets via API is not possible. To integrate images, use the direct URL from Google Drive in conjunction with the `=IMAGE` function in Sheets.
-
-</aside>
+<Callout type="warning" emoji="⚠️">
+  Directly embedding images within Google Sheets via API is not possible. To
+  integrate images, use the direct URL from Google Drive in conjunction with the
+  `=IMAGE` function in Sheets.
+</Callout>
