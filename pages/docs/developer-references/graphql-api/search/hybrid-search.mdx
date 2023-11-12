@@ -1,0 +1,42 @@
+# Hybrid Search
+
+Have you ever been stuck between choosing a precise search and a more flexible, meaning-based search? Well, **Unbody’s** Hybrid Search is here to save the day! It lets you blend the best of both worlds: the exactness of keyword search and the nuance of semantic search. Let's dive in and see how it works!
+
+## **What is Hybrid Search?**
+
+Hybrid Search is like having a superhero sidekick for your search queries. It combines keyword search (think exact word matching) and semantic search (think meaning and context) to give you results that are both accurate and relevant. It’s like searching with a safety net!
+
+### **How Does it Work?**
+
+You simply tell Unbody what you’re looking for, and it uses a special blend of magic (okay, not really magic, but some really smart algorithms) to find the best matches. It scores results based on how well they match your keywords and their semantic similarity to your query and then gives you the best of both worlds.
+
+### **A Simple Example**
+
+As an example, imagine you're searching for documents related to "coding in Python". Here’s how you can use Hybrid Search.
+
+```graphql
+graphqlCopy code
+{
+  Get {
+    Article(
+      limit: 3
+      hybrid: {
+        query: "coding in Python"
+      }
+    ) {
+      title
+      content
+    }
+  }
+}
+```
+
+With the query given above, Unbody will look for articles that both contain the words "coding in Python" and are semantically related to coding in Python. Neat, right?
+
+### **Tweaking the Balance**
+
+Do you wish to have more control? Don’t worry we have got even more in the bag. You can adjust the balance between keyword and semantic search using the **`alpha`** parameter. Setting **`alpha`** closer to 1 will weigh the results more towards semantic similarity while setting it closer to 0 will favor exact keyword matches.
+
+If you wish to dive deeper into the world of Hybrid Search, have a look at our advanced guide.
+
+[**Hybrid Search - Advanced Guide**](Hybrid%20Search%2050832f54ba2643b8aa1fb40adda5f422/Hybrid%20Search%20-%20Advanced%20Guide%200fde3a216e7e45ab89f29e44945b811d.md)

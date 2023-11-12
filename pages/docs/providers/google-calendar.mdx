@@ -1,0 +1,36 @@
+# Google Calendar
+
+Google Calendar integration with Unbody allows for seamless indexing and querying of calendar events. This feature is designed to enable users to search through their events, access related attachments, and obtain a comprehensive view of scheduled items. The integration supports extracting detailed information from each event, making it accessible and manageable within Unbody's system.
+
+### **Entrypoint** — Calendar Selection
+
+Users must select a specific Google Calendar as the entry point for indexing. Unbody will then extract events and related information from this calendar. The chosen calendar acts as the data source for Unbody to index.
+
+### **Data Extracted** — Event Fields and Attachments
+
+Unbody extracts a wide range of fields from each calendar event, including metadata and any associated attachments. This allows users to search for events based on various criteria such as creation date, organizer details, and more.
+
+### Fields Extracted from Calendar Events
+
+| Field              | Type                             | Description                                          |
+| ------------------ | -------------------------------- | ---------------------------------------------------- |
+| \_\_typename       | DocumentType.GoogleCalendarEvent | Identifies the type of document as a calendar event. |
+| createdAt          | string                           | Indicates when the event was created.                |
+| creatorDisplayName | string                           | Shows the name of the event's creator.               |
+| creatorEmail       | string                           | Provides the email address of the creator.           |
+| creatorId          | string                           | Unique identifier for the creator.                   |
+| creatorSelf        | boolean                          | Signifies if the creator is the calendar owner.      |
+| blocks             | list                             | Lists any files attached to the event.               |
+
+### **Best Practices**
+
+- **Clear Event Descriptions**: Use detailed and specific titles and descriptions for events to facilitate effective searching.
+- **Attachment Handling**: Upload relevant documents as attachments to events so they are indexed and retrievable through Unbody.
+- **Consistent Naming Conventions**: Apply a consistent naming strategy for events to streamline searches and organization.
+- **Access Control**: Manage calendar sharing settings to control who can view and contribute to your calendar, affecting how events are indexed and shared within Unbody.
+
+### **Troubleshooting**
+
+- **Synchronization Issues**: If events are not showing up as expected, check that your Google Calendar is properly connected and synced with Unbody.
+- **Missing Attachments**: Verify that attachments are correctly uploaded to events if they are not being indexed.
+- **Query Accuracy**: Ensure that your search queries are correctly formatted and that you are using the appropriate fields to filter results.

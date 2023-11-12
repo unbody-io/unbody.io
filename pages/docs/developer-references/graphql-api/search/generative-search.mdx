@@ -1,0 +1,123 @@
+# Generative Search
+
+Generative Search is a cutting-edge feature that leverages the capabilities of large language models to enrich and transform query results into engaging narratives. A large language model is a natural language deep learning model that has the ability to process natural language and generate output mimicking humans.
+
+At its core, it takes simple data points and creates content that resonates with human readers. This guide will walk you through the different techniques available in Unbody's Generative Search, showcasing how you can adapt it for a variety of uses.
+
+## Generative Search Techniques at a Glance
+
+Before diving into the specifics, let us overview the different techniques within Unbody's Generative Search.
+
+- **Single Prompt Generative Search**: This search technique tailors individual responses for each data point, ideal for creating unique, context-specific content.
+- **Grouped Task Generative Search**: It generates a unified text from a group of data points, perfect for summaries or establishing common themes.
+- **Property Selection**: This technique enhances control over the generative process by selecting specific data attributes to include in the generation task, streamlining the content to focus on what's important.
+
+These techniques can be utilized across various domains, whether you're crafting social media posts, summarizing articles, or generating educational content.
+
+Let us explore each of these techniques in more detail.
+
+## Single Prompt Generative Search
+
+Single Prompt Generative Search processes individual items, creating a separate, tailored piece of text for each item. It is ideal for platforms that need to turn database entries or content pieces into appealing, individualized narratives.
+
+Let us take a look at the example.
+
+### Example
+
+Here’s how you can turn historical facts into questions for social media, using `TextBlock` data.
+
+```graphql
+{
+  Get {
+    TextBlock(nearContent: { concepts: ["World history"] }, limit: 2) {
+      content
+      _additional {
+        generate(
+          singleResult: {
+            prompt: """
+            Transform this historical fact into a captivating tweet: {content}.
+            """
+          }
+        ) {
+          singleResult
+          error
+        }
+      }
+    }
+  }
+}
+```
+
+## Grouped Task Generative Search
+
+If you need to draw insights or create a narrative that encompasses several data points, Grouped Task Generative Search is the tool for your job. It is particularly effective for summarizing data sets or highlighting trends and commonalities.
+
+Let us explore an example of GTGS.
+
+### Example
+
+To create a collective overview of Australian wildlife based on `TextBlock` entries, you can curate the query as given below.
+
+```graphql
+{
+  Get {
+    TextBlock(nearContent: { concepts: ["Australian wildlife"] }, limit: 3) {
+      content
+      significance
+      _additional {
+        generate(
+          groupedResult: {
+            task: """
+            Summarize the common traits of these Australian animals.
+            """
+            properties: ["content"]
+          }
+        ) {
+          groupedResult
+          error
+        }
+      }
+    }
+  }
+}
+```
+
+## Property Selection in Grouped Tasks
+
+Property Selection refines the generative search by focusing on selected data attributes, enhancing the relevance and coherence of the generated content. It is suitable for applications that require a distilled essence of complex information.
+
+Let us take a look at the example of Property Selection.
+
+### Example
+
+To spotlight key features of innovations, you can form your query like the example give below.
+
+```graphql
+{
+  Get {
+    TextBlock(nearContent: { concepts: ["Innovations"] }, limit: 3) {
+      content
+      significance
+      _additional {
+        generate(
+          groupedResult: {
+            task: """
+            Highlight the most impactful aspects of these innovations.
+            """
+            properties: ["content"]
+          }
+        ) {
+          groupedResult
+          error
+        }
+      }
+    }
+  }
+}
+```
+
+## Wrapping Up
+
+Whether you're aiming to create personalized responses or collective insights, Unbody's Generative Search provides the tools to transform data into compelling content. You can tailor the technique to your needs and watch as your data becomes more accessible and engaging for your audience.
+
+You can learn more about [generative search here](Generative%20Search%20da122cd5c1b74de3a87bcaed1916eee2.md).

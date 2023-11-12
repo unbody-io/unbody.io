@@ -1,3 +1,8 @@
 {
-  "index": "Get Started"
+  "index": "Overview",
+  "guides": "Guides",
+  "developer-references": "Developer References",
+  "content-enhancements-configurations": "Content Enhancements Configurations",
+  "providers": "Providers",
+  "dashboard": "Dashboard"
 }

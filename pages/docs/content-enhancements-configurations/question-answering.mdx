@@ -1,0 +1,42 @@
+# Question Answering
+
+The Question and Answer (Q&A) module of Unbody is designed to extract answers from your data, transforming it into a resource for direct query responses.
+
+The Q&A module introduces an `ask {}` operator available in GraphQL `Get` queries. It returns the answer with the highest certainty level, ensuring reliable and accurate responses.
+
+### Default Q&A Module
+
+The default module operates on the `bert-large-uncased-whole-word-masking-finetuned-squad (uncased)` model, providing a balance between performance and accuracy. It follows a two-step process as given below.
+
+1. **Semantic Search**: It locates documents likely to contain the answer.
+2. **Answer Extraction**: It uses BERT-style extraction on text and string properties of the document.
+
+**Outcomes:**
+
+- No answer was found.
+- Answer found but below the specified minimum certainty.
+- An answer meeting the desired certainty is returned.
+
+For further details, you can refer to the [Weaviate documentation](Question%20Answering%20e8078c2124b540c987a30b91febbdf9f.md).
+
+### OpenAI Q&A Module
+
+<aside>
+💡 OpenAI’s Q&A is best suited for complex query contexts or when you require the advanced capabilities of OpenAI's models. It provides nuanced and context-aware responses, making it a powerful tool for intricate query needs.
+
+</aside>
+
+Leveraging OpenAI’s `completions endpoint`, this module also adopts a two-step process:
+
+1. **Semantic Search**: Semantic search identifies potential documents.
+2. **Answer Generation**: It generates a prompt for OpenAI, which then extracts the answer.
+
+The outcomes are similar to the default module as described above.
+
+For a more detailed explanation, you can visit the [Weaviate documentation](Question%20Answering%20e8078c2124b540c987a30b91febbdf9f.md).
+
+## Conclusion
+
+Unbody’s Q&A module transforms your data into a knowledge base that can be queried, providing precise answers and enhancing user interaction. Choose the module that best suits your needs to start leveraging this capability today.
+
+Happy developing!
