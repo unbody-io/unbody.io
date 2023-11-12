@@ -171,7 +171,7 @@
 
 @media screen and (max-width: 768px) {
   .scene {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: nowrap;
@@ -204,14 +204,43 @@
   .framesContainer {
     position: relative;
     margin-top: 60px;
-    width: 100%;
-    max-height: 500px;
+    /*width: 100%;*/
+    max-height: 44vh;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
   }
   .frame .snippet {
-    margin-top: -50px;
+    /*margin-top: -40px;*/
   }
+
+  .framesContainer .mockup {
+    width: 32vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .framesContainer .snippet{
+    width: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .framesContainer.mode1 .mockup {
+    transform: translateY(-40px);
+  }
+  .framesContainer.mode1 .snippet {
+    transform: translateY(40px);
+  }
+
+  .providersDeck{
+    transform: scale(0.85);
+    padding: 3vh 0;
+  }
+
+  .heroText{
+    transform: scale(0.85);
+    padding: 10px 0;
+  }
+
 }
