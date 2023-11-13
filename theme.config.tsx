@@ -69,14 +69,8 @@ const config: DocsThemeConfig = {
     forcedTheme: "dark",
   },
   themeSwitch: {
-    component:
-      React.ReactNode |
-      React.FC<{
-        lite?: boolean;
-        className?: string;
-      }>,
+    component: null,
   },
-
   project: {
     link: "https://github.com/unbody-io",
   },
