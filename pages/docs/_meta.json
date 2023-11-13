@@ -6,7 +6,7 @@
   "boilerplates": "Boilerplates",
 
   "-- developer-refrences": {
-    "title": "Developer References",
+    "title": "Dev References",
     "type": "separator"
   },
 
@@ -17,7 +17,7 @@
   "video-api": "Video API",
 
   "-- enhancements-configurations": {
-    "title": "Enhancements Configurations",
+    "title": "A.I. Configurations",
     "type": "separator"
   },
   "vectorizers": "Vectorizers",
