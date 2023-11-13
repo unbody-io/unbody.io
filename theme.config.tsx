@@ -64,6 +64,19 @@ const logo = (
 
 const config: DocsThemeConfig = {
   logo: logo,
+  nextThemes: {
+    defaultTheme: "dark",
+    forcedTheme: "dark",
+  },
+  themeSwitch: {
+    component:
+      React.ReactNode |
+      React.FC<{
+        lite?: boolean;
+        className?: string;
+      }>,
+  },
+
   project: {
     link: "https://github.com/unbody-io",
   },
