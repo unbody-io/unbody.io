@@ -91,13 +91,6 @@ const config: DocsThemeConfig = {
         const router = useRouter();
         const {frontMatter, title} = useConfig();
 
-        const ogTitle =
-            title && title !== "Unbody" ? `${title} - Unbody` : "Unbody";
-        const ogDescription =
-            frontMatter.outline ||
-            "An invisible AI layer, a headless API designed to transform diverse content from any location or format into knowledge. Our aim is to enable developers at any level to build applications that understand our daily produced content, right out of box!";
-
-<<<<<<< Updated upstream
         const ogImageTitle = title && title !== "Unbody" ? `${title}` : "Unbody";
 
         const BASE_PATH = "unbody.io";
@@ -109,14 +102,12 @@ const config: DocsThemeConfig = {
             const desctext = myPath.split("/");
             mptext = desctext[1];
         }
-=======
     const ogTitle =
       title && title !== "Unbody" ? `${title} - Unbody` : "Unbody - A more human CMS";
 
     const ogDescription =
       frontMatter.outline ||
       "An invisible AI layer that turns any interface into your CMS and beyond, from Google Docs to desktop folders.";
->>>>>>> Stashed changes
 
         return (
             <>
