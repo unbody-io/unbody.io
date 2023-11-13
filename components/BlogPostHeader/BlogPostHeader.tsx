@@ -3,10 +3,11 @@ import styles from "./BlogPostHeader.module.css";
 
 type Props=  {
     title: string;
-    outline: string;
+    outline?: string;
     date: string;
     authors: {name: string, link: string, image?: string}[];
     type?: 'card' | 'page';
+    image?: string;
 }
 export const BlogPostHeader = (props: Props) => {
     return (
@@ -22,10 +23,16 @@ export const BlogPostHeader = (props: Props) => {
                     <h1>{props.title}</h1>
             }
             {
-                props.type !== 'card' &&
+                props.type !== 'card' && props.outline &&
                 <p className={`${styles.outline}`}
                    dangerouslySetInnerHTML={{__html: props.outline}}
                 />
+            }
+            {
+                props.image &&
+                <div className={styles.image}>
+                    <img src={props.image} alt={props.title}/>
+                </div>
             }
         </div>
     )

@@ -79,17 +79,20 @@ const config: DocsThemeConfig = {
     sidebar: {
         defaultMenuCollapseLevel: 1,
     },
-    docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
+    docsRepositoryBase: "https://github.com/unbody-io/unbody.io",
     footer: {
         text: () => <Footer/>,
     },
     banner: {
         key: "websummit-2023",
         text: (
-            <a href="https://unbody.io/blog/websummit-2023" target="_blank">
+            <a href="https://unbody.io/blog/unbody-websummit-2023" target="_blank">
                 🎉 Unbody is at Web Summit 13-16 Nov 2023. Read more →
             </a>
         ),
+    },
+    toc:{
+      float: false,
     },
     head: () => {
         const router = useRouter();
@@ -107,11 +110,11 @@ const config: DocsThemeConfig = {
             mptext = desctext[1];
         }
     const ogTitle =
-      title && title !== "Unbody" ? `${title} - Unbody` : "Unbody - A more human CMS";
+      title && title !== "Unbody" ? `${title} - Unbody` : "Unbody - Build A.I. apps with your data";
 
     const ogDescription =
       frontMatter.outline ||
-      "An invisible AI layer that turns any interface into your CMS and beyond, from Google Docs to desktop folders.";
+      "An invisible AI layer, a headless API designed to transform diverse content from any location or format into knowledge. Our aim is to enable developers at any level to build applications that understand our daily produced content, right out of box!";
 
         return (
             <>
