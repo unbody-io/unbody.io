@@ -62,18 +62,22 @@ const logo = (
 );
 
 const config: DocsThemeConfig = {
-    logo: logo,
+  logo: logo,
+  nextThemes: {
+    defaultTheme: "dark",
+    forcedTheme: "dark",
+  },
+  themeSwitch: {
+    component: null,
+  },
+  project: {
+    link: "https://github.com/unbody-io",
+  },
+  chat: {
+    link: "https://discord.com/invite/q2BTSNUD",
+  },
     sidebar: {
         defaultMenuCollapseLevel: 1,
-    },
-    project: {
-        link: "https://github.com/unbody-io",
-    },
-    chat: {
-        link: "https://discord.com/invite/q2BTSNUD",
-    },
-    nextThemes: {
-        defaultTheme: "dark",
     },
     docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
     footer: {
