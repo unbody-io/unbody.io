@@ -1,0 +1,75 @@
+# Best practices
+
+When using the Unbody Image API with IMGIX, you may consider following the best practices discussed in this module.
+
+## Combining Parameters for Advanced Transformations
+
+Unbody’s Image API, in partnership with IMGIX, provides flexibility by allowing the combination of multiple parameters in a single URL. This capability enables you to perform complex image transformations and optimizations on the fly.
+
+Given below is an example that combines resizing, format conversion, and quality adjustments.
+
+```
+image.cdn.unbody.io/[path_to_image]?w=400&h=300&fm=jpg&q=80
+```
+
+In this URL, the image is resized to 400x300 pixels, converted to JPG format, and the quality is set to 80%. The parameters are easy to mix and match, offering a vast array of possibilities to fit your specific needs.
+
+## Most Common Use Cases
+
+### Building Responsive Images
+
+Responsive images are essential for modern web design. They adapt to different screen sizes and resolutions, providing an optimal viewing experience. By using IMGIX's `srcset` attribute in combination with the Unbody Image API, you can serve multiple image sizes for different device breakpoints.
+
+Let us take a look at the example given below that shows how you can build responsive images.
+
+```html
+<img
+  srcset="
+    <https://image.cdn.unbody.io/[path_to_image]?w=400>   400w,
+    <https://image.cdn.unbody.io/[path_to_image]?w=800>   800w,
+    <https://image.cdn.unbody.io/[path_to_image]?w=1200> 1200w
+  "
+  sizes="(max-width: 600px) 400px,
+         (max-width: 900px) 800px,
+         1200px"
+  src="<https://image.cdn.unbody.io/[path_to_image]?w=1200>"
+  alt="descriptive text for image"
+/>
+```
+
+### Cropping for Portrait Images
+
+When dealing with portrait images, You can use cropping to focus on the subject and create a consistent look across your platform.
+
+The example given below shows the method of cropping images for portraits.
+
+```
+image.cdn.unbody.io/[path_to_image]?w=400&h=600&crop=focalpoint&fp-x=0.5&fp-y=0.5
+```
+
+This URL will crop the image around the central focal point, ideal for portrait shots, ensuring the subject is always centered.
+
+### Implementing Lazy Loading with a Blur Effect
+
+Lazy loading improves your website's performance by loading images as they enter the viewport. Combined with a blur effect, it enhances the user experience by displaying a low-resolution placeholder until the full image is loaded.
+
+You can implement the lazy loading with blur effect as shown in the example given below.
+
+```html
+<img
+  class="lazyload"
+  data-src="<https://image.cdn.unbody.io/[path_to_image]?w=1200>"
+  src="<https://image.cdn.unbody.io/[path_to_image]?w=1200&blur=200>"
+  alt="descriptive text for image"
+/>
+```
+
+In this example, `data-src` contains the URL of the high-resolution image, while `src` includes a blurred version. When the image comes into view, lazy loading swaps `data-src` into `src`, revealing the clear, high-resolution image.
+
+## Best Practices
+
+When combining parameters, you may follow these tips to ensure optimal results.
+
+- **Test Your URLs**: Always test your constructed URLs to make sure they produce the desired effect.
+- **Order of Parameters**: While the order of parameters typically does not matter, verify with specific features, as some may depend on the order.
+- **Use URL Encoding**: Remember to URL encode your parameters, especially when using text overlays or when parameters include special characters.

@@ -1,0 +1,223 @@
+import { Tabs, Callout } from "nextra/components";
+
+# Filters
+
+Let us deep dive into the core concepts of GraphQL queries. We will focus specifically on filtering, and explore the syntax, operators, and logic used to retrieve data based on specific criteria.
+
+## Basic Structure of a GraphQL Query
+
+In GraphQL, a query is structured in such a way that provides you specifically the data you need. If you wish to apply filters, you can use the `where` clause. You can specify the conditions within `where` clause that your data shall meet.
+
+The syntax of the `where` clause is shown in the example given below.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+  <Tabs.Tab>
+```graphql copy
+{
+  Get {
+    ClassName(where: {CONDITIONS}) {
+      field1
+      field2
+      ...
+    }
+  }
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+In the example given above, `ClassName` is the name of the class that you wish to query. `field1` and `field2` are the attributes you want to retrieve. The `condition` is the specific rule that you wish your data shall meet.
+
+## The `where` Clause
+
+Now you know that the `where` clause is used to filter the data, let us take a look at the basic structure of the where clause.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+  <Tabs.Tab>
+```graphql copy
+where: {
+  path: ["fieldName"],
+  operator: OPERATOR,
+  value: VALUE
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+- `path`: The path specifies the path to the field you on which want to filter your data. You can provide a list of field names if you wish to nest the fields.
+- `operator`: The operator that will be used to compare the field's value against the provided value.
+- `value`: The value that will be compared against the field's value.
+
+## GraphQL Filter Operators
+
+Let us take a look at some of the common operators you can use with GraphQL queries.
+
+- `Equal`: Equal operator checks if the field's value is equal to the value specified in the query.
+- `NotEqual`: NotEqual is the opposite of Equal. It checks if the field's value is not equal to the specified value.
+- `GreaterThan`: It checks if the field's value is greater than the specified value in the query.
+- `LessThan`: It checks if the field's value is less than the specified value.
+- `GreaterOrEqual`: It is the combination of GreaterThan and Equal. It checks if the field's value is greater than or equal to the specified value.
+- `LessOrEqual`: It is the combination of LessThan and Equal and checks if the field's value is less than or equal to the specified value.
+- `Like`: This is an important operator specifically with text data. It helps to check if the field's value matches the pattern specified by you in the query.
+- `Contains`: It checks if the value specified in the query is present among all the values of the field.
+- `ContainsAny`: Almost similar to the previous operator, this operator checks if all of the field's values contain any of the specified values.
+- `In`: This operator checks if the field's value is present among the values specified in the query.
+
+## Combining Conditions with Logical Operators
+
+If you are wondering how you can combine multiple queries, then you may know that logical operators are there to save your day. You can combine multiple queries using the logical operators given below.
+
+- `And`: The logical `and` presents true as output only when all the conditions present are true.
+- `Or`: The logical `or` operator presents true when at least one of the conditions results in truth.
+- `Not`: The logical `not` simple negates the condition. It reverses true to false and vice versa.
+
+### Examples
+
+- **Filtering Based on a Single Field**
+  Given below is an example query that retrieves documents with the `wordCount` greater than 1000.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  Get {
+    GoogleDoc(
+      where: { path: ["wordCount"], operator: GreaterThan, valueInt: 1000 }
+    ) {
+      title
+      wordCount
+    }
+  }
+}
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+- **Combining Conditions with** `And`
+  You can combine two conditions using `And`. The example given below retrieves documents with a `wordCount` greater than 1000 and a `creationDate` before January 1st, 2023.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  Get {
+    GoogleDoc(
+      where: {
+        operator: And
+        operands: [
+          { path: ["wordCount"], operator: GreaterThan, valueInt: 1000 }
+          {
+            path: ["creationDate"]
+            operator: LessThan
+            valueDate: "2023-01-01T00:00:00Z"
+          }
+        ]
+      }
+    ) {
+      title
+      wordCount
+      creationDate
+    }
+  }
+}
+```
+
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+- **Combining Conditions with** `Or`
+  Similar to `And` you can combine conditions using `Or` as well. The query given below retrieves documents with either a `wordCount` greater than 1000 or a title that contains the word “report”.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  Get {
+    GoogleDoc(
+      where: {
+        operator: Or
+        operands: [
+          { path: ["wordCount"], operator: GreaterThan, valueInt: 1000 }
+          { path: ["title"], operator: Like, valueText: "*report*" }
+        ]
+      }
+    ) {
+      title
+      wordCount
+    }
+  }
+}
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+- **Nested Filtering**
+  The query given retrieves documents with a `wordCount` greater than 1000 and either a title containing “report” or shared with more than 5 users.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  Get {
+    GoogleDoc(
+      where: {
+        operator: And
+        operands: [
+          { path: ["wordCount"], operator: GreaterThan, valueInt: 1000 }
+          {
+            operator: Or
+            operands: [
+              { path: ["title"], operator: Like, valueText: "*report*" }
+              { path: ["len(sharedWith)"], operator: GreaterThan, valueInt: 5 }
+            ]
+          }
+        ]
+      }
+    ) {
+      title
+      wordCount
+      sharedWith
+    }
+  }
+}
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+  
+<Callout type="info" emoji="ℹ️">
+  Note that in this query, we have used the `len()` function to get the length of the `sharedWith` array.
+</Callout>
+
+For constructing effective GraphQL queries to retrieve the data you need based on specific conditions and criteria it is crucial that you understand these concepts, operators, and their syntax.
+
+We are glad that you made it here. Now you can use the knowledge gained to effectively manage your content using Unbody.

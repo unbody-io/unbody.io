@@ -150,7 +150,9 @@ const useActiveFrame = () => {
 
 const HeroText = () => {
   return (
-    <div className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}>
+    <div
+      className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}
+    >
       <span className="text-[40px] md:text-5xl  md:tacking-[0.96px] tracking-[0.8px] leading-[115%] font-semibold flex flex-row ">
         Build&nbsp;
         <span className="flex flex-row">
@@ -193,6 +195,9 @@ const Scene = () => {
     <div className={styles.scene}>
       <HeroText />
       <ProviderDeck activeFrame={activeFrame} />
+      <div className="object-center mt-[140px] w-20 h-20 hidden xl:block">
+        <Image src="/Line.png" height={277} width={124} alt="line" />
+      </div>
       <FrameDeck activeFrame={activeFrame} />
     </div>
   );

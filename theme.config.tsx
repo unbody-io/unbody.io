@@ -28,7 +28,7 @@ const logo = (
             rgba(0, 0, 0, 0.2) 50%,
             black 75%);
             mask-size: 400%;
-            mask-position: 0%;
+            mask-position: 0;
           }
 
           .logo-container svg path {
@@ -63,24 +63,29 @@ const logo = (
 
 const config: DocsThemeConfig = {
     logo: logo,
+    sidebar: {
+        defaultMenuCollapseLevel: 1,
+    },
     project: {
         link: "https://github.com/unbody-io",
     },
     chat: {
         link: "https://discord.com/invite/q2BTSNUD",
     },
-    primarySaturation: 0,
+    nextThemes: {
+        defaultTheme: "dark",
+    },
     docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
     footer: {
         text: () => <Footer/>,
     },
     banner: {
-        key: 'websummit-2023',
+        key: "websummit-2023",
         text: (
             <a href="https://unbody.io/blog/websummit-2023" target="_blank">
                 🎉 Unbody is at Web Summit 13-16 Nov 2023. Read more →
             </a>
-        )
+        ),
     },
     head: () => {
         const router = useRouter();
@@ -98,7 +103,6 @@ const config: DocsThemeConfig = {
         let myPath: string = router.pathname;
         let mptext;
         if (myPath == "/") {
-            myPath = "";
             mptext = "";
         } else {
             const desctext = myPath.split("/");
@@ -110,9 +114,14 @@ const config: DocsThemeConfig = {
                 <title>{ogTitle}</title>
                 <meta charSet="UTF-8" key="charset"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                {/*@ts-ignore*/}
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"true"}/>
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet"/>
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
+                    rel="stylesheet"
+                />
                 <meta
                     name="viewport"
                     content="width=device-width,initial-scale=1"
@@ -159,7 +168,6 @@ const config: DocsThemeConfig = {
                     property="og:image"
                     content={`/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
                 />
-
             </>
         );
     },

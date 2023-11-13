@@ -1,0 +1,144 @@
+import { Tabs, Callout } from "nextra/components";
+
+# Google Drive
+
+Google Drive, when paired with the indexing and query capabilities of Unbody, becomes an even more robust tool for content management.
+
+This guide offers strategic insights into setting up Google Drive for optimal interaction with Unbody, It also navigates through common challenges and recognizes API limitations.
+
+### **Entrypoint** — Selecting a Folder
+
+Defining a folder as the entry point for Unbody to begin indexing is crucial. This selection determines the scope of the content to be organized and managed. Given below is the list of supported files.
+
+**Supported Files**
+
+- Google Doc
+- Google Spreadsheets
+- Slides
+- Images
+- PDFs
+- Video
+- Audio
+- Text files
+
+### **Best Practices**
+
+To maximize Google Drive's effectiveness you can follow the practices given below.
+
+- **Flattened Folder Structure Example**
+  A flattened structure works best for those who prefer simplicity or have fewer files to manage. It allows you for quick access with less navigation. Here's how a flattened structure might look:
+  ```
+  - 2023_Projects_Published
+  - 2023_Projects_Drafts
+  - 2023_Projects_Highlights
+  - 2022_Projects_Published
+  - 2022_Projects_Drafts
+  - 2022_Projects_Highlights
+  ```
+  In this structure, all the files for a particular category are stored in one folder without subfolders. To find drafts for the year 2023, you can form you query like given below:
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+  ```graphql copy
+  {
+    query {
+      Get {
+        GoogleDrive(
+          where: {
+            path: "2023_Projects_Drafts",
+            operator: Like,
+            valueString: "*"
+          }
+        ) {
+          ...
+        }
+      }
+    }
+  }
+  ```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs> 
+  
+  
+- **Hierarchical Folder Organization**
+  If you have a more complex collection of files, a nested structure can provide better organization. Here's an example using the published, draft, and highlights context.
+
+```
+  - Projects
+    -- 2023
+      --- Published
+      --- Drafts
+      --- Highlights
+    -- 2022
+      --- Published
+      --- Drafts
+      --- Highlights
+
+```
+
+This setup allows you to manage files according to their status and the year. To select all highlights from the year 2023, you can form your query like given below.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+```graphql copy
+{
+  query {
+    Get {
+      GoogleDrive(
+        where: {
+          path: "Projects/2023/Highlights",
+          operator: Like,
+          valueString: "*"
+        }
+      ) {
+        ...
+      }
+    }
+  }
+}
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+- **Descriptive and Consistent Naming Conventions**
+  You should adopt a clear naming convention for files and folders, excluding spaces, and use underscores or hyphens for separation. For instance,
+  - Dates, titles, and version indicators (e.g. `2023-10-31-Project-Proposal-v2`).
+  - Sequence numbers for versions (e.g. `v3`).
+- **Embedding Images in Sheets**
+  To add images to Google Sheets,
+  1. Upload the image to Google Drive.
+  2. Copy the direct link to the image file.
+  3. Use `=IMAGE("direct_image_url")` in Google Sheets to insert the image.
+- **Effective Collaboration and Moderation**
+  - Leverage the capabilities of shared drives to collaborate effectively.
+  - Implement a clear access hierarchy to control editing privileges and content access, thus ensuring a streamlined moderation process.
+
+### **Troubleshooting**
+
+- Verify that Unbody has the necessary permissions to access Google Drive.
+- Check that file paths adhere to the naming conventions and folder structures.
+- For issues with content access, ensure that the correct file paths are being queried and that shared settings are appropriately configured.
+
+### **Limitations**
+
+<Callout type="warning" emoji="⚠️">
+  The Google Drive API does not offer functionality for starring or tagging
+  files. As a workaround, employ a structured naming system with unique
+  identifiers within file names to signify importance or categorization.
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  Directly embedding images within Google Sheets via API is not possible. To
+  integrate images, use the direct URL from Google Drive in conjunction with the
+  `=IMAGE` function in Sheets.
+</Callout>

@@ -1,0 +1,15 @@
+# TextBlock
+
+_The TextBlock data type represents a chunk of text. It can possibly be enriched with HTML formatting._
+
+| Field        | Type                        | Description                       |
+| ------------ | --------------------------- | --------------------------------- |
+| \_\_typename | DocumentType.TextBlock      | Identifies the type of document.  |
+| footnotes    | string or Array\<IFootnote> | The footnotes for the text block. |
+| html         | string                      | HTML content of the text block.   |
+| order        | number                      | The order of the text block.      |
+| remoteId     | string                      | Remote identifier.                |
+| sourceId     | string                      | Source identifier.                |
+| tagName      | string                      | HTML tag name.                    |
+| text         | string                      | Plain text content.               |
+| classNames   | Array\<string>              | CSS class names.                  |

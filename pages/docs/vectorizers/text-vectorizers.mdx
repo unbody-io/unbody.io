@@ -1,0 +1,77 @@
+# Text Vectorizers
+
+Let us delve into the various text vectorization modules available in Unbody, illustrating how they transform textual content into vector representations. These vectorized forms of text are crucial for enabling semantic search and related functionalities.
+
+Each text vectorizer employs unique models and techniques. This section provides a detailed overview of these, highlighting their strengths, limitations, and optimal use cases. From third-party managed solutions like Cohere, Hugging Face, and OpenAI, to other diverse options, You as a user can gain insights on which text vectorizer might be the best fit for their specific requirements and data types.
+
+Upon creating a project you can select one of the following options:
+
+### Cohere: text2vec-cohere
+
+- **Overview**: It utilizes Cohere’s language models to transform text data into vectors.
+- **About the Model**: Cohere’s models excel at capturing context and nuances in English text, providing nuanced embeddings for natural language understanding tasks.
+- **Third-Party Management**: The model is managed by Cohere.
+- **Strengths**: Strong performance in capturing the subtleties of English language and context.
+- **Limitations**: Optimal performance for text under 512 tokens. If your inputs exceed, this may result in errors.
+- **Best For**: It is best for projects that need a deep understanding of English text.
+- **Production Status**: In production.
+- **Default Model**: `embed-multilingual-v2.0`.
+- **Available Options**: We may add future models as well. You can upvote on our GitHub for earlier access.
+
+### HuggingFace: Text2vec-huggingface
+
+- **Overview**: This model enables vectorization of text using models from Hugging Face’s model repository.
+- **About the Model**: Hugging Face offers a wide array of models for different languages and domains, providing flexibility in text analysis.
+- **Third-Party Management**: It is managed by Hugging Face.
+- **Strengths**: The strength is the availability of a diverse range of models for various languages and specialized domains.
+- **Limitations**: It supports only sentence similarity models.
+- **Best For**: It is best for multilingual support and domain-specific text analysis.
+- **Production Status**: In production.
+- **Default Model**: No default model is specified. The options depend on Hugging Face’s available models.
+- **Available Options**: You can upvote on our GitHub for earlier access to additional features.
+
+### OpenAI: Text2vec-openai
+
+- **Overview**: This model converts text to vectors using OpenAI’s advanced language models.
+- **About the Model**: OpenAI’s models are renowned for their text generation and understanding capabilities.
+- **Third-Party Management**: It is managed by OpenAI.
+- **Strengths**: The strengths include high-quality embeddings and robust performance across various text types.
+- **Limitations**: The limitation of the model is that it is resource-intensive, and specially designed for complex queries or large datasets.
+- **Best For**: It is best for comprehensive text analysis without primary concern for resource usage.
+- **Production Status**: In production.
+- **Default Model**: `davinci`.
+- **Available Options**: `ada`, `babbage`, `curie`, `davinci`.
+
+### Palm: Text2vec-palm
+
+- **Overview**: This model provides text-to-vector transformations using Google Cloud's PaLM embeddings.
+- **About the Model**: PaLM models from Google Cloud offer reliable and high-quality embeddings with extensive language support.
+- **Third-Party Management**: It is managed by Google Cloud.
+- **Strengths**: The model is stable and provides high-quality text vectorization with support for numerous languages.
+- **Limitations**: The limitation is a maximum input of 3,072 tokens.
+- **Best For**: It is best for projects requiring reliable text vectorization and extensive language support.
+- **Production Status**: In production.
+- **Default Model**: `textembedding-gecko@001`.
+- **Available Options**: `textembedding-gecko@latest`, `textembedding-gecko-multilingual@latest`. You can upvote on our GitHub for earlier access to additional features.
+
+### Text2vec-contextionary
+
+- **Overview**: This model is a text vectorization module based on FastText. It produces vectors through a weighted mean of word embeddings.
+- **About the Model**: This model Utilizes FastText, which is particularly good at understanding word morphology and generating embeddings even for out-of-vocabulary words.
+- **Third-Party Management**: It is not managed by a third party and rather operates locally.
+- **Strengths**: The strengths include robust performance in multiple languages and the ability to handle rare words.
+- **Limitations**: It may not capture contextual nuances as effectively as transformer-based models.
+- **Best For**: It is best for multilingual text analysis and scenarios where handling of rare or misspelled words is important.
+- **Production Status**: In production.
+- **Available Models**: It is trained on CommonCrawl and Wiki for English, Dutch, German, Czech, and Italian. Additionally, models trained on Wiki are available in English and Dutch.
+
+### Text2vec-transformers
+
+- **Overview**: It is a text vectorization module designed to bring transformer-based models to Weaviate, enhancing the ability to capture context in text.
+- **About the Model**: This model leverages transformer models known for their state-of-the-art performance on a wide array of natural language processing tasks.
+- **Third-Party Management**: Not specified.
+- **Strengths**: It has the exceptional ability to capture contextual nuances and relationships in a text.
+- **Limitations**: It is typically resource-intensive, requiring substantial computational power.
+- **Best For**: It is best for advanced natural language understanding tasks and contexts where capturing subtle text nuances is crucial.
+- **Production Status**: In roadmap. Upvote on our GitHub for earlier access.
+- **Available Options**: Not specified. Details might be added as the module development progresses.

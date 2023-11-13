@@ -1,0 +1,100 @@
+import { Tabs, Callout } from "nextra/components";
+
+# Semantic Search
+
+Semantic search is like having a smart assistant that really understands the meaning behind your words, not just the words themselves. It helps you find what you’re looking for, even if you don’t use the exact same words that are in the documents or data.
+
+## How It Works
+
+Unbody allows you to perform a semantic search using three main operators:
+
+- `nearText`
+- `nearObject`
+- `nearVector`.
+
+Let’s break down how each of them works using simple examples and explanations.
+
+<Callout emoji="💡">
+****The Nerdy Details****
+
+When we talk about semantic search, we often refer to a “vector space”. Imagine a vast, multidimensional space where each word or phrase is a point. Words with similar meanings are closer together, while words with different meanings are further apart. This space is called the vector space.
+
+In this space, “cat” might be close to “kitten” but far from “airplane”. When you search using semantic operators like **`nearText`**, you are essentially navigating this vector space to find the points (words or documents) that are closest to your query.
+
+</Callout>
+
+## nearText
+
+**Believe me, `nearText` is Like asking a friend who knows your language.**
+
+Has it ever happened that you wanted something but could not find exact words for it? So you describe the object you’re trying to find to your friend in your own language and your friend with his not-so-magical powers brings the ‘thing’ to you. In simple words, `nearText` is that friend of yours.
+
+<Callout emoji="💡">
+**How `nearText` finds your answers**
+
+When you use **`nearText`**, Unbody converts your query into a point in the vector space. It then searches for other points (documents, articles, etc.) that are close to your query. The closer they are, the more relevant they are to your search.
+
+</Callout>
+
+- **Example**
+  Imagine you have a bunch of articles and you’re looking for something related to “making websites faster”. You might not remember the exact words used in the articles, but you know the topic. So, you ask Unbody like this:
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+  ```graphql copy
+  {
+    Get {
+      GoogleDoc(nearText: { concepts: ["making websites faster"] }) {
+        title
+        content
+      }
+    }
+  }
+  ```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+Unbody then finds articles that talk about website performance, optimization, or anything related, even if they don't use the exact phrase “making websites faster”.
+
+## nearObject
+
+**It is like finding a needle in a haystack**
+
+It is not always that you don’t know the exact reference to what you’re trying to find. Sometimes, you might want to find something very specific, and you have a clear example or reference to guide you. That’s where `nearObject` comes in.
+
+- **Example**
+  Let us say you have a favorite article about JavaScript frameworks, and you want to find more articles that are similar to it. You can tell Unbody like the example given below.
+
+<Tabs items={['GraphQL', 'TypeScript']}>
+<Tabs.Tab>
+  ```graphql copy
+  {
+    Get {
+      GoogleDoc(nearObject: { id: "your-favorite-article-id" }) {
+        title
+        content
+      }
+    }
+  }
+  ```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx
+// TypeScript code is coming soon...
+```
+</Tabs.Tab>
+</Tabs>
+
+Unbody will then search through all the documents and find the ones that are most similar to your favorite article.
+
+---
+
+<Callout type="info" emoji="💪">
+ **Ready to Level Up?** If you're comfortable with the basics and eager to dive deeper into the world of semantic search, check out our [Semantic Search: Advanced Guide](/docs/graphql-api/search/semantic-search-adv) It’s packed with in-depth explanations, advanced techniques, and practical examples to help you master the art of semantic search with Unbody.
+
+</Callout>

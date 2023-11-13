@@ -39,7 +39,7 @@
 .scene {
   display: grid;
   position: relative;
-  grid-template-columns: 500px 1fr 500px;
+  grid-template-columns: 500px 2fr 20px 500px;
   column-gap: 10px;
   height: 100%;
   width: 100%;
@@ -220,7 +220,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .framesContainer .snippet{
+  .framesContainer .snippet {
     width: 40vh;
     margin-left: auto;
     margin-right: auto;
@@ -233,14 +233,20 @@
     transform: translateY(40px);
   }
 
-  .providersDeck{
+  .framesContainer .frame{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .providersDeck {
     transform: scale(0.85);
+    transform-origin: center;
     padding: 3vh 0;
   }
 
-  .heroText{
+  .heroText {
     transform: scale(0.85);
     padding: 10px 0;
+    transform-origin: center;
   }
-
 }
