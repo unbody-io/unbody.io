@@ -233,13 +233,20 @@
     transform: translateY(40px);
   }
 
+  .framesContainer .frame{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .providersDeck {
     transform: scale(0.85);
+    transform-origin: center;
     padding: 3vh 0;
   }
 
   .heroText {
     transform: scale(0.85);
     padding: 10px 0;
+    transform-origin: center;
   }
 }

@@ -34,8 +34,7 @@ async function downloadFile(url, filepath){
 const sources = [
     {name: "FEATURES", key:"video", id: "a4c32d3548e64215868deea16a5d7f0d"},
     {name: "PROVIDERS", key:"logo", id: "ef7cd27b221a4f1daceeefbc85bf8339"},
-    {name: "FILES", key:"logo", id: "929760e397794edeb7b6f18d1b6abb3f"},
-    {name: "BLOGPOSTS", key:"image", id: "65ab0c40507c492998fa8fa54c9b53ae"}
+    {name: "FILES", key:"logo", id: "929760e397794edeb7b6f18d1b6abb3f"}
 ];
 
 (async() => {
