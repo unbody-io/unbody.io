@@ -83,6 +83,12 @@ export const heroFrames: FrameItem[] = [
         snippetCode: "/Snippet Images/Snippet2.png",
     },
     {
+        providers: [providersInDeck[10]],
+        key: "visual",
+        mockup: "/scenario-images/Scenario05.png",
+        snippetCode: "/Snippet Images/Snippet5.png",
+    },
+    {
         providers: [providersInDeck[4]],
         key: "gen",
         mockup: "/scenario-images/Scenario03.png",
@@ -93,11 +99,5 @@ export const heroFrames: FrameItem[] = [
         key: "test",
         mockup: "/scenario-images/Scenario04.png",
         snippetCode: "/Snippet Images/Snippet4.png",
-    },
-    {
-        providers: [providersInDeck[10]],
-        key: "visual",
-        mockup: "/scenario-images/Scenario05.png",
-        snippetCode: "/Snippet Images/Snippet5.png",
-    },
+    }
 ];

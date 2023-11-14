@@ -25,6 +25,20 @@
     letter-spacing: -.015em;
 }
 
+.header{
+}
+.image{
+    max-height: 30vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.image img{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
+}
+
 @media (max-width: 768px) {
     .header .outline{
         font-size: var(--font-size-regular);
@@ -33,3 +47,5 @@
         line-height: 121%;
     }
 }
+
+
