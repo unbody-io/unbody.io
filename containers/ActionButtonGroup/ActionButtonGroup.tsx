@@ -17,12 +17,12 @@ export const LinkButton = ({
 }: PropsWithChildren<{ href: string; outlined?: boolean }>) => {
   const baseHoverClassNames =
     "transition-all duration-300 hover:scale-105 hover:shadow-lg";
-  const baseClassNames = `${baseHoverClassNames} p-0.5 cursor-pointer rounded-full w-40 h-12 text-xs self-center flex flex-row items-center justify-between`;
+  const baseClassNames = `${baseHoverClassNames} p-0.5 cursor-pointer rounded-full  w-40 h-12 text-xs self-center flex flex-row items-center justify-between`;
   const extraClassNames = outlined
     ? "text-white border-neutral-500 bg-indigo-10 shadow-lg shadow-indigo-100/10"
     : "bg-white text-gray-800";
 
-  const arrowBaseClassNames = `${baseHoverClassNames} transition-all duration-300 w-11 h-11 rounded-full flex justify-center items-center`;
+  const arrowBaseClassNames = `${baseHoverClassNames} transition-all duration-300  w-11 h-11 rounded-full flex justify-center items-center`;
   const arrowExtraClassNames = outlined
     ? "text-gray-800"
     : "bg-gray-800 text-white-100";

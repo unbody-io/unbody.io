@@ -183,7 +183,10 @@ const HeroText = () => {
         />
       </div>
       <div className="block md:hidden m-auto p-4">
-        <LinkButton href={"https://app.unbody.io"}>Get started</LinkButton>
+        <ActionButtonGroup
+          learnMoreLink={`/docs`}
+          learnMoreAlt={"Learn more"}
+        />
       </div>
     </div>
   );
@@ -211,6 +214,10 @@ const NewHero: React.FC<Props> = (props) => {
         <div className={styles.gradBt} />
       </div>
       <Scene />
+      <div className="text-paraghraph_gray text-base text-center h-40 px-4 lg:hidden mb-40">
+        An invisible AI layer, a headless API designed to transform diverse
+        content from any location or format into knowledge.
+      </div>
     </div>
   );
 };
