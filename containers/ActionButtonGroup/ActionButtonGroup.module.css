@@ -1,10 +1,13 @@
-
 .actionButtonGroup {
-    display: flex;
-    align-content: center;
-    gap: 20px;
+  display: flex;
+  align-content: center;
+  gap: 20px;
 }
 
 @media (max-width: 767px) {
+  .actionButtonGroup {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+  }
 }
-

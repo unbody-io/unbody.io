@@ -183,7 +183,10 @@ const HeroText = () => {
         />
       </div>
       <div className="block md:hidden m-auto p-4">
-        <LinkButton href={"https://app.unbody.io"}>Get started</LinkButton>
+        <ActionButtonGroup
+          learnMoreLink={`/docs`}
+          learnMoreAlt={"Learn more"}
+        />
       </div>
     </div>
   );
