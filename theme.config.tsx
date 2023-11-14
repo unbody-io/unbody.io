@@ -119,11 +119,7 @@ const config: DocsThemeConfig = {
         <meta charSet="UTF-8" key="charset" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         {/*@ts-ignore*/}
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin={"true"}
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
           rel="stylesheet"
