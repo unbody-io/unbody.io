@@ -32,7 +32,7 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
   return (
     <div className={`${styles.sourceCard} ${styles[type]}`}>
       {type === "provider" ? (
-        <a href={`/docs/${docs_url}`}>
+        <a href={`/docs/providers/${docs_url}`}>
           <div className={styles.sourceLogo}>
             {logo && logo[0] && <img src={logo[0]} alt={name} />}
           </div>

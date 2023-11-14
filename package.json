@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prebuild": "rm -rf ./public/remotes && mkdir ./public/remotes && node ./scripts/dl-remote-files"
   },
   "repository": {
     "type": "git",
