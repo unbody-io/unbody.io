@@ -1,6 +1,7 @@
 ---
 title: Unbody
 ---
+
 import {notionPageIds} from "../lib/config";
 import { useSSG } from 'nextra/ssg'
 import NewHero from "../containers/NewHero/NewHero";
@@ -84,6 +85,7 @@ export const getStaticProps = async (context) => {
             }
         },
     revalidate: 10
+
 }
 }
 
@@ -160,11 +162,16 @@ export const PageContent = () => {
             </DisplaySection>
         </>
     )
+
 }
 
 <div className={"home-content"}>
-    <div className="content-container">
-        <NewHero/>
-        <PageContent/>
-    </div>
+  <div className="content-container">
+    <NewHero />
+        <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden">
+      
+      </div>
+    <PageContent />
+
+  </div>
 </div>
