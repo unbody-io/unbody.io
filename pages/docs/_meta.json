@@ -33,7 +33,6 @@
   },
 
   "providers": {
-    "title": "Providers",
     "type": "folder",
     "display": "hidden"
   },
