@@ -53,11 +53,6 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
                 </Tag>
               ))}
             </div>
-            <div className={styles.arrow}>
-              {/*<Link href={``} className={"disabled"}>*/}
-
-              {/*</Link>*/}
-            </div>
           </div>
         </a>
       ) : (
@@ -83,12 +78,6 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
                   {t.name}
                 </Tag>
               ))}
-            </div>
-            <div className={styles.arrow}>
-              <ArrowRight />
-              {/*<Link href={``} className={"disabled"}>*/}
-
-              {/*</Link>*/}
             </div>
           </div>
         </>
