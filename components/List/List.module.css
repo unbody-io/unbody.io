@@ -10,3 +10,12 @@
   text-align: center;
 }
 
+.showButton {
+  width: 40%;
+  max-width: 200px;
+  font-size: 16px;
+  background: linear-gradient(black, black) padding-box,
+    linear-gradient(to right, #9b94aa, #744e936b) border-box;
+  border-radius: 1em;
+  border: 1px solid transparent;
+}

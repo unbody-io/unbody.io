@@ -1,5 +1,8 @@
 .sourceCard {
-  border: 1px solid;
+  background: linear-gradient(black, black) padding-box,
+    linear-gradient(to right, #9b94aa, #744e936b) border-box;
+  border-radius: 1em;
+  border: 1px solid transparent;
   box-sizing: border-box;
   padding: 0.5em 12px;
   position: relative;
@@ -8,7 +11,7 @@
   flex-direction: column;
 }
 .sourceCard.provider {
-  height: 440px;
+  height: 200px;
 }
 .sourceCard.provider .sourceLogo {
   margin-bottom: 0.5em;
@@ -109,6 +112,9 @@
   }
   .sourceCard.provider .sourceLogo {
     margin: 0 auto 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .sourceCard.provider .sourceLogo img {
     height: 40px;
