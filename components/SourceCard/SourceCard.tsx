@@ -44,9 +44,7 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
               <Tag isTransparent={false}>{status.name}</Tag>
             </div>
           )}
-          <div className={styles.desc}>
-            <p dangerouslySetInnerHTML={{ __html: copy_description }} />
-          </div>
+
           <div className={styles.footer}>
             <div className={styles.tags}>
               {tags.map((t, i) => (
@@ -54,12 +52,6 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
                   {t.name}
                 </Tag>
               ))}
-            </div>
-            <div className={styles.arrow}>
-              <ArrowRight />
-              {/*<Link href={``} className={"disabled"}>*/}
-
-              {/*</Link>*/}
             </div>
           </div>
         </a>
@@ -86,12 +78,6 @@ const SourceCard: React.FC<SourceCardProps> = (props) => {
                   {t.name}
                 </Tag>
               ))}
-            </div>
-            <div className={styles.arrow}>
-              <ArrowRight />
-              {/*<Link href={``} className={"disabled"}>*/}
-
-              {/*</Link>*/}
             </div>
           </div>
         </>
