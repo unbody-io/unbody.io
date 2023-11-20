@@ -1,5 +1,5 @@
 ---
-title: Unbody
+title: Build A.I. apps with your data
 ---
 
 import {notionPageIds} from "../lib/config";
@@ -14,7 +14,6 @@ import Tabs from "../components/Tabs/Tabs";
 import FeaturePanel from "../components/FeaturePanel/FeaturePanel";
 import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
 import SourceList from "../containers/SourceList/SourceList";
-import UseCases from "../containers/Usecases/Usecases";
 
 export const getStaticProps = async (context) => {
     const records = await getDatabase(notionPageIds.LANDING);
@@ -90,12 +89,7 @@ export const getStaticProps = async (context) => {
 }
 
 export const PageContent = () => {
-    const {sections, features, providers, files, useCases} = useSSG();
-    //@ts-ignore
-    const headline = sections.moto.content[0].paragraph.rich_text[0].plain_text
-    //@ts-ignore
-    const description = sections.description.content[0].paragraph.rich_text[0].plain_text
-
+    const {sections, features, providers, files} = useSSG();
     return (
         <>
             <InfoSection label={"WHY"}
@@ -169,7 +163,6 @@ export const PageContent = () => {
   <div className="content-container">
     <NewHero />
         <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden">
-      
       </div>
     <PageContent />
 

@@ -168,7 +168,7 @@ const HeroText = () => {
         </span>
       </span>
       <span className="text-[40px] md:text-5xl leading-[115%] font-semibold">
-        no fuss.
+        in 1 line of code.
       </span>
       <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
         An invisible AI layer, a headless API designed to transform diverse
