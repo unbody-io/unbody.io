@@ -84,14 +84,6 @@ const config: DocsThemeConfig = {
     footer: {
         text: () => <Footer/>,
     },
-    banner: {
-        key: "websummit-2023",
-        text: (
-            <a href="https://unbody.io/blog/websummit-2023" target="_blank">
-                🎉 Unbody is at Web Summit 13-16 Nov 2023. Read more →
-            </a>
-        ),
-    },
     useNextSeoProps() {
         return {
             titleTemplate: '%s - Unbody',
