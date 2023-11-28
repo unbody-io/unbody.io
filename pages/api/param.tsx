@@ -1,9 +1,14 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
 
-export const config = {
-  runtime: "experimental-edge",
-};
+export const runtime = 'edge'
+
+export const contentType = 'image/png'
+
+export const size = {
+    width: 1200,
+    height: 630,
+}
 
 export default async function handler(req: NextRequest) {
   try {
@@ -88,8 +93,7 @@ export default async function handler(req: NextRequest) {
         </div>
       ),
       {
-        width: 1200,
-        height: 630,
+        ...size,
         fonts: [
           {
             name: "DMSans_Light",

@@ -172,8 +172,12 @@ const config: DocsThemeConfig = {
 
                 <meta
                     property="og:image"
-                    content={`/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
+                    content={`https://www.unbody.io/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
                 />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/png" />
+
             </>
         );
     },
