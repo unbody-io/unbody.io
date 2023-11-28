@@ -97,10 +97,6 @@ const ProviderDeck = ({ activeFrame }: ProviderDeckProps) => {
     return mapRange(distance, 0, middleIndex, 0.25, 0.05);
   };
 
-  console.log(
-    activeFrame.key,
-    activeFrame.providers.map((p) => p.name)
-  );
 
   return (
     <div className={styles.providersDeckWrapper}>
@@ -154,17 +150,16 @@ const HeroText = () => {
       className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}
     >
       <span className="text-[40px] md:text-5xl  md:tacking-[0.96px] tracking-[0.8px] leading-[115%] font-semibold flex flex-row ">
-        Build&nbsp;
+        Bring&nbsp;
         <span className="flex flex-row">
           <span className={styles.gradientText}>A.I.</span>
           <Image src="MagicIcon.svg" width={20} height={20} alt="Magical" />
         </span>
-        <span>&nbsp;apps</span>
       </span>
 
       <span className="flex flex-row">
         <span className="text-[40px] md:text-5xl leading-[115%] font-semibold">
-          with <span className={styles.gradientText}> your data,</span>
+          to <span className={styles.gradientText}> your data,</span>
         </span>
       </span>
       <span className="text-[40px] md:text-5xl leading-[115%] font-semibold">
