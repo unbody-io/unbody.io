@@ -107,7 +107,7 @@ const config: DocsThemeConfig = {
         }
         const ogTitle =
 
-            title && title !== "Unbody" ? `${title}` : "Build A.I. apps with your data";
+            title && title !== "Unbody" ? `${title}` : "Bring A.I. to your data, in 1 line of code";
 
 
         const ogDescription =
