@@ -114,6 +114,12 @@ const config: DocsThemeConfig = {
             frontMatter.outline ||
             "An invisible AI layer, a headless API, transforming content from any location and in any format to actionable knowledge via one single api touch point.";
 
+        const imageUrl =
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?` +
+            `title=${encodeURIComponent(ogImageTitle)}` +
+            `&mp=${encodeURIComponent(`${BASE_PATH}/${mptext}`)}` +
+            `&cover=${encodeURIComponent(frontMatter.cover)}`
+
         return (
             <>
                 <meta charSet="UTF-8" key="charset"/>
@@ -159,10 +165,7 @@ const config: DocsThemeConfig = {
                 <meta name="description" content={ogDescription}/>
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:site" content="@unbody_io"/>
-                <meta
-                    name="twitter:image"
-                    content={`/api/param?title=${ogTitle}&mp=${BASE_PATH}/${mptext}`}
-                />
+                <meta name="twitter:image" content={imageUrl}/>
                 <meta property="og:title" content={ogTitle}/>
                 <meta property="og:description" content={ogDescription}/>
                 <meta property="og:type" content="website"/>
@@ -170,10 +173,7 @@ const config: DocsThemeConfig = {
                 <meta property="og:url" content={`https://${BASE_PATH}${router.pathname}`}/>
                 <meta property="og:locale" content="en_US"/>
 
-                <meta
-                    property="og:image"
-                    content={`https://www.unbody.io/api/param?title=${ogImageTitle}&mp=${BASE_PATH}/${mptext}`}
-                />
+                <meta property="og:image" content={imageUrl}/>
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/png" />
