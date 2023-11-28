@@ -1,7 +1,14 @@
 {
   "unbody-websummit-2023": {
     "theme": {
-      "breadcrumb": false
+      "breadcrumb": false,
+      "toc": false
+    }
+  },
+  "hello-world": {
+    "theme": {
+      "breadcrumb": false,
+      "toc": false
     }
   }
 }

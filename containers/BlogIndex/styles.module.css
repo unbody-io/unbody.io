@@ -1,0 +1,26 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px;
+    margin-top: 40px;
+}
+
+.grid h2{
+    font-size: var(--font-size-regular);
+    height: 5rem;
+}
+
+.gridItem > div h2+div{
+    height: 200px;
+    overflow: hidden;
+}
+
+.gridItem > div>:first-child{
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 754px) {
+    .grid{
+        grid-template-columns: 1fr;
+    }
+}

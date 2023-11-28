@@ -1,5 +1,6 @@
 import {BlogPostAuthors} from "./BlogPostAuthors";
 import styles from "./BlogPostHeader.module.css";
+import {formatDate} from "../../lib/utils";
 
 type Props=  {
     title: string;
@@ -8,12 +9,14 @@ type Props=  {
     authors: {name: string, link: string, image?: string}[];
     type?: 'card' | 'page';
     image?: string;
+    subtitle?: string;
 }
+
 export const BlogPostHeader = (props: Props) => {
     return (
         <div className={`${styles.header} ${styles[props.type]}`}>
             <div className={styles.heading}>
-                <time>{props.date}</time>
+                <time>{formatDate(props.date)}</time>
                 <span> | </span>
                 <BlogPostAuthors authors={props.authors}/>
             </div>
@@ -23,10 +26,12 @@ export const BlogPostHeader = (props: Props) => {
                     <h1>{props.title}</h1>
             }
             {
-                props.type !== 'card' && props.outline &&
-                <p className={`${styles.outline}`}
-                   dangerouslySetInnerHTML={{__html: props.outline}}
-                />
+                props.subtitle &&
+                <h4 className={styles.subtitle}>
+                    {
+                        props.subtitle
+                    }
+                </h4>
             }
             {
                 props.image &&
@@ -34,6 +39,12 @@ export const BlogPostHeader = (props: Props) => {
                     <img src={props.image} alt={props.title}/>
                 </div>
             }
+            {/*{*/}
+            {/*    props.type !== 'card' && props.outline &&*/}
+            {/*    <p className={`${styles.outline}`}*/}
+            {/*       dangerouslySetInnerHTML={{__html: props.outline}}*/}
+            {/*    />*/}
+            {/*}*/}
         </div>
     )
 }

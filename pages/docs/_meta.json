@@ -27,14 +27,9 @@
   "multimedia-content-augmentation": "Multimedia Content Augmentation",
   "visual-search": "Visual Search",
 
-  "-- pproviders": {
+  "-- providers": {
     "title": "Providers",
     "type": "separator"
-  },
-
-  "providers": {
-    "type": "folder",
-    "display": "hidden"
   },
 
   "google-drive": {

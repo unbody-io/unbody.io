@@ -97,12 +97,9 @@ a {
 h1,
 .headline {
   font-size: var(--font-size-h1);
-  line-height: 90%;
 }
 h2 {
   font-size: var(--font-size-h2);
-  line-height: 104%;
-  /*max-width: 590px;*/
 }
 
 main h2 {
@@ -123,7 +120,6 @@ h4 {
 }
 
 strong {
-  font-weight: 300 !important;
 }
 
 hr {
@@ -265,7 +261,7 @@ main h1 {
     display: none;
   }
   body {
-    line-height: 130%;
+    /*line-height: 130%;*/
   }
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -351,4 +347,13 @@ main h1 {
 
 .content-container>section:first-of-type{
   margin-top: 100vh;
+}
+
+
+img+em{
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #7f7f7f;
 }

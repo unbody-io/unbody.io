@@ -21,7 +21,7 @@ export const BlogPostAuthor = (author: AuthorProps) => {
                 borderRadius: "50%",
             }}/>
             <Link href={author.link} target={"_blank"}>
-                <b>{author.name}</b>
+                <span>{author.name}</span>
             </Link>
         </div>
     )
