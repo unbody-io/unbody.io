@@ -166,10 +166,9 @@ const HeroText = () => {
         in 1 line of code.
       </span>
       <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
-        An invisible AI layer, a headless API designed to transform diverse
-        content from any location or format into knowledge. Our aim is to enable
-        developers at any level to build applications that understand our daily
-        produced content, right out of box!
+        Unbody is an invisible AI layer, a headless API that brings advance AI functionalities
+        to your private data —from anywhere and in any format — via one single api touch point.
+        We enable developers or your business build applications that understand our daily produced content, in one line of code.
       </p>
       <div className="hidden md:block">
         <ActionButtonGroup
@@ -210,8 +209,8 @@ const NewHero: React.FC<Props> = (props) => {
       </div>
       <Scene />
       <div className="text-paraghraph_gray text-base text-center h-40 px-4 lg:hidden mb-40">
-        An invisible AI layer, a headless API designed to transform diverse
-        content from any location or format into knowledge.
+        Unbody is an invisible AI layer, a headless API that brings advance AI functionalities
+        to your private data —from anywhere and in any format — via one single api touch point.
       </div>
     </div>
   );

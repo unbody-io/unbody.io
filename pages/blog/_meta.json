@@ -10,5 +10,11 @@
       "breadcrumb": false,
       "toc": false
     }
+  },
+  "bounty-blog-template": {
+    "theme": {
+      "breadcrumb": false,
+      "toc": false
+    }
   }
 }

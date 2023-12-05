@@ -112,7 +112,7 @@ const config: DocsThemeConfig = {
 
         const ogDescription =
             frontMatter.outline ||
-            "An invisible AI layer, a headless API, transforming content from any location and in any format to actionable knowledge via one single api touch point.";
+            "Unbody is an invisible AI layer, a headless API that brings advance AI functionalities to your private data —from anywhere and in any format — via one single api touch point.";
 
         const imageUrl =
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?` +
