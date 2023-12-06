@@ -118,7 +118,7 @@ const config: DocsThemeConfig = {
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?` +
             `title=${encodeURIComponent(ogImageTitle)}` +
             `&mp=${encodeURIComponent(`${BASE_PATH}/${mptext}`)}` +
-            `&cover=${encodeURIComponent(frontMatter.cover)}`
+            `&cover=${encodeURIComponent(frontMatter.image || frontMatter.cover)}`
 
         return (
             <>
