@@ -26,8 +26,6 @@ type TPage = Page & {
 export default function BlogIndex() {
     const pages = getPagesUnderRoute("/blog");
 
-    console.log(pages);
-
     return (
         <div className={styles.grid}>
             {
