@@ -26,6 +26,8 @@ type TPage = Page & {
 export default function BlogIndex() {
     const pages = getPagesUnderRoute("/blog");
 
+    console.log(pages);
+
     return (
         <div className={styles.grid}>
             {
@@ -33,7 +35,6 @@ export default function BlogIndex() {
                     .sort((a: TPage, b: TPage) => {
                         const aDate = new Date(a.frontMatter.date);
                         const bDate = new Date(b.frontMatter.date);
-                        console.log(a.frontMatter.date, aDate.getTime() - bDate.getTime());
                         return bDate.getTime() - aDate.getTime() ;
                     })
                     .map((page: TPage) => {
