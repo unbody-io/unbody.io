@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
-import {getPagesUnderRoute} from "nextra/context";
+import {getAllPages, getCurrentLevelPages, getPagesUnderRoute} from "nextra/context";
 import Button from "../../components/Button/Button";
 import Tag from "../../components/Tag/Tag";
 import {Page} from "nextra";
@@ -25,7 +25,6 @@ type TPage = Page & {
 }
 export default function BlogIndex() {
     const pages = getPagesUnderRoute("/blog");
-
     return (
         <div className={styles.grid}>
             {

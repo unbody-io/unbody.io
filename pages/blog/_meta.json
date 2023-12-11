@@ -1,25 +1,7 @@
 {
-  "unbody-websummit-2023": {
+  "*": {
     "theme": {
-      "breadcrumb": false,
-      "toc": false
-    }
-  },
-  "hello-world": {
-    "theme": {
-      "breadcrumb": false,
-      "toc": false
-    }
-  },
-  "bounty-blog-template": {
-    "theme": {
-      "breadcrumb": false,
-      "toc": false
-    }
-  },
-  "ai-in-2023": {
-    "theme": {
-      "breadcrumb": false,
+      "sidebar": false,
       "toc": false
     }
   }
