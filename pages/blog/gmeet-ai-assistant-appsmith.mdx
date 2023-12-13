@@ -94,7 +94,7 @@ Once the recording is stopped or the meeting ends, it is automatically saved to 
 
 Unbody uses an advanced AI technology known as large language models (LLMs) to interpret text input. These models come in various types and configurations, and Unbody provides a broad selection. We are going to use two features:  [text-vectorizer](https://www.unbody.io/docs/vectorizers/text-vectorizers) and [generative search](https://www.unbody.io/docs/generative-search#generative-search-engines).
 
-Text vectorizer transforms the transcription of your Google Meet videos into a format understandable to the AI. For the model choice to vectorize transcriptions, I recommend using the open-source and free [Contextionary](https://www.unbody.io/docs/vectorizers/text-vectorizers#cohere-text2vec-cohere) option.
+**Text vectorizer** transforms the transcription of your Google Meet videos into a format understandable to the AI. For the model choice to vectorize transcriptions, I recommend using the open-source and free [Contextionary](https://www.unbody.io/docs/vectorizers/text-vectorizers#cohere-text2vec-cohere) option.
 
 <Callout type="info" emoji="ℹ️">
     **More technical insight about Text Vectorizer**
@@ -104,7 +104,7 @@ Text vectorizer transforms the transcription of your Google Meet videos into a f
 
 After Unbody indexed the data, Unbody offered various [generative search](https://www.unbody.io/docs/generative-search#generative-search-engines) engines —currently only ones from [OpenAI](https://www.unbody.io/docs/generative-search#generative-search-engines) (ChatGPT) — to enable generative actions on top of your text materials. GPT is very good at understanding and using language in a way that's similar to humans. The engine helps us to summarize what was discussed in the meeting and identify any tasks or 'action items' that need to be done. It's like having an assistant who listens to your meetings and then tells you the key points and what needs to be done next. Unbody also supports other generative engines in the future, offering you more options to choose from.
 
-1. **Connect** to Google Drive and Google Calendar (optional if you also need event details included in the app).
+2. **Connect** to Google Drive and Google Calendar (optional if you also need event details included in the app).
 
 ![Unbody create a new project with data sources](/images/blog/gmeet-appsmith/Untitled_4.png)
 *Unbody create a new project with data sources*
@@ -126,7 +126,7 @@ Unbody has user user-friendly GraphQL playground, you can open the GraphQL tab a
 Next, you bring the existing [Appsmith application](https://github.com/Boburmirzo/unbody-appsmith-graphql-showcase) from the [GitHub repository](https://github.com/Boburmirzo/unbody-appsmith-graphql-showcase).  You import it to a new workspace in your Appsmith account. Follow the steps given in the [Import From Repository](https://docs.appsmith.com/advanced-concepts/version-control-with-git/import-from-repository) on the Appsmith website.
 
 > You can also install [Appsmith using Docker](https://docs.appsmith.com/getting-started/setup/installation-guides/docker) on your local machine in addition to use cloud version of it.
->
+
 
 Once the import is complete, you’ll see the canvas similar to this:
 
