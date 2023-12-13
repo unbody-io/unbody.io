@@ -2,7 +2,8 @@
   "*": {
     "theme": {
       "sidebar": false,
-      "toc": false
+      "toc": false,
+      "breadcrumb": false
     }
   }
 }
