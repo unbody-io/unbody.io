@@ -7,19 +7,23 @@
       "layout": "raw"
     }
   },
+  "solution": {
+    "title": "Solutions",
+    "type": "menu",
+    "items": {
+      "about": {
+        "title": "For Companies",
+        "href": "/solutions/companies"
+      },
+      "contact": {
+        "title": "For Developers",
+        "href": "/docs"
+      }
+    }
+  },
   "about": {
     "title": "About",
     "type": "page"
-  },
-  "join-us": {
-    "title": "Join-us",
-    "type": "page",
-    "display": "hidden",
-    "theme": {
-      "sidebar": false,
-      "pagination": false,
-      "breadcrumb": false
-    }
   },
   "terms": {
     "title": "Terms",

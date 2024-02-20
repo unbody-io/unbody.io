@@ -1,170 +1,105 @@
----
-title: Bring A.I. to your data
----
+import {Unbody} from "@unbody-io/ts-client";
+import MuxVideo from '@mux/mux-video-react';
+import {useWindowScroll} from "@uidotdev/usehooks";
 
-import {notionPageIds} from "../lib/config";
-import { useSSG } from 'nextra/ssg'
 import NewHero from "../containers/NewHero/NewHero";
-import {getBlocks, getDatabase} from "../lib/notion";
-import {getDatabasePropsValue, getSectionTitle} from "../lib/utils.notion";
-import InfoSection from "../containers/InfoSection/InfoSection";
-import {Render} from "@9gustin/react-notion-render";
-import DisplaySection from "../containers/DisplaySection/DisplaySection";
-import Tabs from "../components/Tabs/Tabs";
-import FeaturePanel from "../components/FeaturePanel/FeaturePanel";
-import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
-import SourceList from "../containers/SourceList/SourceList";
+import {useSSG} from "nextra/ssg";
+import {mapRange} from "../lib/utils";
 
-export const getStaticProps = async (context) => {
-    const records = await getDatabase(notionPageIds.LANDING);
-    const sections = await Promise.all(
-        records.map(async (page) => ({
-            page,
-            key:
-                (
-                    "properties" in page
-                    && "rich_text" in page.properties.label
-                    && page.properties.label.rich_text[0]
-                )
-                    ? (page.properties.label.rich_text[0].plain_text || null) : null,
-            content: await getBlocks(page.id)
-        }))
-    )
-
-    const features = await getDatabasePropsValue(notionPageIds.FEATURES, {
-        key: null,
-        benefits: null,
-        video: null,
-        title: null,
-        slug: null,
-        order: null,
-        disabled: null
+export const getStaticProps = async () => {
+    const u = new Unbody({
+        apiKey: process.env.UNBODY_API_KEY,
+        projectId: process.env.UNBODY_PROJECT_ID
     })
 
-    const providers = await getDatabasePropsValue(notionPageIds.PROVIDERS, {
-        name: null,
-        tags: null,
-        status: null,
-        copy_description: null,
-        logo: null,
-        order: null,
-        supported_files: null,
-        supported_file_types: null,
-    })
-
-    const files = await getDatabasePropsValue(notionPageIds.FILES, {
-        name: null,
-        formats: null,
-        status: null,
-        copy_description: null,
-        logo: null,
-        order: null,
-        supported_providers: null,
-    })
-
-
-    const useCases = await getDatabasePropsValue(notionPageIds.USECASES, {
-        title: null,
-        outline: null,
-        link: null,
-        order: null
-    })
+    const {data: {payload: introVideo}} = await u.get.videoFile
+        .where({
+            remoteId: "1X03E8Y1zbPml1hx09Ee96JcfwrpLq9HI"
+        })
+        .exec()
+        .catch(e => {
+            console.error(e)
+            return {
+                data: {
+                    payload: []
+                }
+            }
+        })
 
     return {
         props: {
             ssg: {
-                providers: providers.sort((a,b) => (a.order||1)-(b.order||10)),
-                files: files.sort((a,b) => (a.order||10)-(b.order||10)),
-                features: features.sort((a,b) => (a.order||10)-(b.order||10)),
-                useCases: useCases.sort((a,b) => (a.order||10)-(b.order||10)),
-                sections: sections
-                    .filter((s => s.key))
-                    .reduce(
-                        (obj, item) => Object.assign(obj, {[item.key]: item}), {})
+                introVideo: introVideo[0] || null
             }
         },
-    revalidate: 10
-
+        revalidate: 10
+    }
 }
-}
 
-export const PageContent = () => {
-    const {sections, features, providers, files} = useSSG();
+
+export const Video = () => {
+    const {introVideo} = useSSG();
+    const [{y}] = useWindowScroll();
+
     return (
-        <>
-            <InfoSection label={"WHY"}
-                         title={getSectionTitle(sections.why) || ":("}
-                         learnMoreLink={"/docs"}
-                         learnMoreAlt={"Learn more"}
-            >
-                <Render blocks={sections.why.content}/>
-            </InfoSection>
-            <InfoSection label={"HOW"}
-                         title={getSectionTitle(sections.how) || ":("}
-                         learnMoreLink={"/docs"}
-                         learnMoreAlt={"Learn more"}
-            >
-                <Render blocks={sections.how.content}/>
-            </InfoSection>
-            <DisplaySection label={"features"}
-                            title={`Super Powers ✨<br/>↯<br/>All you need, right out-of-the-box`}
-            >
-                <Tabs tabs={
-                    features.map(f => {
-                        return {
-                            id: f.key,
-                            title: f.key,
-                            content: (
-                                <FeaturePanel data={f} key={f.key}/>
-                            )
-                        }
-                    })
-                }/>
-            </DisplaySection>
-            <DisplaySection label={"Providers"}
-                            title={`Flexible 🌊<br/>↯<br/>Use the apps and files you love`}
-                            className={"providers"}
-            >
-                <SourceList data={
-                    providers.map(p => ({
-                        name: p.name,
-                        type: "provider",
-                        status: p.status,
-                        logo: p.logo,
-                        copy_description: p.copy_description,
-                        tags: p.tags,
-                        id: p.id
-                    }))
-                }
-                            title={"Supported Providers"}
-                />
-                <SourceList data={
-                    files.map(p => ({
-                        name: p.name,
-                        type: "file",
-                        status: p.status,
-                        logo: p.logo,
-                        copy_description: p.copy_description,
-                        tags: p.formats,
-                        id: p.id
-                    }))
-                }    type={"file"} title={"Supported Files"}/>
-                <div style={{textAlign: "center"}}>
-                    <br/>
-                    <ActionButtonGroup learnMoreLink={"/docs"}/>
-                </div>
-            </DisplaySection>
-        </>
+        <div style={{
+            width: "100%",
+            overflow: "hidden",
+            borderRadius: "20px 20px 0 0",
+        }}>
+            <MuxVideo
+                style={{height: '100%', maxWidth: '100%'}}
+                playbackId={introVideo?.playbackId}
+                metadata={{
+                    video_id: introVideo?.assetId,
+                    video_title: "Unbody intro demo",
+                }}
+                streamType="on-demand"
+                controls
+            />
+        </div>
     )
 
 }
 
-<div className={"home-content"}>
-  <div className="content-container">
-    <NewHero />
-        <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden">
-      </div>
-    <PageContent />
 
-  </div>
+export const PageContent = ({children}) => {
+    return (
+        <div style={{
+            background: "#080808",
+            marginTop: "100vh",
+            minHeight: "100vh",
+            borderRadius: "50px 50px 0 0",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "50px",
+        }}>
+            {children}
+        </div>
+    )
+}
+
+<div className={"home-content"}>
+    <div className="content-container">
+        <NewHero/>
+        <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden"></div>
+        <PageContent>
+            <section style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "20px",
+            }}>
+                <div className={"text-5xl font-semibold"}>
+                    Watch how Unbody works!
+                </div>
+                <span className="text-paraghraph_gray text-base leading-6 hidden md:block">
+                    Choose your AI, connect your data, and build with ease.
+                </span>
+                <Video/>
+            </section>
+        </PageContent>
+    </div>
 </div>

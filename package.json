@@ -20,8 +20,11 @@
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "@9gustin/react-notion-render": "^3.11.2",
+    "@mux/mux-video-react": "^0.8.3",
     "@next/env": "^13.4.5",
     "@notionhq/client": "^2.2.3",
+    "@uidotdev/usehooks": "^2.4.1",
+    "@unbody-io/ts-client": "^0.0.5",
     "@vercel/analytics": "^1.1.1",
     "@vercel/og": "^0.5.19",
     "dayjs": "^1.11.8",

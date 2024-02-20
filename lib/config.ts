@@ -15,8 +15,8 @@ export const isDev =
 
 export const AppConfig = {
     site_name: 'Unbody',
-    title: `We don't need CMS!`,
-    description: 'Unbody lets you use any existing interface to manage your website\'s content without learning a new CMS.',
+    title: `Custom A.I., Custom Data, One API.`,
+    description: 'Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody\'s API. Choose your AI, connect your data, and build with ease.',
     siteUrl: "https://unbody.io",
     image: "https://unbody.io/unbody.jpg"
 };

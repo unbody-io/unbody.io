@@ -1,219 +1,213 @@
 import * as React from "react";
 
 import styles from "./Hero.module.css";
-import { HTMLProps, useEffect, useRef, useState } from "react";
+import {HTMLProps, useEffect, useRef, useState} from "react";
 import Image from "next/image";
 import {
-  FrameItem,
-  heroFrames,
-  ProviderItem,
-  providersInDeck,
+    FrameItem,
+    heroFrames,
+    ProviderItem,
+    providersInDeck,
 } from "../../lib/hero.config";
-import { mapRange } from "../../lib/utils";
+import {mapRange} from "../../lib/utils";
 import ActionButtonGroup, {
-  LinkButton,
+    LinkButton,
 } from "../ActionButtonGroup/ActionButtonGroup";
 
-interface Props {}
-
-function useInterval(callback: () => void, delay: number | null) {
-  const savedCallback = useRef<() => void>();
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    function tick() {
-      if (savedCallback.current) {
-        savedCallback.current();
-      }
-    }
-
-    if (delay !== null) {
-      const id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
+interface Props {
 }
 
-const HeroScene = () => {};
+function useInterval(callback: () => void, delay: number | null) {
+    const savedCallback = useRef<() => void>();
+
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+        function tick() {
+            if (savedCallback.current) {
+                savedCallback.current();
+            }
+        }
+
+        if (delay !== null) {
+            const id = setInterval(tick, delay);
+            return () => clearInterval(id);
+        }
+    }, [delay]);
+}
 
 type ProviderIconProps = {
-  provider: ProviderItem;
-  active: boolean;
-  opacityForce?: number;
+    provider: ProviderItem;
+    active: boolean;
+    opacityForce?: number;
 };
 const ProviderIcon = (props: ProviderIconProps) => (
-  <div
-    className={`transition-all duration-300 h-16 w-16 bg-[url('/provider-border.svg')] rounded-xl items-center flex justify-center 
+    <div
+        className={`transition-all duration-300 h-16 w-16 bg-[url('/provider-border.svg')] rounded-xl items-center flex justify-center 
       ${!props.active ? "opacity-20" : ""}`}
-    style={{
-      opacity: props.active ? 1 : props.opacityForce ?? 0.2,
-    }}
-  >
-    <img
-      className="w-[40px] h-[40px]"
-      src={props.provider.image}
-      alt={props.provider.name}
-    />
-  </div>
+        style={{
+            opacity: props.active ? 1 : props.opacityForce ?? 0.2,
+        }}
+    >
+        <img
+            className="w-[40px] h-[40px]"
+            src={props.provider.image}
+            alt={props.provider.name}
+        />
+    </div>
 );
 
 const Frame = ({
-  frame,
-  active,
-  className,
-  ...rest
-}: { frame: FrameItem; active: boolean } & HTMLProps<HTMLDivElement>) => (
-  <div
-    className={`${styles.frame} ${active ? styles.activeFrame : ""}`}
-    {...rest}
-  >
-    <div className="flex flex-col">
-      <div className={styles.mockup}>
-        <img className="object-cover" src={frame.mockup} alt={frame.key} />
-      </div>
-      <div className={styles.snippet}>
-        <img className="object-fill" src={frame.snippetCode} alt={frame.key} />
-      </div>
+                   frame,
+                   active,
+                   className,
+                   ...rest
+               }: { frame: FrameItem; active: boolean } & HTMLProps<HTMLDivElement>) => (
+    <div
+        className={`${styles.frame} ${active ? styles.activeFrame : ""}`}
+        {...rest}
+    >
+        <div className="flex flex-col">
+            <div className={styles.mockup}>
+                <img className="object-cover" src={frame.mockup} alt={frame.key}/>
+            </div>
+            <div className={styles.snippet}>
+                <img className="object-fill" src={frame.snippetCode} alt={frame.key}/>
+            </div>
+        </div>
     </div>
-  </div>
 );
 
 interface ProviderDeckProps {
-  activeFrame: FrameItem;
+    activeFrame: FrameItem;
 }
 
-const dummyProvider: ProviderItem = {
-  name: "Discord",
-  image: "/Provider Icons/Discord.svg",
-};
+const ProviderDeck = ({activeFrame}: ProviderDeckProps) => {
+    const calcOpacity = (index: number) => {
+        const middleIndex = Math.floor(providersInDeck.length / 2);
+        const distance = Math.abs(index - middleIndex);
+        return mapRange(distance, 0, middleIndex, 0.25, 0);
+    };
 
-const ProviderDeck = ({ activeFrame }: ProviderDeckProps) => {
-  const calcOpacity = (index: number) => {
-    const middleIndex = Math.floor(providersInDeck.length / 2);
-    const distance = Math.abs(index - middleIndex);
-    return mapRange(distance, 0, middleIndex, 0.25, 0.05);
-  };
-
-
-  return (
-    <div className={styles.providersDeckWrapper}>
-      <div className={styles.providersDeck}>
-        {providersInDeck.map((provider: ProviderItem, index) => (
-          <ProviderIcon
-            provider={provider}
-            key={`${provider.name}-${index}`}
-            active={
-              activeFrame.providers.findIndex(
-                (p) => p.name === provider.name
-              ) !== -1
-            }
-            opacityForce={calcOpacity(index)}
-          />
-        ))}
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.providersDeckWrapper}>
+            <div className={styles.providersDeck}>
+                {providersInDeck.map((provider: ProviderItem, index) => (
+                    <ProviderIcon
+                        provider={provider}
+                        key={`${provider.name}-${index}`}
+                        active={
+                            activeFrame.providers.findIndex(
+                                (p) => p.name === provider.name
+                            ) !== -1
+                        }
+                        opacityForce={calcOpacity(index)}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 };
 
 interface FrameDeckProps {
-  activeFrame: FrameItem;
+    activeFrame: FrameItem;
 }
 
-const FrameDeck = ({ activeFrame }: FrameDeckProps) => (
-  <div className={`${styles.framesContainer} ${styles["mode1"]}`}>
-    {heroFrames.map((frame, index) => (
-      <Frame
-        frame={frame}
-        key={`${frame.key}-index`}
-        active={activeFrame.key === frame.key}
-      />
-    ))}
-  </div>
+const FrameDeck = ({activeFrame}: FrameDeckProps) => (
+    <div className={`${styles.framesContainer} ${styles["mode1"]}`}>
+        {heroFrames.map((frame, index) => (
+            <Frame
+                frame={frame}
+                key={`${frame.key}-index`}
+                active={activeFrame.key === frame.key}
+            />
+        ))}
+    </div>
 );
 
 const useActiveFrame = () => {
-  const [activeFrameIndex, setActiveFrameIndex] = useState(0);
+    const [activeFrameIndex, setActiveFrameIndex] = useState(0);
 
-  useInterval(() => {
-    setActiveFrameIndex((activeFrameIndex + 1) % heroFrames.length);
-  }, 5000);
+    useInterval(() => {
+        setActiveFrameIndex((activeFrameIndex + 1) % heroFrames.length);
+    }, 5000);
 
-  return heroFrames[activeFrameIndex];
+    return heroFrames[activeFrameIndex];
 };
 
 const HeroText = () => {
-  return (
-    <div
-      className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}
-    >
-      <span className="text-[40px] md:text-5xl  md:tacking-[0.96px] tracking-[0.8px] leading-[115%] font-semibold flex flex-row ">
-        Bring&nbsp;
-        <span className="flex flex-row">
-          <span className={styles.gradientText}>A.I.</span>
-          <Image src="MagicIcon.svg" width={20} height={20} alt="Magical" />
-        </span>
-      </span>
 
-      <span className="flex flex-row">
-        <span className="text-[40px] md:text-5xl leading-[115%] font-semibold">
-          to <span className={styles.gradientText}> your data,</span>
-        </span>
-      </span>
-      <span className="text-[40px] md:text-5xl leading-[115%] font-semibold">
-        in 1 line of code.
-      </span>
-      <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
-        Unbody is an invisible AI layer, a headless API that brings advance AI functionalities
-        to your private data —from anywhere and in any format — via one single api touch point.
-        We enable developers or your business build applications that understand our daily produced content, in one line of code.
-      </p>
-      <div className="hidden md:block">
-        <ActionButtonGroup
-          learnMoreLink={`/docs`}
-          learnMoreAlt={"Learn more"}
-        />
-      </div>
-      <div className="block md:hidden m-auto p-4">
-        <ActionButtonGroup
-          learnMoreLink={`/docs`}
-          learnMoreAlt={"Learn more"}
-        />
-      </div>
-    </div>
-  );
+    const typographyClasses = "text-[40px] md:text-6xl md:tacking-[0.96px] tracking-[0.8px] md:leading-[115%] leading-[115%] font-semibold";
+
+    return (
+        <div
+            className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}
+        >
+            <div className={typographyClasses}>
+                <span className="flex flex-row ">
+                    Custom&nbsp;
+                    <span className={`flex flex-row`}>
+                        <span className={`styles.gradientText`}>A.I.</span>
+                        <Image src="MagicIcon.svg"
+                               style={{rotate: "180deg", height: "3.5rem", width: "3rem"}}
+                               width={30}
+                               height={20}
+                               alt="Magical"
+                        />
+                    </span>
+                </span>
+                <span className={styles.gradientText}>Custom</span> Data,
+                <br/>
+                One API.
+            </div>
+            <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
+                Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease.
+            </p>
+            <div className="hidden md:block">
+                <ActionButtonGroup
+                    learnMoreLink={`/docs`}
+                    learnMoreAlt={"Learn more"}
+                />
+            </div>
+            <div className="block md:hidden m-auto p-4">
+                <ActionButtonGroup
+                    learnMoreLink={`/docs`}
+                    learnMoreAlt={"Learn more"}
+                />
+            </div>
+        </div>
+    );
 };
 
 const Scene = () => {
-  const activeFrame = useActiveFrame();
-  return (
-    <div className={styles.scene}>
-      <HeroText />
-      <ProviderDeck activeFrame={activeFrame} />
-      <div className="object-center mt-[140px] w-20 h-20 hidden xl:block">
-        <Image src="/Line.png" height={277} width={124} alt="line" />
-      </div>
-      <FrameDeck activeFrame={activeFrame} />
-    </div>
-  );
+    const activeFrame = useActiveFrame();
+    return (
+        <div className={styles.scene}>
+            <HeroText/>
+            <ProviderDeck activeFrame={activeFrame}/>
+            <div className="object-center mt-[140px] w-20 h-20 hidden xl:block">
+                <Image src="/Line.png" height={277} width={124} alt="line"/>
+            </div>
+            <FrameDeck activeFrame={activeFrame}/>
+        </div>
+    );
 };
 
 const NewHero: React.FC<Props> = (props) => {
-  return (
-    <div className={styles.hero}>
-      <div className={styles.heroShadesLayer}>
-        <div className={styles.gradH} />
-        <div className={styles.gradBt} />
-      </div>
-      <Scene />
-      <div className="text-paraghraph_gray text-base text-center h-40 px-4 lg:hidden mb-40">
-        Unbody is an invisible AI layer, a headless API that brings advance AI functionalities
-        to your private data —from anywhere and in any format — via one single api touch point.
-      </div>
-    </div>
-  );
+    return (
+        <div className={styles.hero}>
+            <div className={styles.heroShadesLayer}>
+                <div className={styles.gradH}/>
+                <div className={styles.gradBt}/>
+            </div>
+            <Scene/>
+            <div className="text-paraghraph_gray text-base text-center h-40 px-4 lg:hidden mb-40">
+                Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease.
+            </div>
+        </div>
+    );
 };
 
 export default NewHero;
