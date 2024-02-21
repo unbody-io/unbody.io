@@ -10,7 +10,7 @@ interface FooterProps {
 const Footer = () => {
     return (
         <footer className={`${styles.footer}`}>
-            <div className={`grid ${styles.footerLinks}`}>
+            <div className={`grid md:grid-cols-4 ${styles.footerLinks}`}>
                 <div className="col-4">
                     <h3>Unbody</h3>
                     <small>hello@unbody.io</small>

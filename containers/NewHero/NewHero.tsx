@@ -149,7 +149,7 @@ const HeroText = () => {
                 <span className="flex flex-row ">
                     Custom&nbsp;
                     <span className={`flex flex-row`}>
-                        <span className={`styles.gradientText`}>A.I.</span>
+                        <span className={styles.gradientText}>A.I.</span>
                         <Image src="MagicIcon.svg"
                                style={{rotate: "180deg", height: "3.5rem", width: "3rem"}}
                                width={30}
@@ -166,16 +166,10 @@ const HeroText = () => {
                 Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease.
             </p>
             <div className="hidden md:block">
-                <ActionButtonGroup
-                    learnMoreLink={`/docs`}
-                    learnMoreAlt={"Learn more"}
-                />
+                <ActionButtonGroup/>
             </div>
             <div className="block md:hidden m-auto p-4">
-                <ActionButtonGroup
-                    learnMoreLink={`/docs`}
-                    learnMoreAlt={"Learn more"}
-                />
+                <ActionButtonGroup/>
             </div>
         </div>
     );
@@ -203,9 +197,6 @@ const NewHero: React.FC<Props> = (props) => {
                 <div className={styles.gradBt}/>
             </div>
             <Scene/>
-            <div className="text-paraghraph_gray text-base text-center h-40 px-4 lg:hidden mb-40">
-                Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease.
-            </div>
         </div>
     );
 };

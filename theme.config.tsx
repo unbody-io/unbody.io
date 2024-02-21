@@ -56,7 +56,7 @@ const logo = (
 
           @media (max-width: 768px) {
             .logo-content span {
-              transform: translateY(2px);
+              
             }
           }
         `}</style>

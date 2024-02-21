@@ -1,0 +1,75 @@
+import Image from "next/image";
+import {LinkButton} from "../containers/ActionButtonGroup";
+import Link from "next/link";
+import {Grid, GridItem} from "../components/Grid/grid";
+
+export const Card = ({title, description, icon}) => (
+    <GridItem
+        className="rounded-lg bg-zinc-900 p-6 shadow-2xl shadow-blue-500/20"
+        style={{
+            height: "400px",
+        }}
+    >
+        <Image src={icon}
+               alt={title}
+               width={698}
+               height={1360}
+               className={"mx-auto mb-8"}
+               style={{
+                   maxWidth: "50px",
+                   mixBlendMode: "color-dodge",
+               }}
+        />
+        <h3 className="text-center text-xl font-semibold mb-6 mt-0 pt-0"
+        >
+            {title}
+        </h3>
+        <p className="text-center text-base text-gray-400">
+            {description}
+        </p>
+    </GridItem>
+)
+
+
+<div className={"content-container min-h-screen"}>
+    <div>
+        <h1 className="p-4 lg:p-16 text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 mb-4">
+            Unbody delivers three key benefits to businesses
+        </h1>
+    </div>
+
+    <Grid>
+        <Card title={"Cost and Time Efficiency"}
+              description={"Skip the complexity of AI development. Unbody's plug-and-play solution means any developer on your team can quickly create advanced AI integrations, without the need for expensive AI specialists."}
+              icon={"/icons/solutions/cost.png"}
+        />
+
+        <Card title={"Enhanced Security"}
+              description={"Your data's security is paramount. Unbody safeguards your information with robust data transfer and storage protocols, giving you peace of mind."}
+              icon={"/icons/solutions/security.png"}
+        />
+
+        <Card title={"Guaranteed Privacy"}
+              description={"Your data stays private, always. With Unbody, choose an AI processor that aligns with your privacy standards, ensuring your information never falls into third-party hands."}
+              icon={"/icons/solutions/privacy.png"}
+        />
+    </Grid>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <Grid className={"mt-16 pb-16 text-center max-w-2xl m-auto"}>
+        <GridItem>
+            <Link href={"/pricing"}>
+                <u>See our pricing</u>
+            </Link>
+        </GridItem>
+        <GridItem>
+            <LinkButton href={"https://cal.com/unbody"}>Book a live demo</LinkButton>
+        </GridItem>
+        <GridItem>
+            <LinkButton href={"mailto:sales@unbody.io"} outlined={true}>Contact sales</LinkButton>
+        </GridItem>
+    </Grid>
+
+</div>

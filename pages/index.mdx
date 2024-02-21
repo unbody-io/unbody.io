@@ -1,10 +1,15 @@
 import {Unbody} from "@unbody-io/ts-client";
 import MuxVideo from '@mux/mux-video-react';
+
 import {useWindowScroll} from "@uidotdev/usehooks";
 
 import NewHero from "../containers/NewHero/NewHero";
 import {useSSG} from "nextra/ssg";
-import {mapRange} from "../lib/utils";
+import {useState} from "react";
+import Image from "next/image";
+import {ActionButtonGroup} from "../containers/ActionButtonGroup";
+import {Tabs} from "nextra/components";
+import {VideoPlayer} from "../components/VideoPlayer/Player";
 
 export const getStaticProps = async () => {
     const u = new Unbody({
@@ -39,41 +44,69 @@ export const getStaticProps = async () => {
 
 export const Video = () => {
     const {introVideo} = useSSG();
-    const [{y}] = useWindowScroll();
-
-    return (
-        <div style={{
-            width: "100%",
-            overflow: "hidden",
-            borderRadius: "20px 20px 0 0",
-        }}>
-            <MuxVideo
-                style={{height: '100%', maxWidth: '100%'}}
-                playbackId={introVideo?.playbackId}
-                metadata={{
-                    video_id: introVideo?.assetId,
-                    video_title: "Unbody intro demo",
-                }}
-                streamType="on-demand"
-                controls
-            />
-        </div>
-    )
-
+    return (<VideoPlayer videoFile={introVideo}/>)
 }
 
 
 export const PageContent = ({children}) => {
     return (
         <div style={{
-            background: "#080808",
             marginTop: "100vh",
             minHeight: "100vh",
             borderRadius: "50px 50px 0 0",
             display: "flex",
             flexDirection: "column",
+            alignItems: "center"
+        }}>
+            {children}
+        </div>
+    )
+}
+
+export const SectionTitle = ({children}) => {
+    return (
+        <div className={"text-2xl md:text-5xl pt-3 font-semibold text-center"}>
+            {children}
+        </div>
+    )
+}
+
+export const SectionDescription = ({children}) => {
+    return (
+        <span className="text-paraghraph_gray text-base leading-6 text-center max-w-2xl">
+            {children}
+        </span>
+    )
+}
+
+export const SectionHeader = ({children, learnMoreLink, learnMoreLabel}) => {
+    return (
+        <div className="text-center"
+             style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "1rem"
+             }}
+        >
+            {children}
+            <div className={"mt-5"}>
+                <ActionButtonGroup learnMoreAlt={learnMoreLabel} learnMoreLink={learnMoreLink}/>
+            </div>
+        </div>
+    )
+}
+
+export const Section = ({children}) => {
+    return (
+        <div style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
             alignItems: "center",
-            padding: "50px",
+            gap: "3rem",
+            paddingBottom: "3rem"
         }}>
             {children}
         </div>
@@ -85,21 +118,138 @@ export const PageContent = ({children}) => {
         <NewHero/>
         <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden"></div>
         <PageContent>
-            <section style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "20px",
-            }}>
-                <div className={"text-5xl font-semibold"}>
-                    Watch how Unbody works!
-                </div>
-                <span className="text-paraghraph_gray text-base leading-6 hidden md:block">
-                    Choose your AI, connect your data, and build with ease.
-                </span>
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Watch how Unbody works!
+                    </SectionTitle>
+                    <SectionDescription>
+                        Choose your AI, connect your data, and build with ease.
+                    </SectionDescription>
+                </SectionHeader>
                 <Video/>
-            </section>
+            </Section>
+
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Your data, your AI choice.
+                    </SectionTitle>
+                    <SectionDescription>
+                        We support a wide range of AI models, from the most popular to the most niche. So you are not
+                        dependent on a single provider such as OpenAI or GPT-3.
+                    </SectionDescription>
+                </SectionHeader>
+                <Image src={"/images/homepage/modular.png"}
+                       width={3248}
+                       height={2112}
+                       alt={"Modular AI"}
+                       className={"lazy"}
+                />
+            </Section>
+
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Your data, from anywhere in any formats.
+                    </SectionTitle>
+                    <SectionDescription>
+                        Your private data should live where it is, and we make sure it stays that way. We have a wide range of connectors from Google Drive to Micrsoft Sharepoint, from Slack to Discord or even your local file system. Same time we support a wide range of data formats, from text to audio, from PDFs to videos.
+                    </SectionDescription>
+                </SectionHeader>
+                <Image src={"/images/homepage/integrations.png"}
+                       width={3248}
+                       height={2112}
+                       alt={"Unbody integrations"}
+                       className={"lazy"}
+                />
+            </Section>
+
+            <Section>
+                <SectionHeader learnMoreLink={"/docs"}>
+                    <SectionTitle>
+                        One API endpoint, one line of code, endless ideas.
+                    </SectionTitle>
+                    <SectionDescription>
+                        A.I. is complex, but using it shouldn't be. That's why we made it as simple as possible. With Unbody, a generative search or a making a private chatbot is as simple as a single line of code. We offer the AI functionalities over a graphQL API or even easier with our SDKs.
+                    </SectionDescription>
+                </SectionHeader>
+                <div className={"w-fit lg:max-w-3xl overflow-hidden"}
+                     style={{
+                         width: "100%",
+                     }}
+                >
+                    <Tabs items={['JavaScript', 'GraphQL']}>
+                        <Tabs.Tab>
+                            ```javascript
+                            unbody.get.googleDocs
+                                      .search
+                                      .about("Financial reports")
+                                      .generate("create a summary of all these docs", ["text", "title"])
+                                      .exec();
+
+                            ```
+                        </Tabs.Tab>
+                        <Tabs.Tab>
+                            ```graphql
+                            query{
+                                Get{
+                                    GoogleDoc(
+                                        nearText:{
+                                            concepts: "Financial reports"
+                                        }
+                                    ){
+                                        _additional{
+                                            generate(
+                                                groupedResult:{
+                                                    properties: ["text", "title"]
+                                                    task: "Create a summary of all these docs"
+                                                }
+                                            ){
+                                                groupedResult
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ```
+                        </Tabs.Tab>
+                    </Tabs>
+                    <Tabs items={['JavaScript', 'GraphQL']}>
+                        <Tabs.Tab>
+                            ```javascript
+                            unbody.get.subtitleEntry
+                                      .ask("Wht is our main strategy for Feb2023?", ["text"])
+                                      .exec();
+
+                            ```
+                        </Tabs.Tab>
+                        <Tabs.Tab>
+                            ```graphql
+                            query{
+                                Get{
+                                    SubtitleEntry(
+                                        ask: {
+                                            question: "Wht is our main strategy for Feb2023?",
+                                            properties: ["text"]
+                                        }
+                                    ){
+                                        _additional{
+                                            answer{
+                                                result
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                            ```
+                        </Tabs.Tab>
+                    </Tabs>
+                </div>
+
+            </Section>
+
         </PageContent>
     </div>
 </div>

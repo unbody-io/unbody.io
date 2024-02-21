@@ -13,12 +13,27 @@
     "items": {
       "about": {
         "title": "For Companies",
-        "href": "/solutions/companies"
+        "href": "/solutions"
       },
       "contact": {
         "title": "For Developers",
         "href": "/docs"
       }
+    }
+  },
+  "solutions": {
+    "type": "page",
+    "title": "Solutions",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "pricing": {
+    "type": "page",
+    "title": "Pricing",
+    "theme": {
+      "layout": "raw"
     }
   },
   "about": {

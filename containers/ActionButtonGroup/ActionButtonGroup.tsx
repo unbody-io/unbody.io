@@ -6,7 +6,7 @@ import {isValidLink} from "../../lib/utils";
 import {PropsWithChildren} from "react";
 
 interface Props {
-    learnMoreLink: string;
+    learnMoreLink?: string;
     learnMoreAlt?: string;
 }
 
@@ -14,8 +14,9 @@ export const LinkButton = ({
                                children,
                                outlined = false,
                                href,
-                               size = "normal"
-                           }: PropsWithChildren<{ href: string; outlined?: boolean, size?: "small" | "normal" }>) => {
+                               size = "normal",
+                               className = ""
+                           }: PropsWithChildren<{ href: string; outlined?: boolean, size?: "small" | "normal", className?: string}>) => {
 
     const bW = size === "small" ? "w-32" : "w-56";
     const bH = size === "small" ? "h-8" : "h-12";
@@ -37,7 +38,7 @@ export const LinkButton = ({
         : "bg-gray-800 text-white-100";
 
     return (
-        <Link href={href} className={`${baseClassNames} ${extraClassNames}`}>
+        <Link href={href} className={`${baseClassNames} ${extraClassNames} ${className}`}>
             <span className="pl-4">{children}</span>
             <div className={`${arrowBaseClassNames} ${arrowExtraClassNames}`}>
                 <svg
@@ -70,10 +71,21 @@ export const ActionButtonGroup: React.FC<Props> = (props) => {
     const {learnMoreLink, learnMoreAlt = ""} = props;
     return (
         <div className={styles.actionButtonGroup}>
-            <LinkButton href={"https://app.unbody.io"}>Get started</LinkButton>
-            <LinkButton href={"https://cal.com/unbody"} outlined={true}>
-                Book a live demo!
+            <LinkButton href={"https://app.unbody.io"}
+                        className={"hidden md:flex"}
+            >
+                Get started
             </LinkButton>
+            {
+                learnMoreLink && isValidLink(learnMoreLink) ?
+                    <LinkButton href={learnMoreLink} outlined={true}>
+                        {learnMoreAlt || "Learn more"}
+                    </LinkButton>
+                    :
+                    <LinkButton href={"https://cal.com/unbody"} outlined={true}>
+                        Book a live demo!
+                    </LinkButton>
+            }
         </div>
     );
 };
