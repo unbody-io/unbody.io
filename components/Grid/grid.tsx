@@ -1,6 +1,6 @@
 import styles from './grid.module.css'
 
-export const Grid = ({ children, className = ""}, ...rest) => (
+export const Grid = ({ children, className = "", ...rest}) => (
     <div className={`${styles.container} ${className}`} {...rest}>
         {children}
     </div>
