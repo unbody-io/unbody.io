@@ -3,7 +3,6 @@ import MuxVideo from "@mux/mux-video-react";
 import styles from "./player.module.css";
 import Image from "next/image";
 
-
 export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
     const [playing, setPlaying] = useState(false);
     const ref = useRef(null);
