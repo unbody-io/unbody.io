@@ -4,7 +4,7 @@ export const subscriptionPlans = [
         "name": "Free",
         "priceMonthly": "$0",
         "priceAnnually": "$0",
-        "ctaLabel": "Get started",
+        "ctaLabel": "Get Started",
         "ctaAction": "https://app.unbody.io?subscription=free",
         "description": "Get your feet wet with our powerful AI tools. Great for hobbyists and small projects.",
         "features": [
@@ -38,7 +38,7 @@ export const subscriptionPlans = [
         "priceMonthly": "$40",
         "priceAnnually": "$24",
         "description": "Start building your next big thing. Perfect for small teams and startups.",
-        "ctaLabel": "Buy plan",
+        "ctaLabel": "Buy Plan",
         "ctaAction": "https://app.unbody.io?subscription=standard",
         "features": [
             {
@@ -78,8 +78,8 @@ export const subscriptionPlans = [
         "name": "SME & Enterprise",
         "price": "Custom",
         "description": "For large teams and enterprises. Get in touch for a custom plan.",
-        "ctaLabel": "Contact sales",
-        "ctaAction": "mailto:sales@unbody.io?subject=Enterprise%20Plan%20Inquiry",
+        "ctaLabel": "Lets Get On a Call!",
+        "ctaAction": "https://cal.com/unbody/sales",
         "features": [
             {
                 category: "",
@@ -109,7 +109,7 @@ export const subscriptionPlans = [
                 category: "Support",
                 items: [
                     {"feature": "Dedicated onboarding support", "note": null},
-                    {"feature": "24/7 Email, Chat and Phone support", "note": null},
+                    {"feature": "24/7 Email and Chat support", "note": null},
                 ]
             }
         ],
