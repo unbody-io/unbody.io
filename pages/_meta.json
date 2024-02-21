@@ -9,10 +9,7 @@
   },
   "pricing": {
     "type": "page",
-    "title": "Pricing",
-    "theme": {
-      "layout": "full"
-    }
+    "title": "Pricing"
   },
   "about": {
     "title": "About",
@@ -36,11 +33,17 @@
   "faq": {
     "title": "FAQ",
     "type": "page",
-    "display": "hidden"
+    "display": "hidden",
+    "theme":{
+      "typesetting": "article"
+    }
   },
   "docs": {
     "title": "Docs",
-    "type": "page"
+    "type": "page",
+    "theme":{
+      "typesetting": "article"
+    }
   },
   "blog": {
     "title": "Blog",
