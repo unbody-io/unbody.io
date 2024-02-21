@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import {subscriptionPlans} from "../../lib/pricing.configs";
 
 
+const FeatureItem = ({ feature }) => (
+    <li className="flex mb-2">
+        <svg className="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <div>
+            <span className={"block"}>{feature.feature}</span>
+            {feature.note && <span className="text-gray-400 text-xs">{feature.note}</span>}
+        </div>
+    </li>
+)
+
 const PlanCard = ({ plan, billingCycle }) => {
     const price = billingCycle === 'monthly' ? plan.priceMonthly : plan.priceAnnually;
 
@@ -39,16 +51,14 @@ const PlanCard = ({ plan, billingCycle }) => {
             </button>
 
             <ul className="mt-6 space-y-2">
-                {plan.features.map((feature, index) => (
-                    <li key={index} className="flex">
-                        <svg className="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <div>
-                            <span className={"block"}>{feature.feature}</span>
-                            {feature.note && <span className="text-gray-400 text-xs">{feature.note}</span>}
-                        </div>
-                    </li>
+                {plan.features.map((featureGroup, index) => (
+                    <ul key={`uf-${index}`}>
+                        {featureGroup.category && <li className="text-gray-400 pt-2 pb-2">{featureGroup.category}</li>}
+                        {featureGroup.items.map((feature, index) => (
+                            <FeatureItem key={index} feature={feature} />
+                        ))}
+
+                    </ul>
                 ))}
             </ul>
         </div>
