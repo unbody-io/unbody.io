@@ -1,11 +1,8 @@
-import React, {FC} from 'react';
-import {FooterItemProps} from "../../lib/data.types";
+import React from 'react';
 
 import styles from './Footer.module.css';
 import Link from "next/link";
-interface FooterProps {
-    data: FooterItemProps[]
-}
+
 
 const Footer = () => {
     return (
