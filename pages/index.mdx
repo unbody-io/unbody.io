@@ -1,11 +1,7 @@
 import {Unbody} from "@unbody-io/ts-client";
-import MuxVideo from '@mux/mux-video-react';
-
-import {useWindowScroll} from "@uidotdev/usehooks";
 
 import NewHero from "../containers/NewHero/NewHero";
 import {useSSG} from "nextra/ssg";
-import {useState} from "react";
 import Image from "next/image";
 import {ActionButtonGroup} from "../containers/ActionButtonGroup";
 import {Tabs} from "nextra/components";
@@ -44,7 +40,7 @@ export const getStaticProps = async () => {
 
 export const Video = () => {
     const {introVideo} = useSSG();
-    return (<VideoPlayer videoFile={introVideo}/>)
+    return (introVideo? <VideoPlayer videoFile={introVideo}/>: null)
 }
 
 
