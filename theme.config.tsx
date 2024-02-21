@@ -2,7 +2,6 @@ import React from "react";
 import {DocsThemeConfig, useConfig} from "nextra-theme-docs";
 import Footer from "./containers/Footer/Footer";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import {LinkButton} from "./containers/ActionButtonGroup";
 
 const logo = (
