@@ -7,9 +7,34 @@
       "layout": "full"
     }
   },
+  "solution": {
+    "title": "Solutions",
+    "type": "menu",
+    "items": {
+      "about": {
+        "title": "For Companies",
+        "href": "/solutions"
+      },
+      "contact": {
+        "title": "For Developers",
+        "href": "/docs"
+      }
+    }
+  },
+  "solutions": {
+    "type": "page",
+    "title": "Solutions",
+    "display": "hidden",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "pricing": {
     "type": "page",
-    "title": "Pricing"
+    "title": "Pricing",
+    "theme": {
+      "layout": "full"
+    }
   },
   "about": {
     "title": "About",
@@ -33,17 +58,11 @@
   "faq": {
     "title": "FAQ",
     "type": "page",
-    "display": "hidden",
-    "theme":{
-      "typesetting": "article"
-    }
+    "display": "hidden"
   },
   "docs": {
     "title": "Docs",
-    "type": "page",
-    "theme":{
-      "typesetting": "article"
-    }
+    "type": "page"
   },
   "blog": {
     "title": "Blog",

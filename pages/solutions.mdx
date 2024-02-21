@@ -1,7 +1,12 @@
+---
+title: "Solutions For Businesses"
+---
+
 import Image from "next/image";
 import {LinkButton} from "../containers/ActionButtonGroup";
 import Link from "next/link";
 import {Grid, GridItem} from "../components/Grid/grid";
+
 
 export const Card = ({title, description, icon}) => (
     <GridItem
@@ -20,10 +25,10 @@ export const Card = ({title, description, icon}) => (
                    mixBlendMode: "color-dodge",
                }}
         />
-        <h3 className="text-center text-xl font-semibold mb-6 mt-0 pt-0"
+        <div className="text-center text-xl font-semibold mb-6 mt-0 pt-0"
         >
             {title}
-        </h3>
+        </div>
         <p className="text-center text-base text-gray-400">
             {description}
         </p>
@@ -71,5 +76,4 @@ export const Card = ({title, description, icon}) => (
             <LinkButton href={"mailto:sales@unbody.io"} outlined={true}>Contact sales</LinkButton>
         </GridItem>
     </Grid>
-
 </div>
