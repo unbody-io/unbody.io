@@ -7,19 +7,38 @@
       "layout": "raw"
     }
   },
+  "solution": {
+    "title": "Solutions",
+    "type": "menu",
+    "items": {
+      "about": {
+        "title": "For Companies",
+        "href": "/solutions"
+      },
+      "contact": {
+        "title": "For Developers",
+        "href": "/docs"
+      }
+    }
+  },
+  "solutions": {
+    "type": "page",
+    "title": "Solutions",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "pricing": {
+    "type": "page",
+    "title": "Pricing",
+    "theme": {
+      "layout": "raw"
+    }
+  },
   "about": {
     "title": "About",
     "type": "page"
-  },
-  "join-us": {
-    "title": "Join-us",
-    "type": "page",
-    "display": "hidden",
-    "theme": {
-      "sidebar": false,
-      "pagination": false,
-      "breadcrumb": false
-    }
   },
   "terms": {
     "title": "Terms",

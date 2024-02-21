@@ -2,6 +2,7 @@ import React from "react";
 import {DocsThemeConfig, useConfig} from "nextra-theme-docs";
 import Footer from "./containers/Footer/Footer";
 import {useRouter} from "next/router";
+import {LinkButton} from "./containers/ActionButtonGroup";
 
 const logo = (
     <div className={"logo-container"}>
@@ -54,7 +55,7 @@ const logo = (
 
           @media (max-width: 768px) {
             .logo-content span {
-              transform: translateY(2px);
+              
             }
           }
         `}</style>
@@ -70,19 +71,26 @@ const config: DocsThemeConfig = {
     themeSwitch: {
         component: null,
     },
-    project: {
-        link: "https://github.com/unbody-io",
+    navbar:{
+        extraContent: () => (
+            <div style={{
+                display: "flex",
+                gap: "12px",
+                alignItems: "center",
+            }}>
+                <LinkButton href={"https://app.unbody.io"} size={"small"}>Get started</LinkButton>
+            </div>
+        )
     },
-    chat: {
-        link: "https://discord.com/invite/q2BTSNUD",
-    },
-
     sidebar: {
         defaultMenuCollapseLevel: 1,
     },
     docsRepositoryBase: "https://github.com/unbody-io/unbody.io/docs",
     footer: {
         text: () => <Footer/>,
+    },
+    search: {
+        component: null,
     },
     useNextSeoProps() {
         return {

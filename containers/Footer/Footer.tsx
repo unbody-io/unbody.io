@@ -1,16 +1,13 @@
-import React, {FC} from 'react';
-import {FooterItemProps} from "../../lib/data.types";
+import React from 'react';
 
 import styles from './Footer.module.css';
 import Link from "next/link";
-interface FooterProps {
-    data: FooterItemProps[]
-}
+
 
 const Footer = () => {
     return (
         <footer className={`${styles.footer}`}>
-            <div className={`grid ${styles.footerLinks}`}>
+            <div className={`grid md:grid-cols-4 ${styles.footerLinks}`}>
                 <div className="col-4">
                     <h3>Unbody</h3>
                     <small>hello@unbody.io</small>

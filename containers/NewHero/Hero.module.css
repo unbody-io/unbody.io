@@ -152,8 +152,8 @@
 }
 
 .gradientText {
-  font-size: 3rem /* 48px */;
-  line-height: 115%;
+  /*font-size: 3rem !* 48px *!;*/
+  /*line-height: 115%;*/
   background: linear-gradient(
     90deg,
     #ff3bff 0%,
@@ -164,9 +164,9 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 48px;
-  font-weight: 600px;
-  letter-spacing: 0.96px;
+  /*font-size: 48px;*/
+  /*font-weight: 600px;*/
+  /*letter-spacing: 0.96px;*/
 }
 
 @media screen and (max-width: 768px) {

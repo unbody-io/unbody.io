@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    grid-auto-rows: fit-content(100%);
+}
+
+.container.w2{
+    grid-template-columns: repeat(2, 1fr);
+}
+.container.w4{
+    grid-template-columns: repeat(4, 1fr);
+}
+.container.w6{
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.item{
+    margin: 0 auto;
+}
+
+@media (max-width: 768px){
+    .container,
+    .container.w2,
+    .container.w4,
+    .container.w6{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

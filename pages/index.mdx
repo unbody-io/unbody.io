@@ -1,170 +1,251 @@
----
-title: Bring A.I. to your data
----
+import {Unbody} from "@unbody-io/ts-client";
 
-import {notionPageIds} from "../lib/config";
-import { useSSG } from 'nextra/ssg'
 import NewHero from "../containers/NewHero/NewHero";
-import {getBlocks, getDatabase} from "../lib/notion";
-import {getDatabasePropsValue, getSectionTitle} from "../lib/utils.notion";
-import InfoSection from "../containers/InfoSection/InfoSection";
-import {Render} from "@9gustin/react-notion-render";
-import DisplaySection from "../containers/DisplaySection/DisplaySection";
-import Tabs from "../components/Tabs/Tabs";
-import FeaturePanel from "../components/FeaturePanel/FeaturePanel";
-import ActionButtonGroup from "../containers/ActionButtonGroup/ActionButtonGroup";
-import SourceList from "../containers/SourceList/SourceList";
+import {useSSG} from "nextra/ssg";
+import Image from "next/image";
+import {ActionButtonGroup} from "../containers/ActionButtonGroup";
+import {Tabs} from "nextra/components";
+import {VideoPlayer} from "../components/VideoPlayer/Player";
 
-export const getStaticProps = async (context) => {
-    const records = await getDatabase(notionPageIds.LANDING);
-    const sections = await Promise.all(
-        records.map(async (page) => ({
-            page,
-            key:
-                (
-                    "properties" in page
-                    && "rich_text" in page.properties.label
-                    && page.properties.label.rich_text[0]
-                )
-                    ? (page.properties.label.rich_text[0].plain_text || null) : null,
-            content: await getBlocks(page.id)
-        }))
-    )
-
-    const features = await getDatabasePropsValue(notionPageIds.FEATURES, {
-        key: null,
-        benefits: null,
-        video: null,
-        title: null,
-        slug: null,
-        order: null,
-        disabled: null
+export const getStaticProps = async () => {
+    const u = new Unbody({
+        apiKey: process.env.UNBODY_API_KEY,
+        projectId: process.env.UNBODY_PROJECT_ID
     })
 
-    const providers = await getDatabasePropsValue(notionPageIds.PROVIDERS, {
-        name: null,
-        tags: null,
-        status: null,
-        copy_description: null,
-        logo: null,
-        order: null,
-        supported_files: null,
-        supported_file_types: null,
-    })
-
-    const files = await getDatabasePropsValue(notionPageIds.FILES, {
-        name: null,
-        formats: null,
-        status: null,
-        copy_description: null,
-        logo: null,
-        order: null,
-        supported_providers: null,
-    })
-
-
-    const useCases = await getDatabasePropsValue(notionPageIds.USECASES, {
-        title: null,
-        outline: null,
-        link: null,
-        order: null
-    })
+    const {data: {payload: introVideo}} = await u.get.videoFile
+        .where({
+            remoteId: "1X03E8Y1zbPml1hx09Ee96JcfwrpLq9HI"
+        })
+        .exec()
+        .catch(e => {
+            console.error(e)
+            return {
+                data: {
+                    payload: []
+                }
+            }
+        })
 
     return {
         props: {
             ssg: {
-                providers: providers.sort((a,b) => (a.order||1)-(b.order||10)),
-                files: files.sort((a,b) => (a.order||10)-(b.order||10)),
-                features: features.sort((a,b) => (a.order||10)-(b.order||10)),
-                useCases: useCases.sort((a,b) => (a.order||10)-(b.order||10)),
-                sections: sections
-                    .filter((s => s.key))
-                    .reduce(
-                        (obj, item) => Object.assign(obj, {[item.key]: item}), {})
+                introVideo: introVideo[0] || null
             }
         },
-    revalidate: 10
-
+        revalidate: 10
+    }
 }
+
+
+export const Video = () => {
+    const {introVideo} = useSSG();
+    return (introVideo? <VideoPlayer videoFile={introVideo}/>: null)
 }
 
-export const PageContent = () => {
-    const {sections, features, providers, files} = useSSG();
+
+export const PageContent = ({children}) => {
     return (
-        <>
-            <InfoSection label={"WHY"}
-                         title={getSectionTitle(sections.why) || ":("}
-                         learnMoreLink={"/docs"}
-                         learnMoreAlt={"Learn more"}
-            >
-                <Render blocks={sections.why.content}/>
-            </InfoSection>
-            <InfoSection label={"HOW"}
-                         title={getSectionTitle(sections.how) || ":("}
-                         learnMoreLink={"/docs"}
-                         learnMoreAlt={"Learn more"}
-            >
-                <Render blocks={sections.how.content}/>
-            </InfoSection>
-            <DisplaySection label={"features"}
-                            title={`Super Powers ✨<br/>↯<br/>All you need, right out-of-the-box`}
-            >
-                <Tabs tabs={
-                    features.map(f => {
-                        return {
-                            id: f.key,
-                            title: f.key,
-                            content: (
-                                <FeaturePanel data={f} key={f.key}/>
-                            )
-                        }
-                    })
-                }/>
-            </DisplaySection>
-            <DisplaySection label={"Providers"}
-                            title={`Flexible 🌊<br/>↯<br/>Use the apps and files you love`}
-                            className={"providers"}
-            >
-                <SourceList data={
-                    providers.map(p => ({
-                        name: p.name,
-                        type: "provider",
-                        status: p.status,
-                        logo: p.logo,
-                        copy_description: p.copy_description,
-                        tags: p.tags,
-                        id: p.id
-                    }))
-                }
-                            title={"Supported Providers"}
-                />
-                <SourceList data={
-                    files.map(p => ({
-                        name: p.name,
-                        type: "file",
-                        status: p.status,
-                        logo: p.logo,
-                        copy_description: p.copy_description,
-                        tags: p.formats,
-                        id: p.id
-                    }))
-                }    type={"file"} title={"Supported Files"}/>
-                <div style={{textAlign: "center"}}>
-                    <br/>
-                    <ActionButtonGroup learnMoreLink={"/docs"}/>
-                </div>
-            </DisplaySection>
-        </>
+        <div style={{
+            marginTop: "100vh",
+            minHeight: "100vh",
+            borderRadius: "50px 50px 0 0",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+        }}>
+            {children}
+        </div>
     )
+}
 
+export const SectionTitle = ({children}) => {
+    return (
+        <div className={"text-2xl md:text-5xl pt-3 font-semibold text-center"}>
+            {children}
+        </div>
+    )
+}
+
+export const SectionDescription = ({children}) => {
+    return (
+        <span className="text-paraghraph_gray text-base leading-6 text-center max-w-2xl">
+            {children}
+        </span>
+    )
+}
+
+export const SectionHeader = ({children, learnMoreLink, learnMoreLabel}) => {
+    return (
+        <div className="text-center"
+             style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "1rem"
+             }}
+        >
+            {children}
+            <div className={"mt-5"}>
+                <ActionButtonGroup learnMoreAlt={learnMoreLabel} learnMoreLink={learnMoreLink}/>
+            </div>
+        </div>
+    )
+}
+
+export const Section = ({children}) => {
+    return (
+        <div style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "3rem",
+            paddingBottom: "3rem"
+        }}>
+            {children}
+        </div>
+    )
 }
 
 <div className={"home-content"}>
-  <div className="content-container">
-    <NewHero />
-        <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden">
-      </div>
-    <PageContent />
+    <div className="content-container">
+        <NewHero/>
+        <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden"></div>
+        <PageContent>
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Watch how Unbody works!
+                    </SectionTitle>
+                    <SectionDescription>
+                        Choose your AI, connect your data, and build with ease.
+                    </SectionDescription>
+                </SectionHeader>
+                <Video/>
+            </Section>
 
-  </div>
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Your data, your AI choice.
+                    </SectionTitle>
+                    <SectionDescription>
+                        We support a wide range of AI models, from the most popular to the most niche. So you are not
+                        dependent on a single provider such as OpenAI or GPT-3.
+                    </SectionDescription>
+                </SectionHeader>
+                <Image src={"/images/homepage/modular.png"}
+                       width={3248}
+                       height={2112}
+                       alt={"Modular AI"}
+                       className={"lazy"}
+                />
+            </Section>
+
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        Your data, from anywhere in any formats.
+                    </SectionTitle>
+                    <SectionDescription>
+                        Your private data should live where it is, and we make sure it stays that way. We have a wide range of connectors from Google Drive to Micrsoft Sharepoint, from Slack to Discord or even your local file system. Same time we support a wide range of data formats, from text to audio, from PDFs to videos.
+                    </SectionDescription>
+                </SectionHeader>
+                <Image src={"/images/homepage/integrations.png"}
+                       width={3248}
+                       height={2112}
+                       alt={"Unbody integrations"}
+                       className={"lazy"}
+                />
+            </Section>
+
+            <Section>
+                <SectionHeader learnMoreLink={"/docs"}>
+                    <SectionTitle>
+                        One API endpoint, one line of code, endless ideas.
+                    </SectionTitle>
+                    <SectionDescription>
+                        A.I. is complex, but using it shouldn't be. That's why we made it as simple as possible. With Unbody, a generative search or a making a private chatbot is as simple as a single line of code. We offer the AI functionalities over a graphQL API or even easier with our SDKs.
+                    </SectionDescription>
+                </SectionHeader>
+                <div className={"w-fit lg:max-w-3xl overflow-hidden"}
+                     style={{
+                         width: "100%",
+                     }}
+                >
+                    <Tabs items={['JavaScript', 'GraphQL']}>
+                        <Tabs.Tab>
+                            ```javascript
+                            unbody.get.googleDocs
+                                      .search
+                                      .about("Financial reports")
+                                      .generate("create a summary of all these docs", ["text", "title"])
+                                      .exec();
+
+                            ```
+                        </Tabs.Tab>
+                        <Tabs.Tab>
+                            ```graphql
+                            query{
+                                Get{
+                                    GoogleDoc(
+                                        nearText:{
+                                            concepts: "Financial reports"
+                                        }
+                                    ){
+                                        _additional{
+                                            generate(
+                                                groupedResult:{
+                                                    properties: ["text", "title"]
+                                                    task: "Create a summary of all these docs"
+                                                }
+                                            ){
+                                                groupedResult
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            ```
+                        </Tabs.Tab>
+                    </Tabs>
+                    <Tabs items={['JavaScript', 'GraphQL']}>
+                        <Tabs.Tab>
+                            ```javascript
+                            unbody.get.subtitleEntry
+                                      .ask("Wht is our main strategy for Feb2023?", ["text"])
+                                      .exec();
+
+                            ```
+                        </Tabs.Tab>
+                        <Tabs.Tab>
+                            ```graphql
+                            query{
+                                Get{
+                                    SubtitleEntry(
+                                        ask: {
+                                            question: "Wht is our main strategy for Feb2023?",
+                                            properties: ["text"]
+                                        }
+                                    ){
+                                        _additional{
+                                            answer{
+                                                result
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                            ```
+                        </Tabs.Tab>
+                    </Tabs>
+                </div>
+
+            </Section>
+
+        </PageContent>
+    </div>
 </div>
