@@ -13,9 +13,11 @@ const Footer = () => {
                     <small>hello@unbody.io</small>
                 </div>
                 <div className="col-3">
-                    <span className={`upper ${styles.catTitle}`}>ABOUT US</span>
+                    <span className={`upper ${styles.catTitle}`}>COMPANY</span>
                     <div className={`${styles.catItems}`}>
-                        <Link className="cap" href="/about">About Unbody</Link>
+                        <Link className="cap" href="/about">About</Link>
+                        <Link className="cap" href="/pricing">Pricing</Link>
+                        <Link className="cap" href="/solutions">Solutions</Link>
                         <Link className="cap" href="/xbody">Xbody</Link>
                         <Link className="cap" href="/faq">FAQ</Link>
                         <Link className="cap" href="/terms">Terms</Link>
@@ -23,15 +25,18 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="col-3">
-                    <span className={`upper ${styles.catTitle}`}>GET IN TOUCH</span>
+                    <span className={`upper ${styles.catTitle}`}>CONTACT</span>
                     <div className={styles.catItems}>
                         <a href="https://www.linkedin.com/company/unbody" target="_blank" className="cap">LinkedIn</a>
-                        <a href="https://twitter.com/unbody_io" target="_blank" className="cap">Twitter</a>
+                        <a href="https://twitter.com/unbody_io" target="_blank" className="cap">X</a>
                         <a href="https://github.com/unbody-io" target="_blank" className="cap">Github</a>
+                        <a href={"https://www.youtube.com/@Unbody"} target={"_blank"} className={"cap"}>Youtube</a>
+                        —
+                        <a href={"mailto:sales@unbody.io"}>Sales</a>
                     </div>
                 </div>
                 <div className="col-3">
-                    <span className={`upper ${styles.catTitle}`}>DOCS &amp; HELP</span>
+                    <span className={`upper ${styles.catTitle}`}>Resources</span>
                     <div className={styles.catItems}>
                         <Link className="cap" href="/docs">Documentation</Link>
                         <Link className="cap" href="/blog">Blog</Link>
