@@ -40,6 +40,7 @@ export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
                         video_id: videoFile?.assetId,
                         video_title: "Unbody intro demo",
                     }}
+                    placeholder={videoFile?.animatedImageUrl?.gif}
                     streamType="on-demand"
                     controls
                     poster={videoFile?.animatedImageUrl.gif ?? ""}
