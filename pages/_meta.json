@@ -66,10 +66,7 @@
   },
   "blog": {
     "title": "Blog",
-    "type": "page",
-    "theme": {
-      "layout": "full"
-    }
+    "type": "page"
   },
   "404": {
     "title": "404",

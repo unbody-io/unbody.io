@@ -1,47 +1,59 @@
----
-title: "Solutions For Businesses"
----
-
-import Image from "next/image";
+import {useTheme} from "next-themes";import Image from "next/image";
 import {LinkButton} from "../containers/ActionButtonGroup";
 import Link from "next/link";
 import {Grid, GridItem} from "../components/Grid/grid";
 
 
-export const Card = ({title, description, icon}) => (
-    <GridItem
-        className="rounded-lg bg-zinc-900 p-6 shadow-2xl shadow-blue-500/20"
-        style={{
-            height: "400px",
-        }}
-    >
-        <Image src={icon}
-               alt={title}
-               width={698}
-               height={1360}
-               className={"mx-auto mb-8"}
-               style={{
-                   maxWidth: "50px",
-                   mixBlendMode: "color-dodge",
-               }}
-        />
-        <div className="text-center text-xl font-semibold mb-6 mt-0 pt-0"
+export const Card = ({title, description, icon}) => {
+    const {theme} = useTheme();
+    const isDark = theme === "dark";
+    return (
+        <GridItem
+            className={`rounded-lg bg-zinc-${isDark ? "900" : "900"} p-6 shadow-2xl shadow-blue-500/20`}
+            style={{
+                height: "400px"
+            }}
         >
-            {title}
+            <Image src={icon}
+                   alt={title}
+                   width={698}
+                   height={1360}
+                   className={"mx-auto mb-8"}
+                   style={{
+                       maxWidth: "50px",
+                       mixBlendMode: isDark ? "color-dodge" : "color-dodge",
+                   }}
+            />
+            <div className="text-center text-xl font-semibold mb-6 mt-0 pt-0 text-gray-100"
+            >
+                {title}
+            </div>
+            <p className="text-center text-base text-gray-300">
+                {description}
+            </p>
+        </GridItem>
+    )
+}
+
+
+export const Header = () => {
+    const {theme} = useTheme();
+    const isDark = theme === "dark";
+    return (
+        <div className={"mb-16"}>
+            <h1 className={`p-4 lg:p-12 text-4xl font-bold text-center ${isDark ? "text-white" : "text-black"}`}>
+                Unbody delivers three key benefits to businesses
+            </h1>
+            <div>
+                Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease. Opt for OpenAI GPTs, Google Gemini, or open-source models. Whether your data is in presentation files on Google Drive, videos on Slack, or PDFs stored locally, Unbody integrates it all. Simplify AI development to craft chatbots, search tools, and personalized experiences, accessible to all.
+            </div>
         </div>
-        <p className="text-center text-base text-gray-400">
-            {description}
-        </p>
-    </GridItem>
-)
+    )
+}
 
 
 <div className={"content-container min-h-screen"}>
-    <div>
-        <h1 className="p-4 lg:p-16 text-4xl font-bold text-center text-neutral-900 dark:text-neutral-100 mb-4">
-            Unbody delivers three key benefits to businesses
-        </h1>
-    </div>
+    <Header/>
 
     <Grid>
         <Card title={"Cost and Time Efficiency"}

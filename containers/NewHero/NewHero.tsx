@@ -10,10 +10,9 @@ import {
     providersInDeck,
 } from "../../lib/hero.config";
 import {mapRange} from "../../lib/utils";
-import ActionButtonGroup, {
-    LinkButton,
-} from "../ActionButtonGroup/ActionButtonGroup";
+import ActionButtonGroup from "../ActionButtonGroup/ActionButtonGroup";
 import {SITE_DESCRIPTION} from "../../lib/app.config";
+import {useTheme} from "next-themes";
 
 interface Props {
 }
@@ -179,7 +178,7 @@ const HeroText = () => {
 const Scene = () => {
     const activeFrame = useActiveFrame();
     return (
-        <div className={styles.scene}>
+        <div className={`${styles.scene}`}>
             <HeroText/>
             <ProviderDeck activeFrame={activeFrame}/>
             <div className="object-center mt-[140px] w-20 h-20 hidden xl:block">
@@ -191,8 +190,10 @@ const Scene = () => {
 };
 
 const NewHero: React.FC<Props> = (props) => {
+    const {theme}  = useTheme();
+    const mode = theme === "dark" ? "dark" : "light";
     return (
-        <div className={styles.hero}>
+        <div className={`${styles.hero} ${styles[mode]}`}>
             <div className={styles.heroShadesLayer}>
                 <div className={styles.gradH}/>
                 <div className={styles.gradBt}/>

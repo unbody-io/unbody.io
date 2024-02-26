@@ -56,7 +56,6 @@ const logo = (
 
           @media (max-width: 768px) {
             .logo-content span {
-              
             }
           }
         `}</style>
@@ -66,11 +65,7 @@ const logo = (
 const config: DocsThemeConfig = {
     logo: logo,
     nextThemes: {
-        defaultTheme: "dark",
-        forcedTheme: "dark",
-    },
-    themeSwitch: {
-        component: null,
+        defaultTheme: "light",
     },
     navbar:{
         extraContent: () => (

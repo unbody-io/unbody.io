@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {subscriptionPlans} from "../../lib/pricing.configs";
+import {useTheme} from "next-themes";
 
 
 const FeatureItem = ({feature, showDetails}) => {
@@ -39,10 +40,16 @@ const FeatureItem = ({feature, showDetails}) => {
 }
 
 const PlanCard = ({plan, showDetails}) => {
+    const {theme} = useTheme();
+    const isDark = theme === 'dark';
+
+    const cardBg = isDark ? (plan.isEnterprise ? 'bg-gray-50' : 'bg-black') : (plan.isEnterprise ? 'bg-black' : 'bg-white');
+    const cardText = isDark ? (plan.isEnterprise ? 'text-gray-900' : 'text-gray-300') : (plan.isEnterprise ? 'text-gray-100' : 'text-gray-900');
+    const ringColor = isDark ? 'ring-gray-50' : 'ring-gray-900';
 
     return (
         <div
-            className={`ring-1 ring-indigo-50 ring-opacity-10 rounded-3xl p-6 transition-all duration-300 text-sm ${plan.isEnterprise ? 'bg-gray-50 text-gray-900' : 'bg-black text-gray-300'}`}
+            className={`ring-1 ${ringColor} ring-opacity-10 rounded-3xl p-6 transition-all duration-300 text-sm ${cardBg} ${cardText}`}
             style={{
                 maxWidth: '350px',
             }}
@@ -102,6 +109,7 @@ const PlanCard = ({plan, showDetails}) => {
 
 export const PricingComponent = () => {
     const [showDetails, setShowDetails] = useState(false);
+
     return (
         <div className="mx-auto max-w-fit pt-12 ">
             <div

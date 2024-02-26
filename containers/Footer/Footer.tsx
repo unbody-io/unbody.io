@@ -32,7 +32,7 @@ const Footer = () => {
                         <a href="https://github.com/unbody-io" target="_blank" className="cap">Github</a>
                         <a href={"https://www.youtube.com/@Unbody"} target={"_blank"} className={"cap"}>Youtube</a>
                         —
-                        <a href={"mailto:sales@unbody.io"}>Sales</a>
+                        <a href={"mailto:hello@unbody.io"}>Sales</a>
                     </div>
                 </div>
                 <div className="col-3">
