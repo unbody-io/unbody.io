@@ -3,7 +3,7 @@ import {DocsThemeConfig, useConfig} from "nextra-theme-docs";
 import Footer from "./containers/Footer/Footer";
 import {useRouter} from "next/router";
 import {LinkButton} from "./containers/ActionButtonGroup";
-import {SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL} from "./lib/app.config";
+import {SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE, SITE_URL} from "./lib/app.config";
 
 const logo = (
     <div className={"logo-container"}>
@@ -160,20 +160,22 @@ const config: DocsThemeConfig = {
                 <meta name="msapplication-TileColor" content="#000"/>
                 <meta name="apple-mobile-web-app-title" content="Unbody"/>
                 <meta name="description" content={ogDescription}/>
+                <meta name={"keywords"} content={SITE_KEYWORDS.join(",")}/>
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:site" content="@unbody_io"/>
                 <meta name="twitter:image" content={imageUrl}/>
                 <meta property="og:title" content={ogTitle}/>
                 <meta property="og:description" content={ogDescription}/>
+                <meta property={"og:keywords"} content={SITE_KEYWORDS.join(",")}/>
                 <meta property="og:type" content="website"/>
-                <meta property="og:site_name" content="Unbody"/>
+                <meta property="og:site_name" content={SITE_NAME}/>
                 <meta property="og:url" content={`${SITE_URL}${router.pathname}`}/>
                 <meta property="og:locale" content="en_US"/>
-
                 <meta property="og:image" content={imageUrl}/>
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:image:type" content="image/png" />
+
 
             </>
         );
