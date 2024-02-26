@@ -1,5 +1,6 @@
 import {ImageResponse} from "@vercel/og";
 import {NextRequest} from "next/server";
+import {SITE_TITLE} from "../../lib/app.config";
 
 export const runtime = 'edge'
 
@@ -19,7 +20,7 @@ export default async function handler(req: NextRequest) {
         }
 
         const hasTitle = searchParams.has("title");
-        const title = hasTitle ? searchParams.get("title") : "My default title";
+        const title = hasTitle ? searchParams.get("title") : SITE_TITLE;
 
 
         const hasMp = searchParams.has("mp");
@@ -38,8 +39,6 @@ export default async function handler(req: NextRequest) {
         searchParams.has('cover') ?
             `${protocol}//${host}/_next/image?url=${encodeURIComponent(searchParams.get('cover'))}&w=1200&q=75`
             : null;
-
-        console.log(searchParams);
 
         return new ImageResponse(
             (
@@ -96,7 +95,6 @@ export default async function handler(req: NextRequest) {
                             style={{
                                 fontSize: "24px",
                                 fontFamily: "DMSans_Light",
-                                textTransform: "capitalize",
                                 color: "white",
                                 padding: "0 0 40px 40px",
                             }}

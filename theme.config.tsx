@@ -3,6 +3,7 @@ import {DocsThemeConfig, useConfig} from "nextra-theme-docs";
 import Footer from "./containers/Footer/Footer";
 import {useRouter} from "next/router";
 import {LinkButton} from "./containers/ActionButtonGroup";
+import {SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL} from "./lib/app.config";
 
 const logo = (
     <div className={"logo-container"}>
@@ -92,45 +93,33 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
-    useNextSeoProps() {
-        return {
-            titleTemplate: '%s - Unbody',
-        };
-    },
     head: () => {
         const router = useRouter();
         const {frontMatter, title} = useConfig();
+        const ogImageTitle = frontMatter.title || SITE_TITLE;
+        const ogTitle = `${frontMatter.title || SITE_TITLE} - ${SITE_NAME}`;
+        const ogDescription = frontMatter.outline || SITE_DESCRIPTION;
 
-
-        const ogImageTitle = title && title !== "Unbody" ? `${title}` : "Unbody";
-
-        const BASE_PATH = "unbody.io";
         let myPath: string = router.pathname;
         let mptext;
+
         if (myPath == "/") {
             mptext = "";
         } else {
             const desctext = myPath.split("/");
             mptext = desctext[1];
         }
-        const ogTitle =
-
-            title && title !== "Unbody" ? `${title}` : "Bring A.I. to your data, in 1 line of code";
-
-
-        const ogDescription =
-            frontMatter.outline ||
-            "Unbody is an invisible AI layer, a headless API that brings advance AI functionalities to your private data —from anywhere and in any format — via one single api touch point.";
 
         const imageUrl =
             `${process.env.NEXT_PUBLIC_BASE_URL}/api/og?` +
             `title=${encodeURIComponent(ogImageTitle)}` +
-            `&mp=${encodeURIComponent(`${BASE_PATH}/${mptext}`)}` +
+            `&mp=${encodeURIComponent(`/${mptext}`)}` +
             `&cover=${encodeURIComponent(frontMatter.image || frontMatter.cover)}`
 
         return (
             <>
                 <meta charSet="UTF-8" key="charset"/>
+                <title>{ogTitle}</title>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 {/*@ts-ignore*/}
                 <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -178,7 +167,7 @@ const config: DocsThemeConfig = {
                 <meta property="og:description" content={ogDescription}/>
                 <meta property="og:type" content="website"/>
                 <meta property="og:site_name" content="Unbody"/>
-                <meta property="og:url" content={`https://${BASE_PATH}${router.pathname}`}/>
+                <meta property="og:url" content={`${SITE_URL}${router.pathname}`}/>
                 <meta property="og:locale" content="en_US"/>
 
                 <meta property="og:image" content={imageUrl}/>

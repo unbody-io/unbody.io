@@ -13,6 +13,7 @@ import {mapRange} from "../../lib/utils";
 import ActionButtonGroup, {
     LinkButton,
 } from "../ActionButtonGroup/ActionButtonGroup";
+import {SITE_DESCRIPTION} from "../../lib/app.config";
 
 interface Props {
 }
@@ -163,7 +164,7 @@ const HeroText = () => {
                 One API.
             </div>
             <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
-                Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease.
+                {SITE_DESCRIPTION}
             </p>
             <div className="hidden md:block">
                 <ActionButtonGroup/>
