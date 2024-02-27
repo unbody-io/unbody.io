@@ -3,10 +3,23 @@ title: "Getting Started"
 ---
 
 import { Steps, Tabs } from "nextra/components";
+import {VideoPlayer} from "../../components/VideoPlayer/Player";
 
 # Getting Started
 
 Hello folks, we welcome you to Unbody. Unbody helps you to transform content from different providers to accessible knowledge using a simple existing interface. You can aggregate and synchronize content from a wide variety of sources such as a Google Drive document, a Slack channel, a folder, or a file on your laptop.
+
+<VideoPlayer videoFile={{
+    "animatedImageUrl": {
+    "gif": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.gif",
+    "webp": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.webp"
+    },
+    "assetId": "YE8OpP2leIhRxjGOKzpvJH02TrG602Wm8hLkZyKv5MlMk",
+    "height": 2160,
+    "playbackId": "aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM",
+    "remoteId": "1X03E8Y1zbPml1hx09Ee96JcfwrpLq9HI",
+    "width": 3840
+}}/>
 
 Here are simple steps to get you started to transform your content into an accessible knowledge base.
 
@@ -26,11 +39,11 @@ You can add a source by following the steps given below.
 
 <Steps>
 ### Step 1
- 
+
 **Select a provider:** Choose the platform where you have stored your content. For example, if your content is stored in Google Drive, choose it as the content provider. You can visit [Google Drive](/docs/google-drive) and [Google Calendar](/docs/google-calendar) for more information.
- 
+
 ### Step 2
- 
+
  **Authorize Unbody:** You must allow Unbody to access your content from the selected provider. Please read more about this on our [privacy page](https://unbody.io/privacy).
 
 ### Step 3

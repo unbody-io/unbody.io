@@ -40,6 +40,7 @@ export const getStaticProps = async () => {
 
 export const Video = () => {
     const {introVideo} = useSSG();
+    console.log(JSON.stringify(introVideo, null, 2))
     return (introVideo? <VideoPlayer videoFile={introVideo}/>: null)
 }
 
