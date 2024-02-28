@@ -158,7 +158,7 @@ const HeroText = () => {
                         />
                     </span>
                 </span>
-                <span className={styles.gradientText}>Custom</span> Data,
+                <span className={styles.gradientText}>Private</span> Data,
                 <br/>
                 One API.
             </div>
