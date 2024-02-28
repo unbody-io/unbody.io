@@ -88,9 +88,12 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
-    useNextSeoProps: (...p) => {
+    useNextSeoProps: () => {
+        const {frontMatter} = useConfig();
+        const ogTitle = `${frontMatter.title || SITE_TITLE} - ${SITE_NAME}`;
+
         return {
-            titleTemplate: `%s - Unbody`,
+            titleTemplate: ogTitle
         }
     },
     head: () => {
@@ -119,7 +122,9 @@ const config: DocsThemeConfig = {
         return (
             <>
                 <meta charSet="UTF-8" key="charset"/>
-                <title>{ogTitle}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta httpEquiv="Content-Language" content="en" />
+
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 {/*@ts-ignore*/}
                 <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -164,7 +169,9 @@ const config: DocsThemeConfig = {
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:site" content="@unbody_io"/>
                 <meta name="twitter:image" content={imageUrl}/>
+
                 <meta property="og:title" content={ogTitle}/>
+
                 <meta property="og:description" content={ogDescription}/>
                 <meta property={"og:keywords"} content={SITE_KEYWORDS.join(",")}/>
                 <meta property="og:type" content="website"/>
