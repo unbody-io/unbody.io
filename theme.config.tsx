@@ -88,6 +88,11 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
+    useNextSeoProps: (...p) => {
+        return {
+            titleTemplate: `%s - Unbody`,
+        }
+    },
     head: () => {
         const router = useRouter();
         const {frontMatter, title} = useConfig();
