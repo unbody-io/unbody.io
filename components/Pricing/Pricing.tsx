@@ -79,10 +79,20 @@ const PlanCard = ({plan, showDetails}) => {
                 {
                     plan.isEnterprise ?
                         <span>Custom</span> :
-                        <span>
-                            {plan.priceMonthly}
-                            <span className="text-xs font-normal text-gray-400">/month</span>
-                        </span>
+                        <>
+                            <div>
+                            {
+                                plan.discount &&
+                                <span className="text-gray-300 line-through text-sm">${plan.discount.price}</span>
+                            }
+                                <span>{plan.priceMonthly}</span>
+                                <span className="text-xs font-normal text-gray-400">/month</span>
+                            </div>
+                            {
+                                plan.discount&&
+                                <span className={"text-xs font-light m-0 p-0 absolute text-gradient_color1"}>{plan.discount.note}</span>
+                            }
+                        </>
                 }
             </div>
             <button

@@ -44,6 +44,10 @@ export const subscriptionPlans = [
         "name": "Standard",
         "priceMonthly": "$25",
         "priceAnnually": "$24",
+        "discount": {
+            "price": 50,
+            "note": "50% early bird discount for the first 6 months.",
+        },
         "description": "Start building your next big thing. Perfect for small teams and startups.",
         "ctaLabel": "Buy Plan",
         "ctaAction": "https://app.unbody.io/settings/subscription",
