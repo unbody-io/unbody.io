@@ -16,6 +16,7 @@ export const getStaticProps = async () => {
     const {data: {payload: introVideo}} = await u.get.videoFile
         .where({
             remoteId: "1X03E8Y1zbPml1hx09Ee96JcfwrpLq9HI"
+
         })
         .exec()
         .catch(e => {
