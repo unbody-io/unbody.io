@@ -1,10 +1,7 @@
 import { Tabs, Callout } from "nextra/components";
 
 # Google Drive
-
-Google Drive, when paired with the indexing and query capabilities of Unbody, becomes an even more robust tool for content management.
-
-This guide offers strategic insights into setting up Google Drive for optimal interaction with Unbody, It also navigates through common challenges and recognizes API limitations.
+This guide offers strategic insights into setting up Google Drive for optimal interaction with Unbody.
 
 ### **Entrypoint** — Selecting a Folder
 
@@ -43,13 +40,16 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
   {
     query {
       Get {
-        GoogleDrive(
-          where: {
-            path: "2023_Projects_Drafts",
-            operator: Like,
-            valueString: "*"
-          }
-        ) {
+        GoogleDocs(
+            nearText: {
+              concept: "Javascript & philosophy",
+            }
+            where: {
+                path: "2023_Projects_Drafts",
+                operator: Like,
+                valueString: "*"
+            }
+      ) {
           ...
         }
       }
@@ -58,13 +58,21 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
   ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+
+    await unbody.get
+                .googleDocs
+                .search
+                .about("Javascript & philosophy")
+                .where(({Like}) => {
+                    return {path: Like("2023_Projects_Drafts")}
+                })
+                .execute();
 ```
 </Tabs.Tab>
-</Tabs> 
-  
-  
+</Tabs>
+
+
 - **Hierarchical Folder Organization**
   If you have a more complex collection of files, a nested structure can provide better organization. Here's an example using the published, draft, and highlights context.
 
@@ -82,33 +90,6 @@ To maximize Google Drive's effectiveness you can follow the practices given belo
 ```
 
 This setup allows you to manage files according to their status and the year. To select all highlights from the year 2023, you can form your query like given below.
-
-<Tabs items={['GraphQL', 'TypeScript']}>
-<Tabs.Tab>
-```graphql copy
-{
-  query {
-    Get {
-      GoogleDrive(
-        where: {
-          path: "Projects/2023/Highlights",
-          operator: Like,
-          valueString: "*"
-        }
-      ) {
-        ...
-      }
-    }
-  }
-}
-```
-</Tabs.Tab>
-<Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
-```
-</Tabs.Tab>
-</Tabs>
 
 - **Descriptive and Consistent Naming Conventions**
   You should adopt a clear naming convention for files and folders, excluding spaces, and use underscores or hyphens for separation. For instance,
