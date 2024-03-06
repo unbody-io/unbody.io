@@ -86,8 +86,8 @@ export const subscriptionPlans = [
                 category: "APIs",
                 items: [
                     {"feature": "Image API", "note": "Unlimited"},
-                    {"feature": "Video API", "note": "20 min, + $0.2/min"},
-                    {"feature": "Audio API", "note": "60 min, + $0.1/min"}
+                    {"feature": "Video API", "note": "20 min, + $0.01/min"},
+                    {"feature": "Audio API", "note": "60 min, + $0.001/min"}
                 ]
             },
             {
