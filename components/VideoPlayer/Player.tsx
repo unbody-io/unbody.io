@@ -13,6 +13,8 @@ export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
         }
     }
 
+    console.log(videoFile)
+
     return (
         <div className={`${styles.player} ${className}`} {...rest}>
             <div className={`${styles.playIcon} ${playing? styles.hide:""}`}
@@ -32,21 +34,24 @@ export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
                 filter: `blur(${playing ? 0 : 3}px)`,
                 transition: "filter 0.5s",
             }}>
-                <MuxVideo
-                    style={{height: '100%', maxWidth: '100%'}}
-                    playbackId={videoFile?.playbackId}
-                    metadata={{
-                        video_id: videoFile?.assetId,
-                        video_title: "Unbody intro demo",
-                    }}
-                    placeholder={videoFile?.animatedImageUrl?.gif}
-                    streamType="on-demand"
-                    controls
-                    poster={videoFile?.animatedImageUrl.gif ?? ""}
-                    onPlay={() => setPlaying(true)}
-                    onPause={() => setPlaying(false)}
-                    ref={ref}
-                />
+                {
+                    videoFile &&
+                    <MuxVideo
+                        style={{height: '100%', maxWidth: '100%'}}
+                        playbackId={videoFile?.playbackId}
+                        metadata={{
+                            video_id: videoFile?.assetId,
+                            video_title: "Unbody intro demo",
+                        }}
+                        placeholder={videoFile?.animatedImageUrl?.gif}
+                        streamType="on-demand"
+                        controls
+                        poster={videoFile?.animatedImageUrl.gif ?? ""}
+                        onPlay={() => setPlaying(true)}
+                        onPause={() => setPlaying(false)}
+                        ref={ref}
+                    />
+                }
             </div>
         </div>
     )
