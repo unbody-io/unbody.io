@@ -13,8 +13,6 @@ export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
         }
     }
 
-    console.log(videoFile)
-
     return (
         <div className={`${styles.player} ${className}`} {...rest}>
             <div className={`${styles.playIcon} ${playing? styles.hide:""}`}
@@ -50,6 +48,10 @@ export const VideoPlayer = ({videoFile, className = "", ...rest}) => {
                         onPlay={() => setPlaying(true)}
                         onPause={() => setPlaying(false)}
                         ref={ref}
+                        onPointerEnter={() => {}}
+                        onPointerCancelCapture={() => {}}
+                        onPointerLeaveCapture={() => {}}
+                        onPointerEnterCapture={() => {}}
                     />
                 }
             </div>

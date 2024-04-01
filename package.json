@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
-    "@mux/mux-video-react": "^0.8.3",
+    "@mux/mux-video-react": "0.8.3",
     "@next/env": "^13.4.5",
     "@uidotdev/usehooks": "^2.4.1",
     "@unbody-io/ts-client": "^0.0.5",
