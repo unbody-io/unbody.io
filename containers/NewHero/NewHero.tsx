@@ -181,7 +181,7 @@ const Scene = () => {
         <div className={`${styles.scene}`}>
             <HeroText/>
             <ProviderDeck activeFrame={activeFrame}/>
-            <div className="object-center mt-[140px] w-20 h-20 hidden xl:block">
+            <div className="object-center mt-[140px] w-20 h-20 hidden md:block">
                 <Image src="/Line.png" height={277} width={124} alt="line"/>
             </div>
             <FrameDeck activeFrame={activeFrame}/>
