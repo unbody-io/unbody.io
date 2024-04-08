@@ -16,6 +16,7 @@ const Footer = () => {
                     <span className={`upper ${styles.catTitle}`}>COMPANY</span>
                     <div className={`${styles.catItems}`}>
                         <Link className="cap" href="/about">About</Link>
+                        <Link className="cap" href="/join-us">Join Us</Link>
                         <Link className="cap" href="/pricing">Pricing</Link>
                         <Link className="cap" href="/solutions">Solutions</Link>
                         <Link className="cap" href="/xbody">Xbody</Link>
