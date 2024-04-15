@@ -33,8 +33,8 @@ Here’s how you can turn historical facts into questions for social media, usin
 ```graphql copy
 {
   Get {
-    TextBlock(nearContent: { concepts: ["World history"] }, limit: 2) {
-      content
+    TextBlock(nearText: { concepts: ["World history"] }, limit: 2) {
+      text
       _additional {
         generate(
           singleResult: {
@@ -53,8 +53,18 @@ Here’s how you can turn historical facts into questions for social media, usin
 ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody.get
+          .textBlocks
+          .search
+          .about("World history")
+          .limit(2)
+          .select("text")
+          .generate
+          .fromSingle(`
+            Transform this historical fact into a captivating tweet: {content}.
+          `)
+          .exec()
 ```
 </Tabs.Tab>
 </Tabs>
@@ -74,16 +84,15 @@ To create a collective overview of Australian wildlife based on `TextBlock` entr
 ```graphql copy
 {
   Get {
-    TextBlock(nearContent: { concepts: ["Australian wildlife"] }, limit: 3) {
-      content
-      significance
+    TextBlock(nearText: { concepts: ["Australian wildlife"] }, limit: 3) {
+      text
       _additional {
         generate(
           groupedResult: {
             task: """
             Summarize the common traits of these Australian animals.
             """
-            properties: ["content"]
+            properties: ["text"]
           }
         ) {
           groupedResult
@@ -96,8 +105,19 @@ To create a collective overview of Australian wildlife based on `TextBlock` entr
 ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody.get
+          .textBlocks
+          .search
+          .about("Australian wildlife")
+          .limit(3)
+          .select("text")
+          .generate
+          .fromMany(
+            "Summarize the common traits of these Australian animals.",
+            ["text"]
+          )
+          .exec()
 ```
 </Tabs.Tab>
 </Tabs>
@@ -117,16 +137,15 @@ To spotlight key features of innovations, you can form your query like the examp
 ```graphql copy
 {
   Get {
-    TextBlock(nearContent: { concepts: ["Innovations"] }, limit: 3) {
-      content
-      significance
+    TextBlock(nearText: { concepts: ["Innovations"] }, limit: 3) {
+      text
       _additional {
         generate(
           groupedResult: {
             task: """
             Highlight the most impactful aspects of these innovations.
             """
-            properties: ["content"]
+            properties: ["text"]
           }
         ) {
           groupedResult
@@ -139,8 +158,19 @@ To spotlight key features of innovations, you can form your query like the examp
 ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody.get
+          .textBlocks
+          .search
+          .about("Innovations")
+          .limit(3)
+          .select("text")
+          .generate
+          .fromMany(
+            "Highlight the most impactful aspects of these innovations.",
+            ["text"]
+          )
+          .exec()
 ```
 </Tabs.Tab>
 </Tabs>

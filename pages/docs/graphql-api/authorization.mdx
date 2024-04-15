@@ -4,6 +4,8 @@ import { Tabs, Callout } from "nextra/components";
 
 Unbody makes it easy for you to handle your content through APIs but we also care for your security. Therefore, to securely interact with Unbody's GraphQL API, you need to include your project ID and API key in the request headers.
 
+You can generate your API key from the Unbody Dashboard in `project settings/ developer settings`. Once you have your API key, you can use it to authenticate your requests to the Unbody API. Additionally, you need to specify the project ID to which you want to send the request.
+
 You can do so using the `Authorization` and `X-Project-Id` headers, respectively. The examples given below demonstrate how to set these headers in different environments.
 
 <Tabs items={['Curl', 'Unbody TypeScript Client', 'JavaScript']}>

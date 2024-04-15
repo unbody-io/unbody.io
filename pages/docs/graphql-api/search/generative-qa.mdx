@@ -58,8 +58,14 @@ To effectively use the Generative Q&A feature, structure your GraphQL queries wi
   ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody
+        .get
+        .googleDocs
+        .ask("Who directed '2001: A Space Odyssey'?", ["summary"])
+        .select("title")
+        .limit(1)
+        .exec()
 ```
 </Tabs.Tab>
 </Tabs>

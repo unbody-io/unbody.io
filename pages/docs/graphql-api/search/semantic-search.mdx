@@ -8,8 +8,8 @@ Semantic search is like having a smart assistant that really understands the mea
 
 Unbody allows you to perform a semantic search using three main operators:
 
-- `nearText`
-- `nearObject`
+- `nearText` or `search.about() in SDKs`
+- `nearObject` or `search.similar() in SDKs`
 - `nearVector`.
 
 Let’s break down how each of them works using simple examples and explanations.
@@ -25,7 +25,7 @@ In this space, “cat” might be close to “kitten” but far from “airplane
 
 ## nearText
 
-**Believe me, `nearText` is Like asking a friend who knows your language.**
+Believe me, `nearText` (or `.search.about() in SDKs`) is Like asking a friend who knows your language.
 
 Has it ever happened that you wanted something but could not find exact words for it? So you describe the object you’re trying to find to your friend in your own language and your friend with his not-so-magical powers brings the ‘thing’ to you. In simple words, `nearText` is that friend of yours.
 
@@ -53,8 +53,13 @@ When you use **`nearText`**, Unbody converts your query into a point in the vect
   ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody.get
+          .GoogleDocs
+          .search
+          .about("making websites faster")
+          .select("title", "content")
+          .exec();
 ```
 </Tabs.Tab>
 </Tabs>
@@ -84,8 +89,13 @@ It is not always that you don’t know the exact reference to what you’re tryi
   ```
 </Tabs.Tab>
 <Tabs.Tab>
-```tsx
-// TypeScript code is coming soon...
+```ts
+    unbody.get
+          .GoogleDocs
+          .search
+          .similar("your-favorite-article-id")
+          .select("title", "content")
+          .exec();
 ```
 </Tabs.Tab>
 </Tabs>
