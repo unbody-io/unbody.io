@@ -2,7 +2,7 @@
 title: "Getting Started"
 ---
 
-import { Steps, Tabs } from "nextra/components";
+import {Steps, Tabs, Callout} from "nextra/components";
 import {VideoPlayer} from "../../components/VideoPlayer/Player";
 
 # Getting Started
@@ -11,8 +11,8 @@ Hello folks, we welcome you to Unbody. Unbody helps you to transform content fro
 
 <VideoPlayer videoFile={{
     "animatedImageUrl": {
-    "gif": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.gif",
-    "webp": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.webp"
+        "gif": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.gif",
+        "webp": "https://image.mux.com/aeDS4AYPLcEC00g5ruDEViDAKlWaJwWcfDtsMIZZhyBM/animated.webp"
     },
     "assetId": "YE8OpP2leIhRxjGOKzpvJH02TrG602Wm8hLkZyKv5MlMk",
     "height": 2160,
@@ -21,51 +21,69 @@ Hello folks, we welcome you to Unbody. Unbody helps you to transform content fro
     "width": 3840
 }}/>
 
-Here are simple steps to get you started to transform your content into an accessible knowledge base.
-
-## 1. Access Your Dashboard
-
-You can access your [Unbody Dashboard here](https://app.unbody.io/). You need to log in to get started.
-
-## 2. Create a Project
-
-Your project on Unbody is the workspace that allows you to maintain and manage your content sources. You can create your first project directly from the dashboard.
-
-## 3. Connect Your Content Sources
-
-Once you have set up your project, you can connect your content sources. Unbody currently supports Google Drive and Google Calendar. We are working on more integrations, which shall be available to you soon.
-
-You can add a source by following the steps given below.
+Here are simple steps to get you started to use Unbody.
 
 <Steps>
-### Step 1
+    ### Start with the dashboard
 
-**Select a provider:** Choose the platform where you have stored your content. For example, if your content is stored in Google Drive, choose it as the content provider. You can visit [Google Drive](/docs/google-drive) and [Google Calendar](/docs/google-calendar) for more information.
+    You can access your [Unbody Dashboard here](https://app.unbody.io/). You need to sing-in/sing-up to get started.
 
-### Step 2
+    ### Create a Project
 
- **Authorize Unbody:** You must allow Unbody to access your content from the selected provider. Please read more about this on our [privacy page](https://unbody.io/privacy).
+    Your project on Unbody is the workspace that allows you to maintain and manage your content sources. You can create
+    your first project directly from the dashboard.
+    When you create a project, you will be asked to configure the following:
+    - **Project Name:** Give a name to your project.
+    - **Vectorization Model:** Choose the model that best suits your content. You can read more about this on our
+    [Vectorization Models](/docs/vectorizers/overview) page.
+    - **AI functionalities:** You can enable/disable as well as configure AI engine for different functionalities like
+    generative Q&A, Geneartive Search, etc.
 
-### Step 3
+    ### Connect Your Content Sources
 
-**Set an entry point:** In this step, you need to specify where Unbody should start indexing your content. For example, you can specify a folder or an agenda.
+    Once you have set up your project, you can connect your content sources (e.g; Google Drive or Discord).
+    You can add a source by following the steps given below.
 
+    <Steps>
+        ### Select a provider
+
+        Choose the platform where you have stored your content. For example, if your content is
+        stored in Google Drive, choose it as the content provider. You can visit
+        [providers](/docs/providers/overview) for more information.
+
+        ### Authorize Unbody
+
+        You must allow Unbody to access your content from the selected provider. Please read more
+        about this on our [privacy page](https://unbody.io/privacy).
+
+        ### Set an entry point
+
+        In this step, you need to specify where Unbody should start indexing your content. For
+        example, you can specify a folder or an agenda.
+
+    </Steps>
+
+    ### Initialize Your Content
+
+    Now you can navigate to the source page and click “initialize”. Unbody will index the content from your entry point.
+    Once the process is completed, the dashboard will display the number of records processed.
+    <Callout type="info">
+        Please note that the time taken to index your content depends on the size of your content. You can only start
+        interacting with your content once the indexing process is completed.
+    </Callout>
+
+    ### Next Steps
+    Once the source is initialized, you will see the status of the source as "idle".
+    In order to interact with your content. You have a few options as given below:
 </Steps>
 
-## 4. Initialize Your Content
+### Explore the GraphQL Playground
 
-Now you can navigate to the source page and click “initialize”. Unbody will index the content from your entry point. Once the process is completed, the dashboard will display the number of records processed.
-
-## 5. Explore the GraphQL Playground
-
-Now that your content is initialized successfully, you can directly jump to the [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/v2/testing/graphql-playground/) and get your hands dirty, craft your queries, and watch the magic. We have given some tailored examples for Google Drive content.
-
-- **Basic Query - Fetching Google Doc Details**
+You can directly jump to the GraphQL Playground and get your hands dirty, craft your queries, and watch the magic. You can find the `GraphQL Playground` as middle tab in the top navigation bar on project page.
+We have given some tailored examples for Google Drive content.
 
 With the query given below, you can retrieve the name and text content from a Google Doc.
 
-<Tabs items={['GraphQL', 'TypeScript']}>
-  <Tabs.Tab>
   ```graphql copy
 query {
   Get {
@@ -76,42 +94,49 @@ query {
   }
 }
 ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-```typescript
-// TypeScript code is coming soon...
-```
-</Tabs.Tab>
-</Tabs>
 
+### Use the API directly or with SDKs
+In order to be able to interact with the API directly, you first need to obtain an API key. You can find the API key in the project settings / developer settings. You can use the API key to authenticate your requests. You can read more about this on our [Authorization page](/docs/graphql-api/authorization).
+
+### few examples to get you started
 - **Retrieve Media Blocks**
 
 To access URLs and attributes for ImageBlocks and AudioFiles, you can use the query given below.
 
 <Tabs items={['GraphQL', 'TypeScript']}>
-  <Tabs.Tab>
-  ```graphql copy
-query {
-  Get {
-    ImageBlock {
-      url
-      alt
-      width
-    }
-    AudioFile {
-      url
-      size
-      ext
-    }
-  }
-}
-```
-  </Tabs.Tab>
-  <Tabs.Tab>
-```typescript
-// TypeScript code is coming soon...
-```
-</Tabs.Tab>
+    <Tabs.Tab>
+        ```graphql copy
+            query {
+                Get {
+                    ImageBlock {
+                        url
+                        alt
+                        width
+                    }
+                    AudioFile {
+                        url
+                        size
+                        ext
+                    }
+                }
+            }
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```typescript
+        const images = await unbody
+                                .get
+                                .imageBlocks
+                                .select("alt", "width", "url")
+                                .exec();
+
+        const audios = await unbody
+                                .get
+                                .audioFiles
+                                .select("size", "ext", "url")
+                                .exec();
+        ```
+    </Tabs.Tab>
 </Tabs>
 
 - **Semantic Search**
@@ -119,22 +144,27 @@ query {
 You can perform the search operation using the query given below. For example, the query discovers TextBlocks conceptually related to "fashion".
 
 <Tabs items={['GraphQL', 'TypeScript']}>
-  <Tabs.Tab>
-```graphql copy
-query {
-  Get {
-    TextBlock(nearText: { concepts: ["fashion"] }) {
-      text
-    }
-  }
-}
-```
-  </Tabs.Tab>
-  <Tabs.Tab>
-```typescript
-// TypeScript code is coming soon...
-```
-</Tabs.Tab>
+    <Tabs.Tab>
+        ```graphql copy
+        query {
+            Get {
+                TextBlock(nearText: {concepts: ["fashion"]}) {
+                    text
+                }
+            }
+        }
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```typescript
+        const textBlocks = await unbody
+                                    .get
+                                    .textBlocks
+                                    .search.about("fashion")
+                                    .select("text")
+                                    .exec();
+        ```
+    </Tabs.Tab>
 </Tabs>
 
 - **Advanced Q&A**
@@ -142,28 +172,32 @@ query {
 The query given below helps you extract a specific answer from a Google Doc.
 
 <Tabs items={['GraphQL', 'TypeScript']}>
-  <Tabs.Tab>
-```graphql copy
-query {
-  Get {
-    GoogleDoc(
-      ask: { question: "What is Unbody's core feature?", properties: "text" }
-    ) {
-      _additional {
-        answer {
-          result
+    <Tabs.Tab>
+        ```graphql copy
+        query {
+            Get {
+                GoogleDoc(
+                    ask: {question: "What is Unbody's core feature?", properties: "text"}
+                ) {
+                    _additional {
+                        answer {
+                            result
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-}
-```
-  </Tabs.Tab>
-  <Tabs.Tab>
-```typescript
-// TypeScript code is coming soon...
-```
-</Tabs.Tab>
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```typescript
+        const answer = await unbody
+                                .get
+                                .googleDocs
+                                .ask("What is Unbody's core feature?", "text")
+                                .exec();
+        ```
+    </Tabs.Tab>
 </Tabs>
 
 **Tailoring Your Queries:**
@@ -172,7 +206,6 @@ query {
 
 ## **Next Steps:**
 
-- **Explore [GraphQL Playground](https://studio.apollographql.com/sandbox/explorer/)**
 - **[Integrating with NextJS](/docs/boilerplates/nextjs)**
 - **[Integration with CRA](/docs/boilerplates/cra)**
 - **[Integration with Nuxt](<(/docs/boilerplates/nuxt)>)**

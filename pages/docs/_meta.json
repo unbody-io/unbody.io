@@ -26,55 +26,8 @@
   "textual-content-augmentation": "Textual Content Augmentation",
   "multimedia-content-augmentation": "Multimedia Content Augmentation",
   "visual-search": "Visual Search",
-
-  "-- providers": {
-    "title": "Providers",
-    "type": "separator"
-  },
-
-  "google-drive": {
-    "title": "Google Drive",
-    "href": "/docs/providers/google-drive"
-  },
-  "google-calendar": {
-    "title": "Google Calendadr",
-    "href": "/docs/providers/google-calendar"
-  },
-  "local-files": {
-    "title": "Local files",
-    "href": "/docs/providers/local-files"
-  },
-  "dropbox": {
-    "title": "Dropbox",
-    "href": "/docs/providers/dropbox"
-  },
-  "discord": {
-    "title": "Discord",
-    "href": "/docs/providers/discord"
-  },
-  "slack": {
-    "title": "Slack",
-    "href": "/docs/providers/slack"
-  },
-  "telegram": {
-    "title": "Telegram",
-    "href": "/docs/providers/telegram"
-  },
-  "notion": {
-    "title": "Notion",
-    "href": "/docs/providers/notion"
-  },
-  "tiktok": {
-    "title": "TikTok",
-    "href": "/docs/providers/tiktok"
-  },
-  "facebook": {
-    "title": "Facebook",
-    "href": "/docs/providers/facebook"
-  },
-
-  "-- dashboard": {
-    "title": "Dashboard",
+  "-- rest": {
+    "title": "Other resources",
     "type": "separator"
   },
   "dashboard": "Dashboard"
