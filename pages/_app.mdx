@@ -1,13 +1,13 @@
 import "../styles/styles.css";
 import { Analytics } from '@vercel/analytics/react';
+import {NextUIProvider} from "@nextui-org/react";
 
 export default  function Nextra({ Component, pageProps }) {
 
     return (
-        <>
+        <NextUIProvider>
             <Component {...pageProps} />
             <Analytics />
-        </>
+        </NextUIProvider>
     );
-
 }

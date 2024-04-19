@@ -3,7 +3,7 @@
   "-- guides": { "title": "Guides", "type": "separator" },
   "getting-started": "Getting Started",
 
-  "boilerplates": "Boilerplates",
+  "starters": "starters",
 
   "-- developer-refrences": {
     "title": "Dev References",

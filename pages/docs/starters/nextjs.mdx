@@ -1,0 +1,268 @@
+---
+title: "Unbody Next.js Starter"
+authors: [{name: "Amir Houieh", link: "https://www.linkedin.com/in/amirhouieh/", image: "amir.png"}]
+audience_group: developers
+outline: "This guide offers an overview of integrating Unbody's AI-powered features using Next.js and TypeScript. It covers the setup process, semantic search, generative search, and the technology stack used in the Unbody Next.js Starter."
+seo_tags: unbody, next.js, typescript, semantic search, generative search, tailwind css
+category: SDKs
+subtitle: How to integrate Unbody's AI-powered features using Next.js and TypeScript
+date: 2024-04-19
+image: /images/blog/nextjs.png
+---
+
+import {Callout} from "nextra/components";
+import {GithubRepoEmbed} from "../../../components/GithubEmbed";
+
+![Unbody + Nextjs](/images/blog/nextjs.png)
+
+# Unbody Next.js Starter
+
+Welcome to the Unbody Next.js Starter documentation. This guide offers a comprehensive overview of integrating Unbody's AI-powered features using Next.js and TypeScript.
+
+## Code Repository
+<GithubRepoEmbed repoUrl="https://github.com/unbody-io/example-next.js"
+                 lastUpdated={"19th, April 2024"}
+                 repoDescription={"Example boilerplate for Unbody.io's typescript SDK in Next.Js (Page Router)"}
+/>
+
+## Overview of Unbody's AI Functionalities
+- **Semantic Search**: Retrieves information based on the semantic meaning of a query rather than exact keyword matches.
+- **Generative Search**: Generates new content based on the contextual understanding of provided data sources.
+- **Data Retrieval**: Fetches data efficiently from various sources like Google Docs, Discord, and more.
+
+## Technology Stack
+- **Next.js**
+- **TypeScript**
+- **Unbody.io**
+- **Tailwind CSS**
+
+## Getting Started
+Before integrating Unbody's features, ensure you have created an account on Unbody.io, set up a new project, and generated API keys.
+
+### Setup Unbody.io
+1. Create an account on [Unbody.io](https://unbody.io)
+2. Create a new project
+3. Add your sources (this project supports `Google Drive`, `Discord`, and `Github Issues`)
+4. Create a new API key - you can do this under the `Settings > Developer Settings` tab in your project.
+5. Copy the API key and Project ID and paste it into the `.env.local` file in the root of this project.
+
+### Initial Setup
+Let's start by creating a new instance of the `Unbody` class, passing your API key and project ID as parameters. This instance will be used to interact with Unbody's AI functionalities.
+```typescript
+import {Unbody} from "@unbody-io/ts-client";
+
+export const unbody = new Unbody({
+    apiKey: process.env.UNBODY_API_KEY!,
+    projectId: process.env.UNBODY_PROJECT_ID!,
+});
+```
+
+<Callout>
+    All interactions with the Unbody client are managed in server-side API routes to secure the API key and handle
+    sensitive operations effectively. This approach not only secures the keys but also centralizes data handling, making
+    it easier to maintain and scale the application.
+</Callout>
+
+## Understanding Semantic Search
+
+Semantic search employs techniques to interpret the intent behind a query. For instance, if your database contains documents about "Quentin Tarantino", a semantic search allows users to find relevant documents by searching for broader terms like "film directors" rather than specifically mentioning "Tarantino."
+
+### Client-side Component for Handling User Input
+In this setup, there is a component (`/pages/search.tsx`) where users can interact with the semantic search feature. This component allows users to:
+1. **Capture User Queries**: Users can type their search terms into a text input field.
+2. **Submit Queries**: A button to submit the search, triggering a POST request to your API route.
+```tsx
+    //...
+    const [query, setQuery] = React.useState<string|undefined>(undefined);
+    const [results, setResults] = React.useState<GDocSearchItem[]|DiscordSearchItem[]|TextBlockSearchItem[]>([]);
+    const [loading, setLoading] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<string | undefined>();
+    const [provider, setProvider] = React.useState<EProviders>(EProviders.GoogleDoc);
+
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(undefined);
+
+        try {
+            const response = await fetch(`/api/search`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query,
+                    provider
+                }),
+            });
+            //...
+        }catch (error) {
+            //...
+        }
+    }
+    //...
+```
+
+### Server-side: Performing Search with Unbody
+Our API route (`/api/search.ts`) handles the search logic. This route:
+1. **Receives Query and Provider**: Extracts the search term and provider from the POST request. The "provider" refers to the source of your data, such as Google Docs or Discord messages.
+2. **Utilizes Unbody SDK**: Depending on the selected provider, different functions from Unbody's SDK are invoked to perform the search. This modular approach allows you to tailor the search parameters and sensitivity settings for each type of content.
+
+```typescript
+//...
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse<Data>,
+) {
+    const {query, provider} = req.body;
+    //...
+}
+```
+
+#### Specifics for Each Provider
+- **Google Docs**: Searches extract both the title and text of documents, initiating the search based on the user's query. Unbody's semantic search capabilities ensure that documents related to the query's intent, like "film directors," are retrieved even if "Quentin Tarantino" isn't mentioned explicitly.
+- **Discord Messages**: Adjusts for the casual and diverse nature of messaging content, considering only the content of messages with a sensitivity setting to allow for narrower interpretations.
+- **Text Blocks**: Involves more nuanced filtering to focus the search on relevant content, specifically configured to retrieve HTML content and exclude less relevant tags.
+```typescript
+//...
+// inside the handler function
+    switch (provider) {
+        case EProviders.GoogleDoc: {
+            const {data: {payload}} = await unbody.get.googleDoc
+                .select("title", "text")
+                .search
+                .about(query)
+                .exec();
+            return res.status(200).json(payload);
+        }
+        case EProviders.DiscordMassage: {
+            const {data: {payload}} = await unbody.get.discordMessage
+                .select("content")
+                .search
+                .about(query, {certainty: 0.7})
+                .exec();
+            return res.status(200).json(payload);
+        }
+        case EProviders.TextBlock: {
+            const {data: {payload}} = await unbody.get.textBlock
+                .select("html")
+                .where(({NotEqual, And}) => {
+                    return And(
+                        {tagName: NotEqual("h1")},
+                        {tagName: NotEqual("h2")},
+                        {tagName: NotEqual("h3")},
+                        {classNames: NotEqual("title")},
+                    )
+                })
+                .search
+                .about(query, {certainty: 0.6})
+                .exec();
+            return res.status(200).json(payload);
+        }
+        default: {
+            return res.status(400);
+        }
+    }
+```
+## Generative Search
+
+Generative search utilizes Unbody's capabilities to generate responses based on documents fetched according to specified criteria. This feature is particularly valuable for applications requiring dynamic content creation, such as chatbots, help centers, or automated reporting systems. The process is influenced heavily by two key parameters: **context** and **prompt**, which refine the search and response generation.
+
+### Setting Up the API Route
+
+This functionality is managed by a specific API route in your Next.js application, which handles the generative search process by:
+
+- **Extracting Request Parameters**: Key details such as prompt, context, provider, whether the response should strictly use document-derived information, and the strictness of document relevance are pulled from the request body.
+- **Constructing the Enhanced Prompt**: A crafted instruction that guides the AI to focus on creating responses that are both relevant and appropriately formatted for web display.
+- **Handling Different Providers**: A
+
+### Handling Different Providers
+
+Each provider type is processed using a tailored approach, ensuring the generative process is accurately tuned to the characteristics of the source content:
+
+```typescript
+//...
+// inside the handler function
+    switch (provider) {
+        case EProviders.GoogleDoc: {
+            const {data: {generate, payload}} =
+                await unbody.get
+                    .googleDoc
+                    .select("title")
+                    .search
+                    .about(context, {certainty: sensitivity})
+                    .limit(3)
+                    .generate
+                    .fromMany(enhancedPrompt, ["title", "text"])
+                    .exec();
+
+            if (payload.length === 0) {
+                return res.status(200).json(`It seems like I couldn't find any relevant information to generate a response. Please try again with a different context.`);
+            }
+
+            return res.status(200).json(generate.result);
+        }
+        case EProviders.DiscordMassage: {
+            const {data: {generate, payload}} =
+                await unbody.get
+                    .discordMessage
+                    .select("content")
+                    .search
+                    .about(context, {certainty: sensitivity})
+                    .limit(20)
+                    .generate
+                    .fromMany(enhancedPrompt, ["content"])
+                    .exec();
+
+            if (payload.length === 0) {
+                return res.status(200).json(`It seems like I couldn't find any relevant information to generate a response. Please try again with a different context.`);
+            }
+
+            return res.status(200).json(generate.result);
+        }
+        case EProviders.TextBlock: {
+            const {data: {generate, payload}} =
+                await unbody.get
+                    .textBlock
+                    .select("text")
+                    .search
+                    .about(context, {certainty: sensitivity})
+                    .limit(20)
+                    .generate
+                    .fromMany(enhancedPrompt, ["text"])
+                    .exec();
+
+            if (payload.length === 0) {
+                return res.status(200).json(`It seems like I couldn't find any relevant information to generate a response. Please try again with a different context.`);
+            }
+
+            return res.status(200).json(generate.result);
+        }
+        default: {
+            return res.status(400).send("Invalid provider");
+        }
+    }
+```
+
+#### Provider-Specific Content Generation Strategies
+- **Google Docs**: The API fetches titles and texts of documents to generate responses that are directly related to the user's prompt. It limits the search to the top three most relevant documents to ensure the generative process is focused and efficient.
+- **Discord Messages**: Considers up to 20 messages, acknowledging the often brief and numerous entries typical of Discord, providing a broader base for generating responses.
+- **Text Blocks**: Focuses on textual content, filtering out non-essential HTML elements to streamline response generation, limiting the results to 20 blocks for balance between detail and performance.
+
+### Generative Output Formatting
+The generative process meticulously formats the output to ensure the response is web-ready:
+
+```typescript
+const enhancedPrompt = [
+    `You are given a set of documents about: "${context}".`,
+    instructedPromptEnabled ? `You need to respond to the user's prompt using only the information in the documents.` : "",
+    `The user's prompt is:\n${prompt}\n`,
+    `Exclude the input prompt from the response.`,
+    `Be aware the user's prompt may contain irrelevant information or the given information might be irrelevant to the topic.`,
+    `Format the answer in a human-readable narrative in simple HTML format.`,
+    `Wrap the answer in <p> tags.`,
+    `Wrap code snippets in <pre> tags, use <code> tags for inline code snippets.`,
+].join(". ");
+```
+
+This string of instructions not only guides the AI to generate content that is contextually relevant but also ensures that the formatting is consistent and appropriate for different type of user's input.
