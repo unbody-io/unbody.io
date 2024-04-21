@@ -62,10 +62,44 @@ const logo = (
     </div>
 );
 
+const phLink = "https://www.producthunt.com/posts/unbody?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-unbody";
+const phImage = "https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=439359&theme=dark";
+
+const ProductHuntBadge = () => (
+    <div className={""}>
+        <a href={phLink}
+           target="_blank"
+           className={"p-10 flex flex-row gap-4 items-center justify-center"}
+        >
+            🎉
+            <span className={"text-tiny"}>
+                on Product Hunt, 25th April 2024
+            </span>
+            <img src={phImage}
+                 alt="Unbody - Custom&#0032;AI&#0032;for&#0032;Custom&#0032;Data&#0044;&#0032;in&#0032;one&#0032;line&#0032;of&#0032;code&#0046; | Product Hunt"
+                 style={{
+                        width: "auto",
+                        height: "32px",
+                 }}
+                 width="250"
+                 height="54"
+            />
+        </a>
+    </div>
+)
+
 const config: DocsThemeConfig = {
     logo: logo,
     nextThemes: {
         defaultTheme: "light",
+    },
+    themeSwitch: {
+        component: null,
+    },
+    banner: {
+        text: () => (<ProductHuntBadge/>),
+        dismissible: false,
+        key: "product hunt launch 0.0"
     },
     navbar:{
         extraContent: () => (
@@ -74,7 +108,10 @@ const config: DocsThemeConfig = {
                 gap: "12px",
                 alignItems: "center",
             }}>
-                <LinkButton href={"https://app.unbody.io"} size={"small"}>Get started</LinkButton>
+                <LinkButton href={"https://app.unbody.io"}
+                            size={"small"}>
+                    Get started
+                </LinkButton>
             </div>
         )
     },

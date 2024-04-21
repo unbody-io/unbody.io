@@ -2,55 +2,55 @@
 export const providersInDeck = [
     {
         name: "Telegram-dummy",
-        image: "/Provider Icons/Telegram.svg",
+        image: "/provider-icons/Telegram.svg",
     },
     {
         name: "Finder-dummy",
-        image: "/Provider Icons/Finder.svg",
+        image: "/provider-icons/Finder.svg",
     },
     {
         name: "Slack",
-        image: "/Provider Icons/Slack.svg",
+        image: "/provider-icons/Slack.svg",
     },
     {
         name: "Notion",
-        image: "/Provider Icons/Notion.svg",
+        image: "/provider-icons/Notion.svg",
     },
     {
         name: "Discord",
-        image: "/Provider Icons/Discord.svg",
+        image: "/provider-icons/Discord.svg",
     },
     {
         name: "Drive",
-        image: "/Provider Icons/Drive.svg",
+        image: "/provider-icons/Drive.svg",
     },
     {
         name: "Calander",
-        image: "/Provider Icons/Calander.svg",
+        image: "/provider-icons/Calander.svg",
     },
     {
         name: "Dropbox",
-        image: "/Provider Icons/Dropbox.svg",
+        image: "/provider-icons/Dropbox.svg",
     },
     {
         name: "Github",
-        image: "/Provider Icons/Github.svg",
+        image: "/provider-icons/Github.svg",
     },
     {
         name: "Gmail",
-        image: "/Provider Icons/Gmail.svg",
+        image: "/provider-icons/Gmail.svg",
     },
     {
         name: "Finder",
-        image: "/Provider Icons/Finder.svg",
+        image: "/provider-icons/Finder.svg",
     },
     {
         name: "Telegram",
-        image: "/Provider Icons/Telegram.svg",
+        image: "/provider-icons/Telegram.svg",
     },
     {
         name: "Slack",
-        image: "/Provider Icons/Slack.svg",
+        image: "/provider-icons/Slack.svg",
     },
 ];
 
