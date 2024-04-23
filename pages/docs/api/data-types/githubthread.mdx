@@ -1,0 +1,70 @@
+# GithubThread
+
+| Field | Type | Description |
+| :---------------- | :------: | :---- |
+| activeLockReason | string | The reason for the lock. |
+| additions | number | The number of additions; PR specific |
+| assignees | Array\<object\> | A list of users assigned to the thread. |
+| assignees.id | string | User's ID. |
+| assignees.url | string | User's profile URL. |
+| assignees.login | string | User's login name. |
+| assignees.avatarUrl | string | User's avatar URL. |
+| author | object | Thread's author. |
+| author.id | string | User's ID. |
+| author.url | string | User's profile URL. |
+| author.login | string | User's login name. |
+| author.avatarUrl | string | User's avatar URL. |
+| authorAssociation | string | Author association with the repository. |
+| changedFiles | number | The number of changed files; PR specific |
+| closedAt | Date | The date the thread was closed. |
+| createdAt | Date | The date the thread was created. |
+| deletions | number | The number of deletions; PR specific |
+| diffSide | string | Diff side; Review specific |
+| html | string | The body of the thread in HTML format. |
+| isOutdated | boolean | Whether the thread is outdated; Review specific |
+| isResolved | boolean | Whether the thread is resolved; Review specific |
+| labels | Array\<string\> | The labels associated with the thread. |
+| labelsData | Array\<object\> | The labels associated with the thread in JSON format. |
+| labelsData.id | string | Label's ID. |
+| labelsData.url | string | Label's URL. |
+| labelsData.name | string | Label's name. |
+| labelsData.color | string | Label's color. |
+| line | number | Original line; Review specific |
+| locked | boolean | Whether the thread is locked. |
+| mergeable | string | Mergeable state; PR specific |
+| merged | boolean | Whether the changes are merged; PR specific |
+| mergedAt | Date | Merge date; PR specific |
+| mergedBy | object | The user who merged the pull request. |
+| mergedBy.id | string | User's ID. |
+| mergedBy.url | string | User's profile URL. |
+| mergedBy.login | string | User's login name. |
+| mergedBy.avatarUrl | string | User's avatar URL. |
+| modifiedAt | Date | The date the thread was last modified. |
+| number | number | The unique number associated with the thread. |
+| originalLine | number | Original line; Review specific |
+| originalStartLine | number | Original start line; Review specific |
+| pinned | boolean | Whether the thread is pinned. |
+| reactions | Array\<object\> | The reactions to the thread. |
+| reactions.key | string | The reaction type. |
+| reactions.total | number | The total number of reactions. |
+| refPath | string | File path; Review specific |
+| remoteId | string | The unique identifier in the source. |
+| sourceId | string | The source identifier. |
+| startDiffSide | string | Start diff side; Review specific |
+| startLine | number | Start line; Review specific |
+| state | string | Thread's state: open, closed, or merged. |
+| stateReason | string | The reason for the state of the thread. |
+| subjectType | string | Subject type; Review specific |
+| submittedAt | Date | Submit date; PR specific |
+| text | string | The body of the thread. |
+| title | string | The title of the thread. |
+| totalCommentsCount | number | The number of comments on the thread. |
+| type | string | The type of the thread: issue, pull_request, or pull_request_review. |
+| url | string | The URL of the thread. |
+| autoSummary | string | A summary automatically generated based on the thread content. |
+| autoKeywords | Array\<string\> | Keywords automatically extracted from the thread's content. |
+| autoEntities | Array\<string\> | Entities automatically extracted from the thread's content. |
+| autoTopics | Array\<string\> | Topics automatically extracted from the thread's content. |
+| comments | Array\<GithubComment\> | The comments on the thread. |
+| reviews | Array\<GithubThread\> | The reviews on the thread; PR specific. |
+| thread | Array\<GithubThread\> | Parent thread; Review specific. |

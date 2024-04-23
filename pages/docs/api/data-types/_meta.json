@@ -1,9 +1,18 @@
 {
   "overview": "Overview",
-  "textblock": "TextBlock",
-  "imageblock": "ImageBlock",
-  "audiofile": " AudioFile",
-  "googledoc": "GoogleDoc",
+  "audiofile": "AudioFile",
+  "csvrow": "CsvRow",
+  "discordmessage": "DiscordMessage",
+  "githubcomment": "GithubComment",
+  "githubthread": "GithubThread",
   "googlecalendarevent": "GoogleCalendarEvent",
-  "markdownfile": "MarkDownFile"
+  "googledoc": "GoogleDoc",
+  "imageblock": "ImageBlock",
+  "spreadsheet": "Spreadsheet",
+  "spreadsheetdocument": "SpreadsheetDocument",
+  "subtitleentry": "SubtitleEntry",
+  "subtitlefile": "SubtitleFile",
+  "textblock": "TextBlock",
+  "textdocument": "TextDocument",
+  "videofile": "VideoFile"
 }
