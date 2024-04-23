@@ -62,7 +62,7 @@ const logo = (
     </div>
 );
 
-const phLink = "https://www.producthunt.com/posts/unbody?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-unbody";
+const phLink = "https://www.producthunt.com/products/unbody";
 const phImage = "https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=439359&theme=dark";
 
 const ProductHuntBadge = () => (

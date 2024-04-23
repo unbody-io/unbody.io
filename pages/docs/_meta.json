@@ -10,7 +10,7 @@
     "type": "separator"
   },
 
-  "graphql-api": "GraphQL API",
+  "api": "API",
   "image-api": "Image API",
   "libraries": "Libraries",
   "audio-api": "Audio API",

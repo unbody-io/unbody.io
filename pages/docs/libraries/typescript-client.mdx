@@ -135,39 +135,37 @@ unbody.get.googleDoc
   })
 ```
 
-#### Near text - simple usage
+#### Semantic search - simple usage
 
 ```typescript
 unbody.get.googleDoc
-  .nearText(['bitcoin', 'price'])
-  .exec()
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+    .search
+    .about('privacy and security')
+    .exec()
+    .then((response) => { console.log(response)})
+    .catch((error) => {
+        console.error(error)
+    })
 ```
 
-#### Near text - specify the distance from the text
+#### Semqantic search - specify the distance from the text
 
 ```typescript
 unbody.get.googleDoc
-  .nearText(['bitcoin', 'price'], 1.5)
-  .exec()
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
+    .search
+    .about('privacy and security', { distance: 1.5 })
+    .exec()
+    .then((response) => { console.log(response)})
+    .catch((error) => {
+        console.error(error)
+    })
 ```
 
 or you can just pass arguments as an object
 
 ```typescript
 unbody.get.googleDoc
-  .nearText({ distance: 1.5, concepts: ['bitcoin', 'price'], ...etc })
+  .search.about({ distance: 1.5, concepts: ['bitcoin', 'price'], ...etc })
   .exec()
   .then((response) => {
     console.log(response)
