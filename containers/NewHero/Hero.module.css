@@ -193,7 +193,7 @@
 
 @media screen and (max-width: 768px) {
   .scene {
-    /*margin-top: 50px;*/
+    margin-top: 50px;
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: nowrap;
@@ -202,7 +202,7 @@
     width: 100%;
     overflow: hidden;
     justify-items: flex-start;
-    justify-content: flex-start;
+    justify-content: start;
     align-items: center;
     z-index: 9;
     gap: 15px;

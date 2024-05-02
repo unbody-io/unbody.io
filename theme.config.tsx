@@ -55,7 +55,11 @@ const logo = (
           }
 
           @media (max-width: 768px) {
+            .logo-container{
+              padding: 0;
+            }
             .logo-content span {
+              display: none;
             }
           }
         `}</style>

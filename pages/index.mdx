@@ -60,10 +60,10 @@ export const PageContent = ({children}) => {
     )
 }
 
-export const SectionTitle = ({children}) => {
+export const SectionTitle = ({title}) => {
     return (
-        <div className={"text-2xl md:text-5xl pt-3 font-semibold text-center"}>
-            {children}
+        <div className={"text-3xl pt-3 font-semibold text-center"}>
+            {title}
         </div>
     )
 }
@@ -122,14 +122,12 @@ export const Section = ({children}) => {
         <PageContent>
             <Section>
                 <SectionHeader>
-                    <SectionTitle>
-                        What you can build with Unbody?
-                    </SectionTitle>
+                    <SectionTitle title={"What you can build with Unbody?"}/>
                     <SectionDescription>
                         Unbody is a platform that allows you to build AI-powered applications with ease. From chatbots to generative search, from data analysis to content generation, Unbody has you covered.
                     </SectionDescription>
                 </SectionHeader>
-                <div className={"grid grid-cols-2 lg:grid-cols-4 gap-4 pt-8 mb-28"}>
+                <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 mb-28"}>
                     <UsecaseCard
                         title={"Private A.I. Assistant"}
                         description={"Build a private AI assistant that can help you with your daily tasks, from scheduling to data analysis."}
@@ -158,9 +156,7 @@ export const Section = ({children}) => {
             </Section>
             <Section>
                 <SectionHeader>
-                    <SectionTitle>
-                        Watch how Unbody works!
-                    </SectionTitle>
+                    <SectionTitle title={"Watch how Unbody works!"}/>
                     <SectionDescription>
                         Choose your AI, connect your data, and build with ease.
                     </SectionDescription>
@@ -170,9 +166,7 @@ export const Section = ({children}) => {
 
             <Section>
                 <SectionHeader>
-                    <SectionTitle>
-                        Your data, your AI choice.
-                    </SectionTitle>
+                    <SectionTitle title={"Your data, your AI choice."}/>
                     <SectionDescription>
                         We support a wide range of AI models, from the most popular to the most niche. So you are not
                         dependent on a single provider such as OpenAI or GPT-3.
@@ -188,9 +182,7 @@ export const Section = ({children}) => {
 
             <Section>
                 <SectionHeader>
-                    <SectionTitle>
-                        Your data, from anywhere in any formats.
-                    </SectionTitle>
+                    <SectionTitle title={"Your data, from anywhere in any formats."}/>
                     <SectionDescription>
                         Your private data should live where it is, and we make sure it stays that way. We have a wide range of connectors from Google Drive to Micrsoft Sharepoint, from Slack to Discord or even your local file system. Same time we support a wide range of data formats, from text to audio, from PDFs to videos.
                     </SectionDescription>
@@ -205,9 +197,7 @@ export const Section = ({children}) => {
 
             <Section>
                 <SectionHeader learnMoreLink={"/docs"}>
-                    <SectionTitle>
-                        One API endpoint, one line of code, endless ideas.
-                    </SectionTitle>
+                    <SectionTitle title={"One API endpoint, one line of code, endless ideas."}/>
                     <SectionDescription>
                         A.I. is complex, but using it shouldn't be. That's why we made it as simple as possible. With Unbody, a generative search or a making a private chatbot is as simple as a single line of code. We offer the AI functionalities over a graphQL API or even easier with our SDKs.
                     </SectionDescription>

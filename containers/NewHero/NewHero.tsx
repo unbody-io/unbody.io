@@ -139,7 +139,7 @@ const useActiveFrame = () => {
 
 const HeroText = () => {
 
-    const typographyClasses = "text-[32px] md:text-5xl md:tacking-[0.96px] tracking-[0.8px] md:leading-[115%] leading-[115%] font-semibold";
+    const typographyClasses = "text-5xl text-center md:text-left md:tacking-[0.96px] tracking-[0.8px] md:leading-[115%] leading-[115%] font-semibold";
 
     return (
         <div
