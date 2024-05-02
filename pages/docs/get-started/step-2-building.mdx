@@ -1,0 +1,91 @@
+import {Tabs, Callout} from "nextra/components"
+import {PageCard} from "../../../components/PageCard";
+import {PageItems} from "../../../components/PageItems";
+
+# Start building with Unbody
+Unbody is essentially an API that primarily utilizes a GraphQL interface. To interact with Unbody, you can either use GraphQL queries directly or employ one of the SDKs provided. Access to any of the endpoints, whether through direct GraphQL queries or SDKs, requires an API key.
+
+### Obtain an API key
+Let's begin by creating an API key. Start from your dashboard and navigate to your project page. You'll see three tabs at the top labeled `sources`, `graphql`, and `settings`. Click on the `settings` tab to navigate to the settings page. Here, locate the `developer-settings` sub-page. This is where you can create an `API-key`.
+
+Now, using this API key together with the `project-id` you can send requests to the API.
+
+This is how you can authorize your API calls.
+
+<Tabs items={['Unbody SDK', 'Curl', 'Vanilla JS']}>
+    <Tabs.Tab>
+        Using Unbody typescript client all you need to create a new instance of Unbody SKD we will be using this instance in order to make all various API calls.
+        ```typescript copy filename="unbody.ts"
+        const unbody = new Unbody({
+            apiKey: "<API_KEY>",
+            projectId: "<PROJECT_ID>",
+        });
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```bash copy
+        # Authorized call to Unbody using CURL
+        curl -X POST \\
+        -H "Authorization: Bearer <API_KEY>" \\
+        -H "X-Project-Id: <PROJECT_ID>" \\
+            -H "Content-Type: application/json" \\
+            -d '{"query": "{ Your GraphQL query here }"}' \\
+            https://graphql.unbody.io
+            ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```javascript copy
+        // Fetch API
+        fetch('https://graphql.unbody.io', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer <API_KEY>',
+                'X-Project-Id': '<PROJECT_ID>',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({query: "{ Your GraphQL query here }"})
+        })
+        .then(...)
+
+        // Axios
+        const axios = require('axios');
+
+        axios.post('https://graphql.unbody.io', {
+            query: "{ Your GraphQL query here }"
+        }, {
+            headers: {
+                'Authorization': 'Bearer <API_KEY>',
+                'X-Project-Id': '<PROJECT_ID>',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(...)
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+### Make Your First API Call
+Below is a guide tailored to the type of sources and files in your projects. Please follow the steps that apply to your situation.
+
+<PageItems>
+    <PageCard title={"Google Drive with Google Docs"}
+              description={"Choose this option if you have a Google Drive with Google Docs."}
+              link={"/docs/get-started/step-2-building/build-with-googledrive"}
+              icon={"/provider-icons/Drive.svg"}
+    />
+    <PageCard title={"Discord Channel with Messages"}
+              description={"Choose this option if you have a Discord Channel with Messages."}
+              link={"/docs/get-started/step-2-building/build-with-discord"}
+              icon={"/provider-icons/Discord.svg"}
+    />
+    <PageCard title={"Github Issues with Comments"}
+              description={"Choose this option if you have a Github Issues with Comments."}
+              link={"/docs/get-started/step-2-building/build-with-github"}
+              icon={"/provider-icons/Github.svg"}
+    />
+    <PageCard title={"Text Blocks"}
+              description={"Choose this option if you want to work with text blocks regardless of their sources."}
+              link={"/docs/get-started/step-2-building/build-with-textblocks"}
+              icon={"/icons/menu-board.svg"}
+    />
+</PageItems>

@@ -1,0 +1,192 @@
+import {Accordion, AccordionItem, Tabs, Tab} from "@nextui-org/react";
+
+### Start with simple data-retrieving
+
+Start by retrieving all `TextBlock` entries from your source.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {payload}} = await unbody.get
+        .textBlock
+        .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql copy
+        query {
+            Get {
+                TextBlock {
+                    classNames
+                    footnotes
+                    html
+                    order
+                    remoteId
+                    sourceId
+                    tagName
+                    text
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "classNames": ["..."],
+                "footnotes": [],
+                "html": "...",
+                "order": 0,
+                "remoteId": null,
+                "sourceId": "...",
+                "tagName": "p",
+                "text": "..."
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+
+### Perform a semantic search
+
+Next, perform a semantic search on these text blocks by adding `.search.about` to the command. To streamline the
+payload, use the `select` method to specify exactly what fields should be included in the response.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {payload}} = await unbody.get
+            .textBlock
+            .search
+            .about("your search query")
+            .select("text", "tagName")
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql copy
+        query {
+            Get {
+                TextBlock(
+                    nearText: {
+                        concept: "your search query"
+                    }
+                ){
+                    text
+                    tagName
+                    _additional {
+                        certainty
+                        distance
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "text": "...",
+                "tagName": "...",
+                "_additional": {
+                    "certainty": 0.6892173886299133,
+                    "distance": 0.6215652
+                }
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+
+The response is smaller, containing only `text` and `tagName` due to the `select` method. It also includes an
+`_additional` field which provides information on the search, including `certainty` and `distance` which
+indicate the relevancy and accuracy of the result.
+
+### Time for Some Generative Tasks
+
+Now that we understand semantic search and data retrieval, let's enhance the existing code by adding generative
+features.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {generate}} = await unbody.get
+            .textBlock
+            .search
+            .about("a search query")
+            .limit(2)
+            .select("text")
+            .generate
+            .fromMany(
+                "Your prompt goes here",
+                ["text", "html", "footnotes"]
+            )
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query {
+            Get {
+                TextBlock(
+                    nearText: {
+                        concept: context
+                    }
+                ){
+                    text
+                    html
+                    footnotes
+                    _additional {
+                        certainty
+                        distance
+                        generate(
+                            groupedResult: {
+                                prompt: prompt
+                                properties: ["text", "html", "footnotes"]
+                            }
+                        ) {
+                            groupedResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        {
+            "result": "...",
+            "from": [
+                ...
+                {
+                    "text": "...",
+                    "_additional": {
+                        "certainty": 0.6892173886299133,
+                        "distance": 0.6215652,
+                        "generate": {
+                            "groupedResult": ""
+                        }
+                    }
+                },
+                ...
+            ]
+        }
+        ```
+    </AccordionItem>
+</Accordion>

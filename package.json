@@ -29,11 +29,14 @@
     "@vercel/og": "^0.5.19",
     "dayjs": "^1.11.8",
     "framer-motion": "^11.1.5",
+    "geist": "^1.3.0",
     "next": "^13.0.6",
     "nextra": "latest",
     "nextra-theme-docs": "2.13.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-social-media-embed": "^2.5.13",
+    "react-ticker": "^1.3.2"
   },
   "devDependencies": {
     "@types/node": "18.11.10",

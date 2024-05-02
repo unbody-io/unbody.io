@@ -139,37 +139,32 @@ const useActiveFrame = () => {
 
 const HeroText = () => {
 
-    const typographyClasses = "text-[40px] md:text-6xl md:tacking-[0.96px] tracking-[0.8px] md:leading-[115%] leading-[115%] font-semibold";
+    const typographyClasses = "text-[32px] md:text-5xl md:tacking-[0.96px] tracking-[0.8px] md:leading-[115%] leading-[115%] font-semibold";
 
     return (
         <div
             className={`${styles.heroText} w-full md:h-full mt-[-30px] md:mt-0 flex flex-col gap-1 md:gap-4 justify-center text-4xl md:text-5xl`}
         >
             <div className={typographyClasses}>
-                <span className="flex flex-row ">
-                    Custom&nbsp;
-                    <span className={`flex flex-row`}>
-                        <span className={styles.gradientText}>A.I.</span>
-                        <Image src="MagicIcon.svg"
-                               style={{rotate: "180deg", height: "3.5rem", width: "3rem"}}
-                               width={30}
-                               height={20}
-                               alt="Magical"
-                        />
+                <span className="">
+                    <span>
+                        The Only API You Need to Build&nbsp;
+                    </span>
+                    <span className={styles.gradientText}>AI-Native</span>
+                    <span>
+                        &nbsp;Apps
                     </span>
                 </span>
-                <span className={styles.gradientText}>Private</span> Data,
-                <br/>
-                One API.
+
             </div>
             <p className="text-paraghraph_gray text-base leading-6 hidden md:block">
                 {SITE_DESCRIPTION}
             </p>
             <div className="hidden md:block">
-                <ActionButtonGroup/>
+                <ActionButtonGroup ctaLink={"/docs/getting-started"}/>
             </div>
             <div className="block md:hidden m-auto p-4">
-                <ActionButtonGroup/>
+                <ActionButtonGroup ctaLink={"/docs/getting-started"}/>
             </div>
         </div>
     );

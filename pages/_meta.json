@@ -21,6 +21,38 @@
       }
     }
   },
+  "usecase": {
+    "title": "Use Cases",
+    "type": "menu",
+    "items": {
+      "as-content-api": {
+        "title": "As Content API",
+        "href": "/use-case/as-content-api"
+      },
+      "search": {
+        "title": "AI Search Engines",
+        "href": "/use-case/search"
+      },
+      "ai-assistant": {
+        "title":  "AI Assistant",
+        "href":  "/use-case/ai-assistant"
+      },
+      "content-gen": {
+        "title":  "Automate Content Generation",
+        "href":  "/use-case/content-gen"
+      }
+    }
+  },
+  "use-cases": {
+    "title": "Use Cases",
+    "type": "page",
+    "display": "hidden"
+  },
+  "join-us": {
+    "title": "Join Us",
+    "type": "page",
+    "display": "hidden"
+  },
   "solutions": {
     "type": "page",
     "title": "Solutions",

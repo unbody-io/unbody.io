@@ -9,6 +9,8 @@ import {useTheme} from "next-themes";
 interface Props {
     learnMoreLink?: string;
     learnMoreAlt?: string;
+    ctaLink?: string;
+    ctaAlt?: string;
 }
 
 export const LinkButton = ({
@@ -64,13 +66,13 @@ export const LinkButton = ({
 };
 
 export const ActionButtonGroup: React.FC<Props> = (props) => {
-    const {learnMoreLink, learnMoreAlt = ""} = props;
+    const {learnMoreLink, learnMoreAlt = "", ctaAlt, ctaLink} = props;
     return (
         <div className={styles.actionButtonGroup}>
-            <LinkButton href={"https://app.unbody.io"}
+            <LinkButton href={ctaLink || "https://app.unbody.io"}
                         className={"hidden md:flex"}
             >
-                Get started
+                {ctaAlt || "Get started"}
             </LinkButton>
             {
                 learnMoreLink && isValidLink(learnMoreLink) ?
@@ -78,9 +80,10 @@ export const ActionButtonGroup: React.FC<Props> = (props) => {
                         {learnMoreAlt || "Learn more"}
                     </LinkButton>
                     :
-                    <LinkButton href={"https://cal.com/unbody"} outlined={true}>
-                        Book a live demo!
-                    </LinkButton>
+                    null
+                    // <LinkButton href={"https://cal.com/unbody"} outlined={true}>
+                    //     Book a live demo!
+                    // </LinkButton>
             }
         </div>
     );

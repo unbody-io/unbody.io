@@ -1,0 +1,227 @@
+import {Accordion, AccordionItem, Tabs, Tab} from "@nextui-org/react";
+
+# Make your first API call with Discord messages
+Assuming you've already has gone through the [step 1](/docs/get-started/step-1-setup) and [step 2](/docs/get-started/step-2-building), let's now make your first API call with Discord messages.
+
+## Start with simple data-retrieving
+Start by retrieving all messages from your designated Discord channel.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {payload}} = await unbody.get
+            .discordMessage
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query {
+            Get{
+                DiscordMessage{
+                    author {
+                        avatar
+                        globalName
+                        id
+                        username
+                    }
+                    channelId
+                    content
+                    createdAt
+                    guildId
+                    mentionEveryone
+                    mentions {
+                        avatar
+                        globalName
+                        id
+                        username
+                    }
+                    modifiedAt
+                    position
+                    referencedMessageId
+                    remoteId
+                    sourceId
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "attachments": null,
+                "author": {
+                    "avatar": "...",
+                    "globalName": "...",
+                    "id": "...",
+                    "username": "..."
+                },
+                "channelId": "",
+                "content": "...",
+                "createdAt": "...",
+                "guildId": "...",
+                "mentionEveryone": false,
+                "mentions": [
+                    {
+                        "avatar": "...",
+                        "globalName": "...",
+                        "id": "...",
+                        "username": "..."
+                    }
+                ],
+                "modifiedAt": "...",
+                "position": null,
+                "referencedMessageId": "",
+                "remoteId": "...",
+                "sourceId": "..."
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+The response is a JSON array that includes the latest `100` Discord messages. Each item in the array
+is a `DiscordMessage` object containing default fields. You can adjust the returned fields using the
+`select` method.
+
+### Perform a semantic search
+
+Next, perform a semantic search on these messages by adding `.search.about` to the command. To streamline the
+payload, use the `select` method to specify exactly what fields should be included in the response.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {payload}} = await unbody.get
+            .discordMessage
+            .search
+            .about("your search query")
+            .select("content")
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query {
+            Get{
+                DiscordMessage(
+                    nearText: {
+                        concepts: "your search query"
+                    }
+                ){
+                    content
+                    _additional {
+                        certainty
+                        distance
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "content": "...",
+                "_additional": {
+                    "certainty": 0.6892173886299133,
+                    "distance": 0.6215652
+                }
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+The response is more focused, containing only `content` due to the `select` command. It also includes an
+`_additional` field that provides information on the search, including `certainty` and `distance` which
+indicate the relevancy and accuracy of the result.
+
+### Time for Some Generative Tasks
+
+Now that we understand semantic search and data retrieval, let's enhance the existing code by adding
+generative features.
+
+This can be achieved by appending the `generate` command to the chain. For this guide, we'll use the
+`grouping` method. This method is used when we have a set of messages that we want to group. Then, we ask
+the AI model to generate something based on the combined content of these messages.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {generate}} = await unbody.get
+            .discordMessage
+            .search
+            .about("a movie director")
+            .limit(2)
+            .select("content")
+            .generate
+            .fromMany(
+                "your prompt here",
+                ["content"]
+            )
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query {
+            Get{
+                DiscordMessage(
+                    nearText: {
+                        concepts: "a movie director"
+                    }
+                ){
+                    content
+                    _additional {
+                        certainty
+                        distance
+                        generate(
+                            groupedResult: {
+                                task: "your prompt here"
+                                properties: ["content"]
+                            }
+                        ) {
+                            groupedResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        {
+            "from": [
+                ...
+                {
+                    "content": "...",
+                    "_additional": {
+                        "certainty": 0.6892173886299133,
+                        "distance": 0.6215652,
+                        "generate": {
+                            "groupedResult": ""
+                        }
+                    }
+                },
+                ...
+            ],
+            "result": "..."
+        }
+        ```
+    </AccordionItem>
+</Accordion>

@@ -96,11 +96,6 @@ const config: DocsThemeConfig = {
     themeSwitch: {
         component: null,
     },
-    banner: {
-        text: () => (<ProductHuntBadge/>),
-        dismissible: false,
-        key: "product hunt launch 0.0"
-    },
     navbar:{
         extraContent: () => (
             <div style={{
@@ -108,9 +103,15 @@ const config: DocsThemeConfig = {
                 gap: "12px",
                 alignItems: "center",
             }}>
+                <LinkButton href={"https://cal.com/unbody"}
+                            size={"small"}
+                            outlined={true}
+                >
+                    Book a Demo
+                </LinkButton>
                 <LinkButton href={"https://app.unbody.io"}
                             size={"small"}>
-                    Get started
+                    Dashboard
                 </LinkButton>
             </div>
         )

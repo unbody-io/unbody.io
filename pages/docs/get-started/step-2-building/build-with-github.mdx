@@ -1,0 +1,195 @@
+import {Accordion, AccordionItem, Tabs, Tab} from "@nextui-org/react";
+
+# Step 2 / Make your first API call with Github Issues and its comments
+Assuming you've already has gone through the [step 1](/docs/get-started/step-1-setup), let's now make your first API call with Github Issues and its comments.
+
+## Start with simple data-retrieving
+Start by retrieving all `Comment` from `GitHubIssue` entries from your source.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+            const {data: {payload}} = await unbody.get
+            .githubComment
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        {
+            Get{
+                GithubComment {
+                    authorAssociation
+                    createdAt
+                    html
+                    modifiedAt
+                    remoteId
+                    sourceId
+                    text
+                    type
+                    url
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "authorAssociation": "...",
+                "createdAt": "...",
+                "html": "...",
+                "modifiedAt": "...",
+                "remoteId": "...",
+                "sourceId": "...",
+                "text": "...",
+                "type": "...",
+                "url": "..."
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+### Perform a semantic search
+Next, perform a semantic search on these issues/comments by adding `.search.about` to the command. To streamline
+the payload, use the `select` method to specify exactly what fields should be included in the response.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {payload}} = await unbody.get
+            .githubComment
+            .search
+            .about("your search query")
+            .select("text", "type")
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query {
+            Get{
+                GithubComment(
+                    nearText: {
+                        concept: "your search query"
+                    }
+                ){
+                    text
+                    type
+                    _additional {
+                        certainty
+                        distance
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        [
+            ...
+            {
+                "text": "...",
+                "type": "...",
+                "_additional": {
+                    "certainty": 0.6892173886299133,
+                    "distance": 0.6215652
+                }
+            },
+            ...
+        ]
+        ```
+    </AccordionItem>
+</Accordion>
+The response is smaller, containing only `text` and `type` due to the `select` method. It also includes an
+`_additional` field that provides information on the search, including `certainty` and `distance` which indicate
+the relevancy and accuracy of the result.
+
+
+### Time for Some Generative Tasks
+Now that we understand semantic search and data retrieval, let's enhance the existing code by adding generative
+features.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        const {data: {generate}} = await unbody.get
+            .githubComment
+            .search
+            .about("typescript")
+            .limit(2)
+            .select("text", "type", "html")
+            .generate
+            .fromMany(
+                "What are the main issues about?",
+                ["text", "type", "html"]
+            )
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql copy
+        query{
+            Get {
+                GithubComment(
+                    nearText: {
+                        concepts: ["typescript"]
+                    },
+                    limit: 2
+                ) {
+                    text
+                    type
+                    _additional {
+                        certainty
+                        distance
+                        generate(
+                            groupedResult: {
+                                properties: ["text", "type", "html"],
+                                task: "What are the main issues about?"
+                            }
+                        ) {
+                            groupedResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+<Accordion isCompact={true} variant={"shadow"}>
+    <AccordionItem title={"Sample Response"}>
+        ```json
+        {
+            "from": [
+                ...
+                {
+                    "type": "...",
+                    "text": "...",
+                    "html": "...",
+                    "_additional": {
+                        "certainty": 0.6892173886299133,
+                        "distance": 0.6215652,
+                        "generate": {
+                            "groupedResult": ""
+                        }
+                    }
+                },
+                ...
+            ],
+            "result": "..."
+        }
+        ```
+    </AccordionItem>
+</Accordion>

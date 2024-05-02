@@ -6,6 +6,7 @@ import Image from "next/image";
 import {ActionButtonGroup} from "../containers/ActionButtonGroup";
 import {Tabs} from "nextra/components";
 import {VideoPlayer} from "../components/VideoPlayer/Player";
+import {UsecaseCard} from "../components/UsecaseCard";
 
 export const getStaticProps = async () => {
     const u = new Unbody({
@@ -50,7 +51,7 @@ export const PageContent = ({children}) => {
             marginTop: "100vh",
             minHeight: "100vh",
             borderRadius: "50px 50px 0 0",
-            display: "flex",
+            dis1lay: "flex",
             flexDirection: "column",
             alignItems: "center"
         }}>
@@ -88,7 +89,12 @@ export const SectionHeader = ({children, learnMoreLink, learnMoreLabel}) => {
         >
             {children}
             <div className={"mt-5"}>
-                <ActionButtonGroup learnMoreAlt={learnMoreLabel} learnMoreLink={learnMoreLink}/>
+                <ActionButtonGroup
+                    learnMoreAlt={learnMoreLabel}
+                    learnMoreLink={learnMoreLink}
+                    ctaAlt={"Get started"}
+                    ctaLink={"/docs/get-started"}
+                />
             </div>
         </div>
     )
@@ -114,6 +120,42 @@ export const Section = ({children}) => {
         <NewHero/>
         <div className="text-paraghraph_gray text-base text-center h-20 px-4 lg:hidden"></div>
         <PageContent>
+            <Section>
+                <SectionHeader>
+                    <SectionTitle>
+                        What you can build with Unbody?
+                    </SectionTitle>
+                    <SectionDescription>
+                        Unbody is a platform that allows you to build AI-powered applications with ease. From chatbots to generative search, from data analysis to content generation, Unbody has you covered.
+                    </SectionDescription>
+                </SectionHeader>
+                <div className={"grid grid-cols-2 lg:grid-cols-4 gap-4 pt-8 mb-28"}>
+                    <UsecaseCard
+                        title={"Private A.I. Assistant"}
+                        description={"Build a private AI assistant that can help you with your daily tasks, from scheduling to data analysis."}
+                        icon={"/icons/ai-assistant.png"}
+                        link={"/use-case/ai-assistant"}
+                    />
+                    <UsecaseCard
+                        title={"AI-native Content API"}
+                        description={"Directly integrate Unbody with your existing content tools like Google Docs and Notion. Manage, enhance, and deploy content from a single API without ever moving your data."}
+                        icon={"/icons/api.png"}
+                        link={"/use-case/as-content-api"}
+                    />
+                    <UsecaseCard
+                        title={"Content Generation Automation"}
+                        description={"Unbody simplifies the content creation process by leveraging AI to automatically generate, optimize, and enhance digital content across various formats. Streamline your workflows and maintain high content quality with minimal manual input."}
+                        icon={"/icons/gen.png"}
+                        link={"/use-case/content-gen"}
+                    />
+                    <UsecaseCard
+                        title={"Intelligent Search Engines"}
+                        description={"Unbody enables you to develop intelligent search engines that interpret and respond to natural human language. Create search systems that seamlessly handle text, images, and other media to provide comprehensive, multimodal results."}
+                        icon={"/icons/search.png"}
+                        link={"/use-case/search"}
+                    />
+                </div>
+            </Section>
             <Section>
                 <SectionHeader>
                     <SectionTitle>
