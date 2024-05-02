@@ -1,13 +1,14 @@
 import "../styles/styles.css";
-import { Analytics } from '@vercel/analytics/react';
+import {Analytics} from '@vercel/analytics/react';
 import {NextUIProvider} from "@nextui-org/react";
+import {useRouter} from "next/router";
 
-export default  function Nextra({ Component, pageProps }) {
-
+export default function App({Component, pageProps}) {
+    const router = useRouter();
     return (
-        <NextUIProvider>
+        <NextUIProvider navigate={router.push}>
             <Component {...pageProps} />
-            <Analytics />
+            <Analytics/>
         </NextUIProvider>
     );
 }

@@ -1,10 +1,13 @@
 export const SITE_NAME = 'Unbody';
-export const SITE_TITLE = 'Custom A.I., Private Data, One API';
+export const SITE_TITLE = 'The only API you need to build AI-Native Apps';
 export const SITE_DESCRIPTION = 'A.I. is complex. With private data, even more so. Unbody automate the journey from your private data to A.I. application in a seamless pipeline. Choose your A.I., connect your data, and build anything from chatbots to semantic searches, just one line of code!';
 export const SITE_URL = 'https://unbody.io';
 
 export const SITE_KEYWORDS = [
     "Custom AI",
+    "AI-Native",
+    "AI-first applications",
+    "AI applications",
     "single API",
     "user-friendly",
     "accessible",
