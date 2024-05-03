@@ -1,21 +1,21 @@
 {
   "index": "Overview",
-  "-- guides": { "title": "Guides", "type": "separator" },
+  "-- guides": {
+    "title": "Guides",
+    "type": "separator"
+  },
   "get-started": "Get Started",
-
-  "starters": "starters",
-
+  "starters": "Starters",
+  "tutorials": "Tutorials",
   "-- developer-refrences": {
     "title": "Dev References",
     "type": "separator"
   },
-
   "api": "API",
   "image-api": "Image API",
   "libraries": "Libraries",
   "audio-api": "Audio API",
   "video-api": "Video API",
-
   "-- enhancements-configurations": {
     "title": "A.I. Configurations",
     "type": "separator"
