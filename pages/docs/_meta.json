@@ -12,8 +12,8 @@
     "type": "separator"
   },
   "api": "API",
-  "image-api": "Image API",
   "libraries": "Libraries",
+  "image-api": "Image API",
   "audio-api": "Audio API",
   "video-api": "Video API",
   "-- enhancements-configurations": {
