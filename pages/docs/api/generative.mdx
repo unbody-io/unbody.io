@@ -1,0 +1,157 @@
+import {Tabs, Tab} from "@nextui-org/react";
+
+# Generative Search
+
+Generative Search utilizes large language models to transform query results into engaging narratives. This approach processes natural language to generate human-like outputs, suitable for enhancing user engagement with data-driven content.
+
+For instance, if your data includes various historical events, users can simply enter a general prompt like "important events in the 20th century" and receive a narrative summarizing the events in an engaging manner. This method is beneficial for creating narrative content, resonating with human readers, and summarizing complex data into key insights.
+
+## Techniques
+Generative Search can be applied using several techniques, which can be adapted depending on your application's needs:
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get.<object_name>.generate.fromMany("data point", {...options})
+        // or
+        unbody.get.<object_name>.generate.fromOne("data point", {...options})
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql
+        {
+            Get{
+                <ObjectName>{
+                    ...fields
+                    _additional{
+                        generate(
+                            singleResult:{
+                                prompt: "prompt goes here"
+                            }
+                        ){
+                            singleResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 1 - Single Prompt Generative Search
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .textBlock
+            .generate
+            .fromOne("Transform this historical fact into a captivating tweet: {content}")
+            .exec()
+        // The output is a custom tweet based on the historical fact provided
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql
+        {
+            Get{
+                TextBlock{
+                    text
+                    _additional{
+                        generate(
+                            singleResult:{
+                                prompt: "Transform this historical fact into a captivating tweet: {content}"
+                            }
+                        ){
+                            singleResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 2 - Grouped Task Generative Search
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .textBlock
+            .generate
+            .fromMany(
+                "Summarize the common traits of these Australian animals.",
+                ["text"]
+            )
+            .exec()
+        // The output is a summary of common traits of Australian animals based on the text blocks provided
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql
+        {
+            Get{
+                TextBlock{
+                    text
+                    _additional{
+                        generate(
+                            groupedResult:{
+                                task: "Summarize the common traits of these Australian animals.",
+                                properties: ["text"]
+                            }
+                        ){
+                            groupedResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 3 - Property Selection
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .textBlock
+            .search
+            .about("Innovations")
+            .limit(3)
+            .select("text")
+            .generate
+            .fromMany(
+                "Highlight the most impactful aspects of these innovations.",
+                ["text"]
+            )
+            .exec()
+        // The output focuses on the most impactful aspects of innovations, selected from the text provided
+        ```
+    </Tab>
+    <Tab title={"GraphQl"}>
+        ```graphql
+        {
+            Get{
+                TextBlock{
+                    text
+                    _additional{
+                        generate(
+                            groupedResult:{
+                                task: "Highlight the most impactful aspects of these innovations.",
+                                properties: ["text"]
+                            }
+                        ){
+                            groupedResult
+                        }
+                    }
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>

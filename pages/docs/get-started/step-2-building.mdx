@@ -1,6 +1,6 @@
-import {Tabs, Callout} from "nextra/components"
 import {PageCard} from "../../../components/PageCard";
 import {PageItems} from "../../../components/PageItems";
+import {Tab, Tabs} from "@nextui-org/react";
 
 # Start building with Unbody
 Unbody is essentially an API that primarily utilizes a GraphQL interface. To interact with Unbody, you can either use GraphQL queries directly or employ one of the SDKs provided. Access to any of the endpoints, whether through direct GraphQL queries or SDKs, requires an API key.
@@ -12,8 +12,8 @@ Now, using this API key together with the `project-id` you can send requests to 
 
 This is how you can authorize your API calls.
 
-<Tabs items={['Unbody SDK', 'Curl', 'Vanilla JS']}>
-    <Tabs.Tab>
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
         Using Unbody typescript client all you need to create a new instance of Unbody SKD we will be using this instance in order to make all various API calls.
         ```typescript copy filename="unbody.ts"
         const unbody = new Unbody({
@@ -21,8 +21,8 @@ This is how you can authorize your API calls.
             projectId: "<PROJECT_ID>",
         });
         ```
-    </Tabs.Tab>
-    <Tabs.Tab>
+    </Tab>
+    <Tab title={"CURL"}>
         ```bash copy
         # Authorized call to Unbody using CURL
         curl -X POST \\
@@ -32,8 +32,8 @@ This is how you can authorize your API calls.
             -d '{"query": "{ Your GraphQL query here }"}' \\
             https://graphql.unbody.io
             ```
-    </Tabs.Tab>
-    <Tabs.Tab>
+    </Tab>
+    <Tab title={"Vanilla JS"}>
         ```javascript copy
         // Fetch API
         fetch('https://graphql.unbody.io', {
@@ -61,7 +61,7 @@ This is how you can authorize your API calls.
         })
         .then(...)
         ```
-    </Tabs.Tab>
+    </Tab>
 </Tabs>
 
 ### Make Your First API Call

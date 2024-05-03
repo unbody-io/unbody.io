@@ -1,110 +1,301 @@
-import { Tabs, Callout } from "nextra/components";
+import {Tabs, Tab} from "@nextui-org/react";
 
-# Semantic Search
+Semantic search is a method that lets users search data based on the meaning of their query. Users can use any form of natural human language and still get the same results. This differs from classic search, which relies on exact keyword matching.
 
-Semantic search is like having a smart assistant that really understands the meaning behind your words, not just the words themselves. It helps you find what you’re looking for, even if you don’t use the exact same words that are in the documents or data.
+For instance, if you've got a collection of documents about Quentin Tarantino, Maradona, and Elon Musk, the user doesn't need to type the full term "Quentin Tarantino" to find documents about him. Instead, they can enter phrases like "a movie director" or "who made Pulp Fiction" and still reach the same results.
+This method is best to use when you need to provide a more intuitive and user-friendly search experience, handle queries with ambiguity, or when you want to provide more relevant search results based on the context of the query.
 
-## How It Works
+## Syntax
+You can perform semantic searches on virtually any text (`string`) field of any object. Here's how:
 
-Unbody allows you to perform a semantic search using three main operators:
-
-- `nearText` or `search.about() in SDKs`
-- `nearObject` or `search.similar() in SDKs`
-- `nearVector`.
-
-Let’s break down how each of them works using simple examples and explanations.
-
-<Callout emoji="💡">
-****The Nerdy Details****
-
-When we talk about semantic search, we often refer to a “vector space”. Imagine a vast, multidimensional space where each word or phrase is a point. Words with similar meanings are closer together, while words with different meanings are further apart. This space is called the vector space.
-
-In this space, “cat” might be close to “kitten” but far from “airplane”. When you search using semantic operators like **`nearText`**, you are essentially navigating this vector space to find the points (words or documents) that are closest to your query.
-
-</Callout>
-
-## nearText
-
-Believe me, `nearText` (or `.search.about() in SDKs`) is Like asking a friend who knows your language.
-
-Has it ever happened that you wanted something but could not find exact words for it? So you describe the object you’re trying to find to your friend in your own language and your friend with his not-so-magical powers brings the ‘thing’ to you. In simple words, `nearText` is that friend of yours.
-
-<Callout emoji="💡">
-**How `nearText` finds your answers**
-
-When you use **`nearText`**, Unbody converts your query into a point in the vector space. It then searches for other points (documents, articles, etc.) that are close to your query. The closer they are, the more relevant they are to your search.
-
-</Callout>
-
-- **Example**
-  Imagine you have a bunch of articles and you’re looking for something related to “making websites faster”. You might not remember the exact words used in the articles, but you know the topic. So, you ask Unbody like this:
-
-<Tabs items={['GraphQL', 'TypeScript']}>
-<Tabs.Tab>
-  ```graphql copy
-  {
-    Get {
-      GoogleDoc(nearText: { concepts: ["making websites faster"] }) {
-        title
-        content
-      }
-    }
-  }
-  ```
-</Tabs.Tab>
-<Tabs.Tab>
-```ts
-    unbody.get
-          .GoogleDocs
-          .search
-          .about("making websites faster")
-          .select("title", "content")
-          .exec();
-```
-</Tabs.Tab>
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get.<object_name>.search.about("query", {...options})
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            <ObjectName>(
+              nearText: {
+                concepts: ["query"],
+                ...options
+              }
+            ){
+              ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
 </Tabs>
 
-Unbody then finds articles that talk about website performance, optimization, or anything related, even if they don't use the exact phrase “making websites faster”.
+### Example 1 - Google Drive / Google Docs
 
-## nearObject
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .googleDoc
+            .search
+            .about("a movie director")
 
-**It is like finding a needle in a haystack**
-
-It is not always that you don’t know the exact reference to what you’re trying to find. Sometimes, you might want to find something very specific, and you have a clear example or reference to guide you. That’s where `nearObject` comes in.
-
-- **Example**
-  Let us say you have a favorite article about JavaScript frameworks, and you want to find more articles that are similar to it. You can tell Unbody like the example given below.
-
-<Tabs items={['GraphQL', 'TypeScript']}>
-<Tabs.Tab>
-  ```graphql copy
-  {
-    Get {
-      GoogleDoc(nearObject: { id: "your-favorite-article-id" }) {
-        title
-        content
-      }
-    }
-  }
-  ```
-</Tabs.Tab>
-<Tabs.Tab>
-```ts
-    unbody.get
-          .GoogleDocs
-          .search
-          .similar("your-favorite-article-id")
-          .select("title", "content")
-          .exec();
-```
-</Tabs.Tab>
+        // payload is an array of GoogleDocs that are about "a movie director"
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            GoogleDoc(
+              nearText: {
+                concepts: ["a movie director"]
+              }
+            ){
+              ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
 </Tabs>
 
-Unbody will then search through all the documents and find the ones that are most similar to your favorite article.
+### Example 2 - Discord / Discord messages
 
----
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .discordMessage
+            .search
+            .about("a movie director")
 
-<Callout type="info" emoji="💪">
- **Ready to Level Up?** If you're comfortable with the basics and eager to dive deeper into the world of semantic search, check out our [Semantic Search: Advanced Guide](/docs/api/search/semantic-search-adv) It’s packed with in-depth explanations, advanced techniques, and practical examples to help you master the art of semantic search with Unbody.
+        // payload is an array of DiscordMessages that are about "a movie director"
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            DiscordMessage(
+              nearText: {
+                concepts: ["a movie director"]
+              }
+            ){
+              ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
 
-</Callout>
+### Example 3 - Any text block
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .textBlock
+            .search
+            .about("a movie director")
+
+        // payload is an array of textBlocks that are about "a movie director"
+        // this search includes all types of objects avaiable in the sources of your project
+        // so the result here can be a mixed from Google Docs, Markdown files on Google drive and/or some Github Repos
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            TextBlock(
+              nearText: {
+                concepts: ["a movie director"]
+              }
+            ){
+              ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Semantic Search: Advanced Guide
+This guide is designed for developers who have a good grasp of the [basics of semantic search](/docs/api/search/semantic-search) and are ready to explore more sophisticated functionalities to enhance their search capabilities. Let’s dive in, folks!
+
+We have already explained vector space in the previous doc. **`nearVector`** provides direct access to the vector space, allowing for precise navigation and customized search experiences. Here, we’ll explore advanced techniques and use cases to fully leverage this powerful feature.
+
+### Fine-Tuning with moveTo and moveAwayFrom
+
+**`moveTo`** and **`moveAwayFrom`** are very powerful advanced functionalities that enable you to steer your search query towards or away from specific concepts. You can probably sense how powerful this concept is which gives you precise control over your search results.
+
+- **Example: Balancing Concepts**
+For example, let us consider you’re searching for articles related to web development, but you want a balanced view, considering both frontend and backend perspectives. The example given below imitates the scenario.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .article
+            .nearVector({
+                vector: [...vector representing “web development”...],
+                moveTo: {
+                    concepts: ["frontend", "backend"],
+                    force: 0.5
+                }
+            })
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQL formatted"}>
+        ```graphql
+        query{
+          Get{
+            Article(
+              nearVector: {
+                vector: [...vector representing “web development”...],
+                moveTo: {
+                  concepts: ["frontend", "backend"],
+                  force: 0.5
+                }
+              }
+            ){
+              title
+              content
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Utilizing Custom Vectors
+
+If you have access to custom words or document vectors, **`nearVector`** allows you to integrate them directly into your search queries.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .article
+            .nearVector({
+                vector: [...your custom word vector...]
+            })
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl formatted"}>
+        ```graphql
+        query{
+          Get{
+            Article(
+              nearVector: {
+                vector: [...your custom word vector...]
+              }
+            ){
+              title
+              content
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Optimizing Search with Boosting and Filtering
+
+Let us now have a look at how you can enhance your search results by boosting certain properties and applying filters to hone in on the most relevant data.
+
+### Property Boosting
+
+Some of the properties in the data are more relevant than others. You can boost the relevance of specific properties in your data to ensure they have a greater impact on the search results.
+
+- **Example: Boosting Titles**
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .article
+            .nearText({
+                vector: [...vector representing “web development”...],
+                moveTo: {
+                    concepts: ["frontend", "backend"],
+                    force: 0.5
+                },
+                boost: {
+                    title: 2
+                }
+            })
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl formatted"}>
+        ```graphql
+        query{
+          Get{
+            Article(
+              nearText: {
+                query: "web development",
+                boost: { title: 2 }
+              }
+            ){
+              title
+              content
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Conditional Filtering
+
+You can also apply filters to your semantic search queries. It helps to narrow down results based on specific conditions.
+
+- **Example: Filtering by Tags**
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+
+        ```javascript copy
+        unbody.get
+            .article
+            .where(({Equal}) => ({
+                tags: Equal("tutorial")
+            })
+            .search
+            .about("web development")
+            .exec()
+        ```
+    </Tab>
+    <Tab title={"GraphQl formatted"}>
+        ```graphql
+        query{
+          Get{
+            Article(
+              nearText: {
+                query: "web development"
+              },
+              where: {
+                path: ["tags"],
+                operator: Equal,
+                valueText: "tutorial"
+              }
+            ){
+              title
+              content
+              tags
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+
+

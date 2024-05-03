@@ -1,11 +1,7 @@
 {
   "semantic-search": "Semantic Search",
-  "semantic-search-adv": "Semantic Search Advanced",
+  "keyword-search": "Keyword Search",
   "hybrid-search": "Hybrid Search",
-  "hybrid-search-adv": "Hybrid Search Advanced",
-  "visual-search": "Visual Search",
-  "generative-qa": "Generative Q&A",
-  "questionanswering": "Question Answering",
-  "generative-search": "Generative Search",
-  "generative-search-adv": "Generative Search Advanced"
+  "visual-similarity": "Visual Similarity",
+  "record-similarity": "Record Similarity"
 }

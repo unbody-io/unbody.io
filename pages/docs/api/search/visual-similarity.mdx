@@ -1,0 +1,48 @@
+import {Tabs, Tab} from "@nextui-org/react";
+
+This method can be particularly useful when you want to find images that have a similar aesthetic, color scheme, or subject matter. It works by comparing the visual characteristics of the images and determining how similar they are.
+
+## Syntax
+
+Visual similarity search can be performed on any 'imageBlock'. Here's how:
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title="Unbody SDK">
+        ```javascript copy
+        unbody.get.imageBlock.search.similar.visual("imageBlockId", {...options})
+        ```
+    </Tab>
+    <Tab title="GraphQL">
+        ```graphql
+        query{
+          Get{
+            ImageBlock(
+                nearImage: {
+                    imageId: "imageBlockId",
+                    ...options
+                }
+            ){
+                ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Examples
+
+- Example 1 - image blocks
+    ```javascript copy
+    const {data: {payload}} = await unbody.get.imageBlock.similar.image("image url or base64");
+    // payload is an array of ImageBlocks that are visually similar to the specific image with id "specificImageId"
+    ```
+
+
+### Arguments
+
+| arguments | Type | Default | Description |
+| --- | --- | --- | --- |
+| image | string |  | Image url or base64 |
+| certainty | float |  | Normalized Distance between the result item and the search vector. Normalized to be between 0 (identical vectors) and 1 (perfect opposite). |
+| distance | float |  | The required degree of similarity between an image's visual characteristics and the provided filter values |

@@ -1,0 +1,134 @@
+import {Tab, Tabs} from "@nextui-org/react";
+
+Keyword search is a method that allows users to search your data based on specific keywords. Unlike [semantic search](/docs/api/semantic-search) which focuses on the meaning of the search query, keyword search relies on exact matches of the keywords used in the search query.
+
+This method is best to use when you want to provide quick and straightforward search results. It is especially effective when dealing with large databases where users are familiar with the specific keywords used within the data.
+
+### Syntax
+
+Keyword search can be operated on an  any object's `string` or `string[]` field. Here's how:
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```jsx
+        unbody.get.<object_name>.search.find("query", {...options})
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            <ObjectName>(
+                bm25: {
+                    query: "query",
+                        ...options
+                }
+            ){
+                ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Examples
+
+### Example 1 - Google Drive / Google Docs
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```jsx
+        const {data: {payload}} = await unbody.get
+            .googleDoc
+            .search
+            .find("specific keyword");
+
+        // payload is an array of GoogleDocs that match "specific keyword"
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            GoogleDoc(
+                bm25: {
+                    query: "specific keyword"
+                }
+            ){
+                ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 3 - Any text block
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```jsx
+        const {data: {payload}} = await unbody.get
+            .textBlock
+            .search
+            .find("specific keyword");
+
+        // payload is an array of textBlocks that match "specific keyword"
+        // this search includes all types of objects available in the sources of your project
+        // so the result here can be a mixed from Google Docs, Markdown files on Google Drive and/or some Github Repos
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            TextBlock(
+                bm25: {
+                    query: "specific keyword"
+                }
+            ){
+                ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 4 - Google Drive / Google Docs - specific fields
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```jsx
+        const {data: {payload}} = await unbody.get
+            .googleDoc
+            .search
+            .find("specific keyword", ["title", "autoSummary"]);
+
+        // payload is an array of GoogleDocs that match "specific keyword" - but here the search only is executed over two specifiec fields; "title" and "autoSummary"
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+          Get{
+            GoogleDoc(
+                bm25: {
+                    query: "specific keyword",
+                    fields: ["title", "autoSummary"]
+                }
+            ){
+                ...fields
+            }
+          }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Arguments
+
+| arguments | Type | Default | Description |
+| --- | --- | --- | --- |
+| query * | string, string[] |  |  |
+| fields | string[] |  | Specify which fields to search,  |

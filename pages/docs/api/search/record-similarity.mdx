@@ -1,0 +1,140 @@
+import {Tab, Tabs} from "@nextui-org/react";
+
+Similarity Record is a way to see how alike objects are. You can use this to find objects that look like a specific one. For instance, if you have many Google Docs, you can use this to find docs that are like Doc A. In the past, you had to look at things like keywords or topics to find similar items. But with similarity search in Unbxd, this isn't necessary. You can compare the whole document.
+
+## Syntax
+
+Similarity search can be performed on any object. Here's how:
+
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get.<object_name>.search.similar.record(objectId, {...options})
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+
+        ```graphql
+        query{
+            Get{
+                <ObjectName>(
+                    nearObject: {
+                    objectId: "objectId",
+                        ...options
+                    }
+                ){
+                    ...fields
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+
+## Examples
+
+### Example 1 - Google Drive / Google Docs
+
+Find Google Docs that are similar to a specific Google Doc.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .googleDoc
+            .search
+            .similar
+            .record("specificDocId");
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+
+        ```graphql
+        query{
+            Get{
+                GoogleDoc(
+                    nearObject: {
+                    objectId: "specificDocId"
+                    }
+                ){
+                    ...fields
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+
+### Example 2 - Discord / Discord messages
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .discordMessage
+            .search
+            .similar
+            .record("specificMessageId");
+
+        // payload is an array of DiscordMessages that are similar to the specific message with id "specificMessageId"
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+            Get{
+                DiscordMessage(
+                    nearObject: {
+                    objectId: "specificMessageId"
+                    }
+                ){
+                    ...fields
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+### Example 3 - Any text block
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+        ```javascript copy
+        unbody.get
+            .textBlock
+            .search
+            .similar
+            .record("specificTextBlockId");
+
+        // payload is an array of textBlocks that are similar to the specific text block with id "specificTextBlockId"
+        // this search includes all types of objects available in the sources of your project
+        // so the result here can be a mixed from Google Docs, Markdown files on Google Drive and/or some Github Repos
+        ```
+    </Tab>
+    <Tab title={"GraphQL"}>
+        ```graphql
+        query{
+            Get{
+                TextBlock(
+                    nearObject: {
+                    objectId: "specificTextBlockId"
+                    }
+                ){
+                    ...fields
+                }
+            }
+        }
+        ```
+    </Tab>
+</Tabs>
+
+## Arguments
+| arguments | Type | Default | Description |  |
+| --- | --- | --- | --- | --- |
+| id | string |  | The ID of the object you want to find similar items to. |  |
+| certainty | float |  | Normalized Distance between the result item and the search vector. Normalized to be between 0 (identical vectors) and 1 (perfect opposite). |  |
+| distance | float |  | The required degree of similarity between an object's characteristics and the provided filter values
+ |  |
+|   beacon | string |  | Concept identifier in the beacon format |  |
