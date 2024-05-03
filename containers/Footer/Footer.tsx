@@ -38,7 +38,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="col-3">
-                    <span className={`upper ${styles.catTitle}`}>Resources</span>
+                    <span className={`upper ${styles.catTitle}`}>RESOURCES</span>
                     <div className={styles.catItems}>
                         <Link className="cap" href="/docs">Documentation</Link>
                         <Link className="cap" href="/blog">Blog</Link>

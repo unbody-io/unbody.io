@@ -7,20 +7,6 @@
       "layout": "full"
     }
   },
-  "solution": {
-    "title": "Solutions",
-    "type": "menu",
-    "items": {
-      "about": {
-        "title": "For Companies",
-        "href": "/solutions"
-      },
-      "contact": {
-        "title": "For Developers",
-        "href": "/docs"
-      }
-    }
-  },
   "usecase": {
     "title": "Use Cases",
     "type": "menu",
