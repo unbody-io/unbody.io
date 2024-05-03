@@ -4,4 +4,13 @@ const withNextra = require('nextra')({
 })
 
 module.exports = withNextra({
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.cdn.unbody.io',
+        port: '',
+      },
+    ],
+  },
 })

@@ -1,0 +1,47 @@
+
+import {unbody} from "../lib/unbody";
+import {useSSG} from "nextra/ssg";
+import {ShowCaseGallery} from "../components/Showcase";
+
+
+
+export const ShowCase = () => {
+    const {projects} = useSSG();
+    return <ShowCaseGallery projects={projects}/>
+}
+
+export const getStaticProps = async () => {
+    const {data: {payload}} = await unbody.get
+        .googleDoc
+        .where(({ContainsAny}) => ({
+            path: ContainsAny('showcase')
+        }))
+        .select(
+            "blocks.ImageBlock.url",
+            "summary",
+            "title",
+            "autoKeywords",
+            "mentions",
+            "blocks.TextBlock.text",
+            "blocks.TextBlock.tagName",
+            "blocks.ImageBlock.width",
+            "blocks.ImageBlock.height",
+        )
+        .exec()
+        .catch(e => {
+            console.error(e)
+            return []
+        })
+
+    return {
+        props: {
+            ssg: {
+                projects: payload
+            }
+        },
+        revalidate: 10
+    }
+}
+
+
+<ShowCase/>

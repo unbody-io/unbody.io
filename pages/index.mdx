@@ -1,5 +1,3 @@
-import {Unbody} from "@unbody-io/ts-client";
-
 import NewHero from "../containers/NewHero/NewHero";
 import {useSSG} from "nextra/ssg";
 import Image from "next/image";
@@ -7,14 +5,10 @@ import {ActionButtonGroup} from "../containers/ActionButtonGroup";
 import {Tabs} from "nextra/components";
 import {VideoPlayer} from "../components/VideoPlayer/Player";
 import {UsecaseCard} from "../components/UsecaseCard";
+import {unbody} from "../lib/unbody";
 
 export const getStaticProps = async () => {
-    const u = new Unbody({
-        apiKey: process.env.UNBODY_API_KEY,
-        projectId: process.env.UNBODY_PROJECT_ID
-    })
-
-    const {data: {payload: introVideo}} = await u.get.videoFile
+    const {data: {payload: introVideo}} = await unbody.get.videoFile
         .where({
             remoteId: "1X03E8Y1zbPml1hx09Ee96JcfwrpLq9HI"
         })

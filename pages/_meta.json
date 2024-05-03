@@ -53,6 +53,13 @@
     "type": "page",
     "display": "hidden"
   },
+  "showcase": {
+    "title": "Showcase",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "solutions": {
     "type": "page",
     "title": "Solutions",
@@ -70,7 +77,8 @@
   },
   "about": {
     "title": "About",
-    "type": "page"
+    "type": "page",
+    "display": "hidden"
   },
   "terms": {
     "title": "Terms",
