@@ -164,7 +164,7 @@ const HeroText = () => {
                 <ActionButtonGroup ctaLink={"/docs/getting-started"}/>
             </div>
             <div className="block md:hidden m-auto p-4">
-                <ActionButtonGroup ctaLink={"/docs/getting-started"}/>
+                <ActionButtonGroup ctaLink={"/docs/get-started"}/>
             </div>
         </div>
     );
