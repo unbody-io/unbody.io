@@ -21,19 +21,20 @@ import {GithubRepoEmbed} from "../../components/GithubEmbed";
                 image={"/images/blog/ai-native/cover.jpg"}
 />
 
-It’s been a while since AI and in particular large language models have become known and found their way into our daily lives. This technology has affected the way we as users interact with the machine/software, we have learned that we can speak to the machine now, and we can make a dialog with the software and the data. Such a shift in the user's mental model requires a shift in how we design and build software. Soon ***“AI-first”** will become the new **“mobile-first”*** [^1], and In this post, chatbots, semantic searches, multimodal generative features, and all other AI functionalities will be expected in every website. I’m going to dive into what it means to be "AI-first." and how we at Unbody aim to create a foundation for building AI-native apps for non-ai developers.
-
-When we talk about an AI-first app or website, we're referring to platforms that either integrate AI functionalities or are developed from the ground up as AI-native digital products. Before we start with the characteristics of AI-native products, it’s crucial to set the context of our discussion.
-
-The journey of any AI application begins with data, which may be general public knowledge or specific to a particular domain. Our focus here is on AI-native apps that leverage domain-specific data. This distinction is important because while it’s possible to build numerous applications using AI models like OpenAI's GPTs, the real challenge lies in the unique value proposition offered by your product. What does your app provide that general AI platforms like OpenAI's ChatGPT or Google's Gemini chat, with their extensive plugins, do not? The answer often lies in the utilization of private or specialized data that sets your offering apart from the rest.
-
-With this understanding, let’s explore the three main pillars that I believe characterize an AI-native app.
+AI, especially large language models, have become prevalent and integrated into our daily lives. This technology has transformed how we interact with machines and software. We've learned to converse with machines, establishing a dialogue with the software and the data. This shift in user mentality necessitates a corresponding shift in software design and construction. Soon, "AI-first" will be the new "mobile-first" mindset. Chatbots, semantic searches, multimodal generative features, and other AI functionalities will become standard on every website. In this document, I'll explore what it means to be "AI-first" and how we at Unbody plan to build a foundation for creating AI-native apps for non-AI developers.
 
 ## AI-native characteristics
+When we talk about an AI-first app or website, we're referring to platforms that either integrate AI functionalities or are developed from the ground up as AI-native digital products. However I would like to offer a definition for what an AI-native application should be. I belive an AI-native app is a more human software; a software that understands us and can adopt to human. With this definition in mind, I would categories there main pillars that makes an application AI-native.
 
-### **1. Data**
+### **1. Personalisation**
 
-When it comes to building apps and websites, everything starts with data, ranging from simple static company websites to complex SaaS products aimed at providing tailored advice on creating better resumes. Traditionally, we have organized this information using content management systems (CMS) to create, curate, and manage the necessary data in a highly structured format. This process often involves extensive manual effort, including copious amounts of copying and pasting, manual data entry, and content analysis.
+The first step towards more human-like software is its ability to adapt and tailor to our individual needs and contexts. By "we," I mean the various personas and roles we embody throughout the day. For instance, our needs at work differ from those at home. Consequently, the way we interact with software and the software itself should also vary. At work, software should be personalized to our company, department, team, and position. At home, devices like Alexa should adjust to our home's temperature, size, routines, and so on.
+
+Consider a chatbot app, for example. At work, you would want the chatbot to understand your company, department, team, and personal responsibilities. Only then can it effectively search through your documents or summarize all the "financial reports in 2023".
+
+In the digital world, we're represented by the data footprints we produce daily. This data comes in various formats, and we need it to provide a more personalized user experience. But how is our software supposed to access and understand this data?
+
+When building apps and websites, everything begins with data. This ranges from simple static company websites to complex SaaS products that provide tailored advice for better resume creation. Traditionally, we've used content management systems (CMS) to create, curate, and manage this data in a highly structured format. However, this process often requires a considerable amount of manual effort, including extensive copying, pasting, manual data entry, and content analysis.
 
 ![data.jpg](/images/blog/ai-native/data.jpg)
 
@@ -43,7 +44,7 @@ However, with AI-native applications, we bypass these traditional steps. We do n
 
 This process requires the capability to aggregate and process documents, files, and data from all different locations and platforms in all formats.
 
-### **2. Context**
+### **2. Context Awareness**
 
 The second crucial aspect of AI-native apps is the context in which content exists. Traditionally, all content that needed to be communicated had to be explicitly written out. However, we know that every piece of content inherently possesses a context—it’s not isolated but linked to other data points that have been created at some time or another. This interconnected nature of content is the principle behind Hypertext, which is used in virtually every web page today. Traditionally, making these connections is a manual process, which not only consumes a lot of time but also often results in missing links and lost information.
 
@@ -135,6 +136,5 @@ Here are a few examples open-source AI-native products that we have built using 
 </div>
 
 ![Untitled](/images/blog/ai-native/Untitled%201.png)
-
 
 [^1]: Bob van Luijt (2024) - CEO and Founder of Weaviate.
