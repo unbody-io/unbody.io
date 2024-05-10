@@ -22,12 +22,12 @@ export const BlogPostHeader = (props: Props) => {
             </div>
             {
                 props.type === 'card' ?
-                    <h2>{props.title}</h2> :
-                    <h1>{props.title}</h1>
+                    <h2 className={"font-semibold"}>{props.title}</h2> :
+                    <h1 className={"text-5xl mb-6 font-semibold"}>{props.title}</h1>
             }
             {
                 props.subtitle &&
-                <h4 className={styles.subtitle}>
+                <h4 className={"text-medium text-gray-500 mb-8"}>
                     {
                         props.subtitle
                     }
@@ -39,12 +39,6 @@ export const BlogPostHeader = (props: Props) => {
                     <img src={props.image} alt={props.title}/>
                 </div>
             }
-            {/*{*/}
-            {/*    props.type !== 'card' && props.outline &&*/}
-            {/*    <p className={`${styles.outline}`}*/}
-            {/*       dangerouslySetInnerHTML={{__html: props.outline}}*/}
-            {/*    />*/}
-            {/*}*/}
         </div>
     )
 }

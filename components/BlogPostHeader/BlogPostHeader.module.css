@@ -20,22 +20,6 @@
 .header h4{
 }
 
-.subtitle{
-    margin-bottom: 2rem;
-    white-space: break-spaces;
-    font-weight: 300;
-    line-height: 115%;
-    opacity: 0.85;
-
-}
-
-.header h1{
-    font-size: var(--font-size-h2);
-    line-height: 110%;
-    max-width: 700px;
-    margin-bottom: 1rem;
-}
-
 .header{
 }
 
