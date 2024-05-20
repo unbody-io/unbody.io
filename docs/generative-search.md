@@ -47,5 +47,3 @@ The Generative module introduces a `generate {}` operator which you can use with
         | --- | --- |
         | chat-bison | The go-to model for extensive generative search tasks, offering a balance between length of response and contextual awareness. |
         
-
-[Multimodal Vectorizers](/docs/vectorizers/multimodal-vectorizers "Multimodal Vectorizers")[Question Answering](/docs/question-answering "Question Answering")
