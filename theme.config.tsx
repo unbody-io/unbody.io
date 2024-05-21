@@ -66,28 +66,16 @@ const logo = (
     </div>
 );
 
-const phLink = "https://www.producthunt.com/products/unbody";
-const phImage = "https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=439359&theme=dark";
-
-const ProductHuntBadge = () => (
+const Banner = () => (
     <div className={""}>
-        <a href={phLink}
+        <a href={"https://lu.ma/eqfaddb4"}
            target="_blank"
            className={"p-10 flex flex-row gap-4 items-center justify-center"}
         >
             🎉
-            <span className={"text-tiny"}>
-                on Product Hunt, 25th April 2024
+            <span className={"text-small"}>
+                Build AI study assistant in NextJS, June 5 - 16:00 GMT+2
             </span>
-            <img src={phImage}
-                 alt="Unbody - Custom&#0032;AI&#0032;for&#0032;Custom&#0032;Data&#0044;&#0032;in&#0032;one&#0032;line&#0032;of&#0032;code&#0046; | Product Hunt"
-                 style={{
-                        width: "auto",
-                        height: "32px",
-                 }}
-                 width="250"
-                 height="54"
-            />
         </a>
     </div>
 )
@@ -129,6 +117,9 @@ const config: DocsThemeConfig = {
     },
     search: {
         component: null,
+    },
+    banner: {
+        text: Banner
     },
     useNextSeoProps: () => {
         const {frontMatter} = useConfig();

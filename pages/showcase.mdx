@@ -25,21 +25,20 @@ export const getStaticProps = async () => {
             "blocks.TextBlock.text",
             "blocks.TextBlock.tagName",
             "blocks.ImageBlock.width",
-            "blocks.ImageBlock.height",
+            "blocks.ImageBlock.height"
         )
         .exec()
         .catch(e => {
             console.error(e)
             return []
-        })
+        });
 
     return {
         props: {
             ssg: {
                 projects: payload
             }
-        },
-        revalidate: 10
+        }
     }
 }
 

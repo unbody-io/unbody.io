@@ -24,7 +24,7 @@
     "@next/env": "^13.4.5",
     "@nextui-org/react": "^2.3.5",
     "@uidotdev/usehooks": "^2.4.1",
-    "@unbody-io/ts-client": "^0.0.13",
+    "@unbody-io/ts-client": "^0.0.14",
     "@vercel/analytics": "^1.1.1",
     "@vercel/og": "^0.5.19",
     "dayjs": "^1.11.8",

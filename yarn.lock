@@ -2334,14 +2334,15 @@
   resolved "https://registry.yarnpkg.com/@uidotdev/usehooks/-/usehooks-2.4.1.tgz#4b733eaeae09a7be143c6c9ca158b56cc1ea75bf"
   integrity sha512-1I+RwWyS+kdv3Mv0Vmc+p0dPYH0DTRAo04HLyXReYBL9AeseDWUJyi4THuksBJcu9F0Pih69Ak150VDnqbVnXg==
 
-"@unbody-io/ts-client@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@unbody-io/ts-client/-/ts-client-0.0.13.tgz#2ecc2dc3863fa4048e0415b47540096cf11fcc2b"
-  integrity sha512-i+RtDSZUXNMbmn7CdQJ9C8SuLUwEKOMX41kHFL9b2o1jcgeb0414mtFYsbSuvFvzhBjmOVW2ALE9NTO9STdTqg==
+"@unbody-io/ts-client@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@unbody-io/ts-client/-/ts-client-0.0.14.tgz#84abc6b9fe0f2870cee7c391ba240a2ac10c2985"
+  integrity sha512-UDuP7okUbG3ptt5D/xpTC2zS0F5/n1dN1PWSk3/6F1Marby9u2qO+gPIIZ0/clQIENx1apxQXujXJdVu2DU7zg==
   dependencies:
     axios "^1.4.0"
     json-to-graphql-query "^2.2.5"
     lodash "^4.17.21"
+    utility-types "^3.11.0"
 
 "@ungap/structured-clone@^1.0.0":
   version "1.2.0"
@@ -5872,6 +5873,11 @@ util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+utility-types@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.11.0.tgz#607c40edb4f258915e901ea7995607fdf319424c"
+  integrity sha512-6Z7Ma2aVEWisaL6TvBCy7P8rm2LQoPv6dJ7ecIaIixHcwfbJ0x7mWdbcwlIM5IGQxPZSFYeqRCqlOOeKoJYMkw==
 
 uuid@^9.0.0:
   version "9.0.1"
