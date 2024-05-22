@@ -32,7 +32,7 @@ const Footer = () => {
                         <a href="https://twitter.com/unbody_io" target="_blank" className="cap">X</a>
                         <a href="https://github.com/unbody-io" target="_blank" className="cap">Github</a>
                         <a href={"https://www.youtube.com/@Unbody"} target={"_blank"} className={"cap"}>Youtube</a>
-                        <a href={"https://discord.gg/e5bEFVJX"} target={"_blank"} className={"cap"}>Discord</a>
+                        <a href={"https://discord.gg/EndNGdxY"} target={"_blank"} className={"cap"}>Discord</a>
                         —
                         <a href={"mailto:hello@unbody.io"}>Sales</a>
                     </div>
