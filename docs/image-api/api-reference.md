@@ -1,0 +1,105 @@
+---
+title: API Reference
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"Image
+  API","route":"/docs/image-api"},{"title":"API
+  Reference","route":"/docs/image-api/api-reference"}]
+---
+
+# API reference
+
+Unbody’s Image API, powered by IMGIX, offers developers a seamless way to host, transform, and optimize images for their applications. The API uses IMGIX's robust image processing features, allowing you to deliver high-quality images with minimal loading times.
+
+This documentation will guide you through using the Unbody Image API, helping you to leverage IMGIX's functionality to enhance your image content.
+
+## Getting Started with Unbody Image API
+
+### Prerequisites
+
+Before you begin, make sure you have the following.
+
+-   An active Unbody account.
+-   Access to the Unbody GraphQL endpoint.
+-   Familiarity with basic image processing concepts.
+
+### Fetching Your Image URL
+
+Every image synced with Unbody is accessible through our GraphQL endpoint. Given below is a basic query to fetch an image URL.
+
+GraphQLTypeScript
+
+```
+query {
+  Get {
+    ImageBlock(where: { path: "/your/image/path" }) {
+      url
+      alt
+      width
+      height
+    }
+  }
+}
+```
+
+With the `url` obtained, you can perform a variety of operations using IMGIX parameters directly in the URL.
+
+### Basic Image Transformation
+
+To apply IMGIX transformations, you can append parameters to the image URL. Given below is a simple transformation that resizes the image to a width of 300 pixels.
+
+```
+image.cdn.unbody.io/[path_to_image]?w=300
+```
+
+## API Reference
+
+The Unbody Image API with IMGIX includes a suite of operations that you can directly apply via URL parameters. Given below is a condensed reference of the most commonly used functionalities.
+
+### Resizing and Cropping
+
+-   **Resize (w, h)**: It sets the width and height of your image.
+    -   For example: `?w=300&h=200`
+-   **Crop (crop)**: You can crop your image to a specific aspect ratio or dimension.
+    -   For example: `?crop=top,left&h=100`
+
+### Image Adjustments
+
+-   **Brightness (bri)**: You can also adjust the brightness of the image.
+    -   For example: `?bri=10`
+-   **Contrast (con)**: It you wish to adjust the contrast of the image, you can use the `con` parameter.
+    -   For example: `?con=20`
+
+### Format and Compression
+
+-   **Format (fm)**: You can specify the output format of your image (e.g. jpg, png, webp).
+    -   For example: `?fm=webp`
+-   **Quality (q)**: You can even control the output quality of your image for size optimization with the help of this parameter.
+    -   For example: `?q=75`
+
+### Advanced Features
+
+-   **Auto Enhance (auto)**: This parameter applies automatic enhancements to your image.
+    -   For example: `?auto=format,compress`
+-   **Text Overlay (txt)**: This parameter will overlay text onto your image.
+    -   For example: `?txt=Hello%20World`
+
+These are just a glimpse of what you can achieve with Unbody’s Image API. For a full list of parameters and detailed usage, you can refer to the IMGIX documentation linked at the end of this page.
+
+## Best Practices
+
+When using the Unbody Image API with IMGIX, you may consider following the best practices given below.
+
+-   **Lazy Loading**: You may implement lazy loading to defer loading off-screen images. This helps in optimizing the user experience.
+-   **Responsive Images**: You can use the `srcset` attribute in `<img>` tags for responsive image delivery.
+
+Take a look at the Best Practices page given below for more details on best practices.
+
+[Best practices](/docs/image-api/best-practices)
+
+## Conclusion
+
+The Unbody's Image API with IMGIX is a powerful tool for developers to enhance the visual component of their applications with ease. By leveraging the features and functionalities detailed above, you can ensure that your images are always optimized for performance and quality.
+
+For a deeper dive into all available IMGIX parameters and to explore more advanced features, please refer to the [official IMGIX documentation (opens in a new tab)](https://docs.imgix.com/apis).
+
+[Overview](/docs/image-api/overview "Overview")[Best Practices](/docs/image-api/best-practices "Best Practices")

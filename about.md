@@ -1,0 +1,43 @@
+---
+title: About
+__path__: '[{"title":"About","route":"/about"}]'
+---
+
+# Our Mission: Facilitating more human software
+
+Unbody started with a simple yet powerful vision: to make AI technology accessible for every developer & every business in any field and level. We saw the challenges in integrating AI – the complexity of the technology, the fragmentation of data, and the high barrier to entry for non-experts. Our response? A platform that demystifies AI, making it a tool for innovation, not a hurdle.
+
+## What Unbody Offers
+
+Struggling with fragmented data and complex AI stack? Cut through the noise with Unbody's API. Choose your AI, connect your data, and build with ease. Opt for OpenAI GPTs, Google Gemini, or open-source models. Whether your data is in presentation files on Google Drive, videos on Slack, or PDFs stored locally, Unbody integrates it all. Simplify AI development to craft chatbots, search tools, and personalized experiences, accessible to all.
+
+## Why Unbody?
+
+1.  **Solving Fragmented Data Challenges**: One of the initial hurdles in deploying AI is dealing with scattered and fragmented data. Unbody excels at integrating and harmonizing data from diverse sources, making it seamless to start any AI project. This approach not only simplifies the data preparation phase but also ensures that AI models are trained on comprehensive and cohesive datasets, leading to more accurate and reliable outcomes.
+    
+2.  **Demystifying AI Development**: AI development is notoriously complex, requiring specialized knowledge that is beyond the reach of many developers. In fact, a significant percentage of developers find themselves at a loss when it comes to integrating AI into their projects. Unbody addresses this by simplifying the AI development process, making it accessible to a broader audience. This opens up AI development to those who previously might have been excluded due to the technical complexities involved.
+    
+3.  **Offering Tailored Solutions Over Generic Platforms**: The one-size-fits-all approach of large AI platforms often falls short of meeting specific needs, forcing businesses to settle for generic solutions that may not fully align with their objectives. Unbody distinguishes itself by providing customizable AI solutions that can be tailored to the unique requirements of each project. This ensures that businesses are not just adopting AI, but are integrating solutions that are specifically designed to address their unique challenges and goals.
+    
+
+Our platform is a tapestry of advanced AI functionalities - from context-aware AI technologies to modular structures supporting various AI models. Unbody is about transforming complexity into usability, enabling developers and businesses to leverage AI for intelligent, responsive applications.
+
+## Unbody and Open Source Contributions
+
+Our pursuit of superior content management has led us to create various open source packages and modules. These tools, designed for handling vector databases and building personalized websites, represent our commitment to enhancing content interaction and simplifying content management. As part of our long-term roadmap, we aim to gradually release these resources, contributing to the growth and development of the open-source community.
+
+## Xbody: A Unique Ecosystem
+
+We've built more than a platform; we've built an ecosystem. Xbody invites creators, thinkers, and digital explorers to collaborate and push the boundaries of website and app development. This unique program is a place for designers, content producers, and developers to bring their vision to life with Unbody's power. Discover more on our [Xbody page](/xbody).
+
+## Our Team
+
+We are a small team of young spirits. Want to join us? [Check out Xbody program](/xbody) and/or drop us a line at `hello@unbody.io`👋.
+
+Amir HouiehCo-Founder & CEO
+
+[LinkedIn](https://www.linkedin.com/in/amir-houieh)|[Twitter](https://twitter.com/amirhouieh)|[GitHub](https://github.com/amirhouieh)
+
+Hossein MehrabiCo-Founder & CTO
+
+[GitHub](https://github.com/jeangovil)|[LinkedIn](https://www.linkedin.com/in/jeangovil/)|[Twitter](https://x.com/jeangovil)

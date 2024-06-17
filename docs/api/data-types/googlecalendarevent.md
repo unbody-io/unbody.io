@@ -1,0 +1,37 @@
+---
+title: GoogleCalendarEvent
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"GoogleCalendarEvent","route":"/docs/api/data-types/googlecalendarevent"}]
+---
+
+# GoogleCalendarEvent
+
+| Field | Type | Description |
+| :-- | :-: | :-- |
+| createdAt | Date | The creation date of the event. |
+| creatorDisplayName | string | The event's creator display name. |
+| creatorEmail | string | The event's creator email. |
+| creatorId | string | The event's creator ID. |
+| creatorSelf | boolean | Whether the creator is the user. |
+| descriptionHtml | string | The event's description in HTML format. |
+| descriptionText | string | The event's description in plain text. |
+| end | Date | The end date of the event. |
+| htmlLink | string | The direct access URL. |
+| location | string | The location of the event. |
+| organizerDisplayName | string | The event's organizer display name. |
+| organizerEmail | string | The event's organizer email. |
+| organizerId | string | The event's organizer ID. |
+| organizerSelf | boolean | Whether the organizer is the user. |
+| recurrence | Array<string> | The recurrence rule of the event. |
+| remoteId | string | The unique identifier in the source. |
+| sequence | number | Event's sequence number. |
+| sourceId | string | The source identifier. |
+| start | Date | The start date of the event. |
+| status | string | The status of the event. |
+| summary | string | The summary of the event. |
+| title | string | The title of the event. |
+| updatedAt | Date | The last modification date of the event. |
+| attachments | Array<ImageBlock | AudioFile | VideoFile> | Event's attachments. |
+
+[GithubThread](/docs/api/data-types/githubthread "GithubThread")[GoogleDoc](/docs/api/data-types/googledoc "GoogleDoc")

@@ -1,0 +1,128 @@
+---
+title: What the F**k is an AI-native app?
+audience_group: developers
+outline: >-
+  AI-first is becoming the new mobile-first. But what the heck does it mean to
+  be AI-native? In this post, we dive into the characteristics of AI-native
+  apps.
+seo_tags: >-
+  AI-native apps, AI-first, AI-native characteristics, Data, Context, User
+  Experience model, Data Aggregation, Data Processing, Data Retrieval, Data
+  Augmentation, Data Generation, Unbody, Nexlog, Search Plugin
+category: null
+authors:
+  - name: Amir Houieh
+    link: https://www.linkedin.com/in/amirhouieh/
+    image: amir.png
+date: '2024-04-30T00:00:00.000Z'
+image: /images/blog/ai-native/coverainative.jpg
+__path__: >-
+  [{"title":"Blog","route":"/blog"},{"title":"What the F**k is an AI-native
+  app?","route":"/blog/ai-native-app"}]
+---
+
+April 30th, 2024 |
+
+[Amir Houieh](https://x.com/amirhouieh)
+
+# What the F\*\*k is an AI-native app?
+
+#### AI-first is becoming the new mobile-first. But what the heck does it mean to be AI-native? In this post, we dive into the characteristics of AI-native apps.
+
+AI, especially large language models, have become prevalent and integrated into our daily lives. This technology has transformed how we interact with machines and software. We've learned to converse with machines, establishing a dialogue with the software and the data. This shift in user mentality necessitates a corresponding shift in software design and construction. Soon, "AI-first" will be the new "mobile-first" mindset. Chatbots, semantic searches, multimodal generative features, and other AI functionalities will become standard on every website. In this document, I'll explore what it means to be "AI-first" and how we at Unbody plan to build a foundation for creating AI-native apps for non-AI developers.
+
+## AI-native characteristics
+
+When we talk about an AI-first app or website, we're referring to platforms that either integrate AI functionalities or are developed from the ground up as AI-native digital products. However I would like to offer a definition for what an AI-native application should be. I belive an AI-native app is a more human software; a software that understands us and can adopt to human. With this definition in mind, I would categories there main pillars that makes an application AI-native.
+
+### **1\. Personalisation**
+
+The first step towards more human-like software is its ability to adapt and tailor to our individual needs and contexts. By "we," I mean the various personas and roles we embody throughout the day. For instance, our needs at work differ from those at home. Consequently, the way we interact with software and the software itself should also vary. At work, software should be personalized to our company, department, team, and position. At home, devices like Alexa should adjust to our home's temperature, size, routines, and so on.
+
+Consider a chatbot app, for example. At work, you would want the chatbot to understand your company, department, team, and personal responsibilities. Only then can it effectively search through your documents or summarize all the "financial reports in 2023".
+
+In the digital world, we're represented by the data footprints we produce daily. This data comes in various formats, and we need it to provide a more personalized user experience. But how is our software supposed to access and understand this data?
+
+When building apps and websites, everything begins with data. This ranges from simple static company websites to complex SaaS products that provide tailored advice for better resume creation. Traditionally, we've used content management systems (CMS) to create, curate, and manage this data in a highly structured format. However, this process often requires a considerable amount of manual effort, including extensive copying, pasting, manual data entry, and content analysis.
+
+In the context of AI-native apps, we can approach data management differently. When examining any app or website more closely, it's evident that much of the information displayed, such as about pages, FAQ sections, blog posts, or documentation, already exists in some form elsewhere—perhaps as a PDF, a Google Doc, a markdown file or one of our email to another customer. Conventionally, we would need to re-curate this content to fit the structured data requirements of our platforms, while also manually applying SEO tags, assigning keywords, highlighting named entities, and adding captions to images.
+
+However, with AI-native applications, we bypass these traditional steps. We do not need to re-structure “structured” and “unstructured” data to build websites or apps. Instead, we use AI to save us the hassle of this data transformation. AI allows us to maintain data in its original format and location, utilizing language models to adapt it to our needs effectively.
+
+This process requires the capability to aggregate and process documents, files, and data from all different locations and platforms in all formats.
+
+### **2\. Context Awareness**
+
+The second crucial aspect of AI-native apps is the context in which content exists. Traditionally, all content that needed to be communicated had to be explicitly written out. However, we know that every piece of content inherently possesses a context—it’s not isolated but linked to other data points that have been created at some time or another. This interconnected nature of content is the principle behind Hypertext, which is used in virtually every web page today. Traditionally, making these connections is a manual process, which not only consumes a lot of time but also often results in missing links and lost information.
+
+Consider your technical documentation: you might spend months crafting detailed documents, but is that the only source of truth? Does it answer every possible question? What about the repeated queries that have already been addressed in community discussions on platforms like Slack or GitHub? Or the technical debates that unfold on forums like Discourse? Even a straightforward document connects to numerous other data points, which can enrich the content and provide a fuller experience. Making these connections between different "islands" of information is what we define as context—a critical element for any AI-native application.
+
+To do this effectively, it's not enough just to aggregate data; we need the ability to semantically connect topics with each other. This is where advanced features like "semantic search" play a vital role. Semantic search allows for a deeper understanding and linking of content, enabling apps to provide responses and information that are contextually connected beyond simple keyword matching.
+
+### **3\. User Experience model**
+
+With the rise of AI and large language models, we're seeing a fundamental shift in daily interactions with technology. Users are no longer just seeking information; they're looking for immediate answers. This shift introduces a new way of thinking about both content creation and consumption. Now, users expect to communicate with apps and websites through conversation, not just by clicking through options.
+
+Moreover, there is a growing preference for using natural human language when interacting with software. This requires our apps to not only understand but also respond in human language. It affects how we design and develop apps—adjusting user experience strategies and developing capabilities for deeper semantic analysis.
+
+To support this interactive approach, we need to implement features like generative search, image captioning, content classification, chatbots, and visual search. These capabilities are essential as we develop AI-native apps that cater to the evolving expectations of users, providing seamless, intuitive interactions. This is what we aim for as we advance in the field of AI-driven applications.
+
+## What this mean in technical terms
+
+Now that we've talked about what makes an app AI-first, let’s get into the tech that makes it all possible. We break down the essential tech into three main areas:
+
+1.  **Data Aggregation**: This is all about getting data from different places and making sure it all syncs up nicely.
+2.  **Data Processing**: We need to turn raw data into enhanced AI-ready data. This stage includes various tasks including cleaning data, chunking, vectorizing and some post-processing tasks such as entity recognition, classification and/or summary generation.
+3.  **functions**: I am borrowing this division here from what is famously known as RAG but here we would go beyond that, since we do not want to get too technical and too specific:
+
+-   **Data Retrieval**: Think of it as a supercharged search engine inside your app, helping you find exactly what you need quickly.
+-   **Data Augmentation**: This is about making the existing data even better, like adding new details to it or tweaking it to help the app understand different scenarios better.
+-   **Data Generation**: Borrowing a bit from something called the RAG—Retrieval-Augmented Generation—we go beyond just pulling out existing info. We create new bits of content right on the spot based on what users are asking for. It’s about giving users not just what they asked for but also what they might need next.
+
+## Challenge
+
+Alright, if you're curious about how all this comes together, here’s a peek at what it looks like to assemble a system that can handle everything we’ve discussed.
+
+First off, you’ll likely need to be familiar with Python—it’s essential for handling the kind of tasks we’re talking about. You’ll be putting together a system that includes about ten different components. These components range from document parsers and embeddings to deploying Large Language Models via an API, as well as data aggregation, data cleaning, chunking, and integrating tools like Langchain.
+
+But the challenge doesn’t stop there; these are just the AI-related elements. For building fully functional real-world apps and websites, you'll need a whole lot more. We're talking about incorporating functionalities like Content Delivery Networks (CDNs), video and audio hosting, and maybe even image processing for responsive images. All these elements are crucial to ensure your app or website performs well across all platforms and user environments.
+
+## Our solution
+
+At unbody we have fixed this. We tried to build ai native websites and we saw how challenging it is. Unbody is developing an AI-as-a-service platform that automates the entire AI development pipeline, making it straightforward for developers to integrate advanced AI functionalities into their applications. As the demand for "AI-first" capabilities becomes as crucial as "mobile-first" was, developers face significant challenges with scattered data across multiple platforms and complex AI technologies that are typically not accessible to those without specialized knowledge.
+
+How Unbody solves these challenges:
+
+1.  Data integration & processing: Unbody automates the aggregation and processing of data from any source—from Google Drive and Slack to local folders—and in any format, from PDFs to text documents, images, and videos.
+2.  Streamlined AI model management: Our platform enables developers to choose from a wide range of AI processors and models, from OpenAI’s GPTs to open-source options on Hugging Face. Unbody handles all the complexities involved in model upgrades, deployments, and maintenance seamlessly, removing the burden from developers.
+3.  Delivery to developer: Through a developer-friendly API or SDKs, Unbody makes integrating AI functionalities into apps and websites as simple as writing a single line of code. Here any of the above funtiolities would be one line of code.
+
+[short-js-semantic-search.mp4](/images/blog/ai-native/short-js-semantic-search.mp4)
+
+Just connect your data, select your AI stack, and start building with just one line of code.
+
+## Examples
+
+Here are a few examples open-source AI-native products that we have built using Unbody.io. Hope this gives you a better idea. We are always open to new ideas in AI-native app production, so in case you’ve got any, please reach out and let's see how we can help.
+
+-   **[Nexlog (opens in a new tab)](https://github.com/unbody-io/Nexlog)**: Nextlog is an AI-native, open-source blogging framework built on [Unbody.io (opens in a new tab)](https://unbody.io) that makes reading more contextual and dynamic.
+
+[View post on X](https://x.com/unbody_io/status/1768309148372906080)
+
+Github
+
+unbody.io
+
+Example boilerplate for Unbody.io's typescript SDK in Next.Js (Page Router)
+
+19th, April 2024
+
+* * *
+
+[Visit source code on GitHub.](https://github.com/unbody-io/example-next.js)
+
+-   **Search Plugin**: This tool is an example of improving search functionalities on websites and documentation. Built on Unbody, it makes searches feel as natural as conversation, showcasing the practical applications of our technology in everyday tasks
+
+[View post on X](https://x.com/amirhouieh/status/1781345283764338923)
+
+[Simplifying the Complexity of AI Development and Integration](/blog/simplifying-ai-development "Simplifying the Complexity of AI Development and Integration")

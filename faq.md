@@ -1,0 +1,34 @@
+---
+title: FAQ
+__path__: '[{"title":"FAQ","route":"/faq"}]'
+---
+
+# FAQ
+
+What types of sources can I use with Unbody?
+
+> Unbody supports a wide range of sources, including Google Drive, Google Calendar, Twitter, Slack, and more. You can find a list of supported sources in the documentation.
+
+Can I use Unbody to manage the content of multiple projects?
+
+> Yes, you can create and manage multiple projects in Unbody, each with its own set of sources.
+
+Can I use Unbody with any website or application?
+
+> Unbody works with any website or application that can make GraphQL queries. You can use Unbody with a static site generator, a server-side framework, or a JavaScript framework such as React or Angular.
+
+Is Unbody free?
+
+> Unbody offers a free plan that includes 10minutes of build time.
+
+How is Unbody different from IFTTT or Zapier?
+
+> Unlike IFTTT or Zapier, which primarily focus on automating tasks and workflows between different web services, Unbody is designed to integrate and process diverse content for AI-driven application development. While IFTTT and Zapier are great for creating simple connections, Unbody offers a more robust solution for developing sophisticated, content-rich applications.
+
+How is Unbody different from headless CMS?
+
+> Unbody redefines the headless CMS landscape by combining two key advantages: unparalleled flexibility in content management and advanced AI integration. Unlike typical headless CMSs that require content management within their specific interfaces, Unbody allows you to manage your content wherever it exists – be it in Google Docs, Slack, Dropbox, or any other platform. This ensures a seamless workflow without the need to migrate or adjust your content management habits. Simultaneously, Unbody harnesses the power of AI to transform this content into intelligent, queryable knowledge, enabling the development of sophisticated, AI-driven applications. This dual capability of flexible content management and powerful AI integration makes Unbody a unique and superior choice for modern application development.
+
+What are the limitations of Unbody?
+
+> Unbody is designed to be highly versatile and capable, but there are some limitations. These include dependency on the quality and structure of the input data, the complexity of integrating highly specialized AI models, and the need for developers to have a basic understanding of GraphQL queries. Additionally, while Unbody is scalable, extensive usage beyond the free plan will require a subscription.

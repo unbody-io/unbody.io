@@ -1,0 +1,25 @@
+---
+title: Overview
+image: /images/docs/hero.png
+__path__: '[{"title":"Docs","route":"/docs"},{"title":"Overview","route":"/docs"}]'
+---
+
+Welcome to the Unbody documentation! Here you'll find everything you need to get started with Unbody, from setting up your account to integrating our AI functionalities into your applications.
+
+### What is Unbody?
+
+Unbody is an AI-as-service platform that streamlines the entire AI pipeline, from data aggregation to AI models employment to frontend, all in one API.
+
+### Why Unbody?
+
+As 'AI-first' becomes the standard, much like 'mobile-first' did, AI functionalities are expected in all apps and websites. However, the tools for this are often too complex, especially when handling private data. This complexity means that many developers—probably like yourself—find it challenging to build or integrate AI features into their projects. At Unbody, we're addressing this issue by simplifying the entire process down to a single line of code. This makes it as easy for you to add advanced AI features such as chatbots and semantic search to your projects as adding a new page to a website.
+
+### How Does Unbody Work?
+
+Unbody works in 3 essential steps:
+
+1.  **Tell Unbody Where Your Data Is**: Our platform can integrate data from virtually any source—documents, spreadsheets, images, videos, whether they're stored in Google Drive, SharePoint, Slack, or even locally on your desktop. This flexibility addresses the problem of scattered and fragmented data by centralizing and simplifying data access.
+2.  **Choose Your Preferred AI Engine**: Users can select from a wide range of AI engines according to their specific needs, including advanced models like OpenAI's GPT, Gemini, or various open-source models available on Hugging Face. This choice empowers users to personalize AI features tailored to their requirements, tackling the personalization challenge head-on.
+3.  **Start Building Now**: Once the data sources are set and the AI engine selected, Unbody automatically aggregates, syncs, and transforms your data into ready-to-use AI functionalities. These are accessible through a single GraphQL endpoint or one of our specialized SDKs, simplifying the complex development tools issue by providing a unified, straightforward interface.
+
+[Get Started](/docs/get-started "Get Started")

@@ -1,0 +1,31 @@
+---
+title: ImageBlock
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"ImageBlock","route":"/docs/api/data-types/imageblock"}]
+---
+
+# ImageBlock
+
+| Field | Type | Description |
+| :-- | :-: | :-- |
+| alt | string | The alternative text of the image. |
+| blob | Blob | A base64 encoded string of the image. |
+| createdAt | Date | The date the image file was created. |
+| ext | string | The extension of the file. |
+| height | number | The height of the original image file in pixels. |
+| mimeType | string | The MIME type of the file. |
+| modifiedAt | Date | The date the image file was last modified. |
+| order | number | The order of the image block in a document. |
+| originalName | string | The original name of the file. |
+| path | Array<string> | The path to the file in the source. |
+| pathString | string | The path to the file in the source as a string. |
+| remoteId | string | The unique identifier in the source. |
+| size | number | The size of the file in bytes. |
+| sourceId | string | The source identifier. |
+| title | string | The title of the image. |
+| url | string | Direct access URL. |
+| width | number | The width of the original image file in pixels. |
+| document | Array<GoogleDoc | GoogleCalendarEvent | TextDocument | DiscordMessage> | The document this image block belongs to. |
+
+[GoogleDoc](/docs/api/data-types/googledoc "GoogleDoc")[Spreadsheet](/docs/api/data-types/spreadsheet "Spreadsheet")

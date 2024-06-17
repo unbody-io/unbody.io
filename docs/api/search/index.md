@@ -1,0 +1,28 @@
+---
+title: Search
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Search","route":"/docs/api/search"}]
+---
+
+Unbody offers 5 various search method in two categories, so you can build any type of search engine for your data.
+
+💡
+
+We assume that you have already read and learn about how to setup unbody project and also learn about the basics how to make request calls to Unbody API. If not please go to [getting started](/docs/get-started) and have make sure you have followed all the steps.
+
+### Search
+
+The first category is "Search" and includes three search techniques. These can be used to find and locate objects based on a string query.
+
+-   [Semantic search](/docs/api/search/semantic-search)
+-   [Keyword search](/docs/api/search/keyword-search)
+-   [Hybrid search](/docs/api/search/hybrid-search)
+
+### Similarity
+
+The second category is called the "Similarity" category. It includes various methods that can be used to find and search for objects based on their similarity to another object.
+
+-   [Record similarity](/docs/api/search/record-similarity)
+-   [Visual similarity](/docs/api/search/visual-similarity)
+
+[Authorization](/docs/api/authorization "Authorization")[Semantic Search](/docs/api/search/semantic-search "Semantic Search")

@@ -1,0 +1,36 @@
+---
+title: GoogleDoc
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"GoogleDoc","route":"/docs/api/data-types/googledoc"}]
+---
+
+# GoogleDoc
+
+| Field | Type | Description |
+| :-- | :-: | :-- |
+| createdAt | Date | The creation date of the document. |
+| html | string | The content of the document in HTML format. |
+| mentions | string | Mentions extracted from the document's content. |
+| mimeType | string | The MIME type of the document. |
+| modifiedAt | Date | The last modification date of the document. |
+| originalName | string | The original name of the file. |
+| path | Array<string> | The path to the document in the source. |
+| pathString | string | The path to the document in the source as a string. |
+| remoteId | string | The unique identifier in the source. |
+| size | number | The size of the document in bytes. |
+| slug | string | Slugified version of the original name. |
+| sourceId | string | The source identifier. |
+| subtitle | string | The subtitle extracted from the document. |
+| summary | string | The summary extracted from the document. |
+| tags | Array<string> | A list of tags extracted from the document. |
+| text | string | Document's content in plain text. |
+| title | string | The title extracted from the document. |
+| toc | string | The table of contents extracted from the document in JSON format. |
+| autoSummary | string | A summary automatically generated based on the document content. |
+| autoKeywords | Array<string> | Keywords automatically extracted from the document. |
+| autoEntities | Array<string> | Entities automatically extracted from the document. |
+| autoTopics | Array<string> | Topics automatically extracted from the document. |
+| blocks | Array<ImageBlock | TextBlock> | The content blocks of the document. |
+
+[GoogleCalendarEvent](/docs/api/data-types/googlecalendarevent "GoogleCalendarEvent")[ImageBlock](/docs/api/data-types/imageblock "ImageBlock")

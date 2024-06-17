@@ -1,0 +1,25 @@
+---
+title: Multimodal Vectorizers
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"Vectorizers","route":"/docs/vectorizers"},{"title":"Multimodal
+  Vectorizers","route":"/docs/vectorizers/multimodal-vectorizers"}]
+---
+
+# Multimodal Vectorizers
+
+Unbody's Multi-Modal Vectorizers are designed to handle and integrate data from various content types, including text, images, videos, and audio.
+
+This section covers how these vectorizers create a unified vector space for cross-modal interactions and the types of data they can process. We have also provided Information on choosing the right multi-modal vectorizer for your project's specific needs.
+
+### multi2vec-bind
+
+-   **Overview**: This is a multimodal vectorizer capable of handling various data types.
+-   **About the Model**: The model facilitates cross-modal search and retrieval, integrating different types of data into a unified vector space.
+-   **Third-Party Management**: Not specified.
+-   **Strengths**: The strength of the model is seamless interaction and search across various data types.
+-   **Limitations**: The model has complexity in managing and configuring multimodal data.
+-   **Best For**: It is best for projects requiring integrated analysis across different content types.
+-   **Production Status**: In roadmap. You can upvote on our GitHub for earlier access.
+-   **Available Options**: Supports text, images, videos, audio, IMU data, depth images, and thermal images.
+
+[Image Vectorizers](/docs/vectorizers/image-vectorizers "Image Vectorizers")[Generative Search](/docs/generative-search "Generative Search")

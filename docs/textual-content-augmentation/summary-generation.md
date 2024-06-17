@@ -1,0 +1,28 @@
+---
+title: Summary Generation
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"Textual Content
+  Augmentation","route":"/docs/textual-content-augmentation"},{"title":"Summary
+  Generation","route":"/docs/textual-content-augmentation/summary-generation"}]
+---
+
+# Summary Generation
+
+This module has the ability to transform lengthy paragraphs into concise and informative summaries.
+
+### On-demand:
+
+-   **Usage**: You can manually trigger summary generation in real-time via API requests, specifying the `summary` filter in the `_additional` field.
+-   **Benefit**: This module offers you the flexibility to apply summarization as and when required. Thus it helps in conserving computational resources.
+
+### Automatic:
+
+-   **Usage**: If you choose automatic, summaries are generated and stored as content is ingested. These summaries are available instantly in the `summary` field.
+-   **Benefit**: It enhances data retrieval speed with pre-generated summaries and also ensures immediate access.
+
+| Model Name | Training Dataset | Primary Application | Language | Description |
+| --- | --- | --- | --- | --- |
+| bart-large-cnn | CNN/Daily Mail | Text Summarization | English | A BART model pre-trained on a large corpus and fine-tuned on the CNN/Daily Mail dataset for abstractive text summarization. It’s capable of generating coherent, concise summaries. |
+| pegasus-xsum | XSum | Text Summarization | English | PEGASUS (Pre-training with Extracted Gap-sentences for Abstractive SUmmarization Sequence-to-sequence models) is specifically designed for abstractive text summarization, and this variant is fine-tuned on the XSum dataset, aiming to generate informative and concise summaries. |
+
+[Keyword Extraction](/docs/textual-content-augmentation/keyword-extraction "Keyword Extraction")[Multimedia Content Augmentation](/docs/multimedia-content-augmentation "Multimedia Content Augmentation")

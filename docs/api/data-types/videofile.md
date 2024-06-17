@@ -1,0 +1,51 @@
+---
+title: VideoFile
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"VideoFile","route":"/docs/api/data-types/videofile"}]
+---
+
+# VideoFile
+
+| Field | Type | Description |
+| :-- | :-: | :-- |
+| animatedImageUrl | object | The URL to the animated thumbnail. |
+| animatedImageUrl.gif | string | The URL to the animated GIF thumbnail. |
+| animatedImageUrl.webp | string | The URL to the animated WEBP thumbnail. |
+| assetId | string | The asset ID of the file on video platform. |
+| blob | Blob | A base64 encoded string of the file. |
+| duration | number | The duration of the video file in seconds. |
+| ext | string | The extension of the file. |
+| files | Array<object> | The static media files associated with the video. |
+| files.width | number | The width of the media file. |
+| files.height | number | The height of the media file. |
+| files.size | number | The size of the media file in bytes. |
+| files.name | string | The name of the media file. |
+| files.ext | string | The extension of the media file. |
+| files.bitrate | number | The bitrate of the media file. |
+| files.url | string | The URL of the media file. |
+| height | number | The height of the original video file in pixels. |
+| hlsUrl | string | The URL to the HLS stream. |
+| mimeType | string | The MIME type of the file. |
+| order | number | The order of the object in a list. |
+| originalName | string | The original name of the file. |
+| path | Array<string> | The path to the file in the source. |
+| pathString | string | The path to the file in the source as a string. |
+| playbackId | string | The playback ID of the file on video platform. |
+| remoteId | string | The unique identifier in the source. |
+| size | number | The size of the file in bytes. |
+| sourceId | string | The source identifier. |
+| thumbnailUrl | object | The URL to the thumbnail. |
+| thumbnailUrl.png | string | The URL to the PNG thumbnail. |
+| thumbnailUrl.jpeg | string | The URL to the JPEG thumbnail. |
+| thumbnailUrl.webp | string | The URL to the WEBP thumbnail. |
+| url | string | Direct access URL. |
+| width | number | The width of the original video file in pixels. |
+| autoSummary | string | A summary automatically generated from the transcript. |
+| autoKeywords | Array<string> | Keywords automatically extracted from the transcript. |
+| autoEntities | Array<string> | Entities automatically extracted from the transcript. |
+| autoTopics | Array<string> | Topics automatically extracted from the transcript. |
+| subtitles | Array<SubtitleFile> | The subtitles associated with the video. |
+| document | Array<GoogleCalendarEvent | DiscordMessage> | The parent document the video file is associated with. |
+
+[TextDocument](/docs/api/data-types/textdocument "TextDocument")[Filters](/docs/api/filters "Filters")

@@ -1,0 +1,28 @@
+---
+title: SpreadsheetDocument
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"SpreadsheetDocument","route":"/docs/api/data-types/spreadsheetdocument"}]
+---
+
+# SpreadsheetDocument
+
+| Field | Type | Description |
+| :-- | :-: | :-- |
+| createdAt | Date | The creation date of the file. |
+| mimeType | string | The MIME type of the file. |
+| modifiedAt | Date | The last modification date of the file. |
+| originalName | string | The original name of the file. |
+| path | Array<string> | The path to the file in the source. |
+| pathString | string | The path to the file in the source as a string. |
+| remoteId | string | The unique identifier in the source. |
+| size | number | The size of the file in bytes. |
+| slug | string | Slugified version of the original name. |
+| sourceId | string | The source identifier. |
+| autoSummary | string | A summary automatically generated based on the document content. |
+| autoKeywords | Array<string> | Keywords automatically extracted from the document. |
+| autoEntities | Array<string> | Entities automatically extracted from the document. |
+| autoTopics | Array<string> | Topics automatically extracted from the document. |
+| sheets | Array<Spreadsheet> | The sheets associated with the document. |
+
+[Spreadsheet](/docs/api/data-types/spreadsheet "Spreadsheet")[SubtitleEntry](/docs/api/data-types/subtitleentry "SubtitleEntry")

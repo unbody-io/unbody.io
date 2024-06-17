@@ -1,0 +1,49 @@
+---
+title: Overview
+__path__: >-
+  [{"title":"Docs","route":"/docs"},{"title":"API","route":"/docs/api"},{"title":"Data
+  Types","route":"/docs/api/data-types"},{"title":"Overview","route":"/docs/api/data-types/overview"}]
+---
+
+# Data Types
+
+Unbody provides you with a rich assortment of data types to ensure your data is as versatile and accessible as possible.
+
+Broadly speaking, our data types fall into two categories: **Fundamental Data Types** and **Domain-Specific Data Types**.
+
+-   **Fundamental Data Types**: Fundamental data types are the basic building blocks of the content such as text, images, videos, and audio. They represent the raw forms of content and provide a standardized way to handle different media types.
+-   **Domain-Specific Data Types**: These data types are more specifically defined based on the provider they belong to or the file format they come in. For example, Google Docs, Google spreadsheets, markdown files, Google calendar events, Slack messages, etc. are domain-specific data types. Although these data types carry specific properties and structures, you can break them into fundamental data types. This ensures consistency and standardization. We at Unbody enable you to use both the raw, and fundamental data types as well as enriched and domain-specific structures, based on your use case.
+
+Given below is a list of supported data types.
+
+[AudioFile](/docs/graphql-api/data-types/audiofile)
+
+[CsvRow](/docs/graphql-api/data-types/csvrow)
+
+[DiscordMessage](/docs/graphql-api/data-types/discordmessage)
+
+[GithubComment](/docs/graphql-api/data-types/githubcomment)
+
+[GithubThread](/docs/graphql-api/data-types/githubthread)
+
+[GoogleCalendarEvent](/docs/graphql-api/data-types/googlecalendarevent)
+
+[GoogleDoc](/docs/graphql-api/data-types/googledoc)
+
+[ImageBlock](/docs/graphql-api/data-types/imageblock)
+
+[Spreadsheet](/docs/graphql-api/data-types/spreadsheet)
+
+[SpreadsheetDocument](/docs/graphql-api/data-types/spreadsheetdocument)
+
+[SubtitleEntry](/docs/graphql-api/data-types/subtitleentry)
+
+[SubtitleFile](/docs/graphql-api/data-types/subtitlefile)
+
+[TextBlock](/docs/graphql-api/data-types/textblock)
+
+[TextDocument](/docs/graphql-api/data-types/textdocument)
+
+[VideoFile](/docs/graphql-api/data-types/videofile)
+
+[Aggregate](/docs/api/query-methods/aggregate "Aggregate")[AudioFile](/docs/api/data-types/audiofile "AudioFile")
