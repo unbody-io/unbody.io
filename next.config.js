@@ -14,6 +14,8 @@ module.exports = withUnbody({
     sourceId: "UNBODY_SEARCH_SOURCE_ID",
     projectId: "UNBODY_SEARCH_PROJECT_ID",
   },
+  setupComponents: true,
+  setupApi: true,
 })(
   withNextra({
     images: {

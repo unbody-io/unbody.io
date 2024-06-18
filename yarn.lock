@@ -6127,6 +6127,7 @@ streamx@^2.15.0, streamx@^2.18.0:
     bare-events "^2.2.0"
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -6158,6 +6159,7 @@ stringify-entities@^4.0.0:
     character-entities-legacy "^3.0.0"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -6429,18 +6431,18 @@ typescript@^4.9.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
-unbody-nextra-cli@^0.0.1-alpha.5:
-  version "0.0.1-alpha.5"
-  resolved "https://registry.yarnpkg.com/unbody-nextra-cli/-/unbody-nextra-cli-0.0.1-alpha.5.tgz#e88d110f02aa585d02aac098d7a2ad3cc9690543"
-  integrity sha512-Pg0y+Zz5oEUuE8i9YRUNA3jY3DsKB9pA4jZ1Wrd5gwt6q7hOrugkGYS6/X+RWXzDyg8JJCIIJhF3XirxkDHDDw==
+unbody-nextra-cli@^0.0.1-alpha.6:
+  version "0.0.1-alpha.6"
+  resolved "https://registry.yarnpkg.com/unbody-nextra-cli/-/unbody-nextra-cli-0.0.1-alpha.6.tgz#9e9b5d37a6e4e303024b6cfb8f64f30cb7910845"
+  integrity sha512-8wtMNWBD1TXzqV2UVAw1C/PLCjKaIWq5/8A/d0tfOVVRXUCCcxntJu5wNES+dXp3CiyN7e+9NAr7GKmj5xO3Zw==
   dependencies:
     commander "^12.0.0"
     tmp-promise "^3.0.3"
 
-unbody-nextra-core@^0.0.1-alpha.4:
-  version "0.0.1-alpha.4"
-  resolved "https://registry.yarnpkg.com/unbody-nextra-core/-/unbody-nextra-core-0.0.1-alpha.4.tgz#acfed6a964db82e638d12cd864c9902458787e09"
-  integrity sha512-aDvIWWZahwQUSAnXqYDenFLcBd2tzBc47AoPpJoyHvBJ3wpvCyTCJZaKpgkyhH5JhofGmZ0uQL/X/MHveU2G1Q==
+unbody-nextra-core@^0.0.1-alpha.5:
+  version "0.0.1-alpha.5"
+  resolved "https://registry.yarnpkg.com/unbody-nextra-core/-/unbody-nextra-core-0.0.1-alpha.5.tgz#baab6ca0fd6fa335dbfdd61b083c68a305922507"
+  integrity sha512-ZWrxHJjjF/px0yuxIJv//ITA/iNhz+bTpagKFe5WMCveIDEXG6soweBr+0zMOlQMuhmMgJLCNiSLZorlHKJJIg==
   dependencies:
     async "^3.2.5"
     axios "^1.7.0"
@@ -6454,28 +6456,28 @@ unbody-nextra-core@^0.0.1-alpha.4:
     webpack-virtual-modules "^0.6.2"
     yup "^1.4.0"
 
-unbody-nextra-plugin@^0.0.1-alpha.4:
-  version "0.0.1-alpha.4"
-  resolved "https://registry.yarnpkg.com/unbody-nextra-plugin/-/unbody-nextra-plugin-0.0.1-alpha.4.tgz#435abdade32f80958482f374277085b465d369b3"
-  integrity sha512-p59/E0vYDF6CrtwxHUIxi1Rs+RPP8BJ6Y2EsalvSxBz3YpSc0UpX0tnQODpY1zovi3FzlnI6GprVgb5lV25e9w==
+unbody-nextra-plugin@^0.0.1-alpha.5:
+  version "0.0.1-alpha.5"
+  resolved "https://registry.yarnpkg.com/unbody-nextra-plugin/-/unbody-nextra-plugin-0.0.1-alpha.5.tgz#8aa4ce0da61076786f374bdf4a5b702e3e3086d5"
+  integrity sha512-kIAh6QSAzKwhwltL3nbNh5hs9/4BlPB0inQcDHIRJzxX/09yOUb4aCZ7ePJRfKEbL41kwLDuWW2iUVxPfCTVSQ==
   dependencies:
-    unbody-nextra-cli "^0.0.1-alpha.5"
-    unbody-nextra-core "^0.0.1-alpha.4"
-    unbody-nextra-service "^0.0.1-alpha.4"
-    unbody-nextra-ui "^0.0.1-alpha.4"
+    unbody-nextra-cli "^0.0.1-alpha.6"
+    unbody-nextra-core "^0.0.1-alpha.5"
+    unbody-nextra-service "^0.0.1-alpha.5"
+    unbody-nextra-ui "^0.0.1-alpha.5"
 
-unbody-nextra-service@^0.0.1-alpha.4:
-  version "0.0.1-alpha.4"
-  resolved "https://registry.yarnpkg.com/unbody-nextra-service/-/unbody-nextra-service-0.0.1-alpha.4.tgz#d1533eba6865ff17e0a8d4a24637302a7e9590d8"
-  integrity sha512-F9LiaBDvtqhz2TNZVfMSC9UArQbCFwu/2o3Qy+ntMfIlF1ygsAcRQM5incEz21dbOxmn6xOILMOBZw0Wyz4/Nw==
+unbody-nextra-service@^0.0.1-alpha.5:
+  version "0.0.1-alpha.5"
+  resolved "https://registry.yarnpkg.com/unbody-nextra-service/-/unbody-nextra-service-0.0.1-alpha.5.tgz#6f1bc202df5d64a6fc4d7b17689c832555199db6"
+  integrity sha512-4A8k+Oht0ArtwbgAOFdTq9E4i2GDY+qybpXGvfQ8gRhfhPBaJdDj8YpHZXOI59fgZWFD0UD+aRk2UQfZWTBueA==
   dependencies:
     "@unbody-io/ts-client" "^0.0.15"
     yup "^1.4.0"
 
-unbody-nextra-ui@^0.0.1-alpha.4:
-  version "0.0.1-alpha.4"
-  resolved "https://registry.yarnpkg.com/unbody-nextra-ui/-/unbody-nextra-ui-0.0.1-alpha.4.tgz#de05f8c031960f24ae7a7ef775d3ae087b71709b"
-  integrity sha512-TrhFmZ6dmRLfIuXAtsccJLjr0XhUQXiCnVHCsEemW3AqiPH4IXmS9SQVh4UPtXnmItFLPlZLLZdgvNMd41JV6w==
+unbody-nextra-ui@^0.0.1-alpha.5:
+  version "0.0.1-alpha.5"
+  resolved "https://registry.yarnpkg.com/unbody-nextra-ui/-/unbody-nextra-ui-0.0.1-alpha.5.tgz#7e0983ad85d6410a13bad6c6a9a70f5ede0a8bf4"
+  integrity sha512-uHXMHMujkbihgCULM5r8gUgcHNdIN91MUQkGDVCYbgPmUgkEg4f8IDMmRTrI4MuLV1GkMvuYPg3K4PzqtS4hCg==
 
 unbzip2-stream@1.4.3:
   version "1.4.3"
@@ -6824,6 +6826,7 @@ which@^2.0.1:
     isexe "^2.0.0"
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
