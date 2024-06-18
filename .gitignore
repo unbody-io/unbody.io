@@ -39,3 +39,5 @@ next-env.d.ts
 public/remotes
 
 package-lock.json
+
+.unbody

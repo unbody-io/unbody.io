@@ -36,7 +36,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-social-media-embed": "^2.5.13",
-    "react-ticker": "^1.3.2"
+    "react-ticker": "^1.3.2",
+    "unbody-nextra-plugin": "^0.0.1-alpha.4"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
