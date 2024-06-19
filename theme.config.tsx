@@ -118,9 +118,9 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
-    banner: {
-        text: Banner
-    },
+    // banner: {
+    //     text: Banner
+    // },
     useNextSeoProps: () => {
         const {frontMatter} = useConfig();
         const ogTitle = `${frontMatter.title || SITE_TITLE} - ${SITE_NAME}`;
