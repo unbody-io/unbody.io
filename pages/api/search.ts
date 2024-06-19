@@ -9,8 +9,6 @@ const server = new Server({
   }
 })
 
-export const POST = server.post
+const handler = server.handler
 
-export const runtime = 'nodejs'
-export const dynamic = 'force-dynamic'
-
+export default handler
