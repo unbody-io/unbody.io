@@ -42,3 +42,24 @@ img, video {
   max-width: 100%;
   width: 100%;
 }
+
+.shiki{
+  @apply py-4;
+}
+
+.shiki .line{
+  @apply min-h-[1em]
+}
+
+.custom-code-block{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  @apply px-1;
+}
+
+.custom-code-block-wrapper > *{
+  background: transparent !important;
+}

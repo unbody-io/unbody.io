@@ -5,7 +5,10 @@ import {ActionButtonGroup} from "../containers/ActionButtonGroup";
 import {Tabs} from "nextra/components";
 import {VideoPlayer} from "../components/VideoPlayer/Player";
 import {UsecaseCard} from "../components/UsecaseCard";
+import {LiveDemo} from "../components/Demo";
+import {Tabs as NXTabs, Tab as NXTab} from "@nextui-org/react";
 import {unbody} from "../lib/unbody";
+import {FeatureCard} from "../components/FeatureCard";
 
 export const getStaticProps = async () => {
     const {data: {payload: introVideo}} = await unbody.get.videoFile
@@ -41,7 +44,6 @@ export const Video = () => {
 export const PageContent = ({children}) => {
     return (
         <div style={{
-            marginTop: "100vh",
             minHeight: "100vh",
             borderRadius: "50px 50px 0 0",
             dis1lay: "flex",
@@ -149,6 +151,34 @@ export const Section = ({children}) => {
             </Section>
             <Section>
                 <SectionHeader>
+                    <SectionTitle title={"Why you should use Unbody?"}/>
+                    <SectionDescription>
+                        You do not need to be an AI expert to build AI-powered applications. Unbody abstracts the complexity of AI and provides you with a simple interface to build AI applications.
+                    </SectionDescription>
+                </SectionHeader>
+                <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-8 mb-28"}>
+                    <FeatureCard
+                        title={"750x faster development"}
+                        description={"Unbody reduces the development from 300hrs on average to 4 minutes. This means you can build AI applications in days instead of months."}
+                        icon={"/icons/why/time.png"}
+                        link={"/#"}
+                    />
+                    <FeatureCard
+                        title={"Flexible AI engine choice"}
+                        description={"Providing over 7 different AI models, we surpass the usual OpenAI wrappers."}
+                        icon={"/icons/why/modular.png"}
+                        link={"/#"}
+                    />
+                    <FeatureCard
+                        title={"For every developer"}
+                        description={"Designed for non-AI engineers with a near-zero learning-curve"}
+                        icon={"/icons/why/open-source.png"}
+                        link={"/#"}
+                    />
+                </div>
+            </Section>
+            <Section>
+                <SectionHeader>
                     <SectionTitle title={"Watch how Unbody works!"}/>
                     <SectionDescription>
                         Choose your AI, connect your data, and build with ease.
@@ -156,7 +186,15 @@ export const Section = ({children}) => {
                 </SectionHeader>
                 <Video/>
             </Section>
-
+            <Section>
+                <SectionHeader>
+                    <SectionTitle title={"Live Demo"}/>
+                    <SectionDescription>
+                        Try out Unbody with our live demo. You can generate text, search for information, and more.
+                    </SectionDescription>
+                </SectionHeader>
+                <LiveDemo/>
+            </Section>
             <Section>
                 <SectionHeader>
                     <SectionTitle title={"Your data, your AI choice."}/>

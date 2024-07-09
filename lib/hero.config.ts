@@ -54,6 +54,49 @@ export const providersInDeck = [
     },
 ];
 
+export const AIProviders = [
+    {
+        name: "OpenAI",
+        image: "/icons/demo/ai-presets/openai.png",
+    },
+    {
+        name: "Cohere",
+        image: "/icons/demo/ai-presets/cohere.png",
+    },
+    {
+        name: "anthropic",
+        image: "/icons/demo/ai-presets/anthropic.png",
+    },
+    {
+        name: "Weaviate",
+        image: "/icons/demo/ai-presets/weaviate.png",
+    },
+    {
+        name: "Mistral",
+        image: "/icons/demo/ai-presets/mistral.png",
+    },
+    {
+        name: "Hugging Face",
+        image: "/icons/demo/ai-presets/hf.png",
+    },
+    {
+        name: "Gemini",
+        image: "/icons/demo/ai-presets/gemini.png",
+    },
+    {
+        name: "PyTorch",
+        image: "/icons/demo/ai-presets/pytorch.png",
+    },
+    {
+        name: "Mux",
+        image: "/icons/demo/ai-presets/mux.png",
+    },
+    {
+        name: "Imgix",
+        image: "/icons/demo/ai-presets/imgix.png",
+    }
+]
+
 
 
 
