@@ -11,7 +11,6 @@ import {
     ProviderItem,
     providersInDeck,
 } from "../../lib/hero.config";
-import {mapRange} from "../../lib/utils";
 import ActionButtonGroup from "../ActionButtonGroup/ActionButtonGroup";
 import {SITE_DESCRIPTION} from "../../lib/app.config";
 import {useTheme} from "next-themes";
@@ -178,7 +177,10 @@ const HeroText = () => {
                 {SITE_DESCRIPTION}
             </p>
             <div className="flex w-full justify-center md:justify-start">
-                <ActionButtonGroup ctaLink={"/docs/get-started"}/>
+                <ActionButtonGroup ctaLink={"/docs/get-started"}
+                                   learnMoreLink={"/demo"}
+                                   learnMoreAlt={"Try live demo"}
+                />
             </div>
         </div>
     );

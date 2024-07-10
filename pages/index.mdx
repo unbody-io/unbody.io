@@ -9,6 +9,7 @@ import {LiveDemo} from "../components/Demo";
 import {Tabs as NXTabs, Tab as NXTab} from "@nextui-org/react";
 import {unbody} from "../lib/unbody";
 import {FeatureCard} from "../components/FeatureCard";
+import {Review} from "../components/Review";
 
 export const getStaticProps = async () => {
     const {data: {payload: introVideo}} = await unbody.get.videoFile
@@ -104,7 +105,7 @@ export const Section = ({children}) => {
             alignItems: "center",
             gap: "3rem",
             paddingBottom: "3rem"
-        }}>
+        }} className={"relative"}>
             {children}
         </div>
     )
@@ -177,6 +178,7 @@ export const Section = ({children}) => {
                     />
                 </div>
             </Section>
+
             <Section>
                 <SectionHeader>
                     <SectionTitle title={"Watch how Unbody works!"}/>
@@ -185,6 +187,44 @@ export const Section = ({children}) => {
                     </SectionDescription>
                 </SectionHeader>
                 <Video/>
+            </Section>
+            <Section>
+                <SectionHeader>
+                    <SectionTitle title={"What people are saying about Unbody"}/>
+                    <SectionDescription>
+                        We are proud to have received positive feedback from our users. Here are some of the reviews we have received.
+                    </SectionDescription>
+                </SectionHeader>
+                <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 mb-28"}>
+                    <Review
+                        name={"Arya Mazahery"}
+                        title={"Co-founder & CEO @ PanocularAI"}
+                        review={"Unbody is a creative product for the current complex AI solutions. The comprehensive set of feature makes it a unique product on the market in its domain."}
+                        image={"/images/reviews/arya.png"}
+                        source={"Product Hunt, April 25"}
+                    />
+                    <Review
+                        name={"Hernani Fernandes"}
+                        title={"Senior Software Developer @ Xebia"}
+                        review={"Definitely the best tool to easily implement my new product using several resources at a fast pace without any pain. Great documentation and an excellent JavaScript client. It helped me take an old idea off the shelf and put it into practice. So far, I've loved it."}
+                        image={"/images/reviews/hernani.png"}
+                        source={"Product Hunt, April 25"}
+                    />
+                    <Review
+                        name={"Eleftheria Batsou"}
+                        title={"CM @ Crab Nebula Dev"}
+                        review={"Unbody is a game-changer for simplifying AI integration. Excited to see how Unbody will grow 🚀🚀"}
+                        image={"/images/reviews/eleftheria.png"}
+                        source={"Product Hunt, April 25"}
+                    />
+                    <Review
+                        name={"Parsa Hashemi"}
+                        title={"Engineering at ThinkOn"}
+                        review={"Smooth setup! Connects easily to data sources like Google Drive and then you can dive straight into interacting with your data using GraphQL Playground."}
+                        image={"/images/reviews/parsa.png"}
+                        source={"Product Hunt, April 26"}
+                    />
+                </div>
             </Section>
             <Section>
                 <SectionHeader>
