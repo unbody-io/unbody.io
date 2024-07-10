@@ -10,12 +10,14 @@ type Props = {
     style?: React.CSSProperties;
 }
 
-export const UsecaseCard = (props: Props) => {
+export const FeatureCard = (props: Props) => {
     return (
         <Link href={props.link} className={"w-full"}>
             <Card className={"p-4 w-full min-h-[180px] h-full transition-all hover:scale-105"}
                   style={{
-                      background: `linear-gradient(180deg,#fff,#f2f2f2 65.62%)`,
+                      background: `linear-gradient(180deg,#000,#888)`,
+                      color: "#fff",
+                      height: "380px",
                       ...(props.style || {})
                   }}
             >
@@ -25,7 +27,7 @@ export const UsecaseCard = (props: Props) => {
                         <Avatar src={props.icon}
                                 alt={props.title}
                                 radius={"sm"}
-                                className={"bg-transparent"}
+                                className={"bg-transparent invert"}
                         />
                     </CardHeader>
                 }

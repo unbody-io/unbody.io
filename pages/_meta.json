@@ -66,6 +66,13 @@
     "type": "page",
     "display": "hidden"
   },
+  "demo": {
+    "title": "Live demo",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "terms": {
     "title": "Terms",
     "type": "page",

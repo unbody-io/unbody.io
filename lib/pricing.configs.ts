@@ -1,6 +1,6 @@
 export const subscriptionPlans = [
   {
-    name: "Free",
+    name: "Hobbyist",
     priceMonthly: "$0",
     priceAnnually: "$0",
     ctaLabel: "Get Started",
@@ -56,13 +56,13 @@ export const subscriptionPlans = [
     featured: false,
   },
   {
-    name: "Standard",
-    priceMonthly: "$25",
-    priceAnnually: "$24",
-    discount: {
-      price: 50,
-      note: "50% early bird discount for the first 6 months.",
-    },
+    name: "Developer",
+    priceMonthly: "$50",
+    priceAnnually: "$40",
+    // discount: {
+    //   price: 50,
+    //   note: "50% early bird discount for the first 6 months.",
+    // },
     description:
       "Start building your next big thing. Perfect for small teams and startups.",
     ctaLabel: "Buy Plan",
@@ -149,10 +149,10 @@ export const subscriptionPlans = [
     featured: true,
   },
   {
-    name: "SME & Enterprise",
+    name: "SMB & Enterprise",
     price: "Custom",
     description:
-      "For large teams and enterprises. Get in touch for a custom plan.",
+      "For startups, teams and enterprises. Get in touch for a custom plan.",
     ctaLabel: "Contact Sales",
     ctaAction: "https://cal.com/unbody/sales",
     features: [

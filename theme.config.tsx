@@ -67,14 +67,15 @@ const logo = (
 );
 
 const Banner = () => (
-    <div className={""}>
-        <a href={"https://lu.ma/eqfaddb4"}
+    <div className={"flex flex-row justify-center gap-2"}>
+        <span className={"bg-purple-800 rounded-lg py-1 px-2 text-tiny"}>Upcoming event</span>
+        <a href={"https://lu.ma/i0152apj"}
            target="_blank"
            className={"p-10 flex flex-row gap-4 items-center justify-center"}
         >
             🎉
             <span className={"text-small"}>
-                Build AI study assistant in NextJS, June 5 - 16:00 GMT+2
+                AI for Founders and C-Suite Execs, July 29 - 15:00 GMT+2
             </span>
         </a>
     </div>
@@ -118,9 +119,9 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
-    // banner: {
-    //     text: Banner
-    // },
+    banner: {
+        text: Banner
+    },
     useNextSeoProps: () => {
         const {frontMatter} = useConfig();
         const ogTitle = `${frontMatter.title || SITE_TITLE} - ${SITE_NAME}`;
