@@ -15,8 +15,8 @@ export const FeatureCard = (props: Props) => {
         <Link href={props.link} className={"w-full"}>
             <Card className={"p-4 w-full min-h-[180px] h-full transition-all hover:scale-105"}
                   style={{
-                      background: `linear-gradient(180deg,#000,#888)`,
-                      color: "#fff",
+                      background: `linear-gradient(900deg,#000,#333)`,
+                      color: "white",
                       height: "380px",
                       ...(props.style || {})
                   }}
@@ -33,8 +33,8 @@ export const FeatureCard = (props: Props) => {
                 }
 
                 <CardBody className={"flex flex-col gap-4"}>
-                    <span className={"font-semibold text-4xl"}>{props.title}</span>
-                    <p className={"text-gray-400 text-sm"}>{props.description}</p>
+                    <span className={"font-semibold text-4xl text-white"}>{props.title}</span>
+                    <p className={"text-gray-400 text-sm text-white"}>{props.description}</p>
                 </CardBody>
             </Card>
         </Link>

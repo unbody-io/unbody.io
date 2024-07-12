@@ -70,13 +70,16 @@ export const ActionButtonGroup: React.FC<Props> = (props) => {
     return (
         <div className={styles.actionButtonGroup}>
             <LinkButton href={ctaLink || "https://app.unbody.io"}
-                        className={"hidden md:flex"}
+                        className={"md:flex"}
             >
                 {ctaAlt || "Get started"}
             </LinkButton>
             {
                 learnMoreLink && isValidLink(learnMoreLink) ?
-                    <LinkButton href={learnMoreLink} outlined={true}>
+                    <LinkButton href={learnMoreLink}
+                                outlined={true}
+                                className={"!hidden md:flex"}
+                    >
                         {learnMoreAlt || "Learn more"}
                     </LinkButton>
                     :

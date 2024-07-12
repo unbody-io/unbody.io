@@ -3,6 +3,7 @@ const { nextui } = require("@nextui-org/react");
 
 module.exports = {
   darkMode: "class",
+  important: true,
   content: [
     "./app/**/*.{js,ts,jsx,tsx,md,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,md,mdx}",

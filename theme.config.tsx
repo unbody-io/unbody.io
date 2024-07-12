@@ -103,7 +103,9 @@ const config: DocsThemeConfig = {
                     Book a Demo
                 </LinkButton>
                 <LinkButton href={"https://app.unbody.io"}
-                            size={"small"}>
+                            size={"small"}
+                            className={"hidden md:flex"}
+                >
                     Dashboard
                 </LinkButton>
             </div>
@@ -165,11 +167,6 @@ const config: DocsThemeConfig = {
                 <link
                     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
                     rel="stylesheet"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width,initial-scale=1"
-                    key="viewport"
                 />
                 <link
                     rel="apple-touch-icon"

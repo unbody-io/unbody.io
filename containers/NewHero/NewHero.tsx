@@ -106,6 +106,8 @@ const ProviderDeck = ({providers, className = "h-full"}: ProviderDeckProps) => {
     const isMobile = width < 768;
     const gradThreshold = isMobile ? 10 : 50;
 
+    console.log("isMobile", isMobile, width)
+
     return (
         <div className={clsx(
             `border-none md:border-dotted md:border-2 border-gray-300 rounded-xl`,
@@ -156,9 +158,9 @@ const HeroText = () => {
             )}>
                 <span className="">
                     <span>
-                        Any Data,&nbsp;
+                        Any Data,
                     </span>
-                    <br className={"md:hidden"}/>
+                    <br/>
                     <span>
                        Any <span className={styles.gradientText}>AI</span>,
                     </span>
@@ -173,10 +175,10 @@ const HeroText = () => {
                 </span>
 
             </div>
-            <p className="text-paraghraph_gray text-base hidden md:block py-6">
+            <p className="text-paraghraph_gray text-base hidden md:block py-6 max-w-lg">
                 {SITE_DESCRIPTION}
             </p>
-            <div className="flex w-full justify-center md:justify-start">
+            <div className="md:flex w-full justify-center md:justify-start">
                 <ActionButtonGroup ctaLink={"/docs/get-started"}
                                    learnMoreLink={"/demo"}
                                    learnMoreAlt={"Try live demo"}
@@ -264,7 +266,7 @@ const NewHero: React.FC<Props> = (props) => {
     return (
         <div className={clsx(
             `md:grid md:grid-cols-12`,
-            `items-center justify-center`,
+            `md:items-center md:justify-center`,
         )}
              style={{
                  height: "calc(100vh - var(--nextra-navbar-height))"
@@ -274,8 +276,7 @@ const NewHero: React.FC<Props> = (props) => {
                 <HeroText/>
             </div>
             <div className={clsx(
-                `md:col-start-6 xl:col-start-7 md:col-end-13`,
-                `flex sm:flex-col md:flex-row`,
+                `flex flex-col md:!flex-row md:col-start-6 md:col-end-13`,
                 `items-center`,
             )}>
                 <div>
