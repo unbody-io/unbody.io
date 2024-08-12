@@ -153,7 +153,7 @@ export const subscriptionPlans = [
     price: "Custom",
     description:
       "For startups, teams and enterprises. Get in touch for a custom plan.",
-    ctaLabel: "Contact Sales",
+    ctaLabel: "Talk to founders",
     ctaAction: "https://cal.com/unbody/sales",
     features: [
       {

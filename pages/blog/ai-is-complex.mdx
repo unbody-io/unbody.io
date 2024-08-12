@@ -1,0 +1,82 @@
+---
+title: "AI is Complex, Do Not Try This In-House"
+authors: [{name: "Amir Houieh", link: "https://www.linkedin.com/in/amirhouieh/", image: "amir.png"}]
+audience_group: general
+outline: "AI is complex. Trying to build a solution in-house is going to cost you time, money, and probably your sanity. With Unbody, you get a ready-made solution that’s fast, scalable, and easy to use. So, why waste your resources trying to reinvent the wheel? Let us handle the heavy lifting so you can focus on what you do best—growing your business."
+seo_tags: unbody,RAG api,RAG data,custom AI,Enterprise data
+category: blogpost
+subtitle: ""
+date: 2024-08-13
+image: /images/blog/ai-is-complex.jpg
+---
+
+import {BlogPostHeader} from "../../components/BlogPostHeader/BlogPostHeader";
+
+<BlogPostHeader title={"AI is Complex, Do Not Try This In-House"}
+                authors={[{name: "Amir Houieh", link: "https://www.linkedin.com/in/amirhouieh/", image: "amir.png"}]}
+                date={"2024-08-13"}
+                type={"page"}
+                image={"/images/blog/ai-is-complex.jpg"}
+/>
+
+“We need to build our own perplexity for our users.” That’s what one of our clients told me recently, and to be honest, they’re not alone. More and more founders are waking up to the fact that AI isn’t just a buzzword—it’s a necessity. If you’re running a SaaS business today, you’re probably feeling the heat too. Users aren’t the same as they were a few years ago. Thanks to tools like ChatGPT, **they don’t just want information anymore; they want answers, instantly**. This shift in expectations means that AI isn’t optional anymore—it’s mandatory.
+![shift.jpg](/images/blog/shift.jpg)
+So, let’s cut to the chase. If you’re thinking about integrating AI into your product (and you should be), you’ve probably heard about RAG—Retrieval-Augmented Generation. About 80-90% of the AI ideas and examples you’ve seen—and maybe even the ones you’re thinking about—are built on RAG. Let me show you how RAG is already at the heart of most AI implementations:
+
+1. **We need our own perplexity**: Imagine having an AI that can handle complex queries from your users by diving deep into your specific data sets. This isn’t just general knowledge—it’s your company’s unique information, served up in a way that feels as seamless as a conversation with a knowledgeable colleague. That’s RAG in action.
+2. **We need our own ChatGPT tailored for our customer data**: Think about a chatbot that doesn’t just respond with generic answers but uses the precise data your business has accumulated over the years. Whether it’s customer histories, product details, or internal documentation, RAG allows this chatbot to deliver spot-on answers that are unique to your business.
+3. **We need an autopilot for our documentation**: Automating your documentation processes with AI can save a ton of time, but it needs to be accurate and contextually aware. RAG enables AI to pull the right information from your databases, Google Drive, Slack, and more, ensuring that every piece of generated content is relevant and up-to-date.
+
+RAG, in its simplest form, is just ChatGPT applied to your custom data—whether it’s on your hard drive, in a database, on Google Drive, Slack, or wherever else you store your information. It retrieves relevant information and then generates responses based on that data, making it incredibly powerful for creating AI that’s not just smart but also contextually aware of your specific needs.
+
+But there are two catches, and as a founder, I feel obliged to share them with you:
+
+1. **Building customized RAG is complex**.
+2. **RAG alone won’t give you a complete product**.
+
+Now I will dive into these in the next sections, but trust me, these aren’t challenges you want to tackle in-house without serious expertise and resources.
+
+### Why Building RAG In-House is a Bad Idea
+
+![rag.png](/images/blog/rag.png)
+
+Let’s be real—building a RAG system is a beast. It’s not something you can just throw a couple of developers at and hope for the best. We’re talking about 12 different modules, each with its own set of challenges. Here’s a taste of what you’re up against:
+
+1. **Data Integration**: This isn’t just about sucking in data from your various sources and calling it a day. No, you need live data integration. That means every time your data sources get updated, your AI system needs to get updated too. It’s an ongoing process, not a one-time thing. Trust me, it’s one of the most annoying and complex tasks—and it’s not even an AI problem.
+2. **Data Processing**: Next up, you’ve got to process that data—format it, chunk it, make it usable for AI. This isn’t glamorous work, but it’s absolutely necessary.
+3. **Vectorization and Storage**: After processing, your data needs to be vectorized and stored in a vector database. Setting up and maintaining this database is a time sink, and it’s not something you can just ignore.
+4. **Query Parsing and Execution**: Finally, when a user query comes in, your system needs to parse it, run it against your database, and interact with LLMs (Large Language Models) or third-party APIs. This is where things get really tricky.
+
+### RAG alone is not enough
+
+Even if you manage to cobble together a RAG system, that’s just the beginning. If you’re building a full-scale AI-powered app, you’re going to run into a whole new set of challenges:
+
+1. **Structured Output**: RAG systems like [unstructured.io](http://unstructured.io/) might get your data AI-ready, but they’re not going to give you the structured output you need. If you want to generate something like a user profile or detailed customer data, you’re going to need a primary database with an API that can handle structured data.
+2. **Media Asset Management**: Today’s apps need to handle more than just text. Images, audio, and video are all crucial, and if your backend doesn’t support things like CDN, video streaming, or image optimization, you’re looking at a lot more dependencies and costs.
+3. **Accuracy and Hallucinations**: Generative AI is powerful, but it’s also risky. If you’re not careful, your AI might start spitting out nonsense—what we call “hallucinations.” When it comes to customer-facing features, this is unacceptable. You need specialized processes in place to prevent this.
+4. **Maintenance, Analytics, and Monitoring**: Once your AI system is live, the work doesn’t stop. You need to keep an eye on how it’s performing, where users are getting the best and worst responses, and how often it’s being used. Monitoring and maintenance are crucial if you want your AI to stay relevant and useful.
+
+### Why Doing It In-House Will Cost You—Big Time
+
+Now, you might be thinking, “Why not just build this in-house?” Here’s why that’s a terrible idea.
+
+1. **Cost**: Let’s start with the obvious—money. To build a solid AI team, you’re looking at hiring at least two ML engineers and one data scientist. That’s a minimum of $30k a month, and that’s before you even start thinking about infrastructure and maintenance costs.
+2. **Time**: Even if you have the cash, building a team takes time. By the time you’ve hired, trained, and onboarded these experts, you’re already months behind schedule. And that’s before they’ve even started building your solution. In this game, time is everything. If you’re six months behind your competitors, you’re done.
+3. **Risk**: Maybe you’re thinking about hiring a freelancer instead. Sure, that might save you some money upfront, but what happens when OpenAI updates their API or your AI token expires? Your freelancer is long gone, and you’re left scrambling.
+
+### One solution does it all
+
+![rag-unbody.png](/images/blog/rag-unbody.png)
+
+And this is where Unbody comes in. We built Unbody to take the pain out of AI integration. It’s an all-in-one platform that automates the entire process—from data integration to deployment—with one streamlined API. Here’s what we bring to the table:
+
+1. **Comprehensive AI Pipeline**: We handle everything—data integration, processing, vectorization, query parsing, you name it. You don’t need to juggle multiple platforms or tools. Just plug in Unbody and start building.
+2. **Fast Time to Market**: We’ve slashed development time from hundreds of hours to just minutes. That’s right—you can go from idea to deployment in no time, giving you a huge edge over your competition.
+3. **Accessible to All Developers**: Unbody is designed with a near-zero learning curve. You don’t need to be an AI expert to use it. Whether you’re a seasoned developer or just starting out, Unbody makes AI integration easy.
+4. **Open-Source and Scalable**: We’re built on open-source, so you’re not locked into proprietary technology. Unbody scales with your needs, so you can start small and grow as your business expands.
+
+### The Bottom Line: Don’t Go It Alone
+
+Here’s the bottom line—AI is complex. Trying to build a solution in-house is going to cost you time, money, and probably your sanity. With Unbody, you get a ready-made solution that’s fast, scalable, and easy to use. So, why waste your resources trying to reinvent the wheel? Let us handle the heavy lifting so you can focus on what you do best—growing your business.
+
+If you have any questions or would like to know more, I would love to have a chat. Drop me an email [amir@unbody.io](mailto:amir@unbody.io).

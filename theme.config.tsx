@@ -96,11 +96,11 @@ const config: DocsThemeConfig = {
                 gap: "12px",
                 alignItems: "center",
             }}>
-                <LinkButton href={"https://cal.com/unbody"}
+                <LinkButton href={"https://cal.com/amir-houieh"}
                             size={"small"}
                             outlined={true}
                 >
-                    Book a Demo
+                    Book a call
                 </LinkButton>
                 <LinkButton href={"https://app.unbody.io"}
                             size={"small"}
@@ -121,9 +121,9 @@ const config: DocsThemeConfig = {
     search: {
         component: null,
     },
-    banner: {
-        text: Banner
-    },
+    // banner: {
+    //     text: Banner
+    // },
     useNextSeoProps: () => {
         const {frontMatter} = useConfig();
         const ogTitle = `${frontMatter.title || SITE_TITLE} - ${SITE_NAME}`;

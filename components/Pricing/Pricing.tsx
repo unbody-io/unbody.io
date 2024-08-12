@@ -4,7 +4,6 @@ import {useTheme} from "next-themes";
 
 
 const FeatureItem = ({feature, showDetails}) => {
-
     return (
         <li className="flex mb-2">
             <svg className="shrink-0 w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
