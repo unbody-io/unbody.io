@@ -59,7 +59,8 @@
     "title": "Pricing",
     "theme": {
       "layout": "full"
-    }
+    },
+    "display": "hidden"
   },
   "about": {
     "title": "About",
