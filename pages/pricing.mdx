@@ -1,0 +1,12 @@
+---
+title: "Pricing"
+---
+import {PricingComponent, FeatureComparisionTable} from "../components/Pricing/Pricing";
+import {plansWithSupportedFileTypes, plansWithAvailableModels} from "../lib/pricing.configs";
+
+
+<div className={"content-container"}>
+    <PricingComponent/>
+    <FeatureComparisionTable planFeatures={plansWithSupportedFileTypes} />
+    <FeatureComparisionTable planFeatures={plansWithAvailableModels} />
+</div>

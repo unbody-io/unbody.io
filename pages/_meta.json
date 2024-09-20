@@ -58,9 +58,8 @@
     "type": "page",
     "title": "Pricing",
     "theme": {
-      "layout": "full"
-    },
-    "display": "hidden"
+      "layout": "default"
+    }
   },
   "about": {
     "title": "About",

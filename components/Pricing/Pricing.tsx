@@ -77,7 +77,10 @@ const PlanCard = ({plan, showDetails}) => {
             <div className={`mt-4 text-4xl font-bold`}>
                 {
                     plan.isEnterprise ?
-                        <span>Custom</span> :
+                        <>
+                            <span>{plan.price}</span>{" "}
+                            <span className="text-xs font-normal text-gray-400">/month</span>
+                        </> :
                         <>
                             <div>
                             {
@@ -85,7 +88,7 @@ const PlanCard = ({plan, showDetails}) => {
                                 <span className="text-gray-300 line-through text-sm">${plan.discount.price}</span>
                             }
                                 <span>{plan.priceMonthly}</span>
-                                <span className="text-xs font-normal text-gray-400">/month</span>
+                                {plan.name !== "Hobbyist" && <span className="text-xs font-normal text-gray-400">/month</span>}
                             </div>
                             {
                                 plan.discount&&
@@ -137,7 +140,7 @@ export const PricingComponent = () => {
             </div>
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {subscriptionPlans.map((plan) => (
                     <PlanCard key={plan.name} plan={plan} showDetails={showDetails}/>
                 ))}
@@ -146,3 +149,56 @@ export const PricingComponent = () => {
     );
 
 }
+
+export function FeatureComparisionTable({planFeatures}) {
+    return (
+      <div className="mt-24 overflow-hidden w-full">
+        <table className="min-w-full border border-gray-200 rounded-lg">
+          <thead className='border-b border-gray-200'>
+            <tr>
+              <th className="w-[200px] py-3 px-4 text-left capitalize">{planFeatures.type} Types</th>
+              {planFeatures.plans.map((plan) => (
+                <th
+                  key={plan.name}
+                  className={"py-3 px-4 text-center"}
+                >
+                  {plan.name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {planFeatures.types.map((category) => (
+              <React.Fragment key={category.category}>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  <td className="font-semibold py-3 px-4" colSpan={3}>
+                   {category.category}
+                  </td>
+                </tr>
+                {category.types.map((type) => (
+                  <tr
+                    key={type}
+                    className="hover:bg-gray-50 transition duration-200 ease-in-out border-b border-gray-200"
+                  >
+                    <td className="pl-8 py-3 px-4">{type}</td>
+                    {planFeatures.plans.map((plan) => (
+                      <td
+                        key={`${plan.name}-${type}`}
+                        className="text-center py-2 px-4"
+                      >
+                        {
+                            planFeatures.availableTypes[plan.name].includes(type) 
+                                ? <span className="mx-auto text-green-500">&#10004;</span>
+                                : <span className="mx-auto text-red-500">&#10006;</span>
+                        }
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
