@@ -162,7 +162,7 @@ export const subscriptionPlans = [
   // },
   {
     name: "SMB/Enterprise",
-    price: "$2000+",
+    price: "Custom",
     description:
       "For startups, teams and enterprises. Get in touch for a custom plan.",
     ctaLabel: "Talk to founders",

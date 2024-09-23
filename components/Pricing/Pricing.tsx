@@ -78,8 +78,8 @@ const PlanCard = ({plan, showDetails}) => {
                 {
                     plan.isEnterprise ?
                         <>
-                            <span>{plan.price}</span>{" "}
-                            <span className="text-xs font-normal text-gray-400">/month</span>
+                            <span>Custom</span>
+                            {/* <span className="text-xs font-normal text-gray-400">/month</span> */}
                         </> :
                         <>
                             <div>
@@ -155,15 +155,15 @@ export const PricingComponent = () => {
 
 export function FeatureComparisionTable({planFeatures}) {
     return (
-      <div className="mt-24 w-full overflow-x-auto text-xs sm:text-base">
-        <table className="min-w-full border border-gray-200 rounded-lg">
-          <thead className='border-b border-gray-200'>
+        <div className="mt-24 w-full sm:w-full overflow-x-auto text-xs sm:text-base">
+        <table className="table-auto w-full border border-gray-200 rounded-lg">
+          <thead className="border-b border-gray-200">
             <tr>
-              <th className="w-[100px] sm:w-[200px] py-1.5 sm:py-3 px-2 sm:px-4 text-left capitalize">{planFeatures.type} Types</th>
+              <th className="w-[80px] sm:w-[200px] py-1.5 sm:py-3 px-1 sm:px-4 text-left capitalize">{planFeatures.type} Types</th>
               {planFeatures.plans.map((plan) => (
                 <th
                   key={plan.name}
-                  className="py-1.5 px-2 sm:py-3 sm:px-4 text-center"
+                  className="py-1.5 px-1 sm:py-3 sm:px-4 text-center"
                 >
                   {plan.name}
                 </th>
@@ -174,7 +174,7 @@ export function FeatureComparisionTable({planFeatures}) {
             {planFeatures.types.map((category) => (
               <React.Fragment key={category.category}>
                 <tr className="bg-gray-50 border-b border-gray-200">
-                  <td className="font-semibold py-1.5 px-2 sm:py-3 sm:px-4" colSpan={planFeatures.plans.length + 1}>
+                  <td className="font-semibold py-1.5 px-1 sm:py-3 sm:px-4" colSpan={planFeatures.plans.length + 1}>
                     {category.category}
                   </td>
                 </tr>
@@ -183,17 +183,17 @@ export function FeatureComparisionTable({planFeatures}) {
                     key={type}
                     className="hover:bg-gray-50 transition duration-200 ease-in-out border-b border-gray-200"
                   >
-                    <td className="pl-8 py-1.5 px-2 sm:py-3 sm:px-4">{type}</td>
+                    <td className="pl-4 py-1.5 px-1 sm:py-3 sm:px-4">{type}</td>
                     {planFeatures.plans.map((plan) => (
                       <td
                         key={`${plan.name}-${type}`}
-                        className="text-center py-1 px-2 sm:py-2 sm:px-4"
+                        className="text-center py-1 px-1 sm:py-2 sm:px-4"
                       >
-                        {
-                          planFeatures.availableTypes[plan.name].includes(type) 
-                            ? <span className="mx-auto text-green-500">&#10004;</span>
-                            : <span className="mx-auto text-red-500">&#10006;</span>
-                        }
+                        {planFeatures.availableTypes[plan.name].includes(type) ? (
+                          <span className="mx-auto text-green-500">&#10004;</span>
+                        ) : (
+                          <span className="mx-auto text-red-500">&#10006;</span>
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -203,5 +203,6 @@ export function FeatureComparisionTable({planFeatures}) {
           </tbody>
         </table>
       </div>
+      
     )
   }
