@@ -35,7 +35,6 @@ export const subscriptionPlans = [
               { solution: "Cohere command-light" },
             ],
           },
-          { feature: "Visual Search", note: "N/a" },
           {
             feature: "Q&A search",
             note: "50 queries/mo",
@@ -47,28 +46,24 @@ export const subscriptionPlans = [
               },
             ],
           },
-          { feature: "Dynamic Models", note: "N/a" },
-          { feature: "Auto Text Enhancement", note: "Available (limited models)" },
-          { feature: "Auto Visual Enhancement", note: "N/a" },
-          { feature: "Auto Media Enhancement", note: "N/a" },
-          { feature: "Custom enhancement pipeline", note: "N/a" },
+          {
+            feature: "Auto Text Enhancement",
+            note: "Available (limited models)",
+          },
         ],
       },
       {
         category: "APIs",
         items: [
           { feature: "Image API", note: "Unlimited" },
+          { feature: "Audio API", note: "10 min/mo" },
           { feature: "Video API", note: "5 min/mo" },
-          { feature: "Audio API", note: "5 min/mo" },
-          { feature: "Push API", note: "N/a, 3x Build Time" },
         ],
       },
       {
         category: "Support",
-        items: [
-          { feature: "Community support", note: null}
-        ]
-      }
+        items: [{ feature: "Community support", note: null }],
+      },
     ],
     featured: false,
   },
@@ -212,19 +207,19 @@ export const subscriptionPlans = [
         category: "APIs",
         items: [
           { feature: "Image API", note: "Unlimited" },
-          { feature: "Video API", note: "Unlimited ($0.01/min)" },
-          { feature: "Audio API", note: "Unlimited ($0.01/min)" },
+          { feature: "Audio API", note: "Custom ($0.01/min)" },
+          { feature: "Video API", note: "Custom ($0.05/min)" },
           { feature: "Push API", note: "Custom" },
         ],
       },
       {
         category: "Support",
         items: [
-          { feature: "Community support", note: null},
-          { feature: "Email support", note: null},
-          { feature: "Chat support", note: null},
-          { feature: "Phone support", note: null},
-          { feature: "Onboarding", note: "Unlimited"},
+          { feature: "Community support", note: null },
+          { feature: "Email support", note: null },
+          { feature: "Chat support", note: null },
+          { feature: "Phone support", note: null },
+          { feature: "Onboarding", note: "10 hours" },
         ],
       },
     ],
@@ -232,8 +227,6 @@ export const subscriptionPlans = [
     isEnterprise: true,
   },
 ];
-
-
 
 
 export const plansWithSupportedFileTypes = {

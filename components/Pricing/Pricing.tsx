@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {subscriptionPlans} from "../../lib/pricing.configs";
+import {plansWithAvailableModels, plansWithSupportedFileTypes, subscriptionPlans} from "../../lib/pricing.configs";
 import {useTheme} from "next-themes";
 
 
@@ -106,7 +106,7 @@ const PlanCard = ({plan, showDetails}) => {
 
             <ul className="mt-6 space-y-2">
                 {plan.features.map((featureGroup, index) => (
-                    <ul key={`uf-${index}`}>
+                    <ul key={`uf-${index}`} className={`${featureGroup.category === "Features" ? "lg:min-h-[460px]" : featureGroup.category === "APIs" ? "lg:min-h-[220px]" : featureGroup.category === "Support" ? "lg:min-h-[204px]" : ""}`}>
                         {featureGroup.category && <li className="text-gray-400 pt-2 pb-2">{featureGroup.category}</li>}
                         {featureGroup.items.map((feature, index) => (
                             <FeatureItem key={index} feature={feature} showDetails={showDetails}/>
@@ -124,7 +124,7 @@ export const PricingComponent = () => {
 
     return (
         <div className="mx-auto max-w-fit pt-12 ">
-            <div
+            {/* <div
                 className="flex justify-center space-x-1 mb-8 ring-opacity-10 rounded-3xl w-fit h-fit p-1 m-auto">
                 <label className="inline-flex items-center cursor-pointer">
                     <input type="checkbox" value=""
@@ -137,14 +137,17 @@ export const PricingComponent = () => {
                         Show Details
                     </span>
                 </label>
-            </div>
+            </div> */}
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-6">
                 {subscriptionPlans.map((plan) => (
                     <PlanCard key={plan.name} plan={plan} showDetails={showDetails}/>
                 ))}
             </div>
+
+            <FeatureComparisionTable planFeatures={plansWithSupportedFileTypes} />
+            <FeatureComparisionTable planFeatures={plansWithAvailableModels} />
         </div>
     );
 
@@ -152,7 +155,7 @@ export const PricingComponent = () => {
 
 export function FeatureComparisionTable({planFeatures}) {
     return (
-      <div className="mt-24 overflow-hidden w-full">
+      <div className="mt-24">
         <table className="min-w-full border border-gray-200 rounded-lg">
           <thead className='border-b border-gray-200'>
             <tr>
