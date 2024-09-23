@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {subscriptionPlans} from "../../lib/pricing.configs";
+import {plansWithAvailableModels, plansWithSupportedFileTypes, subscriptionPlans} from "../../lib/pricing.configs";
 import {useTheme} from "next-themes";
 
 
@@ -77,7 +77,10 @@ const PlanCard = ({plan, showDetails}) => {
             <div className={`mt-4 text-4xl font-bold`}>
                 {
                     plan.isEnterprise ?
-                        <span>Custom</span> :
+                        <>
+                            <span>Custom</span>
+                            {/* <span className="text-xs font-normal text-gray-400">/month</span> */}
+                        </> :
                         <>
                             <div>
                             {
@@ -85,7 +88,7 @@ const PlanCard = ({plan, showDetails}) => {
                                 <span className="text-gray-300 line-through text-sm">${plan.discount.price}</span>
                             }
                                 <span>{plan.priceMonthly}</span>
-                                <span className="text-xs font-normal text-gray-400">/month</span>
+                                {plan.name !== "Hobbyist" && <span className="text-xs font-normal text-gray-400">/month</span>}
                             </div>
                             {
                                 plan.discount&&
@@ -103,7 +106,7 @@ const PlanCard = ({plan, showDetails}) => {
 
             <ul className="mt-6 space-y-2">
                 {plan.features.map((featureGroup, index) => (
-                    <ul key={`uf-${index}`}>
+                    <ul key={`uf-${index}`} className={`${featureGroup.category === "Features" ? "lg:min-h-[460px]" : featureGroup.category === "APIs" ? "lg:min-h-[220px]" : featureGroup.category === "Support" ? "lg:min-h-[204px]" : ""}`}>
                         {featureGroup.category && <li className="text-gray-400 pt-2 pb-2">{featureGroup.category}</li>}
                         {featureGroup.items.map((feature, index) => (
                             <FeatureItem key={index} feature={feature} showDetails={showDetails}/>
@@ -121,7 +124,7 @@ export const PricingComponent = () => {
 
     return (
         <div className="mx-auto max-w-fit pt-12 ">
-            <div
+            {/* <div
                 className="flex justify-center space-x-1 mb-8 ring-opacity-10 rounded-3xl w-fit h-fit p-1 m-auto">
                 <label className="inline-flex items-center cursor-pointer">
                     <input type="checkbox" value=""
@@ -134,15 +137,72 @@ export const PricingComponent = () => {
                         Show Details
                     </span>
                 </label>
-            </div>
+            </div> */}
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-6">
                 {subscriptionPlans.map((plan) => (
                     <PlanCard key={plan.name} plan={plan} showDetails={showDetails}/>
                 ))}
             </div>
+
+            <FeatureComparisionTable planFeatures={plansWithSupportedFileTypes} />
+            <FeatureComparisionTable planFeatures={plansWithAvailableModels} />
         </div>
     );
 
 }
+
+export function FeatureComparisionTable({planFeatures}) {
+    return (
+        <div className="mt-24 w-full sm:w-full overflow-x-auto text-xs sm:text-base">
+        <table className="table-auto w-full border border-gray-200 rounded-lg">
+          <thead className="border-b border-gray-200">
+            <tr>
+              <th className="w-[80px] sm:w-[200px] py-1.5 sm:py-3 px-1 sm:px-4 text-left capitalize">{planFeatures.type} Types</th>
+              {planFeatures.plans.map((plan) => (
+                <th
+                  key={plan.name}
+                  className="py-1.5 px-1 sm:py-3 sm:px-4 text-center"
+                >
+                  {plan.name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {planFeatures.types.map((category) => (
+              <React.Fragment key={category.category}>
+                <tr className="bg-gray-50 border-b border-gray-200">
+                  <td className="font-semibold py-1.5 px-1 sm:py-3 sm:px-4" colSpan={planFeatures.plans.length + 1}>
+                    {category.category}
+                  </td>
+                </tr>
+                {category.types.map((type) => (
+                  <tr
+                    key={type}
+                    className="hover:bg-gray-50 transition duration-200 ease-in-out border-b border-gray-200"
+                  >
+                    <td className="pl-4 py-1.5 px-1 sm:py-3 sm:px-4">{type}</td>
+                    {planFeatures.plans.map((plan) => (
+                      <td
+                        key={`${plan.name}-${type}`}
+                        className="text-center py-1 px-1 sm:py-2 sm:px-4"
+                      >
+                        {planFeatures.availableTypes[plan.name].includes(type) ? (
+                          <span className="mx-auto text-green-500">&#10004;</span>
+                        ) : (
+                          <span className="mx-auto text-red-500">&#10006;</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      
+    )
+  }
