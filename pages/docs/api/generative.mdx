@@ -1,4 +1,5 @@
-import {Tabs, Tab} from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
+import { Callout } from "nextra/components";
 
 # Generative Search
 
@@ -6,29 +7,51 @@ Generative Search utilizes large language models to transform query results into
 
 For instance, if your data includes various historical events, users can simply enter a general prompt like "important events in the 20th century" and receive a narrative summarizing the events in an engaging manner. This method is beneficial for creating narrative content, resonating with human readers, and summarizing complex data into key insights.
 
-## Techniques
-Generative Search can be applied using several techniques, which can be adapted depending on your application's needs:
+## Usage
+
+### From One
+
+This method generates a result for each object based on a single prompt. You can reference object properties within the prompt using curly braces to dynamically insert values.
+
+**Syntax:**
 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
-        ```javascript copy
-        unbody.get.<object_name>.generate.fromMany("data point", {...options})
-        // or
-        unbody.get.<object_name>.generate.fromOne("data point", {...options})
-        ```
+    ```javascript copy
+    const {
+        data: { generate },
+    } = await unbody.get.<object_name>.generate
+        .fromOne("Prompt goes here {propertyName}")
+        .exec()
+
+    for (const res of generate) {
+        const {
+            error,   // If an error occurred, it's captured here
+            result,  // The generated content
+            from     // The object used to generate the result
+        } = res
+
+        if (error) {
+            console.error(error)
+        } else {
+            console.log(result)
+        }
+    }
+    ```
     </Tab>
-    <Tab title={"GraphQl"}>
+    <Tab title={"GraphQL"}>
         ```graphql
         {
             Get{
-                <ObjectName>{
+                <ObjectName> {
                     ...fields
                     _additional{
                         generate(
                             singleResult:{
-                                prompt: "prompt goes here"
+                                prompt: "Prompt goes here {propertyName}"
                             }
                         ){
+                            error
                             singleResult
                         }
                     }
@@ -37,73 +60,52 @@ Generative Search can be applied using several techniques, which can be adapted 
         }
         ```
     </Tab>
+
 </Tabs>
 
-### Example 1 - Single Prompt Generative Search
+### From Many
+
+This method generates a result by applying a single prompt to a group of objects. For each object returned by the query, the specified properties are extracted and combined into an array. This array, along with the prompt, will be used to generate the result. 
+
+**Syntax:**
 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```javascript copy
-        unbody.get
-            .textBlock
-            .generate
-            .fromOne("Transform this historical fact into a captivating tweet: {content}")
+        const {
+            data: { generate },
+        } = await unbody.get.textDocument.generate
+            .fromMany(`Prompt goes here`, ['propertyName', 'propertyName'])
             .exec()
-        // The output is a custom tweet based on the historical fact provided
-        ```
-    </Tab>
-    <Tab title={"GraphQl"}>
-        ```graphql
-        {
-            Get{
-                TextBlock{
-                    text
-                    _additional{
-                        generate(
-                            singleResult:{
-                                prompt: "Transform this historical fact into a captivating tweet: {content}"
-                            }
-                        ){
-                            singleResult
-                        }
-                    }
-                }
-            }
+      
+        const {
+            error,   // If an error occurred, it's captured here
+            result,  // The generated content
+            from     // The objects used to generate the result
+        } = generate
+
+        if (generate.error) {
+            console.error(generate.error)
+        } else {
+            console.log(generate.result)
         }
         ```
     </Tab>
-</Tabs>
-
-### Example 2 - Grouped Task Generative Search
-
-<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
-    <Tab title={"Unbody SDK"}>
-        ```javascript copy
-        unbody.get
-            .textBlock
-            .generate
-            .fromMany(
-                "Summarize the common traits of these Australian animals.",
-                ["text"]
-            )
-            .exec()
-        // The output is a summary of common traits of Australian animals based on the text blocks provided
-        ```
-    </Tab>
-    <Tab title={"GraphQl"}>
+    <Tab title={"GraphQL"}>
         ```graphql
         {
             Get{
-                TextBlock{
+                <ObjectName>{
                     text
                     _additional{
                         generate(
                             groupedResult:{
-                                task: "Summarize the common traits of these Australian animals.",
-                                properties: ["text"]
+                                task: "Prompt goes here.",
+                                properties: ["propertyName", "propertyName"]
                             }
                         ){
                             groupedResult
+                            error
                         }
                     }
                 }
@@ -111,47 +113,261 @@ Generative Search can be applied using several techniques, which can be adapted 
         }
         ```
     </Tab>
+
 </Tabs>
 
-### Example 3 - Property Selection
+### Options
+| Name               | Type     | Description                                                                                                                                                     |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`            | `string` | Defaults to the model configured during project setup. This option is only available on paid subscription plans. See the [supported models.](#supported-models) |
+| `maxTokens`        | `number` | Maximum number of tokens in the output (usually constrained by the model).                                                                                      |
+| `temperature`      | `number` | Adjusts creativity in output (0 to 1). Higher values make output more random.                                                                                   |
+| `presencePenalty`  | `number` | Penalizes new tokens based on their presence in the input (range: -2.0 to 2.0).                                                                                 |
+| `frequencyPenalty` | `number` | Penalizes tokens based on frequency of occurrence (range: -2.0 to 2.0).                                                                                         |
+| `topP`             | `number` | Controls diversity via nucleus sampling (0 to 1). Higher values prioritize diversity.                                                                           |
+
+
+
+## Advanced Usage
+### Using Messages Instead of Prompts
+
+In addition to using a single prompt, you can leverage an array of messages to define interactions. This method allows for richer context and more dynamic input-output control. Each message can have the following properties:
+
+- `content`: (string) The actual content of the message.
+- `type`: (text | image) The type of content. Defaults to `text`.
+- `role`: (system | user | assistant) Defines the role of the message. The `system` role sets the behavior or instructions for the assistant, while `user` is the input from the user, and `assistant` is the response from the AI. Defaults to "user".
+
+This method provides a way to handle multi-turn conversations or context-aware responses. Below is an example of how you might structure your messages:
+
+```json
+messages: [
+  {
+    "role": "system",
+    "content": "Answer user questions based on this video. {video}"
+  },
+  {
+    "content": "What's this video about?"
+  }
+]
+```
+
+### Using Images as Input
+
+Generative Search supports image inputs through messages. To use images as input:
+
+- The message `type` must be set to `"image"`.
+- The message `content` must include one of the following:
+  - A valid image URL (e.g., HTTPS URL) or a base64-encoded image.
+  - A `JSONPath` pointing to one or more image URLs.
+- When using HTTPS URLs, ensure the image size is less than 5MB, as larger images are not supported.
+
+This allows you to provide images as part of the context for generating a result. The model will process the image(s) along with any accompanying instructions.
 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
-        ```javascript copy
-        unbody.get
-            .textBlock
-            .search
-            .about("Innovations")
-            .limit(3)
-            .select("text")
-            .generate
-            .fromMany(
-                "Highlight the most impactful aspects of these innovations.",
-                ["text"]
-            )
-            .exec()
-        // The output focuses on the most impactful aspects of innovations, selected from the text provided
-        ```
+```javascript copy
+await unbody.get.imageBlock
+    .limit(2)
+    .generate.fromMany({
+    messages: [
+        {
+            content: 'Describe these images',
+        },
+        {
+            type: 'image',
+            content: '$..url',
+        },
+    ],
+    })
+    .exec()
+```
     </Tab>
     <Tab title={"GraphQl"}>
-        ```graphql
-        {
-            Get{
-                TextBlock{
-                    text
-                    _additional{
-                        generate(
-                            groupedResult:{
-                                task: "Highlight the most impactful aspects of these innovations.",
-                                properties: ["text"]
-                            }
-                        ){
-                            groupedResult
-                        }
-                    }
-                }
-            }
+```graphql copy
+{
+  Get {
+    ImageBlock(limit: 2) {
+      _additional {
+        generate(
+          groupedResult: {
+            options: { model: "gpt-4o" }
+            messages: [
+              { content: "Describe these images" }
+              { type: "image", content: "{$..url}" }
+            ]
+          }
+        ) {
+          error
+          groupedResult
         }
+      }
+      url
+    }
+  }
+}
+```
+    </Tab>
+</Tabs>
+
+
+### Using `vars`
+
+The `vars` option allows you to transform query results into JSON-serializable data, which can then be referenced in the messages' content. This feature enables dynamic data injection into the conversation.
+
+Each `var` has the following properties:
+
+- `name`: (string) The name of the variable. It can be referenced in the message content by using either `"{varName}"` or `"$..varName"`.
+- `formatter`: (string) Currently, the only supported formatter is [jq](https://jqlang.github.io/jq/).
+- `expression`: (string) The `jq` expression used to transform the query result into the desired structure.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title="From one">
+        ```json copy
+        vars: [
+            {
+                "formatter": "jq",
+                "name": "context",
+                "expression": "{ originalName, text }"
+            }
+        ]
+        ```
+    </Tab>
+    <Tab title="From many">
+        ```json copy
+        vars: [
+            {
+                "formatter": "jq",
+                "name": "context",
+                "expression": ".[] | map({ originalName, text })"
+            }
+        ]
         ```
     </Tab>
 </Tabs>
+
+**Note:** The `vars` are calculated sequentially, meaning the output of one `var` can be used in the next. You can reference the `var` in the expression by using `$varName`. You can also reference the original query result by using `$root`.
+
+<Callout type="info">
+    The `vars` option is only available in `messages` and not in the `prompt`.
+</Callout>
+
+
+### Using Cross-References in `vars`
+
+When using cross-references (relations) in `vars` or within message content, you need to fetch at least one property from the referenced object. This ensures the related object data is accessible during query execution.
+
+<Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
+    <Tab title={"Unbody SDK"}>
+```javascript copy
+await unbody.get.videoFile
+.select('subtitles.SubtitleFile.entries.SubtitleEntry.__typename')
+.limit(1)
+.generate.fromOne({
+    options: {
+        vars: [
+        {
+            name: 'subtitles',
+            formatter: 'jq',
+            expression: `(.subtitles//[]) | map({ entries })`,
+        },
+        {
+            name: 'context',
+            formatter: 'jq',
+            expression: `{
+            originalName,
+            transcription: $subtitles[0].entries
+            }`,
+        },
+        ],
+    },
+    messages: [
+        {
+            content: `Summarize the video's transcription:
+            \`\`\`json
+            {context}
+            \`\`\`
+        `,
+        }
+    ],
+})
+.exec()
+```
+    </Tab>
+    <Tab title={"GraphQl"}>
+```graphql copy
+query {
+  Get{
+    VideoFile(limit: 1){
+      _additional{
+        generate(singleResult: {
+          options: {
+            model: "gpt-4o-mini"
+            vars:[
+              {
+                formatter:"jq",
+                name: "subtitles",
+                expression: """
+                  (.subtitles//[])|map({
+                    entries
+                  })  
+                """
+              },
+              {
+                formatter: "jq",
+                name: "context",
+                expression: """
+                  {
+                    originalName,
+                    transcription: $subtitles[0].entries
+                  }
+                """
+              }
+            ]
+          }
+          messages: [
+            {
+              content: """
+              Summarize the video's transcription: 
+              {context}
+              """
+            }
+          ]
+        }) {
+          error
+          groupedResult
+          singleResult
+        }
+      }
+      originalName
+      
+      subtitles{
+        ... on SubtitleFile{
+          entries{
+            ... on SubtitleEntry{
+              __typename # in order to use the entries in the context
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+    </Tab>
+</Tabs>
+
+## Supported Models
+
+| Model Name          | Provider  | Context Window (Tokens) | Max Tokens | Image Input Support |
+| ------------------- | --------- | ----------------------- | ---------- | ------------------- |
+| `gpt-3.5-turbo`     | OpenAI    | 16,384                  | 4,096      |                     |
+| `gpt-4`             | OpenAI    | 8,192                   | 8,192      |                     |
+| `gpt-4-turbo`       | OpenAI    | 128,000                 | 4,096      | ✔                   |
+| `gpt-4o`            | OpenAI    | 128,000                 | 4,096      | ✔                   |
+| `gpt-4o-mini`       | OpenAI    | 128,000                 | 16,384     | ✔                   |
+| `command`           | Cohere    | 4,096                   | 4,096      |                     |
+| `command-light`     | Cohere    | 4,096                   | 4,096      |                     |
+| `command-r`         | Cohere    | 128,000                 | 4,096      |                     |
+| `command-r-plus`    | Cohere    | 128,000                 | 4,096      |                     |
+| `open-mistral-7b`   | MistralAI | 32,000                  |            |                     |
+| `open-mixtral-8x7b` | MistralAI | 32,000                  |            |                     |
