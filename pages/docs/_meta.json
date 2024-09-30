@@ -11,11 +11,16 @@
     "title": "Dev References",
     "type": "separator"
   },
-  "api": "API",
-  "libraries": "Libraries",
+  "api": "Content API",
   "image-api": "Image API",
   "audio-api": "Audio API",
   "video-api": "Video API",
+  "---": {
+    "type": "separator"
+  },
+  "libraries": "Libraries",
+  "push-api": "Push API (beta)",
+  "admin-api": "Admin API (beta)",
   "-- enhancements-configurations": {
     "title": "A.I. Configurations",
     "type": "separator"
