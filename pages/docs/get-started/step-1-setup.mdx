@@ -2,53 +2,67 @@ import {Steps, Tabs, Callout} from "nextra/components";
 import {PageCard} from "../../../components/PageCard";
 
 # Setup Unbody
-
-This step will happen all on [Unbody’s dashboard](https://app.unbody.io). Via the dashboard, you can manage anything about your account, subscription, projects, and more.
+Manage all aspects of your Unbody account effortlessly through the [Unbody’s dashboard](https://app.unbody.io). From account settings and subscription management, projects and more, the dashboard provides you with complete control and flexibility in one seamless platform.
 
 <Steps>
     ### Create a Project
     To begin using Unbody for a project, you first need to create a project space 😀. Essentially, each project serves as a separate container for your data. If you're managing distinct datasets for two different websites, you'll need two separate projects. However, if you're utilizing the same datasets across multiple applications, a single project is sufficient. ([learn more](https://www.notion.so/Getting-started-7ea06be0e737441c8313a61d426ab53c?pvs=21))
+    
     ![Create project](/images/docs/get-started/new-project.jpg)
-    On the dashboard homepage, click the "Create a new project" button. A dialogue will open where you need to name your project and set configurations for AI models and other features. You can either choose from one of the presets or navigate to the advanced panel for more flexibility. For this guide, select the `Generative OpenAI` preset.  Click on `create project`. You'll automatically be redirected to the newly created project page.
+
+    1. On the dashboard homepage, click **Create a new project.**
+    2. Name your project and configure AI models and features in the dialogue box.
+    3. Choose a preset or go to the Advanced panel for more options.
+    4. For this guide, select the **Generative OpenAI** preset.
+    5. Click **create project** and you'll be redirected to the project page.
+
     ![project settings](/images/docs/get-started/project-settings.jpg)
 
     ### Add source(s)
 
-    You're now on the project page. Here, you can start adding data sources. A data source refers to the origin of your data (e.g., Google Drive, Discord Channel, or a Github Repository). Learn more about sources here. Click on "Add New Source" to open a dialog with four steps.
+    You're now on the project page. Here, you can start adding data sources. A data source refers to the origin of your data (e.g., Google Drive, Discord Channel, or a Github Repository). Learn more about sources [here](). 
+    - Click on **Add New Source** to open a dialog with four steps.
+    
     ![Create source](/images/docs/get-started/add-source.jpg)
 
     <Steps>
         ### Select a provider
 
-        Choose the platform where your content is stored. For example, if it's stored in Google Drive, select it as the content provider. Visit [providers](docs/providers) for more information.
+        Choose the platform where your content is stored. For example, if it's stored in Google Drive, select it as the content provider. Visit [providers](/docs/providers/overview) for more information.
+        
         ![Select provider](/images/docs/get-started/providers.jpg)
 
         ### Connect Unbody to your source
 
         Allow Unbody to access your content from the selected provider. Learn more about this on [our privacy page](/privacy).
+        
         ![Add a source source](/images/docs/get-started/connect.jpg)
 
         ### Set an entry point
 
         Specify where Unbody should find your data on the chosen source. The entry points vary between source providers. For Google Drive, the entry point is a "folder," and for Discord, it's a "channel."
+        
         ![Select an entrypoint](/images/docs/get-started/entry.jpg)
 
     </Steps>
 
     ### Initialize Your Content
 
-    Navigate to next step and click "initialize". Unbody will index the content from your entry point. Once the process is completed, the dashboard will display the number of records processed.
+    Navigate to next step and click **initialize**. Unbody will index the content from your entry point. Once the process is completed, the dashboard will display the number of records processed.
+    
     ![Initialize](/images/docs/get-started/init.jpg)
 
     <Callout type="info">
         Please note that the time taken to index your content depends on the size of your content. You can only start
         interacting with your content once the indexing process is completed. Wait until the source status turns to idle and you see a certain number of records on your source card.
     </Callout>
+    
     ![Check build status](/images/docs/get-started/status.jpg)
 </Steps>
 
 ## Next
 Ready? let's move on to the next step.
+<br />
 <PageCard
     title="Start building with Unbody"
     description="Learn how to start building with Unbody."
