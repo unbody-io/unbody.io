@@ -2,8 +2,14 @@ import {Tabs, Tab} from "@nextui-org/react";
 
 Semantic search is a method that lets users search data based on the meaning of their query. Users can use any form of natural human language and still get the same results. This differs from classic search, which relies on exact keyword matching.
 
-For instance, if you've got a collection of documents about Quentin Tarantino, Maradona, and Elon Musk, the user doesn't need to type the full term "Quentin Tarantino" to find documents about him. Instead, they can enter phrases like "a movie director" or "who made Pulp Fiction" and still reach the same results.
-This method is best to use when you need to provide a more intuitive and user-friendly search experience, handle queries with ambiguity, or when you want to provide more relevant search results based on the context of the query.
+| Feature                      | Lexical Search                                    | Semantic Search                               |
+|------------------------------|---------------------------------------------------|----------------------------------------------|
+| **Definition**               | Searches based on exact keyword matches.          | Understands user intent and context behind queries. |
+| **Search Method**            | Matches terms exactly as they appear.             | Interprets the meaning of the query.        |
+| **User Experience**          | May miss relevant results if the wording differs. | Provides more relevant results based on user context. |
+| **Use Cases**                | Basic keyword searches in documents or databases. | Advanced searches in knowledge bases, FAQs, and recommendation systems. |
+
+For example, if you search for "places to swim," a semantic search can show you information about "beaches," "pools," and "lakes," even if those specific terms aren’t in your search. This approach helps users find related content based on the overall meaning rather than just matching exact words.
 
 ## Syntax
 You can perform semantic searches on virtually any text (`string`) field of any object. Here's how:
@@ -37,11 +43,9 @@ You can perform semantic searches on virtually any text (`string`) field of any 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```javascript copy
-        unbody.get
-            .googleDoc
-            .search
-            .about("a movie director")
-
+        const {
+          data: { payload },
+        } = await unbody.get.googleDoc.search.about("a movie director").exec();
         // payload is an array of GoogleDocs that are about "a movie director"
         ```
     </Tab>
@@ -67,10 +71,9 @@ You can perform semantic searches on virtually any text (`string`) field of any 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```javascript copy
-        unbody.get
-            .discordMessage
-            .search
-            .about("a movie director")
+        const {
+          data: { payload },
+        } = await unbody.get.discordMessage.search.about("a movie director").exec();
 
         // payload is an array of DiscordMessages that are about "a movie director"
         ```
@@ -97,10 +100,9 @@ You can perform semantic searches on virtually any text (`string`) field of any 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```javascript copy
-        unbody.get
-            .textBlock
-            .search
-            .about("a movie director")
+        const {
+          data: { payload },
+        } = await unbody.get.textBlock.search.about("a movie director").exec();
 
         // payload is an array of textBlocks that are about "a movie director"
         // this search includes all types of objects avaiable in the sources of your project

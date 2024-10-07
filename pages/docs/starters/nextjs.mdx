@@ -20,9 +20,10 @@ import {GithubRepoEmbed} from "../../../components/GithubEmbed";
 Welcome to the Unbody Next.js Starter documentation. This guide offers a comprehensive overview of integrating Unbody's AI-powered features using Next.js and TypeScript.
 
 ## Code Repository
+<br />
 <GithubRepoEmbed repoUrl="https://github.com/unbody-io/example-next.js"
-                 lastUpdated={"19th, April 2024"}
-                 repoDescription={"Example boilerplate for Unbody.io's typescript SDK in Next.Js (Page Router)"}
+    lastUpdated={"19th, April 2024"}
+    repoDescription={"Example boilerplate for Unbody.io's typescript SDK in Next.Js (Page Router)"}
 />
 
 ## Overview of Unbody's AI Functionalities
@@ -37,7 +38,7 @@ Welcome to the Unbody Next.js Starter documentation. This guide offers a compreh
 - **Tailwind CSS**
 
 ## Getting Started
-Before integrating Unbody's features, ensure you have created an account on Unbody.io, set up a new project, and generated API keys.
+Before integrating Unbody's features, ensure you have created an account on Unbody.io, set up a [new project](/docs/get-started/step-1-setup), and [generated](/docs/get-started/step-2-building) API keys.
 
 ### Setup Unbody.io
 1. Create an account on [Unbody.io](https://unbody.io)
@@ -65,7 +66,7 @@ export const unbody = new Unbody({
 
 ## Understanding Semantic Search
 
-Semantic search employs techniques to interpret the intent behind a query. For instance, if your database contains documents about "Quentin Tarantino", a semantic search allows users to find relevant documents by searching for broader terms like "film directors" rather than specifically mentioning "Tarantino."
+Semantic search leverages advanced techniques to understand the intent behind a user's query, delivering more relevant and contextual search results. For instance, if your database contains information about different types of vehicles, a user searching for "fuel-efficient cars" can easily find articles about "hybrid vehicles" and "electric cars," even if those specific terms are not mentioned in the query. This capability enhances the search experience by connecting users to related content based on broader concepts rather than relying solely on exact keyword matches.
 
 ### Client-side Component for Handling User Input
 In this setup, there is a component (`/pages/search.tsx`) where users can interact with the semantic search feature. This component allows users to:

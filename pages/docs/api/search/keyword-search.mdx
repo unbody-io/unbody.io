@@ -38,10 +38,9 @@ Keyword search can be operated on an  any object's `string` or `string[]` field.
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```jsx
-        const {data: {payload}} = await unbody.get
-            .googleDoc
-            .search
-            .find("specific keyword");
+        const {
+          data: { payload },
+        } = await unbody.get.googleDoc.search.find("specific keyword").exec();
 
         // payload is an array of GoogleDocs that match "specific keyword"
         ```
@@ -63,15 +62,14 @@ Keyword search can be operated on an  any object's `string` or `string[]` field.
     </Tab>
 </Tabs>
 
-### Example 3 - Any text block
+### Example 2 - Any text block
 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
-        ```jsx
-        const {data: {payload}} = await unbody.get
-            .textBlock
-            .search
-            .find("specific keyword");
+        ```jsx        
+        const {
+          data: { payload },
+        } = await unbody.get.textBlock.search.find("specific keyword").exec();
 
         // payload is an array of textBlocks that match "specific keyword"
         // this search includes all types of objects available in the sources of your project
@@ -95,15 +93,14 @@ Keyword search can be operated on an  any object's `string` or `string[]` field.
     </Tab>
 </Tabs>
 
-### Example 4 - Google Drive / Google Docs - specific fields
+### Example 3 - Google Drive / Google Docs - specific fields
 
 <Tabs size={"sm"} variant={"underlined"} className={"mt-2"}>
     <Tab title={"Unbody SDK"}>
         ```jsx
-        const {data: {payload}} = await unbody.get
-            .googleDoc
-            .search
-            .find("specific keyword", ["title", "autoSummary"]);
+        const {
+          data: { payload },
+        } = await unbody.get.googleDoc.search.find("specific keyword", ["title", "autoSummary"]).exec();
 
         // payload is an array of GoogleDocs that match "specific keyword" - but here the search only is executed over two specifiec fields; "title" and "autoSummary"
         ```
