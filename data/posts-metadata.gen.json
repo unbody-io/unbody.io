@@ -1,0 +1,182 @@
+[
+  {
+    "slug": "end-of-container-era",
+    "title": "The End of the Container Era",
+    "publishDate": "2024-01-15",
+    "author": "amir",
+    "thumbnail": null,
+    "blurb": "The way we organize digital information by putting them in containers has become obsolete. The future of information is fluid, contextual, and deeply personal and AI will help us get there.",
+    "keywords": [
+      "information organization",
+      "digital containers",
+      "AI",
+      "semantic understanding",
+      "knowledge management",
+      "information retrieval",
+      "contextual information",
+      "future of information"
+    ],
+    "category": "essay",
+    "summary": [
+      {
+        "id": "71c660d6",
+        "summary": "For decades, we've organized digital information by putting them in containers, which served us well when storage was expensive and retrieval was manual."
+      },
+      {
+        "id": "586d72ef",
+        "summary": "Containers are fundamentally limiting because they force hierarchical thinking onto information that is inherently networked."
+      },
+      {
+        "id": "f6d2ffed",
+        "summary": "The rise of AI changes everything, because when machines can understand content semantically, the container becomes obsolete."
+      },
+      {
+        "id": "718b6d5f",
+        "summary": "Instead of asking \"where did I put that?,\" with AI we ask \"what do I need right now?\"."
+      },
+      {
+        "id": "643ff624",
+        "summary": "Unbody treats all your content as a unified knowledge space with intelligent retrieval based on what matters."
+      },
+      {
+        "id": "c78085ea",
+        "summary": "The container era served us well, but it's time to move on to the future of information, which is fluid, contextual, and deeply personal."
+      }
+    ],
+    "relatedTopics": [
+      "artificial intelligence",
+      "information architecture",
+      "knowledge management",
+      "cognitive science",
+      "future of work"
+    ],
+    "targetAudience": [
+      "developers",
+      "product-managers",
+      "general"
+    ],
+    "tone": "philosophical",
+    "readingTime": 2
+  },
+  {
+    "slug": "week-22-sdk-talk-oss",
+    "title": "Week 22: SDK, Talk, OSS",
+    "publishDate": "2024-05-28",
+    "author": "amir",
+    "thumbnail": null,
+    "blurb": "This week's Unbody update covers the new TypeScript SDK rewrite, a talk on semantic search patterns, and community contributions to open source projects. The team is also focusing on a dashboard redesign for next week.",
+    "keywords": [
+      "TypeScript SDK",
+      "semantic search",
+      "dense retrieval",
+      "sparse retrieval",
+      "open source",
+      "caching layer",
+      "dashboard redesign",
+      "AI Engineers meetup"
+    ],
+    "category": "update",
+    "summary": [
+      {
+        "id": "b42eebfd",
+        "summary": "Here's a quick update on what was shipped this week at Unbody."
+      },
+      {
+        "id": "206bf494",
+        "summary": "Unbody completely rewrote their TypeScript SDK from scratch, featuring full type inference and a cleaner API."
+      },
+      {
+        "id": "e184b6b5",
+        "summary": "Key improvements include a smaller bundle size, automatic retry, streaming support, and better error messages."
+      },
+      {
+        "id": "4fbbb53d",
+        "summary": "A talk was given at the AI Engineers meetup about semantic search patterns, covering tradeoffs between dense vs sparse retrieval."
+      },
+      {
+        "id": "a8787b8a",
+        "summary": "Twelve community PRs were merged this week, with a special shoutout to @devuser for the improved caching layer."
+      },
+      {
+        "id": "7586ec2c",
+        "summary": "Next week the focus is on the dashboard redesign, with early mockups looking promising."
+      }
+    ],
+    "relatedTopics": [
+      "Software Development",
+      "Artificial Intelligence",
+      "Semantic Technology",
+      "Open Source Software",
+      "Web Development"
+    ],
+    "targetAudience": [
+      "developers",
+      "product-managers"
+    ],
+    "tone": "technical",
+    "readingTime": 1
+  },
+  {
+    "slug": "ai-hack-night",
+    "title": "AI Hack Night: Building with LLMs",
+    "publishDate": "2024-03-10",
+    "author": "amir",
+    "thumbnail": null,
+    "blurb": "Join Unbody for an AI Hack Night focused on building practical LLM applications, connecting with fellow enthusiasts, and learning together. Space is limited, so sign up to build everything from chatbots to fine-tuned models.",
+    "keywords": [
+      "AI Hack Night",
+      "LLMs",
+      "Large Language Models",
+      "Amsterdam",
+      "Unbody",
+      "AI developers",
+      "AI tools",
+      "hands-on workshop"
+    ],
+    "category": "event",
+    "summary": [
+      {
+        "id": "e8d3c938",
+        "summary": "Join us for an evening of building, learning, and connecting with fellow AI enthusiasts."
+      },
+      {
+        "id": "fe4f0cf0",
+        "summary": "The AI Hack Night will be held on March 20, 2024, from 6:00 PM - 10:00 PM at Unbody HQ in Amsterdam for developers, designers, and curious minds interested in AI."
+      },
+      {
+        "id": "8f2b1d3f",
+        "summary": "We're hosting a hands-on hack night focused on practical LLM applications for building your first chatbot or fine-tuning models."
+      },
+      {
+        "id": "ccb26ce3",
+        "summary": "The evening kicks off with a short intro to Unbody's API and inspiration, followed by building time with mentors to help debug and push your ideas forward."
+      },
+      {
+        "id": "3f5b8e0e",
+        "summary": "Pizza and drinks will be provided, so bring your laptop and an idea you want to explore."
+      },
+      {
+        "id": "a64bbd2a",
+        "summary": "At our last hack night, teams built everything from a recipe generator to a Slack channel summarization tool, creating incredible energy."
+      },
+      {
+        "id": "b40f32ae",
+        "summary": "Space is limited to 30 people, so sign up on our Luma page and see you there."
+      }
+    ],
+    "relatedTopics": [
+      "Artificial Intelligence",
+      "Natural Language Processing",
+      "Machine Learning",
+      "LLM Applications",
+      "Generative AI"
+    ],
+    "targetAudience": [
+      "developers",
+      "designers",
+      "general"
+    ],
+    "tone": "announcement",
+    "readingTime": 1
+  }
+]

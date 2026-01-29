@@ -1,0 +1,116 @@
+[
+  {
+    "id": "71c660d6",
+    "slug": "end-of-container-era",
+    "index": 1,
+    "content": "For decades, we've organized digital information the same way we organize physical objects: by putting them in containers. Files go in folders. Emails go in inboxes. Notes go in notebooks. This metaphor served us well when storage was expensive and retrieval was manual."
+  },
+  {
+    "id": "586d72ef",
+    "slug": "end-of-container-era",
+    "index": 2,
+    "content": "But containers are fundamentally limiting. They force hierarchical thinking onto information that is inherently networked. A note about a conversation with a client belongs in the client folder, the project folder, and the meeting notes folder simultaneously. We've been forcing square pegs into round holes."
+  },
+  {
+    "id": "f6d2ffed",
+    "slug": "end-of-container-era",
+    "index": 3,
+    "content": "The rise of AI changes everything. When machines can understand content semantically, the container becomes obsolete. Why file a document when the system can surface it based on meaning, context, and relevance?"
+  },
+  {
+    "id": "718b6d5f",
+    "slug": "end-of-container-era",
+    "index": 4,
+    "content": "This isn't just about better search. It's a fundamental shift in how we relate to information. Instead of asking \"where did I put that?\", we ask \"what do I need right now?\" The system becomes an extension of thought rather than a filing cabinet."
+  },
+  {
+    "id": "643ff624",
+    "slug": "end-of-container-era",
+    "index": 5,
+    "content": "We're building tools that embrace this shift. Unbody treats all your content—documents, images, videos, conversations—as a unified knowledge space. No folders. No manual organization. Just intelligent retrieval based on what matters."
+  },
+  {
+    "id": "c78085ea",
+    "slug": "end-of-container-era",
+    "index": 6,
+    "content": "The container era served us well. But it's time to move on. The future of information is fluid, contextual, and deeply personal. We're excited to be building it."
+  },
+  {
+    "id": "b42eebfd",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 1,
+    "content": "Quick update on what we shipped this week at Unbody."
+  },
+  {
+    "id": "206bf494",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 2,
+    "content": "We completely rewrote our TypeScript SDK from scratch. The new version features full type inference, tree-shakeable modules, and a much cleaner API surface. Upgrade guide is live in the docs."
+  },
+  {
+    "id": "e184b6b5",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 3,
+    "content": "Key improvements:\n- 60% smaller bundle size\n- Automatic retry with exponential backoff\n- Streaming support for large responses\n- Better error messages with actionable suggestions"
+  },
+  {
+    "id": "4fbbb53d",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 4,
+    "content": "I gave a talk at the AI Engineers meetup about semantic search patterns. Covered the tradeoffs between dense vs sparse retrieval and when hybrid approaches make sense. Slides are up on our blog."
+  },
+  {
+    "id": "a8787b8a",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 5,
+    "content": "We merged 12 community PRs this week. Huge thanks to everyone contributing. Special shoutout to @devuser for the improved caching layer—it cut our test suite time by 40%."
+  },
+  {
+    "id": "7586ec2c",
+    "slug": "week-22-sdk-talk-oss",
+    "index": 6,
+    "content": "Next week we're focusing on the dashboard redesign. Early mockups look promising. Stay tuned."
+  },
+  {
+    "id": "e8d3c938",
+    "slug": "ai-hack-night",
+    "index": 1,
+    "content": "Join us for an evening of building, learning, and connecting with fellow AI enthusiasts."
+  },
+  {
+    "id": "fe4f0cf0",
+    "slug": "ai-hack-night",
+    "index": 2,
+    "content": "**When:** March 20, 2024, 6:00 PM - 10:00 PM\n**Where:** Unbody HQ, Amsterdam\n**Who:** Developers, designers, and curious minds interested in AI"
+  },
+  {
+    "id": "8f2b1d3f",
+    "slug": "ai-hack-night",
+    "index": 3,
+    "content": "We're hosting a hands-on hack night focused on practical LLM applications. Whether you're building your first chatbot or fine-tuning models for production, there's something here for you."
+  },
+  {
+    "id": "ccb26ce3",
+    "slug": "ai-hack-night",
+    "index": 4,
+    "content": "The evening kicks off with a short intro to Unbody's API and some inspiration from projects built by the community. Then it's heads-down building time. We'll have mentors floating around to help debug, brainstorm, and push your ideas forward."
+  },
+  {
+    "id": "3f5b8e0e",
+    "slug": "ai-hack-night",
+    "index": 5,
+    "content": "Pizza and drinks provided. Bring your laptop and an idea you want to explore."
+  },
+  {
+    "id": "a64bbd2a",
+    "slug": "ai-hack-night",
+    "index": 6,
+    "content": "At our last hack night, teams built everything from a recipe generator that works with whatever's in your fridge to a tool that summarizes Slack channels. The energy was incredible."
+  },
+  {
+    "id": "b40f32ae",
+    "slug": "ai-hack-night",
+    "index": 7,
+    "content": "Space is limited to 30 people. Sign up on our Luma page. See you there."
+  }
+]
