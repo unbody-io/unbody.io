@@ -6,7 +6,7 @@ import { Header } from "@/components/header";
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ibmPlexMono.variable} font-mono antialiased bg-[#e5f3f3] overflow-x-hidden`}
+        className={`${ibmPlexMono.variable} font-mono text-black antialiased overflow-x-hidden`}
       >
         {/* Fixed Ambient Background */}
         <div className="fixed inset-0 z-0 pointer-events-none">

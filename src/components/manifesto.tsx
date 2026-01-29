@@ -2,28 +2,18 @@ import { cn } from "@/lib/utils";
 
 interface ManifestoProps {
   className?: string;
-  headerClassName?: string;
-  subHeaderClassName?: string;
-  paraClassName?: string;
-  sectionClassName?: string;
 }
 
-export function Manifesto({
-  className = "",
-  headerClassName = "text-4xl font-bold mb-12",
-  subHeaderClassName = "text-xl font-medium mt-12 mb-4",
-  paraClassName = "mb-6 leading-relaxed",
-  sectionClassName = "mb-16",
-}: ManifestoProps) {
+export function Manifesto({ className = "" }: ManifestoProps) {
   return (
     <article className={cn(className)}>
-      <header className={cn(sectionClassName)}>
-        <h1 className={cn(headerClassName)}>Unbody Lab</h1>
-        <p className={cn(paraClassName)}>
+      <header className="mb-20">
+        <h1 className="hidden">Unbody Lab</h1>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           Unbody Lab is where we question, explore, experiment and build what we
           call adaptive thinking tools.
         </p>
-        <p className={cn(paraClassName)}>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           Most software still carries the shape of an old world: Software
           carries the shape of constraints that no longer exist: one product,
           one interface, designed the same for everyone. It broke reality into
@@ -32,15 +22,17 @@ export function Manifesto({
           Copying, switching, remembering. And because software only reacts, it
           had no choice but to capture attention or lose it.
         </p>
-        <p className={cn(paraClassName)}>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           The technical constraints that created this world are dissolving.
           We&apos;re building toward what comes next.
         </p>
       </header>
 
-      <section className={cn(sectionClassName)}>
-        <h2 className={cn(subHeaderClassName)}>Unlocking, not replacing</h2>
-        <p className={cn(paraClassName)}>
+      <section className="mb-20">
+        <h2 className="mt-16 mb-4 text-black uppercase tracking-wider">
+          Unlocking, not replacing
+        </h2>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           <em>
             We see AI as unlocking what&apos;s latent in you, not substituting
             for you.
@@ -56,9 +48,11 @@ export function Manifesto({
         </p>
       </section>
 
-      <section className={cn(sectionClassName)}>
-        <h2 className={cn(subHeaderClassName)}>Time returned, not captured</h2>
-        <p className={cn(paraClassName)}>
+      <section className="mb-20">
+        <h2 className="mt-16 mb-4 text-black uppercase tracking-wider">
+          Time returned, not captured
+        </h2>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           <em>The measure of good software is what it gives back.</em> Most
           tools optimize for time spent. We optimize for time returned—to your
           work, your relationships, your own thinking. If our tools help you
@@ -66,11 +60,11 @@ export function Manifesto({
         </p>
       </section>
 
-      <section className={cn(sectionClassName)}>
-        <h2 className={cn(subHeaderClassName)}>
+      <section className="mb-20">
+        <h2 className="mt-16 mb-4 text-black uppercase tracking-wider">
           Adaptation over configuration
         </h2>
-        <p className={cn(paraClassName)}>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           <em>Software should learn you, not the other way around.</em> For
           decades, people have adapted to their tools—navigating menus, learning
           interfaces, fitting themselves into predetermined flows. We build
@@ -79,9 +73,11 @@ export function Manifesto({
         </p>
       </section>
 
-      <section className={cn(sectionClassName)}>
-        <h2 className={cn(subHeaderClassName)}>Calibrated friction</h2>
-        <p className={cn(paraClassName)}>
+      <section className="mb-20">
+        <h2 className="mt-16 mb-4 text-black uppercase tracking-wider">
+          Calibrated friction
+        </h2>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           <em>Frictionless isn&apos;t always better.</em> Some tasks need
           smoothness—busywork should disappear. But creative work, important
           decisions, moments of self-regulation—these benefit from pause, from
@@ -91,9 +87,11 @@ export function Manifesto({
         </p>
       </section>
 
-      <section className={cn(sectionClassName)}>
-        <h2 className={cn(subHeaderClassName)}>Craft as care</h2>
-        <p className={cn(paraClassName)}>
+      <section className="mb-20">
+        <h2 className="mt-16 mb-4 text-black uppercase tracking-wider">
+          Craft as care
+        </h2>
+        <p className="mb-8 leading-relaxed text-neutral-600/90">
           <em>
             Quality means someone absorbed the complexity so you don&apos;t have
             to.
@@ -105,7 +103,7 @@ export function Manifesto({
         </p>
       </section>
 
-      <footer className="mt-20 pt-10 border-t border-current opacity-50 text-sm">
+      <footer className="mt-20 pt-10 border-t border-current opacity-50">
         Unbody Lab. Small team. Hard problems. Right questions. If you think
         from first principles and want to build what comes next —{" "}
         <a href="mailto:hello@unbody.io" className="underline">
