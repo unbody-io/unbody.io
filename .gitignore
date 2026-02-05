@@ -42,3 +42,4 @@ next-env.d.ts
 
 .astro
 dist
+lighthouse-report.json

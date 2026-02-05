@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "generate:metadata": "bun run scripts/generate-metadata.ts && bun run scripts/generate-site-summary.ts",
-    "prebuild": "npm run generate:metadata"
+    "prebuild": "npm run generate:metadata",
+    "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
     "astro": "^5",
@@ -18,6 +19,8 @@
     "@tailwindcss/vite": "^4",
     "@types/node": "^20",
     "ai": "^6.0.59",
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.0.1",
     "rehype-external-links": "^3",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
