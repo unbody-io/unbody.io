@@ -1,0 +1,50 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
+import "../styles/globals.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Unbody Lab",
+  description = "Where we question, explore, experiment and build adaptive thinking tools.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <ClientRouter />
+  </head>
+  <body class="font-mono text-black antialiased overflow-x-hidden">
+    <!-- Fixed Ambient Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2000&auto=format&fit=crop'); filter: blur(120px) saturate(0.05) brightness(1.1); transform: scale(1.2);"
+      ></div>
+      <div class="absolute inset-0 bg-white/40"></div>
+    </div>
+
+    <!-- Top & Bottom Fade Masks -->
+    <div class="fixed top-0 left-0 w-full h-48 z-40 bg-gradient-to-b from-white/60 via-white/30 to-transparent pointer-events-none"></div>
+    <div class="fixed bottom-0 left-0 w-full h-48 z-40 bg-gradient-to-t from-white/60 via-white/30 to-transparent pointer-events-none"></div>
+
+    <Header />
+
+    <slot />
+  </body>
+</html>

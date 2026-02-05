@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+import Manifesto from "../components/Manifesto.astro";
+---
+
+<Base>
+  <main class="min-h-screen relative flex flex-col items-center selection:bg-black selection:text-white">
+    <div class="relative z-10 w-full max-w-xl pt-40 pb-48">
+      <Manifesto />
+
+      <div class="mt-32 pb-12 flex flex-col items-center opacity-30">
+        <div class="w-[1px] h-24 bg-gradient-to-b from-black to-transparent mb-8"></div>
+        <p class="uppercase tracking-[1em] whitespace-nowrap">
+          Unbody Research Division
+        </p>
+        <p class="mt-4 tracking-[0.2em]">
+          LATENT_SPACE_EXPLORATION_V.08
+        </p>
+      </div>
+    </div>
+  </main>
+</Base>
