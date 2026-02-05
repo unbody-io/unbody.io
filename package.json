@@ -11,6 +11,7 @@
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
     "astro": "^5",
     "gray-matter": "^4.0.3"
   },
