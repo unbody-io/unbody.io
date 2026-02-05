@@ -38,6 +38,28 @@ async function main() {
 
   console.log(`Generating site summary from ${posts.length} posts...\n`)
 
+  if (!process.env.OPENROUTER_API_KEY) {
+    console.warn("⚠️ No OPENROUTER_API_KEY found. Skipping AI generation.")
+    
+    const siteMetadataPath = path.join(DATA_DIR, "site-metadata.gen.json")
+    try {
+      await fs.access(siteMetadataPath)
+      console.log("Using existing site-metadata.gen.json")
+    } catch {
+      const dummy: SiteMetadata = {
+        summary: "Site summary not generated (missing API key).",
+        keywords: [],
+        suggestiveQuestions: [],
+        topicClusters: [],
+        totalPosts: posts.length,
+        lastUpdated: new Date().toISOString(),
+      }
+      await fs.writeFile(siteMetadataPath, JSON.stringify(dummy, null, 2))
+      console.log("Created placeholder site-metadata.gen.json")
+    }
+    return
+  }
+
   const { object: generated } = await generateObject({
     model: openrouter(model),
     schema: SiteMetadataSchema,

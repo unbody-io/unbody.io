@@ -138,6 +138,17 @@ async function main() {
   const posts = await discoverPosts()
   console.log(`Found ${posts.length} posts to process\n`)
 
+  if (!process.env.OPENROUTER_API_KEY) {
+    const metadataPath = path.join(DATA_DIR, "posts-metadata.gen.json")
+    try {
+      await fs.access(metadataPath)
+      console.log("⚠️ No OPENROUTER_API_KEY found. Skipping metadata update and using existing 'data/posts-metadata.gen.json'.")
+      return
+    } catch {
+      console.log("⚠️ No OPENROUTER_API_KEY found. Generating fallback metadata...")
+    }
+  }
+
   const allBlocks: Block[] = []
   const allMetadata: PostMetadata[] = []
 
@@ -165,6 +176,12 @@ async function main() {
     }
 
     console.log(`[${i + 1}/${posts.length}] Processing ${post.slug} (${chunks.length} chunks)...`)
+
+    if (!process.env.OPENROUTER_API_KEY) {
+      console.log(`  ℹ️ Skipping AI generation (no API key). Using fallback.`)
+      allMetadata.push(createFallbackMetadata(post.slug, frontmatter, readingTime))
+      continue
+    }
 
     try {
       const { object: generated } = await generateObject({
