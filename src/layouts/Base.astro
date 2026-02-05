@@ -1,8 +1,25 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
+// Fonts (fontsource)
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/iosevka-curly/400.css";
+import "@fontsource/iosevka-curly/500.css";
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
+import "@fontsource/lilex/400.css";
+import "@fontsource/lilex/500.css";
+import "@fontsource/commit-mono/400.css";
+import "@fontsource/commit-mono/500.css";
+import "@fontsource/geist-mono/400.css";
+import "@fontsource/geist-mono/500.css";
+import "@fontsource/fragment-mono/400.css";
+import "@fontsource/martian-mono/400.css";
+import "@fontsource/martian-mono/500.css";
+import "@fontsource/azeret-mono/400.css";
+import "@fontsource/azeret-mono/500.css";
+// Downloaded fonts registered via @font-face in globals.css
 import "../styles/globals.css";
 
 interface Props {
@@ -42,5 +59,64 @@ const {
     <Header />
 
     <slot />
+
+    <!-- DEBUG: Font switcher — remove before shipping -->
+    <div transition:persist id="font-switcher" class="fixed bottom-6 right-6 z-[200] bg-black/80 backdrop-blur-sm text-white rounded-lg p-3 text-xs pointer-events-auto space-y-2">
+      <label class="block mb-1.5 uppercase tracking-wider opacity-50">Font</label>
+      <select id="font-select" class="bg-white/10 border border-white/20 rounded px-2 py-1.5 text-white text-xs w-full cursor-pointer">
+        <option value="'IBM Plex Mono', monospace">IBM Plex Mono</option>
+        <option value="'Iosevka Curly', monospace">Iosevka Curly</option>
+        <option value="'DM Mono', monospace">DM Mono</option>
+        <option value="'Lilex', monospace">Lilex</option>
+        <option value="'Commit Mono', monospace">Commit Mono</option>
+        <option value="'Geist Mono', monospace">Geist Mono</option>
+        <option value="'Fragment Mono', monospace">Fragment Mono</option>
+        <option value="'Martian Mono', monospace">Martian Mono</option>
+        <option value="'Azeret Mono', monospace">Azeret Mono</option>
+        <option value="'Basically A Mono', monospace">Basically A Mono</option>
+        <option value="'Necto Mono', monospace">Necto Mono</option>
+        <option value="'Sligoil', monospace">Sligoil</option>
+        <option value="'Heming', monospace">Heming</option>
+        <option value="'Lab Mono', monospace">Lab Mono</option>
+        <option value="'Whois Mono', monospace">Whois Mono</option>
+      </select>
+      <label class="block mt-2 mb-1 uppercase tracking-wider opacity-50">Size <span id="size-label">12.5</span>px</label>
+      <input id="font-size" type="range" min="10" max="18" step="0.5" value="12.5" class="w-full cursor-pointer accent-cyan-500" />
+    </div>
+    <script>
+      function initDebugUI() {
+        const select = document.getElementById("font-select") as HTMLSelectElement;
+        const slider = document.getElementById("font-size") as HTMLInputElement;
+        const sizeLabel = document.getElementById("size-label");
+        if (!select || !slider || !sizeLabel) return;
+
+        const savedFont = localStorage.getItem("debug-font");
+        if (savedFont) {
+          document.documentElement.style.setProperty("--font-ibm-plex-mono", savedFont);
+          select.value = savedFont;
+        }
+
+        const savedSize = localStorage.getItem("debug-font-size");
+        if (savedSize) {
+          document.documentElement.style.fontSize = savedSize + "px";
+          slider.value = savedSize;
+          sizeLabel.textContent = savedSize;
+        }
+
+        select.addEventListener("change", () => {
+          document.documentElement.style.setProperty("--font-ibm-plex-mono", select.value);
+          localStorage.setItem("debug-font", select.value);
+        });
+
+        slider.addEventListener("input", () => {
+          document.documentElement.style.fontSize = slider.value + "px";
+          sizeLabel.textContent = slider.value;
+          localStorage.setItem("debug-font-size", slider.value);
+        });
+      }
+
+      initDebugUI();
+      document.addEventListener("astro:after-swap", initDebugUI);
+    </script>
   </body>
 </html>

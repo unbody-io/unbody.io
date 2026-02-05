@@ -11,7 +11,15 @@
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
+    "@fontsource/azeret-mono": "^5.2.11",
+    "@fontsource/commit-mono": "^5.2.5",
+    "@fontsource/dm-mono": "^5.2.7",
+    "@fontsource/fragment-mono": "^5.2.8",
+    "@fontsource/geist-mono": "^5.2.7",
     "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/iosevka-curly": "^5.2.5",
+    "@fontsource/lilex": "^5.2.1",
+    "@fontsource/martian-mono": "^5.2.7",
     "astro": "^5",
     "gray-matter": "^4.0.3"
   },

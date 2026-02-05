@@ -1,6 +1,44 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Downloaded fonts (not on fontsource) */
+@font-face {
+  font-family: 'Necto Mono';
+  src: url('/fonts/necto-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sligoil';
+  src: url('/fonts/sligoil-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lab Mono';
+  src: url('/fonts/lab-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Whois Mono';
+  src: url('/fonts/whois-mono-400.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Basically A Mono';
+  src: url('/fonts/basically-a-mono-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Heming';
+  src: url('/fonts/heming-variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -80,9 +118,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    font-size: 12.5px;
+  }
   body {
     @apply bg-background text-foreground;
-    font-size: 12.5px;
   }
 }
 
