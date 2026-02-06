@@ -38,6 +38,120 @@
   font-weight: 100 900;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Cotham Sans';
+  src: url('/fonts/cotham-sans-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TeX Gyre Heros';
+  src: url('/fonts/tex-gyre-heros-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Index';
+  src: url('/fonts/index-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afrikola Formal';
+  src: url('/fonts/afrikola-formal-variable.woff2') format('woff2');
+  font-weight: 100 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afrikola Informal';
+  src: url('/fonts/afrikola-informal-variable.woff2') format('woff2');
+  font-weight: 100 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rotor';
+  src: url('/fonts/rotor-overlay-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Px Grotesk Mono';
+  src: url('/fonts/px-grotesk-mono-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Covik Sans Mono';
+  src: url('/fonts/covik-sans-mono-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ST Monochromic';
+  src: url('/fonts/st-monochromic-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VCTR Mono';
+  src: url('/fonts/vctr-mono-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD System Mono';
+  src: url('/fonts/md-system-mono-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD IO';
+  src: url('/fonts/md-io-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD Nichrome';
+  src: url('/fonts/md-nichrome-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD Primer';
+  src: url('/fonts/md-primer-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD System';
+  src: url('/fonts/md-system-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD System Condensed';
+  src: url('/fonts/md-system-condensed-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD System Narrow';
+  src: url('/fonts/md-system-narrow-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD Lorien';
+  src: url('/fonts/md-lorien-400.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MD Polychrome';
+  src: url('/fonts/md-polychrome-kilo.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 

@@ -6,14 +6,14 @@ interface Props {
 const className = Astro.props.class ?? "";
 ---
 
-<article class={className}>
+<article class={`${className} leading-8`}>
   <header class="mb-20">
     <h1 class="hidden">Unbody Lab</h1>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       Unbody Lab is where we question, explore, experiment and build what we
       call adaptive thinking tools.
     </p>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       Most software still carries the shape of an old world: Software
       carries the shape of constraints that no longer exist: one product,
       one interface, designed the same for everyone. It broke reality into
@@ -22,7 +22,7 @@ const className = Astro.props.class ?? "";
       Copying, switching, remembering. And because software only reacts, it
       had no choice but to capture attention or lose it.
     </p>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       The technical constraints that created this world are dissolving.
       We're building toward what comes next.
     </p>
@@ -32,7 +32,7 @@ const className = Astro.props.class ?? "";
     <h2 class="mt-16 mb-4 text-black uppercase tracking-wider">
       Unlocking, not replacing
     </h2>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       <em>
         We see AI as unlocking what's latent in you, not substituting
         for you.
@@ -52,7 +52,7 @@ const className = Astro.props.class ?? "";
     <h2 class="mt-16 mb-4 text-black uppercase tracking-wider">
       Time returned, not captured
     </h2>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       <em>The measure of good software is what it gives back.</em> Most
       tools optimize for time spent. We optimize for time returned—to your
       work, your relationships, your own thinking. If our tools help you
@@ -64,7 +64,7 @@ const className = Astro.props.class ?? "";
     <h2 class="mt-16 mb-4 text-black uppercase tracking-wider">
       Adaptation over configuration
     </h2>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       <em>Software should learn you, not the other way around.</em> For
       decades, people have adapted to their tools—navigating menus, learning
       interfaces, fitting themselves into predetermined flows. We build
@@ -77,7 +77,7 @@ const className = Astro.props.class ?? "";
     <h2 class="mt-16 mb-4 text-black uppercase tracking-wider">
       Calibrated friction
     </h2>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       <em>Frictionless isn't always better.</em> Some tasks need
       smoothness—busywork should disappear. But creative work, important
       decisions, moments of self-regulation—these benefit from pause, from
@@ -91,7 +91,7 @@ const className = Astro.props.class ?? "";
     <h2 class="mt-16 mb-4 text-black uppercase tracking-wider">
       Craft as care
     </h2>
-    <p class="mb-8 leading-relaxed text-neutral-600/90">
+    <p class="mb-8  text-neutral-600/90">
       <em>
         Quality means someone absorbed the complexity so you don't have
         to.
