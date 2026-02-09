@@ -30,6 +30,7 @@
     "@fontsource/iosevka-curly": "^5.2.5",
     "@fontsource/lilex": "^5.2.1",
     "@fontsource/maple-mono": "^5.2.6",
+    "@tailwindcss/typography": "^0.5.19",
     "astro": "^5",
     "gray-matter": "^4.0.3"
   },

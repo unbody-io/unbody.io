@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 /* Downloaded fonts (not on fontsource) */
 @font-face {
@@ -182,6 +183,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --letter-spacing-label: 0.2em;
+  --letter-spacing-ultra: 1em;
 }
 
 :root {
@@ -198,7 +201,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.439 0 0);
   --accent: oklch(0.75 0.15 195);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -238,6 +241,33 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+}
+
+/* Flatten prose headings to match body: same size, normal weight */
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+}
+
+.prose {
+  --tw-prose-body: var(--muted-foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-links: var(--accent);
+}
+
+/* Ambient background image effect */
+.ambient-bg-image {
+  background-image: url('https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(120px) saturate(0.05) brightness(1.1);
+  transform: scale(1.2);
 }
 
 /* Hide scrollbar for cleaner look */
@@ -249,61 +279,3 @@
   scrollbar-width: none;
 }
 
-/* Blog article markdown styling */
-.blog-content h1,
-.blog-content h2 {
-  @apply mt-16 mb-4 text-foreground uppercase tracking-wider;
-}
-
-.blog-content h3 {
-  @apply mt-12 mb-4 text-foreground uppercase tracking-wider text-sm;
-}
-
-.blog-content p {
-  @apply mb-8 leading-relaxed text-muted-foreground;
-}
-
-.blog-content em {
-  @apply text-foreground not-italic;
-}
-
-.blog-content strong {
-  @apply text-foreground font-medium;
-}
-
-.blog-content a {
-  @apply text-accent underline underline-offset-4 hover:text-foreground transition-colors duration-300;
-}
-
-.blog-content ul {
-  @apply mb-8 space-y-2 text-muted-foreground;
-}
-
-.blog-content ol {
-  @apply mb-8 space-y-2 text-muted-foreground list-decimal list-inside;
-}
-
-.blog-content li {
-  @apply leading-relaxed pl-4 relative;
-}
-
-.blog-content ul li::before {
-  content: '';
-  @apply absolute left-0 top-[0.7em] w-1.5 h-1.5 rounded-full bg-accent;
-}
-
-.blog-content code:not(pre code) {
-  @apply px-1.5 py-0.5 bg-muted text-foreground rounded text-sm;
-}
-
-.blog-content pre {
-  @apply mb-8 p-6 bg-muted rounded-lg overflow-x-auto text-sm;
-}
-
-.blog-content blockquote {
-  @apply mb-8 pl-6 border-l-2 border-accent text-foreground italic;
-}
-
-.blog-content hr {
-  @apply my-16 border-0 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent;
-}
