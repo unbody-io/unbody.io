@@ -112,6 +112,11 @@
   line-height: inherit;
 }
 
+/* Bold = darker color, not heavier weight (single-weight font) */
+.prose strong, .prose b {
+  font-weight: 400;
+}
+
 .prose {
   max-width: none;
   --tw-prose-body: var(--muted-foreground);

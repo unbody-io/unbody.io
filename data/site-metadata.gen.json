@@ -1,78 +1,90 @@
 {
-  "summary": "The Unbody Lab blog explores the intersection of artificial intelligence and human cognition, focusing on building adaptive thinking tools for the future. It delves into how AI can augment our ability to process information, personalize experiences, and create more fluid and contextual digital environments. The blog caters to AI enthusiasts, developers, and anyone interested in the evolving relationship between humans and AI.",
+  "summary": "The Unbody blog serves as both a philosophical manifesto and a technical manual for the emerging 'AI-native' era of software development. It explores the transition away from rigid 'container' applications toward fluid, intent-based computing, outlining the architectural shifts required to build software that augments human cognition rather than just storing data. The content targets developers, founders, and product strategists looking to understand the difference between superficial AI wrappers and deeply integrated AI systems.\n\nTechnically, the blog provides detailed guides, tutorials, and explanations on leveraging Unbody's GraphQl endpoint to build Retrieval Augmented Generation (RAG) pipelines, manage generative UI states, and unify fragmented data silos. It also includes product updates, open-source announcements, and case studies that demonstrate the practical benefits of using a managed AI backend versus attempting to build complex infrastructure in-house.",
   "keywords": [
-    "AI",
-    "LLMs",
-    "Adaptive Thinking",
-    "Cognition",
-    "Semantic Search",
-    "TypeScript SDK",
+    "AI-native Architecture",
+    "RAG (Retrieval Augmented Generation)",
+    "Generative AI",
+    "Unbody",
+    "Vector Search",
+    "Software Development",
+    "GraphQL",
     "Open Source",
-    "Information Organization",
-    "Digital Information",
-    "Contextual Information",
-    "Personalized Information",
-    "Chatbots",
-    "Fine-tuning",
-    "Data Structures",
-    "Containerization",
-    "Hackathons",
-    "Community Building",
-    "Dashboard Design",
-    "Software Development"
+    "Data Silos",
+    "Developer Experience",
+    "UI State Management",
+    "Low-code Integration",
+    "Agentic Workflows",
+    "Infrastructure as a Service",
+    "Semantic Search",
+    "Weaviate",
+    "Build vs. Buy"
   ],
   "suggestiveQuestions": [
-    "How is AI changing the way we organize digital information?",
-    "What tools are being developed to augment human cognition?",
-    "How can I get involved in building practical LLM applications?",
-    "What is Unbody Lab working on in terms of software development and open source contributions?",
-    "What are the patterns in semantic search?"
+    "What is the difference between an 'AI-native' application and an 'AI-forced' one?",
+    "Why are traditional apps considered a 'historical glitch' in the context of AI?",
+    "How can I build an Agentic RAG pipeline without managing complex vector infrastructure?",
+    "What are the risks and costs of building an in-house RAG solution versus using a platform?",
+    "How should UI state management change to accommodate streaming generative data?",
+    "How can non-technical teams integrate semantic search into existing products?",
+    "What are the key pillars that define a truly AI-native application?"
   ],
   "topicClusters": [
     {
-      "name": "The Future of Information",
+      "name": "The Philosophy of AI-Native Software",
       "keywords": [
-        "Information Organization",
-        "Digital Information",
-        "Fluid Information",
-        "Contextual Information",
-        "Personalized Information",
-        "AI"
+        "Container Era",
+        "Future of Work",
+        "AI-first",
+        "Digital Architecture",
+        "Human Intent"
       ],
       "postSlugs": [
-        "end-of-container-era"
+        "end-of-container-era-apps-glitch",
+        "ai-native-app",
+        "ai-forced-vs-ai-native",
+        "ai-at-websummit",
+        "ai-in-2023"
       ]
     },
     {
-      "name": "Unbody Lab Updates",
+      "name": "Technical Guides & Implementation",
       "keywords": [
-        "TypeScript SDK",
-        "Semantic Search",
+        "RAG Pipelines",
+        "GraphQL",
+        "UI State",
+        "Tutorials",
+        "Low-code",
+        "JSON"
+      ],
+      "postSlugs": [
+        "query-to-context",
+        "gen-data-ui-state",
+        "gmeet-ai-assistant-appsmith",
+        "hello-world",
+        "efficient-ai-integration"
+      ]
+    },
+    {
+      "name": "Strategizing AI Adoption & Unbody Updates",
+      "keywords": [
+        "Case Studies",
+        "Build vs Buy",
         "Open Source",
-        "Dashboard Design",
-        "Software Development",
-        "Unbody Lab"
+        "Product Updates",
+        "Scalability"
       ],
       "postSlugs": [
-        "week-22-sdk-talk-oss"
-      ]
-    },
-    {
-      "name": "AI Community & Development",
-      "keywords": [
-        "AI",
-        "LLMs",
-        "Community Building",
-        "Hackathons",
-        "Chatbots",
-        "Fine-tuning",
-        "Practical Applications"
-      ],
-      "postSlugs": [
-        "ai-hack-night"
+        "oss-alpha",
+        "delightree-ai-transformation",
+        "ai-is-complex",
+        "simplifying-ai-development",
+        "ai-for-your-data",
+        "update-week-23-24",
+        "ai-hack-night",
+        "update-week-22"
       ]
     }
   ],
-  "totalPosts": 3,
-  "lastUpdated": "2026-01-29T13:00:53.513Z"
+  "totalPosts": 18,
+  "lastUpdated": "2026-02-10T13:52:30.907Z"
 }
