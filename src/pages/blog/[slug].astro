@@ -60,11 +60,17 @@ const formattedDate = new Date(metadata.publishDate).toLocaleDateString("en-US",
   </article>
 
   <footer class="mt-20 pt-10 border-t border-border text-muted-foreground">
-    <div class="flex flex-wrap gap-2">
-      {metadata.keywords.slice(0, 5).map((keyword) => (
-        <span class="px-2 py-1 text-sm uppercase tracking-wider border border-border rounded">
-          {keyword}
-        </span>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <a href={`/blog?category=${metadata.category}`} class="text-sm uppercase tracking-wider hover:text-foreground transition-colors duration-200">
+        {metadata.category}
+      </a>
+      {metadata.relatedTopics.map((topic) => (
+        <Fragment>
+          <span class="opacity-30">·</span>
+          <a href={`/blog?topic=${encodeURIComponent(topic.toUpperCase())}`} class="text-sm uppercase tracking-wider hover:text-foreground transition-colors duration-200">
+            {topic}
+          </a>
+        </Fragment>
       ))}
     </div>
   </footer>

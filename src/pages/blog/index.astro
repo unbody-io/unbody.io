@@ -51,139 +51,149 @@ const postTopics = posts.map((p) => p.relatedTopics.map((t) => t.toUpperCase()))
 </Base>
 
 <script is:inline define:vars={{ topics }}>
-  const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
-  const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  (function () {
+    let blogWordInterval = null;
+    let topicTimer = null;
 
-  const elWord = document.getElementById("blog-word");
-  const elTopic = document.getElementById("blog-topic");
-  const postEls = document.querySelectorAll("#blog-list > div");
-  const filters = document.querySelectorAll(".blog-filter");
-  const clearBtn = document.getElementById("clear-filter");
-  const noResults = document.getElementById("no-results");
+    function init() {
+      const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
+      const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-  let idx = 0;
-  let paused = false;
-  let topicTimer = null;
-  let activeCat = null;
-  let activeTopic = null;
+      const elWord = document.getElementById("blog-word");
+      const elTopic = document.getElementById("blog-topic");
+      if (!elWord || !elTopic || elWord.dataset.init) return;
+      elWord.dataset.init = "1";
 
-  function scramble(el, target, steps, interval, cb) {
-    let frame = 0;
-    const id = setInterval(() => {
-      el.textContent = target
-        .split("")
-        .map((ch, i) => (ch === " " || i <= (frame / steps) * target.length ? ch : rand(GLYPHS)))
-        .join("");
-      if (++frame > steps) { el.textContent = target; clearInterval(id); cb?.(); }
-    }, interval);
-  }
+      const postEls = document.querySelectorAll("#blog-list > div");
+      const filters = document.querySelectorAll(".blog-filter");
+      const clearBtn = document.getElementById("clear-filter");
+      const noResults = document.getElementById("no-results");
 
-  function updateURL() {
-    const params = new URLSearchParams();
-    if (activeCat) params.set("category", activeCat);
-    if (activeTopic) params.set("topic", activeTopic);
-    const qs = params.toString();
-    history.replaceState(null, "", qs ? "?" + qs : location.pathname);
-  }
+      let idx = 0;
+      let paused = false;
+      let activeCat = null;
+      let activeTopic = null;
 
-  function applyFilters() {
-    postEls.forEach((el) => {
-      const matchCat = !activeCat || el.dataset.category === activeCat;
-      const matchTopic = !activeTopic || JSON.parse(el.dataset.topics || "[]").includes(activeTopic);
-      el.hidden = !(matchCat && matchTopic);
-    });
+      function scramble(el, target, steps, interval, cb) {
+        let frame = 0;
+        const id = setInterval(() => {
+          el.textContent = target
+            .split("")
+            .map((ch, i) => (ch === " " || i <= (frame / steps) * target.length ? ch : rand(GLYPHS)))
+            .join("");
+          if (++frame > steps) { el.textContent = target; clearInterval(id); cb?.(); }
+        }, interval);
+      }
 
-    // category buttons
-    filters.forEach((b) => {
-      const isCurrent = b.dataset.filter === activeCat;
-      const isDefault = !activeCat && b.dataset.filter === "all";
-      b.classList.toggle("text-foreground", !isCurrent && (isCurrent || isDefault));
-      b.classList.toggle("text-muted-foreground", !isCurrent && !isDefault);
-      b.classList.toggle("bg-foreground", isCurrent);
-      b.classList.toggle("text-background", isCurrent);
-    });
+      function updateURL() {
+        const params = new URLSearchParams();
+        if (activeCat) params.set("category", activeCat);
+        if (activeTopic) params.set("topic", activeTopic);
+        const qs = params.toString();
+        history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+      }
 
-    // topic style
-    const topicActive = !!activeTopic;
-    elTopic.classList.toggle("bg-foreground", topicActive);
-    elTopic.classList.toggle("text-background", topicActive);
-    elTopic.classList.toggle("text-muted-foreground", !topicActive);
+      function applyFilters() {
+        postEls.forEach((el) => {
+          const matchCat = !activeCat || el.dataset.category === activeCat;
+          const matchTopic = !activeTopic || JSON.parse(el.dataset.topics || "[]").includes(activeTopic);
+          el.hidden = !(matchCat && matchTopic);
+        });
 
-    // no results
-    const anyVisible = [...postEls].some((el) => !el.hidden);
-    noResults.classList.toggle("hidden", anyVisible);
+        filters.forEach((b) => {
+          const isCurrent = b.dataset.filter === activeCat;
+          const isDefault = !activeCat && b.dataset.filter === "all";
+          b.classList.toggle("text-foreground", !isCurrent && (isCurrent || isDefault));
+          b.classList.toggle("text-muted-foreground", !isCurrent && !isDefault);
+          b.classList.toggle("bg-foreground", isCurrent);
+          b.classList.toggle("text-background", isCurrent);
+        });
 
-    // clear button
-    clearBtn.classList.toggle("hidden", !activeCat && !activeTopic);
+        const topicIsActive = !!activeTopic;
+        elTopic.classList.toggle("bg-foreground", topicIsActive);
+        elTopic.classList.toggle("text-background", topicIsActive);
+        elTopic.classList.toggle("text-muted-foreground", !topicIsActive);
 
-    updateURL();
-  }
+        const anyVisible = [...postEls].some((el) => !el.hidden);
+        noResults.classList.toggle("hidden", anyVisible);
+        clearBtn.classList.toggle("hidden", !activeCat && !activeTopic);
 
-  function clearAll() {
-    activeCat = null;
-    activeTopic = null;
-    applyFilters();
-    paused = false;
-    clearTimeout(topicTimer);
-    topicTimer = setTimeout(loopTopics, 500);
-  }
+        updateURL();
+      }
 
-  // "BLOG" re-scrambles on slow interval
-  setInterval(() => scramble(elWord, "BLOG", 8, 60), 12000);
+      function loopTopics() {
+        if (paused) return;
+        scramble(elTopic, topics[idx % topics.length], 10, 40, () => {
+          idx++;
+          if (!paused) topicTimer = setTimeout(loopTopics, 2000);
+        });
+      }
 
-  // topic click → toggle topic filter
-  elTopic.addEventListener("click", () => {
-    const current = elTopic.textContent.trim();
-    if (!current) return;
-    activeTopic = activeTopic === current ? null : current;
-    paused = !!activeTopic;
-    clearTimeout(topicTimer);
-    applyFilters();
-    if (!paused) topicTimer = setTimeout(loopTopics, 500);
-  });
-
-  // category filter click
-  filters.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const cat = btn.dataset.filter;
-      if (cat === "all") return clearAll();
-      activeCat = activeCat === cat ? null : cat;
-      applyFilters();
-      if (!activeCat && !activeTopic) {
+      function clearAll() {
+        activeCat = null;
+        activeTopic = null;
+        applyFilters();
         paused = false;
         clearTimeout(topicTimer);
         topicTimer = setTimeout(loopTopics, 500);
-      } else {
-        paused = true;
-        clearTimeout(topicTimer);
       }
-    });
-  });
 
-  clearBtn.addEventListener("click", clearAll);
+      blogWordInterval = setInterval(() => scramble(elWord, "BLOG", 8, 60), 12000);
 
-  // topic cycle loop
-  function loopTopics() {
-    if (paused) return;
-    scramble(elTopic, topics[idx % topics.length], 10, 40, () => {
-      idx++;
-      if (!paused) topicTimer = setTimeout(loopTopics, 2000);
-    });
-  }
+      elTopic.addEventListener("click", () => {
+        const current = elTopic.textContent.trim();
+        if (!current) return;
+        activeTopic = activeTopic === current ? null : current;
+        paused = !!activeTopic;
+        clearTimeout(topicTimer);
+        applyFilters();
+        if (!paused) topicTimer = setTimeout(loopTopics, 500);
+      });
 
-  // restore from URL on load
-  const params = new URLSearchParams(location.search);
-  const initCat = params.get("category");
-  const initTopic = params.get("topic");
-  if (initCat || initTopic) {
-    activeCat = initCat;
-    activeTopic = initTopic ? initTopic.toUpperCase() : null;
-    if (activeTopic) {
-      elTopic.textContent = activeTopic;
-      paused = true;
+      filters.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const cat = btn.dataset.filter;
+          if (cat === "all") return clearAll();
+          activeCat = activeCat === cat ? null : cat;
+          applyFilters();
+          if (!activeCat && !activeTopic) {
+            paused = false;
+            clearTimeout(topicTimer);
+            topicTimer = setTimeout(loopTopics, 500);
+          } else {
+            paused = true;
+            clearTimeout(topicTimer);
+          }
+        });
+      });
+
+      clearBtn.addEventListener("click", clearAll);
+
+      // restore from URL
+      const params = new URLSearchParams(location.search);
+      const initCat = params.get("category");
+      const initTopic = params.get("topic");
+      if (initCat || initTopic) {
+        activeCat = initCat;
+        activeTopic = initTopic ? initTopic.toUpperCase() : null;
+        if (activeTopic) { elTopic.textContent = activeTopic; paused = true; }
+        applyFilters();
+      }
+
+      if (!paused) loopTopics();
     }
-    applyFilters();
-  }
 
-  if (!paused) loopTopics();
+    // clean up on navigation away
+    document.addEventListener("astro:before-swap", function cleanup() {
+      clearInterval(blogWordInterval);
+      clearTimeout(topicTimer);
+      document.removeEventListener("astro:before-swap", cleanup);
+    });
+
+    document.addEventListener("astro:page-load", init);
+
+    // also run on first load (astro:page-load fires on first load too, but
+    // with is:inline + define:vars it may already be in the DOM)
+    if (document.getElementById("blog-word")) init();
+  })();
 </script>
