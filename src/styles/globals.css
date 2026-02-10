@@ -92,6 +92,10 @@
   }
   html {
     font-size: 12.5px;
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   body {
     @apply bg-background text-foreground;
@@ -126,12 +130,4 @@
   transform: scale(1.2);
 }
 
-/* Hide scrollbar for cleaner look */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 
