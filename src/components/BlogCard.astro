@@ -14,20 +14,20 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
 });
 ---
 
-<article class="group">
+<article class="group text-muted-foreground">
   <a href={`/blog/${post.slug}`} class="block">
-    <div class="mb-3 flex items-center gap-3 text-sm text-muted-foreground">
+    <div class="mb-3 flex items-center gap-3 text-sm">
       <time datetime={post.publishDate}>{formattedDate}</time>
       <span class="opacity-30">|</span>
       <span>{post.readingTime} min read</span>
       <span class="opacity-30">|</span>
-      <span class="uppercase tracking-wider text-xs">{post.category}</span>
+      <span class="uppercase tracking-wider">{post.category}</span>
     </div>
 
-    <h2 class="mb-3 text-foreground text-lg group-hover:text-accent transition-colors duration-300">
+    <h2 class="mb-3 group-hover:text-accent transition-colors duration-300">
       {post.title}
     </h2>
 
-    <p class="leading-relaxed text-muted-foreground">{post.blurb}</p>
+    <p>{post.blurb}</p>
   </a>
 </article>
