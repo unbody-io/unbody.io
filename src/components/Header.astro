@@ -8,23 +8,23 @@ const navItems = [
 ---
 
 <header transition:persist class="fixed top-8 w-full z-[100] pointer-events-none animate-in fade-in slide-in-from-top-4 duration-1000">
-  <div class="max-w-xl mx-auto w-full flex justify-start">
-    <nav class="relative flex items-center gap-1 p-1 bg-white/10 backdrop-blur-3xl rounded-full border border-white/30 shadow-[0_10px_40px_rgba(0,0,0,0.05)] pointer-events-auto">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          data-nav-href={item.href}
-          class="px-5 py-2 rounded-full uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 text-black/50 hover:text-black"
-        >
-          {item.label}
-        </a>
-      ))}
-      <div
-        id="nav-pill"
-        class="absolute top-1 bottom-1 rounded-full bg-black shadow-xl transition-all duration-300 ease-out pointer-events-none"
-      ></div>
-      <div class="w-1.5 h-1.5 rounded-full bg-cyan-500 mx-3 animate-pulse shadow-[0_0_12px_rgba(6,182,212,0.8)] relative z-10"></div>
-    </nav>
+  <div class="max-w-3xl mx-auto w-full flex justify-start">
+    <nav class="relative flex items-center gap-1 p-1 bg-background/10 backdrop-blur-3xl rounded-full border border-background/30 shadow-lg pointer-events-auto">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        data-nav-href={item.href}
+        class="px-5 py-2 rounded-full uppercase transition-colors duration-300 relative z-10 text-foreground/50 hover:text-foreground"
+      >
+        {item.label}
+      </a>
+    ))}
+    <div
+      id="nav-pill"
+      class="absolute top-1 bottom-1 rounded-full bg-foreground shadow-xl transition-all duration-300 ease-out pointer-events-none"
+    ></div>
+    <div class="w-1.5 h-1.5 rounded-full bg-foreground mx-3 animate-pulse opacity-50 relative z-10"></div>
+  </nav>
   </div>
 </header>
 
@@ -40,13 +40,13 @@ const navItems = [
       const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
       if (active) {
-        link.classList.add("text-white", "font-medium");
-        link.classList.remove("text-black/50");
+        link.classList.add("text-background");
+        link.classList.remove("text-foreground/50");
         pill.style.left = `${link.offsetLeft}px`;
         pill.style.width = `${link.offsetWidth}px`;
       } else {
-        link.classList.remove("text-white", "font-medium");
-        link.classList.add("text-black/50");
+        link.classList.remove("text-background");
+        link.classList.add("text-foreground/50");
       }
     });
   }

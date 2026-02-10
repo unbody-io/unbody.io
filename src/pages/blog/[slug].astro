@@ -35,41 +35,37 @@ const formattedDate = new Date(metadata.publishDate).toLocaleDateString("en-US",
 ---
 
 <Base title={`${metadata.title} | Unbody Blog`} description={metadata.blurb}>
-  <main class="min-h-screen relative flex flex-col items-center">
-    <div class="relative z-10 w-full max-w-3xl pt-40 pb-48">
-      <header class="mb-16 text-muted-foreground">
-        <div class="mb-6 flex items-center gap-3 text-sm">
-          <time datetime={metadata.publishDate}>{formattedDate}</time>
-          <span class="opacity-30">|</span>
-          <span>{metadata.readingTime} min read</span>
-        </div>
-
-        <h1 class="mb-6">
-          {metadata.title}
-        </h1>
-
-        {author && (
-          <div class="flex items-center gap-3 text-sm">
-            <span>By {author.name}</span>
-            <span class="opacity-30">|</span>
-            <span>{author.title}</span>
-          </div>
-        )}
-      </header>
-
-      <article class="prose">
-        <Content />
-      </article>
-
-      <footer class="mt-20 pt-10 border-t border-border text-muted-foreground">
-        <div class="flex flex-wrap gap-2">
-          {metadata.keywords.slice(0, 5).map((keyword) => (
-            <span class="px-2 py-1 text-sm uppercase tracking-wider border border-border rounded">
-              {keyword}
-            </span>
-          ))}
-        </div>
-      </footer>
+  <header class="mb-16 text-muted-foreground">
+    <div class="mb-6 flex items-center gap-3 text-sm">
+      <time datetime={metadata.publishDate}>{formattedDate}</time>
+      <span class="opacity-30">|</span>
+      <span>{metadata.readingTime} min read</span>
     </div>
-  </main>
+
+    <h1 class="mb-6">
+      {metadata.title}
+    </h1>
+
+    {author && (
+      <div class="flex items-center gap-3 text-sm">
+        <span>By {author.name}</span>
+        <span class="opacity-30">|</span>
+        <span>{author.title}</span>
+      </div>
+    )}
+  </header>
+
+  <article class="prose">
+    <Content />
+  </article>
+
+  <footer class="mt-20 pt-10 border-t border-border text-muted-foreground">
+    <div class="flex flex-wrap gap-2">
+      {metadata.keywords.slice(0, 5).map((keyword) => (
+        <span class="px-2 py-1 text-sm uppercase tracking-wider border border-border rounded">
+          {keyword}
+        </span>
+      ))}
+    </div>
+  </footer>
 </Base>

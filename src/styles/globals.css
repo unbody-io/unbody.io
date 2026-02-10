@@ -109,6 +109,7 @@
 }
 
 .prose {
+  max-width: none;
   --tw-prose-body: var(--muted-foreground);
   --tw-prose-headings: var(--foreground);
   --tw-prose-bold: var(--foreground);
