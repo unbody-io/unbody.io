@@ -3,11 +3,10 @@ const navItems = [
   { href: "/", label: "home" },
   { href: "/lab", label: "lab" },
   { href: "/blog", label: "blog" },
-  { href: "/about", label: "about" },
 ];
 ---
 
-<header transition:persist class="fixed top-8 w-full z-[100] pointer-events-none animate-in fade-in slide-in-from-top-4 duration-1000">
+<header transition:persist class="fixed top-8 w-full z-[100] pointer-events-none">
   <div class="max-w-3xl mx-auto w-full flex justify-start">
     <nav class="relative flex items-center gap-1 p-1 bg-background/10 backdrop-blur-3xl rounded-full border border-background/30 shadow-lg pointer-events-auto">
     {navItems.map((item) => (
@@ -40,13 +39,13 @@ const navItems = [
       const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
       if (active) {
-        link.classList.add("text-background");
-        link.classList.remove("text-foreground/50");
+        link.classList.add("text-background", "hover:text-background", "cursor-default");
+        link.classList.remove("text-foreground/50", "hover:text-foreground");
         pill.style.left = `${link.offsetLeft}px`;
         pill.style.width = `${link.offsetWidth}px`;
       } else {
-        link.classList.remove("text-background");
-        link.classList.add("text-foreground/50");
+        link.classList.remove("text-background", "hover:text-background", "cursor-default");
+        link.classList.add("text-foreground/50", "hover:text-foreground");
       }
     });
   }
@@ -58,15 +57,6 @@ const navItems = [
     updateNav();
     pill.offsetHeight; // force reflow
     pill.style.transition = "";
-  }
-
-  // Strip entry animation classes after they finish so they
-  // don't replay when transition:persist moves the element
-  const header = document.querySelector("header");
-  if (header) {
-    header.addEventListener("animationend", () => {
-      header.classList.remove("animate-in", "fade-in", "slide-in-from-top-4", "duration-1000");
-    }, { once: true });
   }
 
   // On navigation: pill slides to new position
