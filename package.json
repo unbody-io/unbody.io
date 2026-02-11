@@ -7,7 +7,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "generate:metadata": "bun run scripts/generate-metadata.ts && bun run scripts/generate-site-summary.ts",
-    "prebuild": "npm run generate:metadata",
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
