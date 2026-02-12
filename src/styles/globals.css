@@ -63,6 +63,8 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  --ambient-color-1: oklch(0.84 0.012 205);
+  --ambient-color-2: oklch(0.82 0.01 235);
 }
 
 .dark {
@@ -84,6 +86,8 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
+  --ambient-color-1: oklch(0.62 0.014 205);
+  --ambient-color-2: oklch(0.58 0.012 235);
 }
 
 @layer base {
@@ -129,18 +133,25 @@
 .ambient-bg-image {
   background:
     radial-gradient(
-      110% 28% at 50% 12%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 12%, var(--accent) 3%) 100%, transparent),
-      transparent 70%
+      at 30% 18%,
+      color-mix(in oklch, var(--ambient-color-1) 53%, transparent),
+      transparent 56%
     ),
-    radial-gradient(82% 62% at 50% 44%, color-mix(in oklch, var(--foreground) 7%, transparent), transparent 78%),
-    radial-gradient(90% 36% at 50% 86%, color-mix(in oklch, var(--foreground) 5%, transparent), transparent 82%),
+    radial-gradient(
+      at 82% 12%,
+      color-mix(in oklch, var(--ambient-color-2) 47%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      at 50% 78%,
+      color-mix(in oklch, var(--ambient-color-1) 39%, transparent),
+      transparent 58%
+    ),
     linear-gradient(
       180deg,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 15%, var(--accent) 3%) 100%, white) 0%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 12%, var(--accent) 3%) 100%, white) 22%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 9%, var(--accent) 2%) 100%, white) 56%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 6%, var(--accent) 2%) 100%, white) 100%
+      color-mix(in oklch, var(--ambient-color-1) 39%, transparent) 0%,
+      color-mix(in oklch, var(--ambient-color-2) 24%, transparent) 30%,
+      color-mix(in oklch, var(--ambient-color-1) 12%, transparent) 100%
     );
-  opacity: 0.88;
+  opacity: 1;
 }
