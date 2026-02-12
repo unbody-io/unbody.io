@@ -14,7 +14,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: 'Sligoil', monospace;
+  --font-mono:
+    'Sligoil',
+    ui-monospace,
+    'SFMono-Regular',
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -43,7 +52,16 @@
 }
 
 :root {
-  --font-sligoil: 'Sligoil', monospace;
+  --font-sligoil:
+    'Sligoil',
+    ui-monospace,
+    'SFMono-Regular',
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
