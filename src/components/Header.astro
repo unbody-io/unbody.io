@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
+
 const navItems = [
   { href: "/", label: "home" },
   { href: "/lab", label: "lab" },
@@ -7,7 +9,7 @@ const navItems = [
 ---
 
 <header transition:persist class="fixed top-4 md:top-8 w-full z-[100] pointer-events-none">
-  <div class="max-w-3xl mx-auto w-full flex justify-start px-5">
+  <div class="max-w-3xl mx-auto w-full flex items-center justify-start gap-2 px-5">
     <nav class="relative pointer-events-auto bg-background/30 backdrop-blur-sm md:backdrop-blur-md rounded-full border border-background/40 shadow-lg">
       <ul class="flex items-center gap-1 p-1 m-0 list-none">
         {navItems.map((item) => (
@@ -27,6 +29,7 @@ const navItems = [
         class="absolute top-1 bottom-1 rounded-full bg-foreground shadow-xl transition-all duration-300 ease-out pointer-events-none"
       ></div>
     </nav>
+    <ThemeToggle />
   </div>
 </header>
 

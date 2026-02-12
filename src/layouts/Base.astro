@@ -20,6 +20,8 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
     <link
       rel="preload"
       href="/fonts/sligoil-400.woff2"
@@ -29,36 +31,9 @@ const {
     />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <script is:inline>
-      (() => {
-        const stateKey = "__unbodySystemThemeSync";
-        const existing = window[stateKey];
-        if (existing && typeof existing.applySystemTheme === "function") {
-          existing.applySystemTheme();
-          return;
-        }
-
-        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        const applySystemTheme = () => {
-          const isDark = mediaQuery.matches;
-          const resolvedTheme = isDark ? "dark" : "light";
-
-          document.documentElement.classList.toggle("dark", isDark);
-          document.documentElement.dataset.theme = resolvedTheme;
-        };
-
-        window[stateKey] = { applySystemTheme };
-        applySystemTheme();
-
-        if (typeof mediaQuery.addEventListener === "function") {
-          mediaQuery.addEventListener("change", applySystemTheme);
-        } else if (typeof mediaQuery.addListener === "function") {
-          mediaQuery.addListener(applySystemTheme);
-        }
-
-        document.addEventListener("astro:after-swap", applySystemTheme);
-        document.addEventListener("astro:page-load", applySystemTheme);
-      })();
+    <script>
+      import { initThemeController } from "../scripts/theme-controller";
+      initThemeController();
     </script>
     <ClientRouter />
   </head>

@@ -52,16 +52,6 @@
 }
 
 :root {
-  --font-sligoil:
-    'Sligoil',
-    ui-monospace,
-    'SFMono-Regular',
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -125,6 +115,31 @@
   ::selection {
     @apply bg-foreground text-background;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition * {
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      fill 180ms ease,
+      stroke 180ms ease;
+  }
+}
+
+/* Keep view-transition snapshots opaque to avoid browser-chrome sampling dark fallback frames. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  background-color: var(--background);
+}
+
+/* Keep client-side navigation, but disable visual cross-fade animation. */
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
 }
 
 /* Flatten prose headings to match body: same size, normal weight */
