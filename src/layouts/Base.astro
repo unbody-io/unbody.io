@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
+import ShaderBackground from "../components/ShaderBackground.astro";
 import "../styles/globals.css";
 
 interface Props {
@@ -10,18 +11,27 @@ interface Props {
 
 const {
   title = "Unbody Lab",
-  description = "Where we question, explore, experiment and build adaptive thinking tools.",
+  description =
+    "Where we question, explore, experiment and build adaptive thinking tools.",
 } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#111111"
+      media="(prefers-color-scheme: dark)"
+    />
     <link
       rel="preload"
       href="/fonts/sligoil-400.woff2"
@@ -32,20 +42,22 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <script>
-      import { initThemeController } from "../scripts/theme-controller";
-      initThemeController();
+    import { initThemeController } from "../scripts/theme-controller";
+    initThemeController();
     </script>
     <ClientRouter />
   </head>
-  <body class="font-mono text-foreground antialiased overflow-x-hidden">
+  <body class="overflow-x-hidden">
     <!-- Fixed Ambient Background -->
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <div class="absolute inset-0 ambient-bg-image"></div>
+      <ShaderBackground />
     </div>
 
     <!-- Top & Bottom Fade Masks -->
-    <div class="fixed top-0 left-0 w-full h-24 md:h-48 z-40 bg-gradient-to-b from-background/60 via-background/30 to-transparent pointer-events-none"></div>
-    <div class="fixed bottom-0 left-0 w-full h-48 md:h-64 z-40 bg-gradient-to-t from-background/90 via-background/50 to-transparent pointer-events-none"></div>
+    <div class="fixed top-0 left-0 w-full z-40 overlay-mask-top pointer-events-none">
+    </div>
+    <div class="fixed bottom-0 left-0 w-full z-40 overlay-mask-bottom pointer-events-none">
+    </div>
 
     <Header />
 
@@ -55,7 +67,10 @@ const {
       </div>
     </main>
 
-    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-50 flex items-center gap-3 text-sm text-muted-foreground opacity-50">
+    <div
+      data-type="nav"
+      class="type-ui-md fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-50 flex items-center gap-3"
+    >
       <a href="https://github.com/unbody-io" class="underline">GitHub</a>
       <span class="opacity-30">·</span>
       <a href="mailto:hello@unbody.io" class="underline">hello@unbody.io</a>

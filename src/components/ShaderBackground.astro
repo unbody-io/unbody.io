@@ -1,0 +1,108 @@
+<div data-static-mesh-bg class="absolute inset-0"></div>
+<style is:global>
+.dark [data-static-mesh-bg] {
+  filter: invert(1);
+}
+</style>
+
+<script>
+import {
+  getShaderColorFromString,
+  LiquidMetalShapes,
+  ShaderFitOptions,
+  ShaderMount,
+} from "@paper-design/shaders";
+import { proceduralHeatmapFragmentShader } from "../shaders/procedural-heatmap";
+
+const COLORS = ["#f5f5f3", "#ebedf7"];
+const HEATMAP = {
+  time: 86.39,
+  contour: 1,
+  angle: 262,
+  noise: 0.29,
+  innerGlow: 0.84,
+  outerGlow: 0.4,
+  shape: "metaballs" as const,
+  scale: 2.75,
+  rotation: 360,
+  offsetX: -0.08,
+};
+
+function getHeatmapUniforms() {
+  return {
+    u_colorBack: getShaderColorFromString(COLORS[0]),
+    u_colors: COLORS.map(getShaderColorFromString),
+    u_colorsCount: COLORS.length,
+    u_contour: HEATMAP.contour,
+    u_angle: HEATMAP.angle,
+    u_noise: HEATMAP.noise,
+    u_innerGlow: HEATMAP.innerGlow,
+    u_outerGlow: HEATMAP.outerGlow,
+    u_shape: LiquidMetalShapes[HEATMAP.shape],
+    u_fit: ShaderFitOptions.contain,
+    u_rotation: HEATMAP.rotation,
+    u_scale: HEATMAP.scale,
+    u_offsetX: HEATMAP.offsetX,
+    u_offsetY: 0,
+    u_originX: 0.5,
+    u_originY: 0.5,
+    u_worldWidth: 0,
+    u_worldHeight: 0,
+  };
+}
+
+function getMountElement() {
+  const el = document.querySelector("[data-static-mesh-bg]");
+  return el instanceof HTMLElement ? el : null;
+}
+
+function mountHeatmap() {
+  const el = getMountElement();
+  if (!el || !state.ownsMount) return;
+  new ShaderMount(
+    el,
+    proceduralHeatmapFragmentShader,
+    getHeatmapUniforms(),
+    undefined,
+    0,
+    HEATMAP.time * 1000,
+    1.5,
+    1920 * 1080 * 2,
+  );
+}
+
+interface ShaderBgApi {
+  started: boolean;
+  ownsMount: boolean;
+  dispose(): void;
+}
+
+const stateStore = window as Window & { __unbodyShaderBg?: ShaderBgApi };
+const state: ShaderBgApi = (stateStore.__unbodyShaderBg ??= {
+  started: false,
+  ownsMount: true,
+  dispose() {
+    state.ownsMount = false;
+    const el = getMountElement();
+    if (el && (el as any).paperShaderMount) {
+      (el as any).paperShaderMount.dispose();
+    }
+  },
+});
+
+if (!state.started) {
+  state.started = true;
+  document.addEventListener("astro:page-load", () => {
+    if (state.ownsMount) mountHeatmap();
+  });
+  document.addEventListener("astro:before-swap", () => {
+    if (!state.ownsMount) return;
+    const el = getMountElement();
+    if (el && (el as any).paperShaderMount) {
+      (el as any).paperShaderMount.dispose();
+    }
+  });
+}
+
+mountHeatmap();
+</script>

@@ -1,51 +1,117 @@
-<div id="theme-control" class="relative pointer-events-auto">
-  <div class="relative flex items-center p-1 bg-background/30 backdrop-blur-sm md:backdrop-blur-md rounded-full border border-background/40 shadow-lg">
+---
+import TopLitSurface from "./TopLitSurface.astro";
+---
+
+<div
+  id="theme-control"
+  class:list={[
+    "relative",
+    "pointer-events-auto",
+  ]}
+>
+  <TopLitSurface
+    innerClass={[
+      "flex",
+      "items-center",
+      "type-ui-md",
+      "p-[0.25em]",
+    ].join(" ")}
+  >
     <button
       id="theme-toggle-btn"
       type="button"
       aria-label="Toggle theme"
-      class="h-8 w-8 rounded-full flex items-center justify-center text-foreground/80 hover:text-foreground hover:bg-foreground/5 focus-visible:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      class:list={[
+        "h-[calc(1lh+1em)]",
+        "w-[calc(1lh+1em)]",
+        "rounded-full",
+        "flex",
+        "items-center",
+        "justify-center",
+        "text-foreground/80",
+        "hover:text-foreground",
+        "hover:bg-foreground/5",
+        "focus-visible:bg-foreground/5",
+        "transition-colors",
+        "focus-visible:outline-none",
+        "focus-visible:ring-2",
+        "focus-visible:ring-foreground/70",
+        "focus-visible:ring-offset-2",
+        "focus-visible:ring-offset-background",
+      ]}
     >
-      <svg id="theme-icon-sun" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg
+        id="theme-icon-sun"
+        viewBox="0 0 24 24"
+        class:list={[
+          "h-[1em]",
+          "w-[1em]",
+        ]}
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
         <circle cx="12" cy="12" r="4"></circle>
-        <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77"></path>
+        <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77">
+        </path>
       </svg>
-      <svg id="theme-icon-moon" viewBox="0 0 24 24" class="h-4 w-4 hidden" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg
+        id="theme-icon-moon"
+        viewBox="0 0 24 24"
+        class:list={[
+          "h-[1em]",
+          "w-[1em]",
+          "hidden",
+        ]}
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
         <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8z"></path>
       </svg>
     </button>
-  </div>
+  </TopLitSurface>
 </div>
 
 <script>
-  function updateThemeToggleIcon(resolvedTheme?: string) {
-    const button = document.getElementById("theme-toggle-btn");
-    const sunIcon = document.getElementById("theme-icon-sun");
-    const moonIcon = document.getElementById("theme-icon-moon");
-    if (!button || !sunIcon || !moonIcon) return;
-
-    const isDark = resolvedTheme
-      ? resolvedTheme === "dark"
-      : document.documentElement.classList.contains("dark");
-    sunIcon.classList.toggle("hidden", isDark);
-    moonIcon.classList.toggle("hidden", !isDark);
-    button.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
-  }
-
-  const controller = (window as Window & {
-    __unbodyThemeSync?: { setTheme?: (theme: "light" | "dark") => void };
-  }).__unbodyThemeSync;
+function updateThemeToggleIcon(resolvedTheme?: string) {
   const button = document.getElementById("theme-toggle-btn");
-  if (button && controller && typeof controller.setTheme === "function") {
-    button.addEventListener("click", () => {
-      const isDark = document.documentElement.classList.contains("dark");
-      controller.setTheme(isDark ? "light" : "dark");
-    });
-  }
+  const sunIcon = document.getElementById("theme-icon-sun");
+  const moonIcon = document.getElementById("theme-icon-moon");
+  if (!button || !sunIcon || !moonIcon) return;
 
-  window.addEventListener("unbody:theme-change", (event: Event) => {
-    const resolvedTheme = (event as CustomEvent<{ resolvedTheme?: string }>).detail?.resolvedTheme;
-    updateThemeToggleIcon(resolvedTheme);
+  const isDark = resolvedTheme
+    ? resolvedTheme === "dark"
+    : document.documentElement.classList.contains("dark");
+  sunIcon.classList.toggle("hidden", isDark);
+  moonIcon.classList.toggle("hidden", !isDark);
+  button.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light theme" : "Switch to dark theme",
+  );
+}
+
+const controller = (window as Window & {
+  __unbodyThemeSync?: { setTheme?: (theme: "light" | "dark") => void };
+}).__unbodyThemeSync;
+const button = document.getElementById("theme-toggle-btn");
+if (button && controller && typeof controller.setTheme === "function") {
+  button.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    controller.setTheme(isDark ? "light" : "dark");
   });
-  updateThemeToggleIcon(document.documentElement.dataset.theme);
+}
+
+window.addEventListener("unbody:theme-change", (event: Event) => {
+  const resolvedTheme = (event as CustomEvent<{ resolvedTheme?: string }>)
+    .detail?.resolvedTheme;
+  updateThemeToggleIcon(resolvedTheme);
+});
+updateThemeToggleIcon(document.documentElement.dataset.theme);
 </script>

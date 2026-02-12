@@ -1,0 +1,30 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  title?: string;
+  caption?: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+const { src, alt, title, caption, href, linkLabel } = Astro.props;
+---
+
+<figure>
+  <Image src={src} alt={alt} title={title} />
+  {(caption || (href && linkLabel)) && (
+    <figcaption>
+      {caption}
+      {href && linkLabel && (
+        <>
+          {" "}
+          <a href={href}>{linkLabel}</a>
+        </>
+      )}
+    </figcaption>
+  )}
+</figure>

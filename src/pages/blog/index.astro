@@ -1,30 +1,45 @@
 ---
-import Base from "../../layouts/Base.astro";
-import BlogCard from "../../components/BlogCard.astro";
 import type { PostMetadata } from "@/types/data.types";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
+import BlogCard from "../../components/BlogCard.astro";
+import Base from "../../layouts/Base.astro";
 
 const posts = [...(postsMetadata as PostMetadata[])].sort(
-  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  (a, b) =>
+    new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),
 );
 
 const categories = ["all", ...new Set(posts.map((p) => p.category))];
 
-const topics = [...new Set(
-  posts.flatMap((p) => p.relatedTopics).map((t) => t.toUpperCase())
-)];
+const topics = [
+  ...new Set(
+    posts.flatMap((p) => p.relatedTopics).map((t) => t.toUpperCase()),
+  ),
+];
 
-const postTopics = posts.map((p) => p.relatedTopics.map((t) => t.toUpperCase()));
+const postTopics = posts.map((p) =>
+  p.relatedTopics.map((t) => t.toUpperCase())
+);
 ---
 
 <Base title="Unbody Blog">
   <header class="mb-16">
-    <h1 class="mb-6 uppercase tracking-wider md:tracking-ultra text-foreground">
-      <span id="blog-word">BLOG</span>
+    <h1 class="sr-only">Unbody Blog</h1>
+    <div
+      data-type="nav"
+      class="type-ui-md mb-6 uppercase tracking-wider md:tracking-ultra"
+    >
+      <span id="blog-word" class="text-foreground">BLOG</span>
       <span id="blog-slash" class="text-muted-foreground"> / </span>
-      <span id="blog-topic" class="text-muted-foreground cursor-pointer hover:text-foreground transition-colors duration-200"></span>
-    </h1>
-    <nav class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm uppercase tracking-label">
+      <span
+        id="blog-topic"
+        class="text-muted-foreground cursor-pointer hover:text-foreground transition-colors duration-200"
+      ></span>
+    </div>
+    <nav
+      data-type="nav"
+      class="type-ui-md flex flex-wrap items-center gap-x-4 gap-y-2 uppercase tracking-label"
+    >
       {categories.map((cat) => (
         <button
           data-filter={cat}
@@ -36,13 +51,21 @@ const postTopics = posts.map((p) => p.relatedTopics.map((t) => t.toUpperCase()))
           {cat}
         </button>
       ))}
-      <button id="clear-filter" class="text-muted-foreground transition-colors duration-200 hidden ml-auto">clear</button>
+      <button
+        id="clear-filter"
+        class="text-muted-foreground transition-colors duration-200 hidden ml-auto"
+      >
+        clear
+      </button>
     </nav>
   </header>
 
   <div id="blog-list" class="space-y-12">
     {posts.map((post, i) => (
-      <div data-category={post.category} data-topics={JSON.stringify(postTopics[i])}>
+      <div
+        data-category={post.category}
+        data-topics={JSON.stringify(postTopics[i])}
+      >
         <BlogCard post={post} />
       </div>
     ))}
@@ -51,149 +74,169 @@ const postTopics = posts.map((p) => p.relatedTopics.map((t) => t.toUpperCase()))
 </Base>
 
 <script is:inline define:vars={{ topics }}>
-  (function () {
-    let blogWordInterval = null;
-    let topicTimer = null;
+(function() {
+  let blogWordInterval = null;
+  let topicTimer = null;
 
-    function init() {
-      const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
-      const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  function init() {
+    const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
+    const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-      const elWord = document.getElementById("blog-word");
-      const elTopic = document.getElementById("blog-topic");
-      if (!elWord || !elTopic || elWord.dataset.init) return;
-      elWord.dataset.init = "1";
+    const elWord = document.getElementById("blog-word");
+    const elTopic = document.getElementById("blog-topic");
+    if (!elWord || !elTopic || elWord.dataset.init) return;
+    elWord.dataset.init = "1";
 
-      const postEls = document.querySelectorAll("#blog-list > div");
-      const filters = document.querySelectorAll(".blog-filter");
-      const clearBtn = document.getElementById("clear-filter");
-      const noResults = document.getElementById("no-results");
+    const postEls = document.querySelectorAll("#blog-list > div");
+    const filters = document.querySelectorAll(".blog-filter");
+    const clearBtn = document.getElementById("clear-filter");
+    const noResults = document.getElementById("no-results");
 
-      let idx = 0;
-      let paused = false;
-      let activeCat = null;
-      let activeTopic = null;
+    let idx = 0;
+    let paused = false;
+    let activeCat = null;
+    let activeTopic = null;
 
-      function scramble(el, target, steps, interval, cb) {
-        let frame = 0;
-        const id = setInterval(() => {
-          el.textContent = target
-            .split("")
-            .map((ch, i) => (ch === " " || i <= (frame / steps) * target.length ? ch : rand(GLYPHS)))
-            .join("");
-          if (++frame > steps) { el.textContent = target; clearInterval(id); cb?.(); }
-        }, interval);
-      }
-
-      function updateURL() {
-        const params = new URLSearchParams();
-        if (activeCat) params.set("category", activeCat);
-        if (activeTopic) params.set("topic", activeTopic);
-        const qs = params.toString();
-        history.replaceState(null, "", qs ? "?" + qs : location.pathname);
-      }
-
-      function applyFilters() {
-        postEls.forEach((el) => {
-          const matchCat = !activeCat || el.dataset.category === activeCat;
-          const matchTopic = !activeTopic || JSON.parse(el.dataset.topics || "[]").includes(activeTopic);
-          el.hidden = !(matchCat && matchTopic);
-        });
-
-        filters.forEach((b) => {
-          const isCurrent = b.dataset.filter === activeCat;
-          const isDefault = !activeCat && b.dataset.filter === "all";
-          b.classList.toggle("text-foreground", !isCurrent && (isCurrent || isDefault));
-          b.classList.toggle("text-muted-foreground", !isCurrent && !isDefault);
-          b.classList.toggle("bg-foreground", isCurrent);
-          b.classList.toggle("text-background", isCurrent);
-        });
-
-        const topicIsActive = !!activeTopic;
-        elTopic.classList.toggle("bg-foreground", topicIsActive);
-        elTopic.classList.toggle("text-background", topicIsActive);
-        elTopic.classList.toggle("text-muted-foreground", !topicIsActive);
-
-        const anyVisible = [...postEls].some((el) => !el.hidden);
-        noResults.classList.toggle("hidden", anyVisible);
-        clearBtn.classList.toggle("hidden", !activeCat && !activeTopic);
-
-        updateURL();
-      }
-
-      function loopTopics() {
-        if (paused) return;
-        scramble(elTopic, topics[idx % topics.length], 10, 40, () => {
-          idx++;
-          if (!paused) topicTimer = setTimeout(loopTopics, 2000);
-        });
-      }
-
-      function clearAll() {
-        activeCat = null;
-        activeTopic = null;
-        applyFilters();
-        paused = false;
-        clearTimeout(topicTimer);
-        topicTimer = setTimeout(loopTopics, 500);
-      }
-
-      blogWordInterval = setInterval(() => scramble(elWord, "BLOG", 8, 60), 12000);
-
-      elTopic.addEventListener("click", () => {
-        const current = elTopic.textContent.trim();
-        if (!current) return;
-        activeTopic = activeTopic === current ? null : current;
-        paused = !!activeTopic;
-        clearTimeout(topicTimer);
-        applyFilters();
-        if (!paused) topicTimer = setTimeout(loopTopics, 500);
-      });
-
-      filters.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const cat = btn.dataset.filter;
-          if (cat === "all") return clearAll();
-          activeCat = activeCat === cat ? null : cat;
-          applyFilters();
-          if (!activeCat && !activeTopic) {
-            paused = false;
-            clearTimeout(topicTimer);
-            topicTimer = setTimeout(loopTopics, 500);
-          } else {
-            paused = true;
-            clearTimeout(topicTimer);
-          }
-        });
-      });
-
-      clearBtn.addEventListener("click", clearAll);
-
-      // restore from URL
-      const params = new URLSearchParams(location.search);
-      const initCat = params.get("category");
-      const initTopic = params.get("topic");
-      if (initCat || initTopic) {
-        activeCat = initCat;
-        activeTopic = initTopic ? initTopic.toUpperCase() : null;
-        if (activeTopic) { elTopic.textContent = activeTopic; paused = true; }
-        applyFilters();
-      }
-
-      if (!paused) loopTopics();
+    function scramble(el, target, steps, interval, cb) {
+      let frame = 0;
+      const id = setInterval(() => {
+        el.textContent = target
+          .split("")
+          .map((
+            ch,
+            i,
+          ) => (ch === " " || i <= (frame / steps) * target.length
+            ? ch
+            : rand(GLYPHS))
+          )
+          .join("");
+        if (++frame > steps) {
+          el.textContent = target;
+          clearInterval(id);
+          cb?.();
+        }
+      }, interval);
     }
 
-    // clean up on navigation away
-    document.addEventListener("astro:before-swap", function cleanup() {
-      clearInterval(blogWordInterval);
+    function updateURL() {
+      const params = new URLSearchParams();
+      if (activeCat) params.set("category", activeCat);
+      if (activeTopic) params.set("topic", activeTopic);
+      const qs = params.toString();
+      history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+    }
+
+    function applyFilters() {
+      postEls.forEach((el) => {
+        const matchCat = !activeCat || el.dataset.category === activeCat;
+        const matchTopic = !activeTopic
+          || JSON.parse(el.dataset.topics || "[]").includes(activeTopic);
+        el.hidden = !(matchCat && matchTopic);
+      });
+
+      filters.forEach((b) => {
+        const isCurrent = b.dataset.filter === activeCat;
+        const isDefault = !activeCat && b.dataset.filter === "all";
+        b.classList.toggle(
+          "text-foreground",
+          !isCurrent && (isCurrent || isDefault),
+        );
+        b.classList.toggle("text-muted-foreground", !isCurrent && !isDefault);
+        b.classList.toggle("bg-foreground", isCurrent);
+        b.classList.toggle("text-background", isCurrent);
+      });
+
+      const topicIsActive = !!activeTopic;
+      elTopic.classList.toggle("bg-foreground", topicIsActive);
+      elTopic.classList.toggle("text-background", topicIsActive);
+      elTopic.classList.toggle("text-muted-foreground", !topicIsActive);
+
+      const anyVisible = [...postEls].some((el) => !el.hidden);
+      noResults.classList.toggle("hidden", anyVisible);
+      clearBtn.classList.toggle("hidden", !activeCat && !activeTopic);
+
+      updateURL();
+    }
+
+    function loopTopics() {
+      if (paused) return;
+      scramble(elTopic, topics[idx % topics.length], 10, 40, () => {
+        idx++;
+        if (!paused) topicTimer = setTimeout(loopTopics, 2000);
+      });
+    }
+
+    function clearAll() {
+      activeCat = null;
+      activeTopic = null;
+      applyFilters();
+      paused = false;
       clearTimeout(topicTimer);
-      document.removeEventListener("astro:before-swap", cleanup);
+      topicTimer = setTimeout(loopTopics, 500);
+    }
+
+    blogWordInterval = setInterval(
+      () => scramble(elWord, "BLOG", 8, 60),
+      12000,
+    );
+
+    elTopic.addEventListener("click", () => {
+      const current = elTopic.textContent.trim();
+      if (!current) return;
+      activeTopic = activeTopic === current ? null : current;
+      paused = !!activeTopic;
+      clearTimeout(topicTimer);
+      applyFilters();
+      if (!paused) topicTimer = setTimeout(loopTopics, 500);
     });
 
-    document.addEventListener("astro:page-load", init);
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cat = btn.dataset.filter;
+        if (cat === "all") return clearAll();
+        activeCat = activeCat === cat ? null : cat;
+        applyFilters();
+        if (!activeCat && !activeTopic) {
+          paused = false;
+          clearTimeout(topicTimer);
+          topicTimer = setTimeout(loopTopics, 500);
+        } else {
+          paused = true;
+          clearTimeout(topicTimer);
+        }
+      });
+    });
 
-    // also run on first load (astro:page-load fires on first load too, but
-    // with is:inline + define:vars it may already be in the DOM)
-    if (document.getElementById("blog-word")) init();
-  })();
+    clearBtn.addEventListener("click", clearAll);
+
+    // restore from URL
+    const params = new URLSearchParams(location.search);
+    const initCat = params.get("category");
+    const initTopic = params.get("topic");
+    if (initCat || initTopic) {
+      activeCat = initCat;
+      activeTopic = initTopic ? initTopic.toUpperCase() : null;
+      if (activeTopic) {
+        elTopic.textContent = activeTopic;
+        paused = true;
+      }
+      applyFilters();
+    }
+
+    if (!paused) loopTopics();
+  }
+
+  // clean up on navigation away
+  document.addEventListener("astro:before-swap", function cleanup() {
+    clearInterval(blogWordInterval);
+    clearTimeout(topicTimer);
+    document.removeEventListener("astro:before-swap", cleanup);
+  });
+
+  document.addEventListener("astro:page-load", init);
+
+  // also run on first load (astro:page-load fires on first load too, but
+  // with is:inline + define:vars it may already be in the DOM)
+  if (document.getElementById("blog-word")) init();
+})();
 </script>

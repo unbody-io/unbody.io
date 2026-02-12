@@ -1,0 +1,44 @@
+---
+interface Props {
+  as?: string;
+  class?: string;
+  innerClass?: string;
+}
+
+const {
+  as = "div",
+  class: outerClass = "",
+  innerClass = "",
+  ...rest
+} = Astro.props as Props & Record<string, unknown>;
+const Tag = as;
+---
+
+<Tag
+  {...rest}
+  class:list={[
+    "rounded-full",
+    "p-px",
+    "bg-gradient-to-b",
+    "from-surface-border/95",
+    "via-surface-border/45",
+    "to-surface-border/10",
+    "dark:from-surface-border/70",
+    "dark:via-surface-border/28",
+    "dark:to-surface-border/8",
+    "shadow-lg",
+    outerClass,
+  ]}
+>
+  <div
+    class:list={[
+      "relative",
+      "rounded-full",
+      "bg-surface-elevated",
+      "backdrop-blur-sm",
+      innerClass,
+    ]}
+  >
+    <slot />
+  </div>
+</Tag>
