@@ -15,6 +15,7 @@
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@openrouter/ai-sdk-provider": "^2.1.1",
     "@tailwindcss/vite": "^4",
     "@types/node": "^20",

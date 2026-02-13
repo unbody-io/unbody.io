@@ -1,4 +1,4 @@
-import { generateObject } from "ai"
+import { generateText, Output } from "ai"
 import * as fs from "node:fs/promises"
 import * as path from "node:path"
 import { z } from "zod"
@@ -60,9 +60,9 @@ async function main() {
     return
   }
 
-  const { object: generated } = await generateObject({
+  const { output: generated } = await generateText({
     model: openrouter(model),
-    schema: SiteMetadataSchema,
+    output: Output.object({ schema: SiteMetadataSchema }),
     prompt: `You are creating a structured summary of ${siteConfig.name}'s blog. ${siteConfig.description}
 
 <posts>
