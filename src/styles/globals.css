@@ -113,7 +113,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    font-size: 12.5px;
+    font-size: 78.125%;
     scrollbar-width: none;
   }
   html::-webkit-scrollbar {
