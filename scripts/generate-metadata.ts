@@ -1,4 +1,4 @@
-import { generateObject } from "ai"
+import { generateText, Output } from "ai"
 import * as crypto from "node:crypto"
 import * as fs from "node:fs/promises"
 import * as path from "node:path"
@@ -184,9 +184,9 @@ async function main() {
     }
 
     try {
-      const { object: generated } = await generateObject({
+      const { output: generated } = await generateText({
         model: openrouter(model),
-        schema: PostMetadataSchema,
+        output: Output.object({ schema: PostMetadataSchema }),
         prompt: `Extract metadata for this blog post from ${siteConfig.name}, ${siteConfig.description}
 
 <frontmatter>

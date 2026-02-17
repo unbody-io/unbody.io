@@ -19,15 +19,28 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+    <link
+      rel="preload"
+      href="/fonts/sligoil-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <script>
+      import { initThemeController } from "../scripts/theme-controller";
+      initThemeController();
+    </script>
     <ClientRouter />
   </head>
   <body class="font-mono text-foreground antialiased overflow-x-hidden">
     <!-- Fixed Ambient Background -->
     <div class="fixed inset-0 z-0 pointer-events-none">
       <div class="absolute inset-0 ambient-bg-image"></div>
-      <div class="absolute inset-0 bg-background/40"></div>
     </div>
 
     <!-- Top & Bottom Fade Masks -->

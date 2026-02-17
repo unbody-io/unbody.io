@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
+
 const navItems = [
   { href: "/", label: "home" },
   { href: "/lab", label: "lab" },
@@ -7,23 +9,27 @@ const navItems = [
 ---
 
 <header transition:persist class="fixed top-4 md:top-8 w-full z-[100] pointer-events-none">
-  <div class="max-w-3xl mx-auto w-full flex justify-start px-5">
-    <nav class="relative flex items-center gap-1 p-1 bg-background/30 backdrop-blur-sm md:backdrop-blur-md rounded-full border border-background/40 shadow-lg pointer-events-auto">
-    {navItems.map((item) => (
-      <a
-        href={item.href}
-        data-nav-href={item.href}
-        class="px-5 py-2 rounded-full uppercase transition-colors duration-300 relative z-10 text-foreground/50 hover:text-foreground"
-      >
-        {item.label}
-      </a>
-    ))}
-    <div
-      id="nav-pill"
-      class="absolute top-1 bottom-1 rounded-full bg-foreground shadow-xl transition-all duration-300 ease-out pointer-events-none"
-    ></div>
-    <div class="w-1.5 h-1.5 rounded-full bg-foreground mx-3 animate-pulse opacity-50 relative z-10"></div>
-  </nav>
+  <div class="max-w-3xl mx-auto w-full flex items-center justify-start gap-2 px-5">
+    <nav class="relative pointer-events-auto bg-background/30 backdrop-blur-sm md:backdrop-blur-md rounded-full border border-background/40 shadow-lg">
+      <ul class="flex items-center gap-1 p-1 m-0 list-none">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              data-nav-href={item.href}
+              class="inline-flex px-5 py-2 rounded-full uppercase transition-colors duration-300 relative z-10 text-foreground/50 hover:text-foreground hover:bg-foreground/5 focus-visible:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div
+        id="nav-pill"
+        class="absolute top-1 bottom-1 rounded-full bg-foreground shadow-xl transition-all duration-300 ease-out pointer-events-none"
+      ></div>
+    </nav>
+    <ThemeToggle />
   </div>
 </header>
 
@@ -41,11 +47,13 @@ const navItems = [
       if (active) {
         link.classList.add("text-background", "hover:text-background", "cursor-default");
         link.classList.remove("text-foreground/50", "hover:text-foreground");
+        link.setAttribute("aria-current", "page");
         pill.style.left = `${link.offsetLeft}px`;
         pill.style.width = `${link.offsetWidth}px`;
       } else {
         link.classList.remove("text-background", "hover:text-background", "cursor-default");
         link.classList.add("text-foreground/50", "hover:text-foreground");
+        link.removeAttribute("aria-current");
       }
     });
   }

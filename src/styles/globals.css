@@ -14,7 +14,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: 'Sligoil', monospace;
+  --font-mono:
+    'Sligoil',
+    ui-monospace,
+    'SFMono-Regular',
+    Menlo,
+    Monaco,
+    Consolas,
+    'Liberation Mono',
+    'Courier New',
+    monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -43,7 +52,6 @@
 }
 
 :root {
-  --font-sligoil: 'Sligoil', monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -63,6 +71,8 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  --ambient-color-1: oklch(0.84 0.012 205);
+  --ambient-color-2: oklch(0.82 0.01 235);
 }
 
 .dark {
@@ -84,6 +94,8 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
+  --ambient-color-1: oklch(0.62 0.014 205);
+  --ambient-color-2: oklch(0.58 0.012 235);
 }
 
 @layer base {
@@ -91,7 +103,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    font-size: 12.5px;
+    font-size: 78.125%;
     scrollbar-width: none;
   }
   html::-webkit-scrollbar {
@@ -103,6 +115,31 @@
   ::selection {
     @apply bg-foreground text-background;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition * {
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      fill 180ms ease,
+      stroke 180ms ease;
+  }
+}
+
+/* Keep view-transition snapshots opaque to avoid browser-chrome sampling dark fallback frames. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  background-color: var(--background);
+}
+
+/* Keep client-side navigation, but disable visual cross-fade animation. */
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
 }
 
 /* Flatten prose headings to match body: same size, normal weight */
@@ -129,18 +166,25 @@
 .ambient-bg-image {
   background:
     radial-gradient(
-      110% 28% at 50% 12%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 12%, var(--accent) 3%) 100%, transparent),
-      transparent 70%
+      at 30% 18%,
+      color-mix(in oklch, var(--ambient-color-1) 53%, transparent),
+      transparent 56%
     ),
-    radial-gradient(82% 62% at 50% 44%, color-mix(in oklch, var(--foreground) 7%, transparent), transparent 78%),
-    radial-gradient(90% 36% at 50% 86%, color-mix(in oklch, var(--foreground) 5%, transparent), transparent 82%),
+    radial-gradient(
+      at 82% 12%,
+      color-mix(in oklch, var(--ambient-color-2) 47%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      at 50% 78%,
+      color-mix(in oklch, var(--ambient-color-1) 39%, transparent),
+      transparent 58%
+    ),
     linear-gradient(
       180deg,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 15%, var(--accent) 3%) 100%, white) 0%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 12%, var(--accent) 3%) 100%, white) 22%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 9%, var(--accent) 2%) 100%, white) 56%,
-      color-mix(in oklch, color-mix(in oklch, var(--foreground) 6%, var(--accent) 2%) 100%, white) 100%
+      color-mix(in oklch, var(--ambient-color-1) 39%, transparent) 0%,
+      color-mix(in oklch, var(--ambient-color-2) 24%, transparent) 30%,
+      color-mix(in oklch, var(--ambient-color-1) 12%, transparent) 100%
     );
-  opacity: 0.88;
+  opacity: 1;
 }
