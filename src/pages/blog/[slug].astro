@@ -1,5 +1,6 @@
 ---
 import { getAuthor } from "@/config/authors";
+import { siteConfig } from "@/config/site";
 import type { PostMetadata } from "@/types/data.types";
 import { getCollection, getEntry, render } from "astro:content";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
@@ -35,9 +36,44 @@ const formattedDate = new Date(metadata.publishDate).toLocaleDateString(
     day: "numeric",
   },
 );
+
+const postUrl = `${siteConfig.url}/blog/${slug}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: metadata.title,
+  description: metadata.blurb,
+  url: postUrl,
+  datePublished: metadata.publishDate,
+  author: {
+    "@type": "Person",
+    name: author?.name ?? metadata.author,
+    ...(author?.twitter && { url: `https://twitter.com/${author.twitter}` }),
+  },
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  keywords: metadata.keywords,
+  ...(metadata.thumbnail && { image: metadata.thumbnail }),
+};
 ---
 
-<Base title={`${metadata.title} | Unbody Blog`} description={metadata.blurb}>
+<Base
+  title={`${metadata.title} | Unbody Blog`}
+  description={metadata.blurb}
+  seo={{
+    ogType: "article",
+    article: {
+      publishedTime: metadata.publishDate,
+      author: author?.name,
+      tags: metadata.keywords,
+    },
+    ogImage: metadata.thumbnail ?? undefined,
+    jsonLd,
+  }}
+>
   <header class="mb-16 text-muted-foreground">
     <div data-type="meta" class="type-meta-md mb-6 flex items-center gap-3">
       <time datetime={metadata.publishDate}>{formattedDate}</time>

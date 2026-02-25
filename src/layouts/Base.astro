@@ -1,18 +1,22 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
+import type { Props as SEOProps } from "../components/SEO.astro";
 import ShaderBackground from "../components/ShaderBackground.astro";
 import "../styles/globals.css";
 
 interface Props {
   title?: string;
   description?: string;
+  seo?: Partial<SEOProps>;
 }
 
 const {
   title = "Unbody Lab",
   description =
     "Where we question, explore, experiment and build adaptive thinking tools.",
+  seo,
 } = Astro.props;
 ---
 
@@ -41,6 +45,7 @@ const {
     />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <SEO title={title} description={description} {...seo} />
     <script>
     import { initThemeController } from "../scripts/theme-controller";
     initThemeController();
