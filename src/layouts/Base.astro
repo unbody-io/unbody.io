@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "@/config/site";
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import SEO from "../components/SEO.astro";
@@ -13,9 +14,8 @@ interface Props {
 }
 
 const {
-  title = "Unbody Lab",
-  description =
-    "Where we question, explore, experiment and build adaptive thinking tools.",
+  title = siteConfig.name,
+  description = siteConfig.description,
   seo,
 } = Astro.props;
 ---

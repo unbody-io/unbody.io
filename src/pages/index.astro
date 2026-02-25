@@ -2,6 +2,8 @@
 import { siteConfig } from "@/config/site";
 import Base from "../layouts/Base.astro";
 
+const { title, description } = siteConfig.pages.home;
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -24,8 +26,8 @@ const jsonLd = [
 ---
 
 <Base
-  title="Unbody — The Supabase of A.I. Era"
-  description="Build AI-native backends with built-in agents, vector storage, and APIs — all from one modular, open-source stack."
+  title={title}
+  description={description}
   seo={{ jsonLd }}
 >
   <div class="prose">

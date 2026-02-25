@@ -1,8 +1,24 @@
 ---
+import { siteConfig } from "@/config/site";
 import type { PostMetadata } from "@/types/data.types";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
 import BlogCard from "../../components/BlogCard.astro";
 import Base from "../../layouts/Base.astro";
+
+const { title, description } = siteConfig.pages.blog;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: `${siteConfig.url}/blog`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
 
 const posts = [...(postsMetadata as PostMetadata[])].sort(
   (a, b) =>
@@ -23,8 +39,9 @@ const postTopics = posts.map((p) =>
 ---
 
 <Base
-  title="Unbody Blog"
-  description="Insights on AI-native development, modular backends, and adaptive thinking tools from the Unbody team."
+  title={title}
+  description={description}
+  seo={{ jsonLd }}
 >
   <header class="mb-16">
     <h1 class="sr-only">Unbody Blog</h1>
