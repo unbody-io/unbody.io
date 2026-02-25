@@ -1,90 +1,85 @@
 {
-  "summary": "The Unbody blog serves as both a philosophical manifesto and a technical manual for the emerging 'AI-native' era of software development. It explores the transition away from rigid 'container' applications toward fluid, intent-based computing, outlining the architectural shifts required to build software that augments human cognition rather than just storing data. The content targets developers, founders, and product strategists looking to understand the difference between superficial AI wrappers and deeply integrated AI systems.\n\nTechnically, the blog provides detailed guides, tutorials, and explanations on leveraging Unbody's GraphQl endpoint to build Retrieval Augmented Generation (RAG) pipelines, manage generative UI states, and unify fragmented data silos. It also includes product updates, open-source announcements, and case studies that demonstrate the practical benefits of using a managed AI backend versus attempting to build complex infrastructure in-house.",
+  "summary": "The Unbody blog explores the technical and strategic landscape of building 'AI-native' applications, serving as a guide for developers and founders transitioning from traditional software architectures to AI-driven systems. It documents the evolution of Unbody as an open-source, headless API—often described as the 'Supabase of the AI era'—which simplifies the ingestion of scattered data from sources like Google Drive and GitHub into a unified, reasoning-ready endpoint.\n\nBeyond product announcements, the content offers deep dives into the challenges of in-house RAG (Retrieval-Augmented Generation) development, arguing against the technical debt of custom infrastructure. It includes practical tutorials on low-code integration, UI state management for generative flows, and implementing Agentic RAG, aiming to help teams transform raw private data into intelligent, context-aware user experiences with minimal engineering overhead.",
   "keywords": [
-    "AI-native Architecture",
-    "RAG (Retrieval Augmented Generation)",
-    "Generative AI",
-    "Unbody",
-    "Vector Search",
-    "Software Development",
-    "GraphQL",
-    "Open Source",
-    "Data Silos",
-    "Developer Experience",
-    "UI State Management",
-    "Low-code Integration",
-    "Agentic Workflows",
-    "Infrastructure as a Service",
-    "Semantic Search",
-    "Weaviate",
-    "Build vs. Buy"
+    "AI-native architecture",
+    "RAG",
+    "Retrieval-Augmented Generation",
+    "Data integration",
+    "Open source",
+    "Headless API",
+    "Generative UI",
+    "Agentic RAG",
+    "Low-code development",
+    "Technical debt",
+    "Data silos",
+    "SaaS infrastructure",
+    "Context-aware computing",
+    "Managed AI",
+    "Appsmith",
+    "UI state management",
+    "Backend-as-a-Service",
+    "Vector search"
   ],
   "suggestiveQuestions": [
-    "What is the difference between an 'AI-native' application and an 'AI-forced' one?",
-    "Why are traditional apps considered a 'historical glitch' in the context of AI?",
-    "How can I build an Agentic RAG pipeline without managing complex vector infrastructure?",
-    "What are the risks and costs of building an in-house RAG solution versus using a platform?",
-    "How should UI state management change to accommodate streaming generative data?",
-    "How can non-technical teams integrate semantic search into existing products?",
-    "What are the key pillars that define a truly AI-native application?"
+    "What is the difference between 'AI-forced' and 'AI-native' applications?",
+    "Why should startups avoid building their own RAG infrastructure from scratch?",
+    "How can I unify data from Google Drive and GitHub for AI processing?",
+    "What are the best practices for managing UI state in generative AI flows?",
+    "How do I implement Agentic RAG using a JSON endpoint?",
+    "How can low-code tools like Appsmith be used with an AI backend?",
+    "What defines the 'Supabase of the AI era' architecture?"
   ],
   "topicClusters": [
     {
-      "name": "The Philosophy of AI-Native Software",
+      "name": "The AI-Native Strategy & Philosophy",
       "keywords": [
-        "Container Era",
-        "Future of Work",
-        "AI-first",
-        "Digital Architecture",
-        "Human Intent"
+        "AI-native",
+        "AI-forced",
+        "SaaS strategy",
+        "Technical debt",
+        "Complexity"
       ],
       "postSlugs": [
-        "end-of-container-era-apps-glitch",
-        "ai-native-app",
         "ai-forced-vs-ai-native",
-        "ai-at-websummit",
-        "ai-in-2023"
+        "simplifying-ai-development",
+        "ai-is-complex",
+        "ai-in-2023",
+        "ai-native-app"
       ]
     },
     {
-      "name": "Technical Guides & Implementation",
+      "name": "Unbody Platform & Data Unification",
       "keywords": [
-        "RAG Pipelines",
-        "GraphQL",
-        "UI State",
-        "Tutorials",
-        "Low-code",
-        "JSON"
+        "Open source",
+        "Data pipeline",
+        "Single endpoint",
+        "Case study",
+        "Data aggregation"
       ],
       "postSlugs": [
-        "query-to-context",
-        "gen-data-ui-state",
-        "gmeet-ai-assistant-appsmith",
+        "oss-alpha",
+        "delightree-ai-transformation",
+        "ai-for-your-data",
         "hello-world",
         "efficient-ai-integration"
       ]
     },
     {
-      "name": "Strategizing AI Adoption & Unbody Updates",
+      "name": "Technical Implementation & Tutorials",
       "keywords": [
-        "Case Studies",
-        "Build vs Buy",
-        "Open Source",
-        "Product Updates",
-        "Scalability"
+        "Agentic RAG",
+        "UI state",
+        "Low-code",
+        "Appsmith",
+        "Generative data flow"
       ],
       "postSlugs": [
-        "oss-alpha",
-        "delightree-ai-transformation",
-        "ai-is-complex",
-        "simplifying-ai-development",
-        "ai-for-your-data",
-        "update-week-23-24",
-        "ai-hack-night",
-        "update-week-22"
+        "gen-data-ui-state",
+        "query-to-context",
+        "gmeet-ai-assistant-appsmith"
       ]
     }
   ],
-  "totalPosts": 18,
-  "lastUpdated": "2026-02-10T13:52:30.907Z"
+  "totalPosts": 13,
+  "lastUpdated": "2026-02-25T15:50:44.907Z"
 }
