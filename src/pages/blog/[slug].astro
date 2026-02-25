@@ -8,9 +8,14 @@ import Base from "../../layouts/Base.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-  }));
+  const metadataSlugs = new Set(
+    (postsMetadata as PostMetadata[]).map((p) => p.slug),
+  );
+  return posts
+    .filter((post) => metadataSlugs.has(post.id))
+    .map((post) => ({
+      params: { slug: post.id },
+    }));
 }
 
 const { slug } = Astro.params;

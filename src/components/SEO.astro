@@ -26,6 +26,15 @@ const {
 } = Astro.props;
 
 const twitterHandle = `@${siteConfig.social.twitter}`;
+
+// Inline the OG image path logic (mirrors astro-opengraph-images getImagePath)
+function getOgImagePath(pathname: string): string {
+  const target = pathname.endsWith("/") ? `${pathname}index.png` : `${pathname}.png`;
+  const base = siteConfig.url.endsWith("/") ? siteConfig.url : `${siteConfig.url}/`;
+  return `${base}${target.startsWith("/") ? target.slice(1) : target}`;
+}
+
+const absoluteOgImage = ogImage ?? getOgImagePath(Astro.url.pathname);
 ---
 
 <!-- Canonical -->
@@ -37,7 +46,7 @@ const twitterHandle = `@${siteConfig.social.twitter}`;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={siteConfig.name} />
-{ogImage && <meta property="og:image" content={ogImage} />}
+<meta property="og:image" content={absoluteOgImage} />
 
 {article && (
   <>
@@ -48,11 +57,11 @@ const twitterHandle = `@${siteConfig.social.twitter}`;
 )}
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content={twitterHandle} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{ogImage && <meta name="twitter:image" content={ogImage} />}
+<meta name="twitter:image" content={absoluteOgImage} />
 
 <!-- JSON-LD -->
 {jsonLd && (
