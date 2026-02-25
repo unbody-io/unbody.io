@@ -10,17 +10,23 @@
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
+    "@paper-design/shaders": "^0.0.71",
     "@tailwindcss/typography": "^0.5.19",
     "astro": "^5",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/mdx": "^4.3.13",
+    "@fontsource-variable/instrument-sans": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
     "@openrouter/ai-sdk-provider": "^2.1.1",
     "@tailwindcss/vite": "^4",
     "@types/node": "^20",
     "ai": "^6.0.59",
     "chrome-launcher": "^1.2.1",
+    "dprint": "^0.51.1",
     "lighthouse": "^13.0.1",
     "rehype-external-links": "^3",
     "tailwindcss": "^4",

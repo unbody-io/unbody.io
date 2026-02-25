@@ -1,0 +1,383 @@
+:root {
+  --font-mono-family:
+    "Sligoil",
+    ui-monospace,
+    "SFMono-Regular",
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+
+  /* Typography foundations */
+  --type-body-family: "Instrument Sans Variable", sans-serif;
+  --type-body-size: 100%;
+  --type-heading-family: "Instrument Serif", serif;
+  --type-nav-family: var(--font-mono-family);
+  --type-meta-family: var(--font-mono-family);
+  --type-ui-family: var(--font-mono-family);
+
+  /* Material 3-inspired typography families (Material Web typescale model) */
+  --type-font-plain: var(--type-body-family);
+  --type-font-brand: var(--type-heading-family);
+
+  /*
+   * Type scale steps (Major Second / 1.125, base 13px).
+   * Semantic tokens below alias to these steps so the tuner can swap scale presets.
+   */
+  --type-step-0: 0.8125rem; /* 13.00px */
+  --type-step-1: 0.9141rem; /* 14.63px */
+  --type-step-2: 1.0283rem; /* 16.45px */
+  --type-step-3: 1.1569rem; /* 18.51px */
+  --type-step-4: 1.3015rem; /* 20.82px */
+  --type-step-5: 1.4642rem; /* 23.43px */
+  --type-step-6: 1.6472rem; /* 26.35px */
+  --type-step-7: 1.8531rem; /* 29.65px */
+  --type-step-8: 2.0847rem; /* 33.36px */
+  --type-step-9: 2.3453rem; /* 37.52px */
+  --type-step-10: 2.6385rem; /* 42.22px */
+  --type-step-11: 2.9683rem; /* 47.49px */
+  --type-step-12: 3.3393rem; /* 53.43px */
+  --type-step-13: 3.7567rem; /* 60.11px */
+
+  /* Core role tokens */
+  --type-headline-xl-size: var(--type-step-13);
+  --type-headline-xl-line-height: 1.12;
+  --type-headline-xl-weight: 400;
+  --type-headline-xl-tracking: 0rem;
+
+  --type-headline-lg-size: var(--type-step-9);
+  --type-headline-lg-line-height: 1.16;
+  --type-headline-lg-weight: 400;
+  --type-headline-lg-tracking: 0rem;
+
+  --type-headline-md-size: var(--type-step-7);
+  --type-headline-md-line-height: 1.2;
+  --type-headline-md-weight: 400;
+  --type-headline-md-tracking: 0rem;
+
+  --type-headline-sm-size: var(--type-step-4);
+  --type-headline-sm-line-height: 1.18;
+  --type-headline-sm-weight: 400;
+  --type-headline-sm-tracking: 0rem;
+
+  --type-body-md-size: var(--type-step-2);
+  --type-body-md-line-height: 1.45;
+  --type-body-md-weight: 400;
+  --type-body-md-tracking: 0.03125rem;
+
+  --type-meta-md-size: var(--type-step-0);
+  --type-meta-md-line-height: 1.35;
+  --type-meta-md-weight: 400;
+  --type-meta-md-tracking: 0.025rem;
+
+  --type-ui-md-size: var(--type-step-0);
+  --type-ui-md-line-height: 1.35;
+  --type-ui-md-weight: 500;
+  --type-ui-md-tracking: 0.00625rem;
+
+  --type-ui-sm-size: 0.75rem;
+  --type-ui-sm-line-height: 1.25;
+  --type-ui-sm-weight: 500;
+  --type-ui-sm-tracking: 0.01rem;
+
+  /* One major-second step below 12px (~10.67px) */
+  --type-ui-xs-size: 0.6667rem;
+  --type-ui-xs-line-height: 1.2;
+  --type-ui-xs-weight: 500;
+  --type-ui-xs-tracking: 0.0125rem;
+
+  /* Semantic element baseline mapping (tuner can remap these to different type tokens) */
+  --type-semantic-p-size: var(--type-body-md-size);
+  --type-semantic-p-line-height: var(--type-body-md-line-height);
+  --type-semantic-p-weight: var(--type-body-md-weight);
+  --type-semantic-p-tracking: var(--type-body-md-tracking);
+
+  --type-semantic-h1-size: var(--type-headline-xl-size);
+  --type-semantic-h1-line-height: var(--type-headline-xl-line-height);
+  --type-semantic-h1-weight: var(--type-headline-xl-weight);
+  --type-semantic-h1-tracking: var(--type-headline-xl-tracking);
+
+  --type-semantic-h2-size: var(--type-headline-lg-size);
+  --type-semantic-h2-line-height: var(--type-headline-lg-line-height);
+  --type-semantic-h2-weight: var(--type-headline-lg-weight);
+  --type-semantic-h2-tracking: var(--type-headline-lg-tracking);
+
+  --type-semantic-h3-size: var(--type-headline-md-size);
+  --type-semantic-h3-line-height: var(--type-headline-md-line-height);
+  --type-semantic-h3-weight: var(--type-headline-md-weight);
+  --type-semantic-h3-tracking: var(--type-headline-md-tracking);
+
+  --type-semantic-h4-size: var(--type-headline-sm-size);
+  --type-semantic-h4-line-height: var(--type-headline-sm-line-height);
+  --type-semantic-h4-weight: var(--type-headline-sm-weight);
+  --type-semantic-h4-tracking: var(--type-headline-sm-tracking);
+}
+
+@layer base {
+  html {
+    font-size: var(--type-body-size);
+  }
+  body {
+    font-family: var(--type-body-family);
+    font-size: var(--type-body-md-size);
+    line-height: var(--type-body-md-line-height);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    @apply text-muted-foreground;
+  }
+  a {
+    color: inherit;
+  }
+  code,
+  kbd,
+  samp {
+    font-family: var(--type-nav-family);
+    font-size: var(--type-body-md-size);
+    line-height: var(--type-body-md-line-height);
+  }
+  [data-type="nav"] {
+    font-family: var(--type-nav-family);
+  }
+  [data-type="meta"] {
+    font-family: var(--type-meta-family);
+  }
+}
+
+@layer utilities {
+  .type-headline-xl,
+  .type-headline-lg,
+  .type-headline-md,
+  .type-headline-sm {
+    font-family: var(--type-font-brand);
+  }
+
+  .type-body-md,
+  .type-ui-md,
+  .type-ui-sm,
+  .type-ui-xs {
+    font-family: var(--type-font-plain);
+  }
+  .type-ui-md {
+    font-family: var(--type-ui-family);
+  }
+  .type-ui-sm {
+    font-family: var(--type-ui-family);
+  }
+  .type-ui-xs {
+    font-family: var(--type-ui-family);
+  }
+  .type-meta-md {
+    font-family: var(--type-meta-family);
+  }
+  .type-headline-xl {
+    font-size: var(--type-headline-xl-size);
+    line-height: var(--type-headline-xl-line-height);
+    font-weight: var(--type-headline-xl-weight);
+    letter-spacing: var(--type-headline-xl-tracking);
+  }
+  .type-headline-lg {
+    font-size: var(--type-headline-lg-size);
+    line-height: var(--type-headline-lg-line-height);
+    font-weight: var(--type-headline-lg-weight);
+    letter-spacing: var(--type-headline-lg-tracking);
+  }
+  .type-headline-md {
+    font-size: var(--type-headline-md-size);
+    line-height: var(--type-headline-md-line-height);
+    font-weight: var(--type-headline-md-weight);
+    letter-spacing: var(--type-headline-md-tracking);
+  }
+  .type-headline-sm {
+    font-size: var(--type-headline-sm-size);
+    line-height: var(--type-headline-sm-line-height);
+    font-weight: var(--type-headline-sm-weight);
+    letter-spacing: var(--type-headline-sm-tracking);
+  }
+  .type-body-md {
+    font-size: var(--type-body-md-size);
+    line-height: var(--type-body-md-line-height);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+  }
+  .type-meta-md {
+    font-size: var(--type-meta-md-size);
+    line-height: var(--type-meta-md-line-height);
+    font-weight: var(--type-meta-md-weight);
+    letter-spacing: var(--type-meta-md-tracking);
+  }
+  .type-ui-md {
+    font-size: var(--type-ui-md-size);
+    line-height: var(--type-ui-md-line-height);
+    font-weight: var(--type-ui-md-weight);
+    letter-spacing: var(--type-ui-md-tracking);
+  }
+  .type-ui-sm {
+    font-size: var(--type-ui-sm-size);
+    line-height: var(--type-ui-sm-line-height);
+    font-weight: var(--type-ui-sm-weight);
+    letter-spacing: var(--type-ui-sm-tracking);
+  }
+  .type-ui-xs {
+    font-size: var(--type-ui-xs-size);
+    line-height: var(--type-ui-xs-line-height);
+    font-weight: var(--type-ui-xs-weight);
+    letter-spacing: var(--type-ui-xs-tracking);
+  }
+}
+
+/* Custom long-form content layer using the shared Material 3-inspired typescale.
+   `.prose` is the canonical app class name (owned locally, not the Tailwind plugin). */
+.prose,
+.article-content {
+  color: var(--muted-foreground);
+  max-width: 65ch;
+}
+
+.prose-card {
+  max-width: none;
+}
+
+.prose > * + *,
+.article-content > * + * {
+  margin-top: 1rem;
+}
+
+.prose-card > * + * {
+  margin-top: 0.75rem;
+}
+
+.prose :where(h1, h2, h3, h4),
+.article-content :where(h1, h2, h3, h4) {
+  font-family: var(--type-heading-family);
+  color: var(--foreground);
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-card :where(h1, h2, h3, h4) {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.prose :where(h1),
+.article-content :where(h1) {
+  font-size: var(--type-semantic-h1-size);
+  line-height: var(--type-semantic-h1-line-height);
+  font-weight: var(--type-semantic-h1-weight);
+  letter-spacing: var(--type-semantic-h1-tracking);
+}
+
+.prose :where(h2),
+.article-content :where(h2) {
+  font-size: var(--type-semantic-h2-size);
+  line-height: var(--type-semantic-h2-line-height);
+  font-weight: var(--type-semantic-h2-weight);
+  letter-spacing: var(--type-semantic-h2-tracking);
+}
+
+.prose :where(h3),
+.article-content :where(h3) {
+  font-size: var(--type-semantic-h3-size);
+  line-height: var(--type-semantic-h3-line-height);
+  font-weight: var(--type-semantic-h3-weight);
+  letter-spacing: var(--type-semantic-h3-tracking);
+}
+
+.prose :where(h4),
+.article-content :where(h4) {
+  font-size: var(--type-semantic-h4-size);
+  line-height: var(--type-semantic-h4-line-height);
+  font-weight: var(--type-semantic-h4-weight);
+  letter-spacing: var(--type-semantic-h4-tracking);
+}
+
+.prose :where(p, li),
+.article-content :where(p, li) {
+  font-family: var(--type-font-plain);
+  font-size: var(--type-semantic-p-size);
+  line-height: var(--type-semantic-p-line-height);
+  font-weight: var(--type-semantic-p-weight);
+  letter-spacing: var(--type-semantic-p-tracking);
+}
+
+.prose :where(figcaption),
+.article-content :where(figcaption) {
+  font-family: var(--type-meta-family);
+  font-size: var(--type-meta-md-size);
+  line-height: var(--type-meta-md-line-height);
+  font-weight: var(--type-meta-md-weight);
+  letter-spacing: var(--type-meta-md-tracking);
+  @apply text-muted-foreground;
+}
+
+.prose :where(a),
+.article-content :where(a) {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.prose :where(strong, b),
+.article-content :where(strong, b) {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.prose :where(em, i),
+.article-content :where(em, i) {
+  font-style: italic;
+}
+
+.prose :where(ul, ol),
+.article-content :where(ul, ol) {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.prose :where(li + li),
+.article-content :where(li + li) {
+  margin-top: 0.25rem;
+}
+
+.prose :where(blockquote),
+.article-content :where(blockquote) {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--border);
+  color: var(--foreground);
+}
+
+.prose :where(pre),
+.article-content :where(pre) {
+  margin: 1rem 0;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: color-mix(
+    in oklch,
+    var(--surface-elevated) 88%,
+    var(--background) 12%
+  );
+  overflow-x: auto;
+}
+
+.prose :where(pre code),
+.article-content :where(pre code) {
+  font-size: var(--type-body-md-size);
+  line-height: 1.45;
+}
+
+.prose :where(hr),
+.article-content :where(hr) {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.prose :where(img, video),
+.article-content :where(img, video) {
+  border-radius: 0.75rem;
+}

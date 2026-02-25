@@ -1,9 +1,9 @@
 ---
-import { getCollection, getEntry, render } from "astro:content";
-import Base from "../../layouts/Base.astro";
 import { getAuthor } from "@/config/authors";
 import type { PostMetadata } from "@/types/data.types";
+import { getCollection, getEntry, render } from "astro:content";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
+import Base from "../../layouts/Base.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -27,27 +27,30 @@ if (!entry) {
 const { Content } = await render(entry);
 
 const author = getAuthor(metadata.author);
-const formattedDate = new Date(metadata.publishDate).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+const formattedDate = new Date(metadata.publishDate).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  },
+);
 ---
 
 <Base title={`${metadata.title} | Unbody Blog`} description={metadata.blurb}>
   <header class="mb-16 text-muted-foreground">
-    <div class="mb-6 flex items-center gap-3 text-sm">
+    <div data-type="meta" class="type-meta-md mb-6 flex items-center gap-3">
       <time datetime={metadata.publishDate}>{formattedDate}</time>
       <span class="opacity-30">|</span>
       <span>{metadata.readingTime} min read</span>
     </div>
 
-    <h1 class="mb-6">
+    <h1 class="type-headline-xl mb-6 text-foreground">
       {metadata.title}
     </h1>
 
     {author && (
-      <div class="flex items-center gap-3 text-sm">
+      <div data-type="meta" class="type-meta-md flex items-center gap-3">
         <span>By {author.name}</span>
         <span class="opacity-30">|</span>
         <span>{author.title}</span>
@@ -59,15 +62,24 @@ const formattedDate = new Date(metadata.publishDate).toLocaleDateString("en-US",
     <Content />
   </article>
 
-  <footer class="mt-20 pt-10 border-t border-border text-muted-foreground">
+  <footer
+    data-type="meta"
+    class="type-meta-md mt-20 pt-10 border-t border-border"
+  >
     <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
-      <a href={`/blog?category=${metadata.category}`} class="text-sm uppercase tracking-wider hover:text-foreground transition-colors duration-200">
+      <a
+        href={`/blog?category=${metadata.category}`}
+        class="type-ui-md uppercase tracking-wider hover:text-foreground transition-colors duration-200"
+      >
         {metadata.category}
       </a>
       {metadata.relatedTopics.map((topic) => (
         <Fragment>
           <span class="opacity-30">·</span>
-          <a href={`/blog?topic=${encodeURIComponent(topic.toUpperCase())}`} class="text-sm uppercase tracking-wider hover:text-foreground transition-colors duration-200">
+          <a
+            href={`/blog?topic=${encodeURIComponent(topic.toUpperCase())}`}
+            class="type-ui-md uppercase tracking-wider hover:text-foreground transition-colors duration-200"
+          >
             {topic}
           </a>
         </Fragment>

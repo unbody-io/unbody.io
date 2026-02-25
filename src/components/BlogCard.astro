@@ -16,7 +16,7 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
 
 <article class="group text-muted-foreground">
   <a href={`/blog/${post.slug}`} class="block">
-    <div class="mb-3 flex items-center gap-3 text-sm">
+    <div data-type="meta" class="type-meta-md mb-3 flex items-center gap-3">
       <time datetime={post.publishDate}>{formattedDate}</time>
       <span class="opacity-30">|</span>
       <span>{post.readingTime} min read</span>
@@ -24,10 +24,12 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
       <span class="uppercase tracking-wider">{post.category}</span>
     </div>
 
-    <h2 class="mb-3 text-foreground group-hover:text-accent transition-colors duration-300">
-      {post.title}
-    </h2>
+    <div class="prose prose-card">
+      <h2 class="group-hover:text-primary transition-colors duration-300">
+        {post.title}
+      </h2>
 
-    <p>{post.blurb}</p>
+      <p>{post.blurb}</p>
+    </div>
   </a>
 </article>
