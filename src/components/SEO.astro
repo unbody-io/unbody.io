@@ -1,0 +1,72 @@
+---
+import { siteConfig } from "@/config/site";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: "website" | "article";
+  ogImage?: string;
+  article?: {
+    publishedTime: string;
+    author?: string;
+    tags?: string[];
+  };
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical = new URL(Astro.url.pathname, siteConfig.url).href,
+  ogType = "website",
+  ogImage,
+  article,
+  jsonLd,
+} = Astro.props;
+
+const twitterHandle = `@${siteConfig.social.twitter}`;
+
+// Inline the OG image path logic (mirrors astro-opengraph-images getImagePath)
+function getOgImagePath(pathname: string): string {
+  const target = pathname.endsWith("/") ? `${pathname}index.png` : `${pathname}.png`;
+  const base = siteConfig.url.endsWith("/") ? siteConfig.url : `${siteConfig.url}/`;
+  return `${base}${target.startsWith("/") ? target.slice(1) : target}`;
+}
+
+const absoluteOgImage = ogImage ?? getOgImagePath(Astro.url.pathname);
+---
+
+<!-- Canonical -->
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:image" content={absoluteOgImage} />
+
+{article && (
+  <>
+    <meta property="article:published_time" content={article.publishedTime} />
+    {article.author && <meta property="article:author" content={article.author} />}
+    {article.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+  </>
+)}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={twitterHandle} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteOgImage} />
+
+<!-- JSON-LD -->
+{jsonLd && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd)}
+  />
+)}

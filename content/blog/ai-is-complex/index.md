@@ -26,7 +26,7 @@ But there are two catches, and as a founder, I feel obliged to share them with y
 
 Now I will dive into these in the next sections, but trust me, these aren’t challenges you want to tackle in-house without serious expertise and resources.
 
-### Why Building RAG In-House is a Bad Idea
+## Why Building RAG In-House is a Bad Idea
 
 ![The 12 modules required to build a RAG system in-house](./image-02.png "The 12 modules required to build a RAG system in-house")
 
@@ -40,7 +40,7 @@ Let’s be real—building a RAG system is a beast. It’s not something you can
 
 4. **Query Parsing and Execution**: Finally, when a user query comes in, your system needs to parse it, run it against your database, and interact with LLMs (Large Language Models) or third-party APIs. This is where things get really tricky.
 
-### RAG alone is not enough
+## RAG alone is not enough
 
 Even if you manage to cobble together a RAG system, that’s just the beginning. If you’re building a full-scale AI-powered app, you’re going to run into a whole new set of challenges:
 
@@ -52,7 +52,7 @@ Even if you manage to cobble together a RAG system, that’s just the beginning.
 
 4. **Maintenance, Analytics, and Monitoring**: Once your AI system is live, the work doesn’t stop. You need to keep an eye on how it’s performing, where users are getting the best and worst responses, and how often it’s being used. Monitoring and maintenance are crucial if you want your AI to stay relevant and useful.
 
-### Why Doing It In-House Will Cost You—Big Time
+## Why Doing It In-House Will Cost You—Big Time
 
 Now, you might be thinking, “Why not just build this in-house?” Here’s why that’s a terrible idea.
 
@@ -62,7 +62,7 @@ Now, you might be thinking, “Why not just build this in-house?” Here’s why
 
 3. **Risk**: Maybe you’re thinking about hiring a freelancer instead. Sure, that might save you some money upfront, but what happens when OpenAI updates their API or your AI token expires? Your freelancer is long gone, and you’re left scrambling.
 
-### One solution does it all
+## One solution does it all
 
 ![Unbody as an all-in-one AI integration platform](./image-03.png "Unbody as an all-in-one AI integration platform")
 
@@ -76,7 +76,7 @@ And this is where Unbody comes in. We built Unbody to take the pain out of AI in
 
 4. **Open-Source and Scalable**: We’re built on open-source, so you’re not locked into proprietary technology. Unbody scales with your needs, so you can start small and grow as your business expands.
 
-### The Bottom Line: Don’t Go It Alone
+## The Bottom Line: Don’t Go It Alone
 
 Here’s the bottom line—AI is complex. Trying to build a solution in-house is going to cost you time, money, and probably your sanity. With Unbody, you get a ready-made solution that’s fast, scalable, and easy to use. So, why waste your resources trying to reinvent the wheel? Let us handle the heavy lifting so you can focus on what you do best—growing your business.
 

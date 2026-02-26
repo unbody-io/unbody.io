@@ -1,8 +1,27 @@
 ---
+import { siteConfig } from "@/config/site";
 import type { PostMetadata } from "@/types/data.types";
+import siteMetadata from "../../../data/site-metadata.gen.json";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
 import BlogCard from "../../components/BlogCard.astro";
 import Base from "../../layouts/Base.astro";
+
+const title = siteConfig.pages.blog.title;
+const description = siteMetadata.summary;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: `${siteConfig.url}/blog`,
+  keywords: siteMetadata.keywords,
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
 
 const posts = [...(postsMetadata as PostMetadata[])].sort(
   (a, b) =>
@@ -22,7 +41,11 @@ const postTopics = posts.map((p) =>
 );
 ---
 
-<Base title="Unbody Blog">
+<Base
+  title={title}
+  description={description}
+  seo={{ jsonLd }}
+>
   <header class="mb-16">
     <h1 class="sr-only">Unbody Blog</h1>
     <div

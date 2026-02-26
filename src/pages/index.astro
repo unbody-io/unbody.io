@@ -1,8 +1,35 @@
 ---
+import { siteConfig } from "@/config/site";
 import Base from "../layouts/Base.astro";
+
+const { title, description } = siteConfig.pages.home;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    sameAs: [
+      `https://twitter.com/${siteConfig.social.twitter}`,
+      `https://github.com/${siteConfig.social.github}`,
+    ],
+  },
+];
 ---
 
-<Base title="Unbody — The Supabase of A.I. Era">
+<Base
+  title={title}
+  description={description}
+  seo={{ jsonLd }}
+>
   <div class="prose">
     <header>
       <p class="type-headline-sm text-foreground">
@@ -16,7 +43,7 @@ import Base from "../layouts/Base.astro";
 
     <p class="type-body-md">
       Unbody beta is waiting list only.
-      <a href="https://forms.gle/REPLACE_ME" class="underline"
+      <a href="https://forms.gle/B34fYDGxEfZk82Ad8" class="underline"
       >Request access</a>.
     </p>
   </div>
