@@ -1,11 +1,13 @@
 ---
 import { siteConfig } from "@/config/site";
 import type { PostMetadata } from "@/types/data.types";
+import siteMetadata from "../../../data/site-metadata.gen.json";
 import postsMetadata from "../../../data/posts-metadata.gen.json";
 import BlogCard from "../../components/BlogCard.astro";
 import Base from "../../layouts/Base.astro";
 
-const { title, description } = siteConfig.pages.blog;
+const title = siteConfig.pages.blog.title;
+const description = siteMetadata.summary;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -13,6 +15,7 @@ const jsonLd = {
   name: title,
   description,
   url: `${siteConfig.url}/blog`,
+  keywords: siteMetadata.keywords,
   isPartOf: {
     "@type": "WebSite",
     name: siteConfig.name,
