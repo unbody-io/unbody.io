@@ -173,6 +173,8 @@ const postTopics = posts.map((p) =>
       elTopic.classList.toggle("bg-foreground", topicIsActive);
       elTopic.classList.toggle("text-background", topicIsActive);
       elTopic.classList.toggle("text-muted-foreground", !topicIsActive);
+      elTopic.classList.toggle("hover:text-foreground", !topicIsActive);
+      elTopic.classList.toggle("hover:opacity-75", topicIsActive);
 
       const anyVisible = [...postEls].some((el) => !el.hidden);
       noResults.classList.toggle("hidden", anyVisible);

@@ -14,7 +14,7 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
 });
 ---
 
-<article class="group text-muted-foreground">
+<article class="text-muted-foreground">
   <a href={`/blog/${post.slug}`} class="block">
     <div data-type="meta" class="type-meta-md mb-3 flex items-center gap-3">
       <time datetime={post.publishDate}>{formattedDate}</time>
@@ -25,7 +25,7 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
     </div>
 
     <div class="prose prose-card">
-      <h2 class="group-hover:text-primary transition-colors duration-300">
+      <h2 class="transition-colors duration-300">
         {post.title}
       </h2>
 
@@ -33,3 +33,9 @@ const formattedDate = new Date(post.publishDate).toLocaleDateString("en-US", {
     </div>
   </a>
 </article>
+
+<style>
+  article:hover .prose h2 {
+    color: var(--primary);
+  }
+</style>
