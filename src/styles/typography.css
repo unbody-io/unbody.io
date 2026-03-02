@@ -314,7 +314,7 @@
 
 .prose :where(a),
 .article-content :where(a) {
-  color: var(--primary);
+  color: var(--foreground);
   text-decoration: underline;
   text-underline-offset: 0.12em;
 }

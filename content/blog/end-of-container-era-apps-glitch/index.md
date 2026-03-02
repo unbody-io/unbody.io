@@ -4,12 +4,9 @@ publishDate: "2026-01-13"
 author: "amir"
 ---
 
-import Figure from "../../../src/components/content/Figure.astro";
-import image01 from "./image-01.png";
-
 The way we use computers is fundamentally broken.
 
-We accept it because we don’t have a name for it. We think the friction we feel—the fatigue, the scattered attention, the 32 tabs open at 4 PM—is just "work."
+We accept it because we don't have a name for it. We think the friction we feel—the fatigue, the scattered attention, the 32 tabs open at 4 PM—is just "work."
 
 It isn't. It is a symptom of a specific architectural failure.
 
@@ -35,13 +32,13 @@ In the physical world, tools come to you. In the digital world, you must travel 
 
 You have to "go to" Gmail to email. You have to "open" Salesforce to update a deal. You have to "launch" Zoom to talk.
 
-These boxes don’t talk to each other. They are walled gardens of logic. You are not using a computer; you are visiting a series of disconnected rooms, over and over again.
+These boxes don't talk to each other. They are walled gardens of logic. You are not using a computer; you are visiting a series of disconnected rooms, over and over again.
 
 ## 2. Anti-Human Abstraction
 
 This physical separation creates a deeper cognitive fracture.
 
-I’ve been obsessed with this disconnect for years—I actually focused my grad project, [Re](https://github.com/amirhouieh/re-), on it back in 2016. What I found then, and what remains true today, is that we are trapped in the "Page Era."
+I've been obsessed with this disconnect for years—I actually focused my grad project, [Re](https://github.com/amirhouieh/re-), on it back in 2016. What I found then, and what remains true today, is that we are trapped in the "Page Era."
 
 The "Page" is a centralized model where content and UI are pre-defined top-down by the server. The server decides what the container looks like.
 
@@ -49,14 +46,7 @@ But as humans, we don't think in Pages or Apps. We explore **chunk-by-chunk**, n
 
 Think about it: You don't think "I need to open Google Calendar." You think _"What's happening Tuesday?"_ But the OS doesn't understand that. It only understands "Launch Container A." It forces you to translate your intent into its rigid language.
 
-<Figure
-  src={image01}
-  alt="Server ships Pages but the mind follows Threads, visualizing the disconnect"
-  title="Server ships Pages but the mind follows Threads, visualizing the disconnect"
-  caption="The server ships Pages (grey boxes), but the mind follows Threads (red arrows). Visualizing the disconnect in Re (2016)."
-  href="https://github.com/amirhouieh/re-/blob/master/resources/presentation_0.1_2.pdf"
-  linkLabel="View full slides on GitHub"
-/>
+![Server ships Pages but the mind follows Threads, visualizing the disconnect](./image-01.png "The server ships Pages (grey boxes), but the mind follows Threads (red arrows). Visualizing the disconnect in Re (2016). [View full slides on GitHub](https://github.com/amirhouieh/re-/blob/master/resources/presentation_0.1_2.pdf)")
 
 Tabs are just the ultimate symptom of this mismatch. They are proof that the OS doesn't understand the thread of your work, so it forces _you_ to hold the state in your head.
 
@@ -84,8 +74,8 @@ We are all circling the same truth: **The "use" of software is the bottleneck, n
 
 [x.com/amirhouieh/status/2007872633501860282?s=20](https://x.com/amirhouieh/status/2007872633501860282?s=20)
 
-It’s exciting to see this wave rising. But I think there’s one layer deeper we need to go. We don't just need agents that drive the old apps for us; we need to rethink the architecture so the "app" doesn't need to exist at all.
+It's exciting to see this wave rising. But I think there's one layer deeper we need to go. We don't just need agents that drive the old apps for us; we need to rethink the architecture so the "app" doesn't need to exist at all.
 
 _This is Part 1 of a series. Next up, I want to talk about why "Agents" are just a transition step, and introduce the "Faceless Data Layer."_
 
-_(P.S. We’re cooking up something in stealth that tackles exactly this. Can’t wait to show you more soon.)_
+_(P.S. We're cooking up something in stealth that tackles exactly this. Can't wait to show you more soon.)_
