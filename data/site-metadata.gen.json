@@ -1,85 +1,87 @@
 {
-  "summary": "The Unbody blog explores the technical and strategic landscape of building 'AI-native' applications, serving as a guide for developers and founders transitioning from traditional software architectures to AI-driven systems. It documents the evolution of Unbody as an open-source, headless API—often described as the 'Supabase of the AI era'—which simplifies the ingestion of scattered data from sources like Google Drive and GitHub into a unified, reasoning-ready endpoint.\n\nBeyond product announcements, the content offers deep dives into the challenges of in-house RAG (Retrieval-Augmented Generation) development, arguing against the technical debt of custom infrastructure. It includes practical tutorials on low-code integration, UI state management for generative flows, and implementing Agentic RAG, aiming to help teams transform raw private data into intelligent, context-aware user experiences with minimal engineering overhead.",
+  "summary": "The Unbody blog explores the intersection of software architecture and artificial intelligence, advocating for a shift from traditional 'containerized' applications to 'AI-native' ecosystems. It serves as both a philosophical manifesto and a technical resource for developers, CTOs, and founders who are navigating the complexities of integrating generative AI into modern software. The content ranges from high-level essays regarding the future of digital interaction offering a critique of the current 'App Era,' to deep-dive explanations of cognitive architectures that mimic human perception and memory.\n\nPractically, the blog provides actionable insights on overcoming the technical hurdles of building AI features, such as Retrieval-Augmented Generation (RAG) and handling generative UI states. It highlights Unbody's role as an open-source, modular backend that aggregates fragmented data silos (documents, emails, code) into a single GraphQL endpoint, enabling businesses to deploy adaptive, privacy-aware AI tools with minimal friction and coding effort.",
   "keywords": [
     "AI-native architecture",
-    "RAG",
-    "Retrieval-Augmented Generation",
-    "Data integration",
-    "Open source",
-    "Headless API",
-    "Generative UI",
+    "Generative AI",
+    "RAG (Retrieval-Augmented Generation)",
     "Agentic RAG",
+    "Vector databases",
+    "GraphQL",
+    "Data integration",
+    "Open Source",
     "Low-code development",
-    "Technical debt",
-    "Data silos",
     "SaaS infrastructure",
-    "Context-aware computing",
-    "Managed AI",
-    "Appsmith",
+    "Cognitive computing",
     "UI state management",
-    "Backend-as-a-Service",
-    "Vector search"
+    "Unbody",
+    "Software containers",
+    "Digital silos",
+    "Weaviate",
+    "AppSmith"
   ],
   "suggestiveQuestions": [
-    "What is the difference between 'AI-forced' and 'AI-native' applications?",
-    "Why should startups avoid building their own RAG infrastructure from scratch?",
-    "How can I unify data from Google Drive and GitHub for AI processing?",
-    "What are the best practices for managing UI state in generative AI flows?",
-    "How do I implement Agentic RAG using a JSON endpoint?",
-    "How can low-code tools like Appsmith be used with an AI backend?",
-    "What defines the 'Supabase of the AI era' architecture?"
+    "What is the difference between an AI-native and an AI-forced application?",
+    "Why is building an in-house RAG system considered risky and expensive?",
+    "How can I build an AI meeting assistant using low-code tools?",
+    "What defines the architecture of an AI-native app beyond just using an LLM API?",
+    "How should I manage UI state when dealing with streaming generative data?",
+    "Why does Unbody argue that the era of software containers is ending?",
+    "How can I convert unstructured data like Google Meet recordings into structured insights?"
   ],
   "topicClusters": [
     {
-      "name": "The AI-Native Strategy & Philosophy",
+      "name": "Philosophy & The AI-Native Shift",
       "keywords": [
         "AI-native",
-        "AI-forced",
-        "SaaS strategy",
-        "Technical debt",
-        "Complexity"
-      ],
-      "postSlugs": [
-        "ai-forced-vs-ai-native",
-        "simplifying-ai-development",
-        "ai-is-complex",
-        "ai-in-2023",
-        "ai-native-app"
-      ]
-    },
-    {
-      "name": "Unbody Platform & Data Unification",
-      "keywords": [
-        "Open source",
-        "Data pipeline",
-        "Single endpoint",
-        "Case study",
-        "Data aggregation"
+        "Software architecture",
+        "Cognitive computing",
+        "Future of apps",
+        "Open Source"
       ],
       "postSlugs": [
         "oss-alpha",
-        "delightree-ai-transformation",
-        "ai-for-your-data",
-        "hello-world",
-        "efficient-ai-integration"
+        "end-of-container-era-apps-glitch",
+        "ai-forced-vs-ai-native",
+        "ai-native-app",
+        "ai-in-2023"
       ]
     },
     {
       "name": "Technical Implementation & Tutorials",
       "keywords": [
         "Agentic RAG",
-        "UI state",
+        "Frontend development",
+        "GraphQL",
         "Low-code",
-        "Appsmith",
-        "Generative data flow"
+        "AppSmith",
+        "Generative UI"
       ],
       "postSlugs": [
-        "gen-data-ui-state",
         "query-to-context",
-        "gmeet-ai-assistant-appsmith"
+        "gen-data-ui-state",
+        "gmeet-ai-assistant-appsmith",
+        "hello-world"
+      ]
+    },
+    {
+      "name": "Business Strategy & Integration",
+      "keywords": [
+        "Buy vs Build",
+        "Digital silos",
+        "Cost efficiency",
+        "Data fragmentation",
+        "Case study",
+        "SaaS"
+      ],
+      "postSlugs": [
+        "delightree-ai-transformation",
+        "ai-for-your-data",
+        "simplifying-ai-development",
+        "efficient-ai-integration",
+        "ai-is-complex"
       ]
     }
   ],
-  "totalPosts": 13,
-  "lastUpdated": "2026-02-25T15:50:44.907Z"
+  "totalPosts": 14,
+  "lastUpdated": "2026-03-02T14:43:47.642Z"
 }

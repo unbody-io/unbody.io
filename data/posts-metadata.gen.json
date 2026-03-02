@@ -5,28 +5,28 @@
     "publishDate": "2025-04-02",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Unbody, the AI-native backend, is now open source (Alpha), inviting developers to build transparent and trustworthy AI systems. Designed as the \"Supabase of the AI era,\" it offers a modular architecture that transforms raw data into reasoning-ready knowledge.",
+    "blurb": "Unbody announces the release of its open-source Alpha, introducing a modular, AI-native backend designed to be the \"Supabase of the AI era.\" This release invites developers to build on an infrastructure that mirrors human cognition through perception, memory, reasoning, and action.",
     "keywords": [
       "Open Source",
-      "AI Backend",
-      "Unbody",
+      "AI-Native Backend",
       "Modular Architecture",
-      "AI Agents",
-      "Supabase for AI",
+      "Unbody",
+      "Supabase Alternative",
       "Knowledge Graph",
       "Vector Database",
-      "Data Pipelines",
-      "Transparency"
+      "Cognitive Computing",
+      "Developer Tools",
+      "OSS Alpha"
     ],
     "category": "update",
     "summary": [
       {
         "id": "cee06ddf",
-        "summary": "Unbody introduces itself as the first modular backend for the AI-native era, built in the open."
+        "summary": "This is the first modular backend for the AI-native era built together in the open."
       },
       {
         "id": "b2520452",
-        "summary": "It is a data-knowledge-driven, AI-native backend designed to replace traditional stacks."
+        "summary": "It is a data knowledge driven, AI-native backend designed to replace traditional stacks."
       },
       {
         "id": "907763f1",
@@ -34,39 +34,39 @@
       },
       {
         "id": "4ad0d6be",
-        "summary": "Unbody aims to build the Supabase of the AI era and invites developers to help shape it."
+        "summary": "We are building the Supabase of the AI era and inviting you to help shape it."
       },
       {
         "id": "f24515ca",
-        "summary": "The source code is available at github.com/unbody-io/unbody."
+        "summary": "The project is available at github.com/unbody-io/unbody."
       },
       {
         "id": "cb4e9025",
-        "summary": "Launching Unbody commercially last year revealed that building an excellent product requires involving the wider developer community."
+        "summary": "Launching commercially last year as a backend-as-a-service revealed truths about AI-native development."
       },
       {
         "id": "8216cdff",
-        "summary": "One truth became clear: building an excellent product requires involving the wider developer community."
+        "summary": "One truth became clear: we weren’t going to build an excellent product without involving the wider developer community."
       },
       {
         "id": "ed541860",
-        "summary": "Unbody is releasing as open source to build a better product and gain developer adoption."
+        "summary": "We are releasing Unbody as open source to build a better product and gain developer adoption."
       },
       {
         "id": "6db22740",
-        "summary": "We believe open source allows for the inspection and customization necessary to build transparent and trustworthy AI software."
+        "summary": "We believe open source is critical for building trust, transparency, and user control in intelligent systems."
       },
       {
         "id": "d879ad34",
-        "summary": "This alpha release prioritizes architectural flexibility and modularity over feature completeness to allow easy extension."
+        "summary": "This alpha release focuses on architectural flexibility and modularity rather than feature completeness."
       },
       {
         "id": "12b1cdee",
-        "summary": "The modular design supports traditional plugins and autonomous AI agents that process information."
+        "summary": "The modular design supports both traditional plugins and autonomous AI agents."
       },
       {
         "id": "ce7ec96b",
-        "summary": "The Contextual Data Engine transforms raw, fragmented data into structured, queryable, and interconnected knowledge."
+        "summary": "The Contextual Data Engine transforms raw data into structured, queryable, and interconnected knowledge."
       },
       {
         "id": "cdfe607f",
@@ -74,43 +74,43 @@
       },
       {
         "id": "1f68ad10",
-        "summary": "The open-source version already outclasses the cloud service in terms of architectural openness and modularity."
+        "summary": "Our open-source version already outclasses our cloud service in terms of architectural openness."
       },
       {
         "id": "c5f9b6d1",
-        "summary": "While the cloud offering has production-grade features, it comes with trade-offs like locked-in storage and inflexible pipelines."
+        "summary": "Our cloud offering includes production-grade features but comes with trade-offs like locked-in storage."
       },
       {
         "id": "21fa2d1d",
-        "summary": "The open-source version offers greater flexibility to choose storage solutions, AI models, and customize processing pipelines."
+        "summary": "The open-source version gives greater flexibility to choose storage solutions and AI models."
       },
       {
         "id": "1a649707",
-        "summary": "Despite significant refactors, the content API remains unchanged to let users interact with the knowledge base as usual."
+        "summary": "The content API remains unchanged despite significant refactors in data ingestion and processing."
       },
       {
         "id": "dd0a8303",
-        "summary": "The roadmap envisions eventually replacing the cloud version with this open-source powerhouse."
+        "summary": "Our roadmap envisions the eventual replacement of our cloud version with this open-source powerhouse."
       },
       {
         "id": "ea053b4b",
-        "summary": "We are sharing Unbody OSS Alpha to open a discussion with the community and ensure we build something people want."
+        "summary": "We are sharing Unbody OSS Alpha to open a discussion with the wider community."
       },
       {
         "id": "b2bde710",
-        "summary": "The AI tooling ecosystem is scattered and complex, often requiring developers to make dozens of stack decisions."
+        "summary": "The AI tooling ecosystem is scattered, requiring developers to stitch together complex stacks."
       },
       {
         "id": "1bb52167",
-        "summary": "Unbody asks what if there were a Supabase, but specifically for the AI era."
+        "summary": "We ask what if there were a Supabase, but for the AI era."
       },
       {
         "id": "411a1afc",
-        "summary": "Supabase simplified building modern web apps by handling databases, auth, and storage in a unified stack."
+        "summary": "Supabase simplified building web apps by handling databases, auth, and storage in a unified stack."
       },
       {
         "id": "1cb4ab3e",
-        "summary": "Unbody aims to bring that same spirit to AI-native software that reasons, adapts, and acts."
+        "summary": "Unbody aims to bring that spirit to AI-native software that reasons, adapts, and acts."
       },
       {
         "id": "e0cc5fec",
@@ -118,7 +118,7 @@
       },
       {
         "id": "8480a89b",
-        "summary": "Traditional stacks store static data, whereas AI-native products demand a different approach."
+        "summary": "Stacks built around storing static data in tables are insufficient for AI-native products."
       },
       {
         "id": "ee5bca29",
@@ -126,63 +126,63 @@
       },
       {
         "id": "2f5315b8",
-        "summary": "We no longer just click buttons; we talk to software and expect it to reason and act."
+        "summary": "We no longer just click buttons; we talk to software and expect it to reason."
       },
       {
         "id": "00fb8823",
-        "summary": "Unlike passive legacy software, AI-native software is active, context-aware, and requires managing dynamic knowledge."
+        "summary": "AI-native software is active and context-aware, requiring a backend that manages dynamic knowledge."
       },
       {
         "id": "c99feeca",
-        "summary": "AI-native software needs enriched, connected knowledge rather than just rows in tables to enable reasoning."
+        "summary": "AI-native software needs enriched, connected knowledge rather than just rows in tables."
       },
       {
         "id": "e798e27d",
-        "summary": "To mimic human intelligence, software needs a dynamic graph of meaning rather than rigid schemas."
+        "summary": "Software needs a dynamic, evolving graph of meaning to mimic human intelligence."
       },
       {
         "id": "44fe9752",
-        "summary": "Essential infrastructure like ingestion, vectorization, and summarization is often left to be duct-taped together."
+        "summary": "Data ingestion, vectorization, and summarization are essential infrastructure, not extras."
       },
       {
         "id": "9b52a6a1",
-        "summary": "A backend that understands like a human must process text, images, video, and audio."
+        "summary": "A backend must ingest and process images, video, and audio to understand like a human."
       },
       {
         "id": "1ec791e3",
-        "summary": "Unbody is a Supabase-style stack for building AI-native products from the ground up."
+        "summary": "It is a Supabase-style stack for building AI-native products from the ground up."
       },
       {
         "id": "7d2fbda9",
-        "summary": "Without Unbody, even building a simple Q&A bot requires significant effort."
+        "summary": "Without Unbody, even building a simple Q&A bot requires complex setup."
       },
       {
         "id": "c0cb15ef",
-        "summary": "Building a bot usually requires spinning up a vector database like Weaviate or Pinecone."
+        "summary": "You usually need to spin up a vector database like Weaviate or Pinecone."
       },
       {
         "id": "242533ef",
-        "summary": "Developers normally must create a pipeline for chunking and ingesting content."
+        "summary": "You need to create a pipeline for chunking and ingesting content."
       },
       {
         "id": "551e9fed",
-        "summary": "All these components must be stitched into the backend and maintained."
+        "summary": "You have to stitch all this into your backend and maintain it."
       },
       {
         "id": "9aa2036f",
-        "summary": "Unbody offers opinionated flexibility, allowing you to bring your own vector store or AI provider without lock-in."
+        "summary": "Unbody is built for opinionated flexibility, allowing you to bring your own vector store or AI provider."
       },
       {
         "id": "6592fc94",
-        "summary": "An image displays the Unbody modular stack architecture."
+        "summary": "This image shows the Unbody modular stack architecture."
       },
       {
         "id": "bc509ee6",
-        "summary": "The GitHub repo README contains in-depth information and a complete list of modules and plugins."
+        "summary": "Please see the README on our GitHub repo for in-depth information."
       },
       {
         "id": "97fa3981",
-        "summary": "Since software is becoming more like humans, the backend that powers it needs to work like a brain."
+        "summary": "If software is becoming more like humans, the backend needs to work like a brain."
       },
       {
         "id": "5f89264b",
@@ -190,67 +190,67 @@
       },
       {
         "id": "2af68f6f",
-        "summary": "The Perception layer handles Knowledge Fabrication and how the system sees the world."
+        "summary": "The Perception layer handles how the system sees and understands the world."
       },
       {
         "id": "792b91c1",
-        "summary": "The Memory layer handles storage and persistent memory regarding what the system knows."
+        "summary": "The Memory layer handles what the system knows and remembers."
       },
       {
         "id": "afb07155",
-        "summary": "The Reasoning layer governs AI and autonomy to determine how the system thinks."
+        "summary": "The Reasoning layer handles how the system thinks, decides, and plans."
       },
       {
         "id": "c47cd2b0",
-        "summary": "The Action layer uses APIs and MCP to interact with others and take initiative."
+        "summary": "The Action layer handles how the system interacts via APIs and MCP."
       },
       {
         "id": "9c1f05ce",
-        "summary": "This section defines where raw data becomes structured, enriched knowledge."
+        "summary": "This is where raw data becomes structured, enriched knowledge."
       },
       {
         "id": "d3e787b0",
-        "summary": "Data Ingestion connects and pulls content from third-party platforms, files, and databases."
+        "summary": "Data Ingestion connects and pulls content from third-party platforms or local files."
       },
       {
         "id": "25e54eb5",
-        "summary": "Processing automatically parses and structures raw multi-modal data from various formats."
+        "summary": "Processing automatically parses and structures raw multi-modal data."
       },
       {
         "id": "d6ecfd78",
-        "summary": "Enhancement transforms raw data into semantic knowledge using pluggable enhancer agents."
+        "summary": "Enhancement employs agents to transform raw data into a more semantic knowledge base."
       },
       {
         "id": "24ac8527",
-        "summary": "Vectorization generates semantic vector representations using models like OpenAI or Cohere."
+        "summary": "Vectorization generates semantic vector representations using various AI models."
       },
       {
         "id": "b4c277b6",
-        "summary": "This section covers where enriched knowledge lives and is ready for retrieval."
+        "summary": "This is where your enriched knowledge lives, ready to be retrieved."
       },
       {
         "id": "8d09a4ea",
-        "summary": "Vector Storage keeps embeddings in databases like Weaviate, Pinecone, or Qdrant."
+        "summary": "Vector Storage places embeddings in databases like Weaviate, Pinecone, or Qdrant."
       },
       {
         "id": "a155afb6",
-        "summary": "File Storage persists raw and processed files using local storage, S3, or GCS."
+        "summary": "File Storage persists raw and processed files locally or in the cloud."
       },
       {
         "id": "1d5ca5a3",
-        "summary": "Media Serving allows access to media through Unbody’s CDN and signed URLs."
+        "summary": "Media Serving provides access to media through Unbody’s CDN."
       },
       {
         "id": "4c7d4114",
-        "summary": "Metadata Store keeps track of content structure, relationships, and context."
+        "summary": "The Metadata Store keeps track of content structure and relationships."
       },
       {
         "id": "50f3b793",
-        "summary": "This section describes where intelligence, generation, and decision-making happen."
+        "summary": "This is where intelligence happens, including generation and decision-making."
       },
       {
         "id": "180a175f",
-        "summary": "Text Generation includes built-in support for models like GPT-4 and Claude via hosted APIs or self-hosting."
+        "summary": "Text Generation includes built-in support for hosted or self-hosted models like GPT-4."
       },
       {
         "id": "e134b4c9",
@@ -258,11 +258,11 @@
       },
       {
         "id": "f9090699",
-        "summary": "Image Generation is on the roadmap to provide cloud-only support for visual generation."
+        "summary": "Image Generation is a roadmap item for cloud-only visual generation."
       },
       {
         "id": "89b4a9a7",
-        "summary": "Function Registry defines callable functions for agents via schema-based definitions."
+        "summary": "The Function Registry defines callable functions via schema-based definitions."
       },
       {
         "id": "3388c328",
@@ -270,23 +270,23 @@
       },
       {
         "id": "cc5e3757",
-        "summary": "This section explains how the backend connects to the outside world."
+        "summary": "This is where your backend connects to the outside world via APIs and SDKs."
       },
       {
         "id": "bed76816",
-        "summary": "Content API allows querying the knowledge-base via GraphQL with semantic capabilities."
+        "summary": "The Content API lets you query your knowledge base via GraphQL."
       },
       {
         "id": "f22b92e7",
-        "summary": "Push API pushes structured data directly into Unbody."
+        "summary": "The Push API allows you to push structured data directly into Unbody."
       },
       {
         "id": "57f7368e",
-        "summary": "Admin API configures schemas, projects, pipelines, and permissions."
+        "summary": "The Admin API configures schemas, projects, pipelines, and permissions."
       },
       {
         "id": "3f401af4",
-        "summary": "Middleware Control Plane connects Unbody to external systems and workflows."
+        "summary": "The MCP connects Unbody to external systems and workflows."
       },
       {
         "id": "e485a733",
@@ -294,31 +294,31 @@
       },
       {
         "id": "965f7802",
-        "summary": "The API provides chat endpoints with memory and long-term context."
+        "summary": "Chat endpoints include memory and long-term context."
       },
       {
         "id": "56272668",
-        "summary": "It supports integration with observability monitoring systems."
+        "summary": "Integration with observability monitoring systems is supported."
       },
       {
         "id": "f513ee6e",
-        "summary": "Unbody is currently in feedback mode to know what works and what needs improvement."
+        "summary": "We are in feedback mode and want to know what works and what breaks."
       },
       {
         "id": "80c5fdf6",
-        "summary": "The alpha is released to build with community feedback, so please give Unbody Alpha a try."
+        "summary": "We invited you to give Unbody Alpha a try and provide feedback."
       },
       {
         "id": "7cfcc199",
-        "summary": "Link to the Unbody GitHub Repo."
+        "summary": "This is a link to the GitHub Repo."
       }
     ],
     "relatedTopics": [
       "AI Infrastructure",
-      "Open Source Development",
-      "Vector Search",
-      "Backend as a Service",
-      "Large Language Models"
+      "Open Source Software",
+      "Backend Development",
+      "Cognitive Architecture",
+      "Software Engineering"
     ],
     "targetAudience": [
       "developers",
@@ -329,101 +329,257 @@
     "readingTime": 9
   },
   {
+    "slug": "end-of-container-era-apps-glitch",
+    "title": "The End of the Container Era: Apps Are a Historical Glitch",
+    "publishDate": "2026-01-13",
+    "author": "amir",
+    "thumbnail": null,
+    "blurb": "Software containers are a 'historical glitch' that force humans to act as routers between disconnected apps. It's time to move beyond the App Era toward an architecture based on intent and threads, not rigid boxes.",
+    "keywords": [
+      "Container Era",
+      "software architecture",
+      "cognitive fracture",
+      "human router",
+      "Page Era",
+      "intent-based computing",
+      "Faceless Data Layer",
+      "post-app",
+      "user interface",
+      "digital fatigue"
+    ],
+    "category": "essay",
+    "summary": [
+      {
+        "id": "3144a3e7",
+        "summary": "We accept the friction and fatigue of modern work because we lack a name for it."
+      },
+      {
+        "id": "a456ed4a",
+        "summary": "This feeling is actually a symptom of a specific architectural failure."
+      },
+      {
+        "id": "f55a7ec6",
+        "summary": "We incorrectly assume that Apps and Websites are the natural laws of software."
+      },
+      {
+        "id": "9c68739e",
+        "summary": "Software containers are a 'historical glitch' that emerged from macro-level constraints, not human thinking."
+      },
+      {
+        "id": "2098d868",
+        "summary": "Software had to be packaged into standalone units or 'containers' due to distribution limitations."
+      },
+      {
+        "id": "204c0ee5",
+        "summary": "Vendors needed to ship one static interface to millions of users due to server constraints."
+      },
+      {
+        "id": "3a2d05d3",
+        "summary": "Logistical hurdles made software something designed first and used second, forcing us into rigid boxes."
+      },
+      {
+        "id": "7b3a56a0",
+        "summary": "The resulting system is built on three anti-human pillars."
+      },
+      {
+        "id": "8ea77dd2",
+        "summary": "In the digital world, you must travel to the tool, unlike the physical world where tools come to you."
+      },
+      {
+        "id": "d8a3b2ae",
+        "summary": "You are forced to 'go to' specific locations like Gmail or Salesforce to perform actions."
+      },
+      {
+        "id": "faeae739",
+        "summary": "These boxes are walled gardens of logic that result in visiting disconnected rooms over and over."
+      },
+      {
+        "id": "06a2463e",
+        "summary": "This physical separation creates a deeper cognitive fracture."
+      },
+      {
+        "id": "46b1c968",
+        "summary": "Previous research confirms we are trapped in the 'Page Era,' a centralized model of predefined UI."
+      },
+      {
+        "id": "90a50f74",
+        "summary": "The 'Page' forces a model where the server decides what the container looks like top-down."
+      },
+      {
+        "id": "a148013f",
+        "summary": "Humans explore chunk-by-chunk via threads, but software is built on Pages and Apps."
+      },
+      {
+        "id": "13bdd9b5",
+        "summary": "The OS forces you to translate your intent into its rigid language because it only understands containers."
+      },
+      {
+        "id": "63187133",
+        "summary": "Visualizing the disconnect shows the server shipping Pages while the mind follows Threads."
+      },
+      {
+        "id": "bf594f30",
+        "summary": "Tabs are the ultimate symptom of the OS failing to understand the thread of your work."
+      },
+      {
+        "id": "03eea69a",
+        "summary": "We pay a price because the logic is siloed and the abstraction is wrong."
+      },
+      {
+        "id": "24718806",
+        "summary": "You act as the 'human router' manually copying context between boxes that don't talk to each other."
+      },
+      {
+        "id": "229fb741",
+        "summary": "The result is a quiet insanity of 32 tabs and infinite micro-searches."
+      },
+      {
+        "id": "23829a6e",
+        "summary": "You pay this tax with your attention, time, and nervous system."
+      },
+      {
+        "id": "b05a9a10",
+        "summary": "The energy is shifting in the builder community as the dam finally breaks."
+      },
+      {
+        "id": "027c8585",
+        "summary": "Innovators like Naval Ravikant and AGI Inc are proving the future is about pure intent, not menus."
+      },
+      {
+        "id": "57b454fc",
+        "summary": "Teams like Zo and Wabi AI are exploring browser-native clouds and personal software fitting the user."
+      },
+      {
+        "id": "e54ae5bf",
+        "summary": "We are circling the truth that the 'use' of software is the bottleneck, not the build."
+      },
+      {
+        "id": "3119c44e",
+        "summary": "A social post reflects on the bottleneck of software usage."
+      },
+      {
+        "id": "4d2547fd",
+        "summary": "We need to rethink the architecture so the 'app' doesn't need to exist, creating a layer deeper than agents."
+      },
+      {
+        "id": "73692f05",
+        "summary": "This is Part 1 of a series that will introduce the 'Faceless Data Layer' next."
+      },
+      {
+        "id": "66b01f45",
+        "summary": "We are cooking up something in stealth that tackles exactly this."
+      }
+    ],
+    "relatedTopics": [
+      "Human-Computer Interaction",
+      "Future of Work",
+      "Artificial Intelligence",
+      "Product Design",
+      "Software Engineering"
+    ],
+    "targetAudience": [
+      "developers",
+      "founders",
+      "designers",
+      "product-managers"
+    ],
+    "tone": "philosophical",
+    "readingTime": 5
+  },
+  {
     "slug": "delightree-ai-transformation",
     "title": "How Delightree Launched AI-Driven Franchise Solutions Faster with Unbody",
     "publishDate": "2025-02-18",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Learn how Delightree utilized Unbody's managed AI solution to rapidly launch intelligent features for franchise management. By skipping the build-from-scratch phase, they achieved secure, role-based AI search and insights with minimal engineering overhead.",
+    "blurb": "Discover how Delightree leveraged Unbody's managed AI solution to launch AI-driven franchise solutions faster without draining core engineering resources.",
     "keywords": [
       "Delightree",
       "franchise management",
+      "AI implementation",
       "managed AI solution",
-      "role-based data access",
-      "AI-powered search",
       "speed to market",
-      "headless architecture",
-      "knowledge base",
-      "Unbody",
-      "SaaS case study"
+      "intelligent search",
+      "role-based access",
+      "SaaS development"
     ],
     "category": "case-study",
     "summary": [
       {
         "id": "41764f79",
-        "summary": "Delightree addresses the complexities of franchise management by streamlining everyday operations and centralizing tasks for diverse teams."
+        "summary": "Delightree streamlines everyday franchise operations, automating processes and freeing teams to focus on growth."
       },
       {
         "id": "a56d99cf",
-        "summary": "CTO Madhulika recognized the need to launch AI capabilities fast but lacked the skill set and timeline to build pipelines and search algorithms from scratch."
+        "summary": "CTO Madhulika recognized the need to launch AI capabilities fast to stay ahead without building complex infrastructure from scratch."
       },
       {
         "id": "c5aacc4b",
-        "summary": "This section introduces the relatable problem of why Delightree required a managed AI solution."
+        "summary": "This section outlines the relatable problem of why Delightree required a managed AI solution."
       },
       {
         "id": "ce5a0b5d",
-        "summary": "Madhulika explains that Unbody was the product they wanted to build themselves, but they lacked the bandwidth as a growing startup."
+        "summary": "Delightree viewed Unbody as the product they wanted to build themselves but lacked the bandwidth to execute internally."
       },
       {
         "id": "59df5e93",
-        "summary": "Delightree considered hiring external AI consultants but realized the cost and time overhead would be too substantial for their MVP needs."
+        "summary": "Before choosing Unbody, Madhulika realized that hiring external AI consultants would involve substantial overhead in cost and time."
       },
       {
         "id": "7cfb009e",
-        "summary": "After consulting with four experts, Madhulika saw Unbody and decided to opt for a managed solution over building internally."
+        "summary": "After consulting with four experts on how to build, Madhulika decided to opt for Unbody as a managed solution."
       },
       {
         "id": "537733bf",
-        "summary": "Speed to market and the ability to customize AI for specific franchise roles drove the decision to choose Unbody."
+        "summary": "Speed to market and the ability to customize AI for specific franchise roles were the crucial factors leading them to Unbody."
       },
       {
         "id": "55927799",
-        "summary": "Delightree transformed their existing database into an AI-enabled knowledge base to launch AI features quickly without draining core engineering resources."
+        "summary": "Delightree transformed their existing database into an AI-enabled knowledge base to launch features quickly without draining resources."
       },
       {
         "id": "03630f7c",
-        "summary": "The goal was to make everything in their database available for AI search with complex visibility and permission-based accessibility."
+        "summary": "The team wanted to launch fast and ensure their database was available for AI search with complex visibility permissions."
       },
       {
         "id": "00fd31b7",
-        "summary": "Unbody’s headless architecture allowed Delightree to integrate AI capabilities via a flexible API without disrupting their existing tech stack."
+        "summary": "Unbody’s headless architecture allowed Delightree to integrate AI capabilities via flexible API without disrupting their existing tech stack."
       },
       {
         "id": "4786c2b3",
-        "summary": "An image displays the Delightree AI-powered search and summaries features interface."
+        "summary": "An image displays Delightree's AI-powered search and summaries features."
       },
       {
         "id": "baa670f8",
-        "summary": "With Unbody, Delightree’s operational materials became an AI-searchable knowledge base that allows users to generate quick summaries."
+        "summary": "With Unbody, Delightree’s entire database of operational materials became an AI-searchable knowledge base capable of generating summaries."
       },
       {
         "id": "d11f6977",
-        "summary": "Unbody’s query system supports permission layers to ensure proper role-based data access without risking sensitive data leaks."
+        "summary": "Unbody’s advanced database query system supports permission layers ensuring staff only retrieve relevant information."
       },
       {
         "id": "5b775be2",
-        "summary": "Unbody’s out-of-the-box backend enabled a minimal learning curve, letting the team integrate advanced features while focusing on their core roadmap."
+        "summary": "Unbody’s out-of-the-box backend allowed the team to integrate advanced features with a minimal learning curve."
       },
       {
         "id": "2ab88038",
-        "summary": "Customer response was immediate by the time the AI features went live on the platform."
+        "summary": "Customer response was immediate by the time the AI features went live."
       },
       {
         "id": "6186a7e5",
-        "summary": "Madhulika reports that almost 90% of customers who have seen the new features want to use them."
+        "summary": "Almost 90% of customers who have seen the new features want to use them."
       },
       {
         "id": "7ff58ff4",
-        "summary": "The new features have acted like a magnet during demos, helping Delightree stand out in a competitive market."
+        "summary": "While not yet charged separately, the AI capabilities have acted like a magnet during demos and increased interest from prospective clients."
       },
       {
         "id": "a62aa27b",
-        "summary": "Delightree has big plans to expand on their AI capabilities with Unbody in the future."
+        "summary": "Delightree has big plans to expand on their AI capabilities with Unbody."
       },
       {
         "id": "ce0992e0",
-        "summary": "They intend to enhance dashboard data with AI-driven insights to surface opportunities, gaps, and strategic recommendations."
+        "summary": "They are looking to enhance operational metrics with AI-driven insights to surface opportunities and gaps."
       },
       {
         "id": "28c8eb32",
@@ -431,7 +587,7 @@
       },
       {
         "id": "430ea559",
-        "summary": "We’d like to use Unbody to show insights in operations and at some point generate training and audits using AI."
+        "summary": "Future plans include using Unbody/AI to show insights and eventually generate training and audits automatically."
       },
       {
         "id": "23c6fe6a",
@@ -439,11 +595,11 @@
       },
       {
         "id": "4feb43b0",
-        "summary": "Madhulika recommends Unbody because it reduces time to market and the dedicated team feels like an off-the-shelf solution."
+        "summary": "Madhulika recommends Unbody because it reduces time to market and feels like working with an off-the-shelf solution with a dedicated team."
       },
       {
         "id": "a1e335c0",
-        "summary": "Connect directly with our founding team to avoid building from scratch and transform your existing data into an AI-ready knowledge base."
+        "summary": "Connect directly with the founding team to avoid building from scratch and transform your existing data into an AI-ready knowledge base."
       },
       {
         "id": "e6ce5dbd",
@@ -451,16 +607,16 @@
       }
     ],
     "relatedTopics": [
-      "AI integration strategies",
-      "SaaS product development",
-      "franchise operations technology",
-      "buy vs build software",
-      "knowledge management systems"
+      "Artificial Intelligence",
+      "Product Management",
+      "Software Architecture",
+      "Startup Growth",
+      "Digital Transformation"
     ],
     "targetAudience": [
       "founders",
-      "product-managers",
-      "developers"
+      "developers",
+      "product-managers"
     ],
     "tone": "technical",
     "readingTime": 5
@@ -471,38 +627,39 @@
     "publishDate": "2024-02-28",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Unbody streamlines the creation of powerful AI applications by acting as a central hub that unifies scattered data from diverse sources like Google Drive and GitHub. By automating data preparation and breaking down silos, it empowers businesses to unlock meaningful insights and innovation.",
+    "blurb": "Unlock the full potential of your fragmented data by bridging digital silos and turning documents, emails, and code into AI-ready assets with Unbody. Discover how to overcome integration complexity and leverage custom AI engines for deeper business insights.",
     "keywords": [
-      "AI integration",
       "data silos",
+      "AI integration",
       "digital transformation",
-      "custom AI engines",
-      "data privacy",
-      "AI-ready data",
       "fragmented data",
-      "business insights"
+      "custom AI engines",
+      "business insights",
+      "automated data preparation",
+      "data privacy",
+      "AI hub"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "f30a5b86",
-        "summary": "In the era of digital transformation, AI promises to revolutionize how we derive insights, but the journey begins with data."
+        "summary": "Artificial Intelligence stands at the forefront of digital transformation, but the journey involves unlocking the potential of a fundamental resource: data."
       },
       {
         "id": "ff473aa3",
-        "summary": "Fragmentation hinders our ability to harness AI effectively, as meaningful insights remain locked within isolated data islands like emails and documents."
+        "summary": "Fragmentation across the digital landscape creates isolated data islands that binder our ability to harness AI effectively."
       },
       {
         "id": "7ff8c3ac",
-        "summary": "The task of connecting to each platform and preparing data for AI use is not only complex but also time-consuming and expensive."
+        "summary": "Integrating data from various platforms is complex, time-consuming, and expensive due to unique storage formats and rules."
       },
       {
         "id": "b47890ff",
-        "summary": "Potential insights lying dormant within your presentations only emerge when considered in the context of related data points like Outlook emails."
+        "summary": "Isolation keeps the picture incomplete because value often lies in the context between disparate sources like SharePoint and Github."
       },
       {
         "id": "ce6518ba",
-        "summary": "While big platforms offer some AI integration solutions, they come with their own set of limitations."
+        "summary": "Big platforms offer some AI integration solutions, but they come with their own set of limitations."
       },
       {
         "id": "9ac7af67",
@@ -518,23 +675,23 @@
       },
       {
         "id": "1f592e33",
-        "summary": "Unbody simplifies the process of bringing your scattered data together, acting as an AI hub across your digital island."
+        "summary": "Unbody acts as an AI hub that simplifies the process of bringing your scattered data together."
       },
       {
         "id": "5c19d6d5",
-        "summary": "Unbody facilitates the integration of data from diverse sources to power AI applications where your data is not just collected but made AI-ready."
+        "summary": "Unbody facilitates the integration of data from diverse sources with a clear focus on making it AI-ready for business insights."
       },
       {
         "id": "b1c1ef44",
-        "summary": "By automating the preparation of your data for AI, Unbody removes barriers that typically slow down AI projects."
+        "summary": "Unbody streamlines the journey from data collection to AI application by automating organization, cleaning, and optimization."
       },
       {
         "id": "d4d41720",
-        "summary": "Unbody champions the freedom to explore and implement the best AI models suited to your unique business challenges."
+        "summary": "Unbody champions the freedom to explore and implement the best custom AI engines suited to your unique business challenges."
       },
       {
         "id": "b76b0b05",
-        "summary": "Unbody accelerates the path to a data-driven future, where every piece of information is a building block for innovation."
+        "summary": "By serving as the connective tissue between your data and AI, Unbody accelerates the path to a data-driven future."
       },
       {
         "id": "6ca5c2a6",
@@ -550,15 +707,15 @@
       },
       {
         "id": "ea99f138",
-        "summary": "Unbody uses secure methods to protect your data, giving you control over who has access to what information."
+        "summary": "Unbody uses secure methods to protect your data, giving you control over who has access to ensure privacy and compliance."
       },
       {
         "id": "1665034e",
-        "summary": "Unbody optimizes performance by securely storing your data, which enhances AI processing and ensures your applications run smoothly."
+        "summary": "Unbody optimizes performance by securely storing your data, ensuring your applications run smoothly and efficiently."
       },
       {
         "id": "f0e84319",
-        "summary": "By breaking down data silos and simplifying integration, Unbody opens up new possibilities for innovation and growth."
+        "summary": "Unbody empowers you to harness the full potential of your data for AI applications by breaking down data silos and simplifying integration."
       },
       {
         "id": "85ac8f3b",
@@ -566,17 +723,17 @@
       }
     ],
     "relatedTopics": [
-      "Artificial Intelligence",
-      "Knowledge Management",
+      "Digital Transformation",
       "Data Engineering",
-      "Cloud Computing"
+      "Artificial Intelligence",
+      "Knowledge Management"
     ],
     "targetAudience": [
       "founders",
       "developers",
       "product-managers"
     ],
-    "tone": "announcement",
+    "tone": "technical",
     "readingTime": 5
   },
   {
@@ -585,40 +742,40 @@
     "publishDate": "2024-11-14",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Explore the fundamental shift from \"AI-forced\" toolchains to true \"AI-native\" architectures where AI is the foundation, not just a feature. This post outlines the challenges of fragmented stacks and introduces Unbody's unified framework for building answer-driven applications.",
+    "blurb": "The shift from 'AI-forced' to 'AI-native' development requires a unified stack that eliminates fragmented toolchains. Unbody leverages Weaviate to create a seamless framework where AI acts as the foundation, not just a feature.",
     "keywords": [
       "AI-native",
       "AI-forced",
-      "fragmented toolchain",
       "Weaviate",
-      "vector database",
+      "fragmented toolchain",
       "knowledge-base",
-      "query-parser",
-      "automation",
+      "Unbody",
+      "backend development",
+      "vector database",
       "prompt management",
-      "software architecture"
+      "automation"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "78384970",
-        "summary": "The shift toward AI-native applications marks a fundamental change where AI is the foundation rather than just an enhanced feature."
+        "summary": "The shift toward AI-native applications marks a fundamental change where AI is the foundation, not just an added feature."
       },
       {
         "id": "6bfcc2c1",
-        "summary": "Current AI tools often feel \"AI-forced\" due to a development gap between advanced machine learning strides and actual product building challenges."
+        "summary": "Current AI tools often feel \"AI-forced\" rather than truly AI-native, creating a development gap despite rapid machine learning advancements."
       },
       {
         "id": "9eba7f0d",
-        "summary": "The problem of AI-forced development highlights the disconnect in current tooling integration."
+        "summary": "The image illustrates the problem of AI-forced development."
       },
       {
         "id": "45ca08b2",
-        "summary": "Existing tools impose a fragmented toolchain that is neither accessible nor compatible with traditional product development."
+        "summary": "Current tools impose a fragmented toolchain that feels clunky, forcing developers into a parallel ecosystem to integrate AI."
       },
       {
         "id": "da365c00",
-        "summary": "A diagram illustrates the fragmented toolchain of AI-forced development in practice."
+        "summary": "The image shows the fragmented toolchain of AI-forced development in practice."
       },
       {
         "id": "415dc355",
@@ -638,11 +795,11 @@
       },
       {
         "id": "e05a5c6a",
-        "summary": "Distinct CDNs for product assets versus AI models and datasets drive up costs and deployment complexity."
+        "summary": "Distinct CDNs for product assets versus AI models drive up costs and deployment complexity."
       },
       {
         "id": "4643b12f",
-        "summary": "Splitting logs between product and AI metrics creates gaps in monitoring and makes getting a complete performance picture difficult."
+        "summary": "Splitting logs between product and AI metrics creates gaps in monitoring and performance visibility."
       },
       {
         "id": "827d6f3b",
@@ -666,67 +823,67 @@
       },
       {
         "id": "13ee6bef",
-        "summary": "Separate infrastructure needs for CPU and GPU make scaling expensive and add management overhead."
+        "summary": "Separate infrastructure needs like CPU for product versus GPU for models make scaling expensive and manageability difficult."
       },
       {
         "id": "5fd9cca1",
-        "summary": "The real barrier to building AI-native applications is the sheer duplication and disconnect in tooling that developers deal with."
+        "summary": "The sheer duplication and disconnect in tooling is the real barrier to building AI-native applications right now."
       },
       {
         "id": "8fd59b8a",
-        "summary": "Unbody's journey illustrates building on Weaviate as a foundation."
+        "summary": "The image depicts Unbody's journey building on Weaviate as a foundation."
       },
       {
         "id": "ea5768e2",
-        "summary": "Unbody discovered that Weaviate could perform standard database operations while supporting AI-native functions, prompting a rethink of their approach."
+        "summary": "Discovering Weaviate allowed Unbody to perform standard database operations while supporting AI-native functions, prompting a rethink of their approach."
       },
       {
         "id": "e544213c",
-        "summary": "Realizing they could consolidate the AI and product stacks into one, they used Weaviate as a primary database foundation."
+        "summary": "Weaviate enabled the consolidation of separate systems into a single, unified stack that is AI-native at its core."
       },
       {
         "id": "4eb976e7",
-        "summary": "Unbody has expanded on this foundation to create a single cohesive stack that lets developers build AI-native applications without managing separate systems."
+        "summary": "Unbody has expanded on this foundation to provide a cohesive stack that lets developers build AI-native applications without managing separate systems."
       },
       {
         "id": "b87ddfaa",
-        "summary": "Building Unbody involves merging two worlds into one stack."
+        "summary": "This section discusses building Unbody by merging two worlds into one stack."
       },
       {
         "id": "22a2a325",
-        "summary": "The diagram illustrates merging AI and product stacks into one unified stack with Unbody."
+        "summary": "The image illustrates merging AI and product stacks into one unified stack with Unbody."
       },
       {
         "id": "67c9e493",
-        "summary": "Unbody was built as a framework where developers use AI as part of the product stack, ensuring APIs, data processing, and logging work together."
+        "summary": "Unbody was built as a framework where developers can finally use AI as part of the product stack, not as an add-on."
       },
       {
         "id": "87256add",
-        "summary": "AI-native refers to software where the AI model is essential and the app would not exist without it."
+        "summary": "AI-native software refers to applications where the AI model is essential and the app cannot exist without it."
       },
       {
         "id": "6c4888d9",
-        "summary": "A key concept helps define the core characteristics of AI-native applications."
+        "summary": "A key concept defining AI-native applications is how they reshape human interaction with software."
       },
       {
         "id": "3f37fb92",
-        "summary": "Users are no longer seeking information, but answers."
+        "summary": "A blockquote emphasizes that users are no longer seeking information, but answers."
       },
       {
         "id": "bb986cb0",
-        "summary": "This single shift is reshaping how humans interact with software and driving the transition to AI-native design."
+        "summary": "This shift from seeking information to answers drives the transition to AI-native design."
       },
       {
         "id": "ef963faa",
-        "summary": "Users now want direct answers efficiently rather than sifting through endless information or forums."
+        "summary": "Users now want direct, efficient answers rather than sifting through endless information, marking a fundamental change in how we interact with software."
       },
       {
         "id": "3db7d362",
-        "summary": "AI-native software provides context, understanding, and action-ready responses rather than just data."
+        "summary": "AI-native software acts as a transformation where apps provide context, understanding, and action-ready responses."
       },
       {
         "id": "648f8f17",
-        "summary": "The 4 Core Components of AI-Native Applications."
+        "summary": "This section introduces the four core components of AI-native applications."
       },
       {
         "id": "cdb1553b",
@@ -734,47 +891,47 @@
       },
       {
         "id": "64768903",
-        "summary": "AI-native apps utilize a knowledge-base instead of a traditional database."
+        "summary": "The image shows the concept of a knowledge-base replacing a traditional database."
       },
       {
         "id": "767b40f2",
-        "summary": "Traditional databases store data, but AI-native apps need an enhanced knowledge-base that provides real answers."
+        "summary": "AI-native apps need a knowledge-base that provides real answers through a data enhancement pipeline, not just a traditional database storing data."
       },
       {
         "id": "35f0de97",
-        "summary": "This image displays the Unbody data enhancement pipeline features."
+        "summary": "The image illustrates features of the Unbody data enhancement pipeline."
       },
       {
         "id": "ae9cc9e1",
-        "summary": "Image Captioning adds captions to images to make visual content searchable."
+        "summary": "Image captioning adds captions to images to make visual content searchable."
       },
       {
         "id": "dcdd9037",
-        "summary": "Text Extraction pulls text from images or scans and integrates it into the knowledge-base."
+        "summary": "Text extraction pulls text from images or scans and integrates it into the knowledge-base."
       },
       {
         "id": "bc0e9560",
-        "summary": "Video Transcription transforms audio into searchable text."
+        "summary": "Video transcription transforms audio into searchable text for the knowledge-base."
       },
       {
         "id": "0bb20b58",
-        "summary": "Summarization and Keyword Extraction processes documents for SEO or content analysis."
+        "summary": "Summarization and keyword extraction processes documents for SEO or content analysis."
       },
       {
         "id": "c9b8e597",
-        "summary": "Website Content Scraping fetches and structures data from URLs to bring external content into the system."
+        "summary": "Website content scraping fetches and structures data from URLs to bring external content into the system."
       },
       {
         "id": "93f320e8",
-        "summary": "This enhanced knowledge-base allows for richer, contextual answers beyond static data."
+        "summary": "This enhanced knowledge-base enables the provision of richer, contextual answers beyond static data."
       },
       {
         "id": "2f6de5cf",
-        "summary": "AI-native applications need to work with natural language as a main input, which requires converting it into structured operations."
+        "summary": "Unbody built a query-parser endpoint because AI-native applications need to work with natural language as a main input."
       },
       {
         "id": "1efc2bfb",
-        "summary": "The query-parser turns natural language intent into structured JSON."
+        "summary": "The image shows the query-parser turning natural language intent into structured JSON."
       },
       {
         "id": "9e608eba",
@@ -782,19 +939,19 @@
       },
       {
         "id": "3a4337b7",
-        "summary": "The output is structured JSON ready for database retrieval or further processing."
+        "summary": "The output is structured JSON ready for the next action, such as database retrieval or further processing."
       },
       {
         "id": "76cb2f26",
-        "summary": "This query-parser bridges the gap between language input and backend operations."
+        "summary": "The query-parser bridges the gap between language input and backend operations to save developers effort."
       },
       {
         "id": "e8e8b433",
-        "summary": "Building an app that understands users requires handling data from multiple sources and in various formats like text, image, and video."
+        "summary": "Building an app that understands users requires handling data from multiple sources and formats like text, images, and video."
       },
       {
         "id": "4993e9a9",
-        "summary": "Unbody features data-source and data-type agnostic integration."
+        "summary": "The image depicts data-source and data-type agnostic integration with Unbody."
       },
       {
         "id": "b1429d04",
@@ -802,41 +959,40 @@
       },
       {
         "id": "254ec7f5",
-        "summary": "Plugin-Based Data Integration connects seamlessly to cloud storage and messaging platforms."
+        "summary": "Plugin-based data integration connects seamlessly to cloud storage and messaging platforms."
       },
       {
         "id": "b605230e",
-        "summary": "The PUSH API allows any data schema to be pushed directly without strict structure requirements."
+        "summary": "The PUSH API allows any data schema to be pushed directly without a strict structure."
       },
       {
         "id": "7dd90a1d",
-        "summary": "Weaviate’s flexibility allows Unbody to bring text, images, and embeddings into one cohesive schema."
+        "summary": "Weaviate enables a unified schema that processes text, images, and embeddings together in one system."
       },
       {
         "id": "5f10e892",
-        "summary": "In an AI-native ecosystem, automation becomes a core principle where products focus on how content is presented and tailored."
+        "summary": "In an AI-native ecosystem, automation becomes a core principle where content is dynamically tailored rather than manually created."
       },
       {
         "id": "fdbeffe4",
-        "summary": "Content management is evolving into prompt management."
+        "summary": "The image shows content management evolving into prompt management."
       },
       {
         "id": "dda1d407",
-        "summary": "Content management is evolving into prompt management where defined prompts guide AI in generating and structuring content dynamically."
+        "summary": "Content management is evolving into prompt management, where prompts guide AI in generating content to dynamically adapt to user needs."
       }
     ],
     "relatedTopics": [
       "Software Architecture",
       "Artificial Intelligence",
-      "Database Management",
-      "Product Design",
-      "Developer Experience"
+      "Developer Tools",
+      "Backend Development",
+      "Vector Search"
     ],
     "targetAudience": [
       "developers",
-      "product-managers",
       "founders",
-      "designers"
+      "product-managers"
     ],
     "tone": "technical",
     "readingTime": 8
@@ -847,51 +1003,51 @@
     "publishDate": "2024-03-03",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "A deeper dive into AI development reveals a complex ecosystem of strategic considerations and technical hurdles for businesses and developers. This post explores solutions to streamline the path from concept to deployment by simplifying data integration and maintenance.",
+    "blurb": "Navigating the complex ecosystem of AI development often presents a maze of query languages and escalating costs for both developers and business owners. This post demystifies the technical terrain and introduces Unbody as a pivotal solution to streamline the path from concept to deployment.",
     "keywords": [
       "AI development",
       "LLM apps",
       "RAG",
-      "technical stack",
+      "Unbody",
       "vector databases",
       "machine learning",
-      "Unbody",
-      "automation",
-      "business strategy"
+      "tech stack",
+      "LlamaIndex",
+      "AI integration"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "4fbd7f0c",
-        "summary": "A deeper dive into AI development reveals a complex ecosystem that poses significant strategic considerations for business owners."
+        "summary": "A deeper dive into AI development reveals a complex ecosystem that developers grapple with and poses significant strategic considerations for business owners."
       },
       {
         "id": "0efb5cf2",
-        "summary": "This section addresses the developer's puzzle and the business quandary."
+        "summary": "The section discusses the developer's puzzle and the business quandary."
       },
       {
         "id": "37ab1ebc",
-        "summary": "This image displays a regular tech stack for a simple chatbot."
+        "summary": "An image illustrates a regular tech stack for a simple chatbot."
       },
       {
         "id": "cf2c6c9a",
-        "summary": "For business owners, this complexity translates into the need to assemble a team of specialized AI engineers, escalating costs, and extending timelines."
+        "summary": "For business owners, this complexity translates into a stark reality involving the need to assemble a team of specialized AI engineers and escalating costs."
       },
       {
         "id": "f63ec9e7",
-        "summary": "Jery Liu notes that building LLM apps comes laden with decisions that can daunt even seasoned developers."
+        "summary": "Building LLM apps comes laden with decisions that can daunt even seasoned developers, creating a strategic bottleneck that can derail innovation."
       },
       {
         "id": "57add219",
-        "summary": "This image illustrates the decisions involved in building an LLM app."
+        "summary": "An image displays the decisions involved in building an LLM app."
       },
       {
         "id": "c7a3c704",
-        "summary": "Jery Liu outlines the decisions you have to make when it comes to building an LLM app."
+        "summary": "Jery Liu, CEO of LlamaIndex, outlines the decisions you have to make when it comes to building an LLM app."
       },
       {
         "id": "18875dd4",
-        "summary": "The technological symphony required to develop, deploy, and maintain AI applications often plays out of tune, adding layers of complexity."
+        "summary": "The technological symphony required to develop, deploy, and maintain AI applications often plays out of tune, extending layers of complexity."
       },
       {
         "id": "1eb0407d",
@@ -899,7 +1055,7 @@
       },
       {
         "id": "771f3fd8",
-        "summary": "To demystify the terrain, let's clarify some key terms that often populate discussions around AI development."
+        "summary": "To demystify the terrain, let's clarify key terms that often populate discussions around AI development."
       },
       {
         "id": "a908c3fa",
@@ -919,7 +1075,7 @@
       },
       {
         "id": "1639f3b3",
-        "summary": "Multimodal is AI's ability to process various data types, like text and images, simultaneously."
+        "summary": "Multimodal refers to AI's ability to process various data types, like text and images, simultaneously."
       },
       {
         "id": "e4c7bce0",
@@ -927,30 +1083,30 @@
       },
       {
         "id": "13d0a607",
-        "summary": "Unbody emerges as a pivotal solution, transforming the AI development maze into a straightforward path for developers and business owners."
+        "summary": "Unbody emerges as a pivotal solution, transforming the AI development maze into a straightforward path for both developers and business owners."
       },
       {
         "id": "3c78dd5e",
-        "summary": "Unbody automates the intricate processes of data cleaning and integration, leading to lower overheads and a faster time-to-market."
+        "summary": "Unbody automates intricate processes, resulting in lower overheads and a faster time-to-market for business owners."
       },
       {
         "id": "67f4d164",
-        "summary": "Unbody encapsulates the entire lifecycle from development through deployment, making AI not just a technical possibility but a strategic asset."
+        "summary": "From development through deployment, Unbody encapsulates the entire lifecycle, making AI not just a technical possibility but a strategic asset."
       },
       {
         "id": "86ad17cb",
-        "summary": "With Unbody, the complexities of AI development, deployment, and maintenance become manageable, allowing businesses to focus on innovation."
+        "summary": "With Unbody, the complexities of AI development, deployment, and maintenance become manageable, allowing businesses to focus on innovation and growth."
       },
       {
         "id": "1713445c",
-        "summary": "Our experts are more than happy to discuss how Unbody can bring your AI aspirations to life with a simple conversation."
+        "summary": "Reach out to discuss how Unbody can bring your AI aspirations to life with a simple conversation."
       }
     ],
     "relatedTopics": [
-      "Artificial Intelligence",
+      "AI Engineering",
       "Software Architecture",
-      "Developer Tools",
-      "Business Strategy"
+      "Business Strategy",
+      "Data Pipelines"
     ],
     "targetAudience": [
       "developers",
@@ -966,18 +1122,17 @@
     "publishDate": "2023-11-28",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Discover how to bypass the complex stack of AI development by using Unbody, a headless API that aggregates scattered private data into a single endpoint for adaptive, intelligent applications. This post breaks down the four seamless layers of the Unbody pipeline, from data aggregation to AI-enhanced user interfaces.",
+    "blurb": "Unbody resolves the complexity of modern AI development by aggregating scattered data into a single, intelligent GraphQL endpoint. This tool allows developers to skip the headache of managing vector databases and focus on building adaptive, privacy-aware applications.",
     "keywords": [
-      "Unbody",
-      "headless API",
-      "RAG",
-      "LLM",
-      "vector database",
       "AI development",
+      "Unbody",
       "GraphQL",
-      "data aggregation",
+      "LLM",
+      "RAG",
+      "vector database",
+      "headless API",
       "semantic search",
-      "generative AI"
+      "data aggregation"
     ],
     "category": "explainer",
     "summary": [
@@ -987,83 +1142,83 @@
       },
       {
         "id": "b1611c11",
-        "summary": "Creating AI apps is tough, but non-ai developers should not feel excluded from AI development."
+        "summary": "Creating AI apps is tough, but Unbody ensures non-AI developers are not excluded from this field."
       },
       {
         "id": "e077d1b7",
-        "summary": "ChatGPT showed everyone the power of AI, making us all want more human-like interactions with our apps."
+        "summary": "ChatGPT demonstrated the power of AI to everyone, driving the demand for apps that understand and respond like people."
       },
       {
         "id": "933790e0",
-        "summary": "Blending AI capabilities with your unique content is where things get hairy."
+        "summary": "Blending AI capabilities with unique content is complicated and drives the shift in technology interaction."
       },
       {
         "id": "42f79426",
-        "summary": "AIs are schooled in general knowledge, but your unique, private data is a different story."
+        "summary": "While AI is schooled in general knowledge, it struggles with your unique, private data."
       },
       {
         "id": "5e01e6dd",
-        "summary": "This leap from generic to personal is tough because the system needs to adapt to specific needs while keeping things private."
+        "summary": "The challenge is teaching systems to recognize the subtleties of distinct data while keeping things private."
       },
       {
         "id": "908c9769",
-        "summary": "Challenge 2 involves your data, where it lives, and its many faces."
+        "summary": "Challenge 2 involves understanding where your data actually lives and its dispersed nature."
       },
       {
         "id": "474edc83",
-        "summary": "Our digital lives are scattered across various platforms, creating a kaleidoscope of data forms that AI struggles to understand."
+        "summary": "Our digital lives are scattered across various platforms, creating a kaleidoscope of data that AI struggles to navigate."
       },
       {
         "id": "a475edfa",
-        "summary": "The challenge is to make AI savvy enough to navigate and understand these varied data landscapes without making us change our habits."
+        "summary": "Making AI savvy enough to understand varied data landscapes without forcing user habit changes is a significant feat."
       },
       {
         "id": "f1280ba4",
-        "summary": "A regular tech stack for a simple chatbot involves many components."
+        "summary": "An image illustrating a regular tech stack for a simple chatbot."
       },
       {
         "id": "8e0c8d25",
-        "summary": "This image displays a regular tech stack for a simple chatbot."
+        "summary": "Caption for the image depicting a regular tech stack for a simple chatbot."
       },
       {
         "id": "4079b858",
-        "summary": "Dealing with scattered, diverse data is where the rubber meets the road for developers."
+        "summary": "Personalizing AI and dealing with scattered data is where things get interesting for developers."
       },
       {
         "id": "76c75a4d",
-        "summary": "Developers face a puzzle juggling query languages and document parsers when mixing tools like LangChain and vector databases."
+        "summary": "Developers face a puzzle of mixing tools like LangChain and vector databases when building AI apps."
       },
       {
         "id": "11f101c3",
-        "summary": "A diagram illustrates the decisions involved in building an LLM app."
+        "summary": "An image showing the decisions involved in building an LLM app."
       },
       {
         "id": "caba0507",
-        "summary": "Jery Liu, CEO of LlamaIndex, outlines the decisions you have to make when building an LLM app."
+        "summary": "Caption attributing the LLM app decision diagram to Jerry Liu."
       },
       {
         "id": "b88ac072",
-        "summary": "Unbody was born to make the symphony of AI tools harmonious, turning a tech headache into a manageable endeavor."
+        "summary": "Unbody was born to make the symphony of disparate AI tools harmonious and manageable."
       },
       {
         "id": "8faa0878",
-        "summary": "Tying it all together reveals the cascade of challenges."
+        "summary": "Tying together the cascade of challenges in AI development."
       },
       {
         "id": "168e484c",
-        "summary": "The combination of personalization, diverse data storage, and intricate AI tools creates a perfect storm for developers."
+        "summary": "The combination of personalization, diverse data storage, and complex AI tools forms a perfect storm for developers."
       },
       {
         "id": "aeddc73f",
-        "summary": "Before diving into how Unbody simplifies this, let's decode some buzzwords so we are on the same page."
+        "summary": "Before explaining Unbody, it is useful to decode some common buzzwords to clear up the jargon."
       },
       {
         "id": "55464fe7",
-        "summary": "LLMs are the wizards of language, trained to interpret and respond just like a person would."
+        "summary": "LLMs are the brains behind AI that understand and generate human-like text."
       },
       {
         "id": "2a4ce6c6",
-        "summary": "RAG helps AI pull in extra information from a user's various data sources to make its responses even smarter."
+        "summary": "RAG acts like a research assistant, pulling extra info from user data to make AI smarter."
       },
       {
         "id": "e5f19c37",
@@ -1071,115 +1226,115 @@
       },
       {
         "id": "be8d8a64",
-        "summary": "Vectorizing and Embeddings involve converting different types of data into a format that AI can understand."
+        "summary": "Vectorizing converts different data types into a format AI can understand."
       },
       {
         "id": "e504f3e0",
-        "summary": "Multimodal refers to AI's ability to understand and process more than one type of data all at once."
+        "summary": "Multimodal refers to AI's ability to process multiple data types like text and images simultaneously."
       },
       {
         "id": "2d1e3938",
-        "summary": "Vector databases are super-smart libraries designed for the kind of multi-dimensional data that AI needs."
+        "summary": "Vector databases are smart libraries designed to store and retrieve complex, multi-dimensional data."
       },
       {
         "id": "bf075b1a",
-        "summary": "With this foundation laid, we're ready to dive into how Unbody addresses these challenges."
+        "summary": "Unbody addresses these challenges to make AI app development a pleasure for developers."
       },
       {
         "id": "649b09c6",
-        "summary": "Unbody puts complex AI terms into one magical box, acting as an invisible AI layer and headless API."
+        "summary": "Unbody acts as an invisible AI layer that aggregates and transforms your data into a single GraphQL endpoint."
       },
       {
         "id": "4aec8f52",
-        "summary": "This diagram illustrates Unbody as an invisible AI layer and headless API."
+        "summary": "Image illustrating Unbody as an invisible AI layer and headless API."
       },
       {
         "id": "a9ddd16a",
-        "summary": "Building an app with Unbody unfolds over four layers that streamline your workflow without overcomplicating it."
+        "summary": "Building an integration with Unbody unfolds over four layers that streamline your workflow."
       },
       {
         "id": "bccf5475",
-        "summary": "The 4 layers create a seamless modular AI pipeline from private data to frontend."
+        "summary": "Caption describing the 4 layers of a seamless modular AI pipeline."
       },
       {
         "id": "744d195f",
-        "summary": "Layer 1 sets a strong foundation through the seamless aggregation of your data."
+        "summary": "Layer 1 is the seamless aggregation of your data, setting a foundation for AI processing."
       },
       {
         "id": "815bec18",
-        "summary": "Layer 1 connects your data to Unbody."
+        "summary": "GIF demonstrating how to connect data to Unbody in layer 1."
       },
       {
         "id": "7f8c6bff",
-        "summary": "Telling Unbody where your data lives takes 4 simple clicks."
+        "summary": "Connecting your data to Unbody takes just 4 simple clicks."
       },
       {
         "id": "9bc14f0b",
-        "summary": "Unbody effortlessly connects with third-party integrations like Google Drive, Discord, and Slack."
+        "summary": "Unbody effortlessly connects with platforms like Google Drive, Discord, and Slack."
       },
       {
         "id": "596c7f29",
-        "summary": "Unbody handles versatile data formats from PDFs to audio files, ensuring comprehensive coverage."
+        "summary": "Unbody handles a wide range of data formats, from PDFs to audio files."
       },
       {
         "id": "c4766fea",
-        "summary": "We maintain an ever-expanding list of supported providers and data types based on your feedback."
+        "summary": "We maintain an ever-expanding list of supported providers and data types based on user input."
       },
       {
         "id": "7cd77faf",
-        "summary": "Layer 1 ensures all your data is meticulously gathered and prepared for sophisticated AI operations."
+        "summary": "Layer 1 ensures all your data is meticulously gathered and prepared for AI operations."
       },
       {
         "id": "e4202e60",
-        "summary": "Layer 2 is where AI data processing and enhancement happens."
+        "summary": "Layer 2 is where AI data processing and enhancement takes place."
       },
       {
         "id": "efb81afb",
-        "summary": "Layer 2 is where the advanced functionalities of LLMs and RAG come into play."
+        "summary": "This layer uses LLMs and RAG to transform raw data into AI-readable formats."
       },
       {
         "id": "fdc129da",
-        "summary": "Data Transformation in Layer 2 handles the transformation of raw data into formats that AI can understand."
+        "summary": "Data transformation involves breaking down content into forms suitable for AI processing."
       },
       {
         "id": "f519b04b",
-        "summary": "Unbody adopts a modular approach, allowing you to choose different vectorizers and LLMs for different inputs."
+        "summary": "Unbody allows a modular approach where you can choose specific vectorizers and LLMs."
       },
       {
         "id": "abb13729",
-        "summary": "In Layer 2, you can compose your favorite AI engines for all data types."
+        "summary": "GIF showing Layer 2 composition of AI engines for various data types."
       },
       {
         "id": "b506ae6a",
-        "summary": "Layer 2 allows you to compose your favorite AI engines for text, image, audio, and video."
+        "summary": "Caption highlighting the composition of AI engines for text, image, audio, and video in Layer 2."
       },
       {
         "id": "96e0dc4c",
-        "summary": "For Text, options might include popular LLMs like OpenAI's GPT models."
+        "summary": "Text options include popular LLMs like OpenAI's GPT models."
       },
       {
         "id": "1b57f418",
-        "summary": "For Images, tools are available to turn images into searchable and analyzable data."
+        "summary": "Tools are available to turn images into searchable and analyzable data."
       },
       {
         "id": "9b1bf64e",
-        "summary": "For Multimodal Data, Unbody provides solutions that handle a mix of text, images, and more."
+        "summary": "Unbody provides solutions for handling multimodal data mixes."
       },
       {
         "id": "15e3e9c9",
-        "summary": "Layer 2 also takes care of complex tasks like image captioning and auto transcription."
+        "summary": "Layer 2 includes complex tasks like image captioning and auto transcription."
       },
       {
         "id": "b5b56a18",
-        "summary": "Layer 2 transforms your data into a rich resource for AI applications, making complexity manageable."
+        "summary": "Layer 2 transforms data into a manageable, rich resource for AI applications."
       },
       {
         "id": "086f24a5",
-        "summary": "Layer 3 marks the phase where the magic of AI processing comes to fruition and data is ready for interaction."
+        "summary": "Layer 3 delivers processed data through Unbody's robust APIs for interaction."
       },
       {
         "id": "ed0452c2",
-        "summary": "The Content API uses GraphQL to simplify complex queries and make data retrieval efficient."
+        "summary": "The Content API uses GraphQL to simplify interaction and efficient data retrieval."
       },
       {
         "id": "322b1f6b",
@@ -1187,27 +1342,27 @@
       },
       {
         "id": "68518d26",
-        "summary": "Basic content retrieval covers everything from getting multiple documents to sorts and pagination."
+        "summary": "Basic content retrieval supports standard database features like filters, sorts, and pagination."
       },
       {
         "id": "823db597",
-        "summary": "This gif demonstrates basic content retrieval using Unbody."
+        "summary": "GIF demonstrating basic content retrieval capabilities."
       },
       {
         "id": "d126b8bc",
-        "summary": "Semantic Search allows you to dive deep into the meaning behind words and phrases in your data."
+        "summary": "Semantic Search allows you to dive deep into the meaning behind words in your data."
       },
       {
         "id": "b9751171",
-        "summary": "This gif demonstrates the semantic search functionality."
+        "summary": "GIF demonstrating semantic search functionality."
       },
       {
         "id": "b462d220",
-        "summary": "This gif demonstrates the generative search functionality."
+        "summary": "GIF demonstrating generative search capabilities."
       },
       {
         "id": "debe789b",
-        "summary": "Q&A provides direct answers to queries using your data."
+        "summary": "Q&A functionality provides direct answers to queries using your data."
       },
       {
         "id": "4d2bcd93",
@@ -1215,15 +1370,15 @@
       },
       {
         "id": "4486a4d2",
-        "summary": "Visual Search harnesses AI to search and analyze visual content."
+        "summary": "Visual Search harnesses AI to analyze and search visual content."
       },
       {
         "id": "5cae8b61",
-        "summary": "Chat capabilities allow for intelligent and context-aware conversations."
+        "summary": "Chat features enable intelligent, context-aware conversations."
       },
       {
         "id": "5f9402c7",
-        "summary": "Classification allows you to categorize and organize your data smartly."
+        "summary": "Classification smartly categorizes and organizes your data."
       },
       {
         "id": "0c05540d",
@@ -1231,35 +1386,35 @@
       },
       {
         "id": "c053b360",
-        "summary": "Entity Extraction identifies and extracts key information."
+        "summary": "Entity Extraction identifies and extracts key information from data."
       },
       {
         "id": "ce04af0e",
-        "summary": "Our Image API, powered by Imgix, offers a range of tools for image processing and manipulation."
+        "summary": "The Image API, powered by Imgix, offers tools for image processing and manipulation."
       },
       {
         "id": "c72667bd",
-        "summary": "Our Video API, in collaboration with Mux, brings advanced video functionalities to your fingertips."
+        "summary": "The Video API collaboration with Mux brings advanced video functionalities."
       },
       {
         "id": "664fa27e",
-        "summary": "Layer 3 is where your data becomes an interactive asset, ready to be used in innovative ways."
+        "summary": "Layer 3 allows developers to use AI-enhanced data as an interactive asset."
       },
       {
         "id": "26e63130",
-        "summary": "Layer 4 is the stage where Unbody magic really takes shape and becomes tangible."
+        "summary": "Layer 4 transforms processed Unbody data into tangible, interactive interfaces."
       },
       {
         "id": "a7f3fc25",
-        "summary": "It is time to create intuitive interfaces where your creativity leverages processed data to build unique applications."
+        "summary": "Developers leverage processed data in this layer to create intuitive user interfaces."
       },
       {
         "id": "b89ec75d",
-        "summary": "Unbody’s applications fall into two major categories."
+        "summary": "Unbody’s applications generally fall into two major categories."
       },
       {
         "id": "b0eba8b4",
-        "summary": "This image provides an overview of various Unbody AI use cases."
+        "summary": "Image overviewing various Unbody AI use cases."
       },
       {
         "id": "03f51183",
@@ -1271,63 +1426,63 @@
       },
       {
         "id": "db8b9bac",
-        "summary": "Generative search is used to create content or find connections within data."
+        "summary": "Generative search helps create content or find connections within data."
       },
       {
         "id": "22e234df",
-        "summary": "Chatbots and private AI assistants employ conversational agents for various purposes."
+        "summary": "Chatbots and private AI assistants can be developed for various purposes."
       },
       {
         "id": "8b76d46b",
-        "summary": "Q&A systems build systems that provide direct answers from large datasets."
+        "summary": "Q&A systems build interfaces that provide direct answers from large datasets."
       },
       {
         "id": "7500f310",
-        "summary": "These functionalities enable you to integrate sophisticated AI solutions into your applications."
+        "summary": "These functionalities enable the integration of sophisticated AI solutions into applications."
       },
       {
         "id": "a4b557f8",
-        "summary": "The IsiaUrbino platform uses Google Drive as a CMS via Unbody."
+        "summary": "Image showing the IsiaUrbino platform using Google Drive as CMS via Unbody."
       },
       {
         "id": "606fc661",
-        "summary": "Unbody enabled the IsiaUrbino platform to offer their students the use of Google Drive as their CMS."
+        "summary": "Caption explaining how Unbody enabled IsiaUrbino students to use Google Drive as their CMS."
       },
       {
         "id": "92961f03",
-        "summary": "Unbody serves as a next-generation solution for managing website content, replacing traditional headless CMSs."
+        "summary": "Unbody offers an intelligent way to manage website content, replacing traditional headless CMSs."
       },
       {
         "id": "eef548c0",
-        "summary": "Layer 4 marks the culmination where developers harness Unbody's full potential for user-centric applications."
+        "summary": "Layer 4 culminates the process, enabling developers to deliver smart, user-centric applications."
       },
       {
         "id": "3fa7d1d6",
-        "summary": "I hope this post has shed light on the challenges of AI development and how Unbody might be the ally you need."
+        "summary": "Unbody aims to be the ally you need to navigate the challenges of AI development."
       },
       {
         "id": "688a077a",
-        "summary": "A huge shout-out to the amazing team at Weaviate, the powerhouse engine behind Unbody!"
+        "summary": "A shout-out to Weaviate, the powerhouse engine behind Unbody."
       },
       {
         "id": "36494141",
-        "summary": "The gap between tech capabilities and practical applications is vast, and your creativity is key to bridging it."
+        "summary": "Developers are encouraged to dive into AI development and bridge the gap between tech and application."
       },
       {
         "id": "705b7b06",
-        "summary": "Check out Xbody to see how you can be a part of our community of change-makers."
+        "summary": "Check out Xbody to join the community of change-makers."
       },
       {
         "id": "0eebe709",
-        "summary": "Our freemium plan is available for you to sign up and start building your AI applications today!"
+        "summary": "Sign up for the freemium plan to start building your AI applications today."
       }
     ],
     "relatedTopics": [
-      "artificial intelligence",
-      "software architecture",
-      "data engineering",
-      "machine learning",
-      "API integration"
+      "Artificial Intelligence",
+      "Software Development",
+      "Data Engineering",
+      "API Design",
+      "Content Management"
     ],
     "targetAudience": [
       "developers",
@@ -1343,23 +1498,24 @@
     "publishDate": "2024-03-03",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "While traditional AI integration requires extensive coding and specialized infrastructure, Unbody proposes a simplified approach. This post explores the transition from complex AI development to efficient, single-line deployment strategies.",
+    "blurb": "Unbody simplifies the complex landscape of AI integration by reducing code requirements to a single line and optimizing resource allocation. This post explores how businesses can overcome traditional deployment hurdles to achieve rapid, scalable, and cost-effective AI operations.",
     "keywords": [
       "AI integration",
       "AI-native apps",
-      "QA bot",
-      "semantic search",
       "resource optimization",
+      "semantic search",
+      "business intelligence",
+      "rapid deployment",
       "operational cost savings",
-      "machine learning models",
-      "Unbody platform",
-      "business intelligence"
+      "low-code",
+      "infrastructure management",
+      "Unbody"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "bb650396",
-        "summary": "In this post, we dive into the characteristics of AI-native apps and what it means to be AI-native."
+        "summary": "AI-first is becoming the new mobile-first, and we dive into the characteristics of AI-native apps."
       },
       {
         "id": "461a5ba0",
@@ -1367,7 +1523,7 @@
       },
       {
         "id": "0e1b6335",
-        "summary": "The intricacies of conventional AI deployment."
+        "summary": "The Intricacies of Conventional AI Deployment"
       },
       {
         "id": "2a26a58b",
@@ -1375,23 +1531,23 @@
       },
       {
         "id": "73171793",
-        "summary": "Building a simple QA bot often involves over a thousand lines of code, a testament to the complexity required in the development phase."
+        "summary": "Building a simple QA bot often involves over a thousand lines of code, a testament to the complexity and time required in the development phase."
       },
       {
         "id": "1fd9d9ec",
-        "summary": "A regular setup requires extensive resources to manage databases and machine learning models, leading to increased costs."
+        "summary": "A regular setup requires extensive resources to manage databases and machine learning models, leading to increased costs and complexity."
       },
       {
         "id": "33cd0f3a",
-        "summary": "The dependency on specialized AI and Python expertise has often been a barrier slowing down the adaptability of AI solutions."
+        "summary": "The dependency on specialized AI and Python expertise has often been a barrier, slowing down the adaptability and scalability of AI solutions within businesses."
       },
       {
         "id": "f10ece18",
-        "summary": "Unbody’s approach to simplification and efficiency."
+        "summary": "Unbody’s Approach to Simplification and Efficiency"
       },
       {
         "id": "a82fe180",
-        "summary": "Unbody is redefining AI integration through its simplified, efficient, and user-friendly plug-and-play platform."
+        "summary": "Unbody is redefining AI integration through its simplified, efficient, and user-friendly platform."
       },
       {
         "id": "509d2957",
@@ -1399,11 +1555,11 @@
       },
       {
         "id": "f8caf722",
-        "summary": "Unbody’s platform mitigates the need for elaborate infrastructure, optimizing resource allocation and reducing operational overhead."
+        "summary": "Unbody’s platform mitigates the need for elaborate infrastructure, thus optimizing resource allocation and reducing operational overhead."
       },
       {
         "id": "6b634401",
-        "summary": "By offering a platform that does not require deep technical AI expertise, Unbody broadens the scope of who can implement AI tools."
+        "summary": "By offering a platform that does not require deep technical AI expertise, Unbody broadens the scope of who can implement and benefit from AI tools."
       },
       {
         "id": "29576895",
@@ -1411,15 +1567,15 @@
       },
       {
         "id": "09131e05",
-        "summary": "By integrating advanced semantic search, businesses can derive nuanced insights from their data for strategic decision-making."
+        "summary": "By integrating advanced semantic search, businesses can derive nuanced insights from their data."
       },
       {
         "id": "f45ea1d7",
-        "summary": "Unbody’s tools can transform structured and unstructured data from documents and databases into organized, actionable information."
+        "summary": "Unbody’s tools can transform structured & unstructured data from documents and databases into organized information, making it actionable and accessible."
       },
       {
         "id": "f4433c52",
-        "summary": "Unbody’s adaptable platform can be customized to suit diverse business needs, from customer service enhancements to predictive analytics."
+        "summary": "Unbody’s adaptable platform can be customized to suit diverse business needs, from customer service enhancements to sophisticated predictive analytics."
       },
       {
         "id": "9ba690cc",
@@ -1431,15 +1587,15 @@
       },
       {
         "id": "dbedf520",
-        "summary": "The platform’s efficiency can significantly cut costs associated with development time, infrastructure, and specialized personnel."
+        "summary": "The platform’s efficiency can significantly cut costs associated with development time, infrastructure, and the need for specialized personnel."
       },
       {
         "id": "e6a0b086",
-        "summary": "Unbody’s architecture is designed to scale alongside your business, accommodating growth without introducing additional complexity."
+        "summary": "Unbody’s architecture is designed to scale alongside your business, accommodating growth and changes without introducing additional complexity."
       },
       {
         "id": "8735a35f",
-        "summary": "The Unbody development team is committed to bridging the gap between ambition and implementation for both tech professionals and enthusiasts."
+        "summary": "As we've explored the transformative potential of AI in business, it's clear that the landscape is evolving to be more inclusive and accessible."
       },
       {
         "id": "e2021734",
@@ -1449,15 +1605,15 @@
     "relatedTopics": [
       "Artificial Intelligence",
       "Software Architecture",
-      "Digital Transformation",
-      "No-Code Tools"
+      "Business Strategy",
+      "Data Management"
     ],
     "targetAudience": [
-      "developers",
       "founders",
+      "developers",
       "product-managers"
     ],
-    "tone": "technical",
+    "tone": "announcement",
     "readingTime": 3
   },
   {
@@ -1466,159 +1622,158 @@
     "publishDate": "2024-08-13",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Founders are realizing that AI is a mandatory necessity for SaaS businesses, but building complex Retrieval-Augmented Generation (RAG) systems in-house is fraught with challenges. This post argues why relying on ready-made solutions like Unbody is superior to managing the costs, risks, and technical debt of custom infrastructure.",
+    "blurb": "Building your own RAG system is a massive undertaking that costs significant time and money. Discover why in-house AI development is a risky bet and how Unbody automates the entire process for SaaS founders.",
     "keywords": [
       "RAG",
       "SaaS",
       "AI integration",
-      "data processing",
-      "vector database",
-      "generative AI",
-      "unbody",
-      "in-house development",
-      "hallucinations",
+      "Retrieval-Augmented Generation",
+      "Vector databases",
+      "In-house development",
+      "LLMs",
+      "Unbody",
       "AI infrastructure"
     ],
     "category": "essay",
     "summary": [
       {
         "id": "aefdf341",
-        "summary": "Founders are waking up to the fact that AI isn’t just a buzzword but a necessity because users don't just want information anymore; they want answers instantly."
+        "summary": "Founders are realizing that AI is a mandatory necessity because SaaS users now expect instant answers rather than just information."
       },
       {
         "id": "f9f2b5aa",
-        "summary": "AI is a necessity for modern SaaS products."
+        "summary": "An image illustrates that AI is a necessity for modern SaaS products."
       },
       {
         "id": "7fcc271e",
-        "summary": "If you are thinking about integrating AI, you have probably heard about RAG, which is already at the heart of most AI implementations."
+        "summary": "Most AI implementations and ideas are currently built on Retrieval-Augmented Generation (RAG)."
       },
       {
         "id": "cb3ae0a7",
-        "summary": "We need our own perplexity to handle complex queries by diving deep into specific data sets."
+        "summary": "RAG enables an AI to handle complex user queries by diving into specific company data like a knowledgeable colleague."
       },
       {
         "id": "7ea59044",
-        "summary": "We need our own ChatGPT tailored for our customer data to deliver spot-on answers unique to the business."
+        "summary": "Organizations need a ChatGPT tailored for customer data to deliver spot-on answers unique to the business using accumulated records."
       },
       {
         "id": "b1ab634b",
-        "summary": "Automating documentation processes with AI can save a ton of time by pulling the right information from databases and ensuring every piece of generated content is relevant."
+        "summary": "Automating documentation processes with RAG allows AI to pull relevant, contextually aware information from databases and apps like Slack."
       },
       {
         "id": "3c2572b1",
-        "summary": "RAG is just ChatGPT applied to your custom data, retrieving relevant information to generate responses that are contextually aware of your specific needs."
+        "summary": "RAG is essentially ChatGPT applied to custom data sources to generate smart, contextually aware responses."
       },
       {
         "id": "33650da2",
-        "summary": "As a founder, I feel obliged to share two catches with you."
+        "summary": "As a founder, I feel obliged to share two catches regarding RAG development."
       },
       {
         "id": "84c1821d",
-        "summary": "RAG alone won’t give you a complete product."
+        "summary": "RAG alone will not give you a complete product."
       },
       {
         "id": "5390bb73",
-        "summary": "These aren’t challenges you want to tackle in-house without serious expertise and resources."
+        "summary": "These challenges require serious expertise and resources, so you likely do not want to tackle them in-house."
       },
       {
         "id": "61df24da",
-        "summary": "This diagram outlines the 12 modules required to build a RAG system in-house."
+        "summary": "An image displays the 12 modules required to build a RAG system in-house."
       },
       {
         "id": "13aa7a9c",
-        "summary": "Building a RAG system is a beast featuring 12 different modules, each with its own set of challenges."
+        "summary": "Building a RAG system is a beast that involves 12 different modules with their own set of challenges."
       },
       {
         "id": "186b2301",
-        "summary": "You need live data integration because every time your data sources get updated, your AI system needs to get updated too."
+        "summary": "Data integration requires a live process where the AI system updates continuously as data sources change."
       },
       {
         "id": "e20ded46",
-        "summary": "You have to process that data to format it, chunk it, and make it usable for AI, which is absolutely necessary."
+        "summary": "Data processing involves formatting and chunking data to make it usable for AI."
       },
       {
         "id": "e74fa3d6",
-        "summary": "Setting up and maintaining a vector database for vectorized data is a time sink that you cannot just ignore."
+        "summary": "Vectorization and storage in a vector database is a time sink that requires setup and maintenance."
       },
       {
         "id": "393d6169",
-        "summary": "When a user query comes in, the system needs to parse it and interact with LLMs, which is where things get really tricky."
+        "summary": "Query parsing and execution involves running queries against the database and interacting with LLMs, which gets tricky."
       },
       {
         "id": "8895bc01",
-        "summary": "If you are building a full-scale AI-powered app, you are going to run into a whole new set of challenges."
+        "summary": "Building a full-scale AI-powered app introduces a whole new set of challenges beyond just the RAG system."
       },
       {
         "id": "036b5ed4",
-        "summary": "If you want to generate something like a user profile, you are going to need a primary database with an API that can handle structured data."
+        "summary": "Getting the structured output needed for user profiles requires a primary database API that handles structured data."
       },
       {
         "id": "4b7990b5",
-        "summary": "If your backend doesn’t support things like CDN or image optimization for media assets, you are looking at a lot more dependencies and costs."
+        "summary": "Media asset management for images and video adds dependencies and costs like CDNs and optimization."
       },
       {
         "id": "ea6469f8",
-        "summary": "Generative AI is risky because your AI might start spitting out nonsense called hallucinations, which requires specialized processes to prevent."
+        "summary": "To avoid hallucinations where AI spits out nonsense, you need specialized processes for customer-facing features."
       },
       {
         "id": "a9591f6a",
-        "summary": "Monitoring and maintenance are crucial if you want your AI to stay relevant and useful once it is live."
+        "summary": "Monitoring, maintenance, and analytics are crucial to keep the AI system relevant and useful after it goes live."
       },
       {
         "id": "bf2e66f3",
-        "summary": "Building this in-house is a terrible idea for reasons involving cost, time, and risk."
+        "summary": "Building this in-house is a terrible idea for several reasons."
       },
       {
         "id": "45fa5724",
-        "summary": "To build a solid AI team, you are looking at a minimum of $30k a month before thinking about infrastructure costs."
+        "summary": "The cost of hiring a solid AI team with ML engineers and data scientists starts at a minimum of $30k a month."
       },
       {
         "id": "88b24bfb",
-        "summary": "Building a team takes time, and if you are six months behind your competitors, you are done."
+        "summary": "Building a team takes time, putting you months behind competitors in a game where time is everything."
       },
       {
         "id": "b92e7f21",
-        "summary": "Hiring a freelancer carries risk because you might be left scrambling when OpenAI updates their API or your AI token expires."
+        "summary": "Hiring freelancers carries the risk of being left scrambling when APIs update or tokens expire after they are gone."
       },
       {
         "id": "6f4c670a",
-        "summary": "Unbody is presented as an all-in-one AI integration platform."
+        "summary": "An image shows Unbody as an all-in-one AI integration platform."
       },
       {
         "id": "b84bd559",
-        "summary": "Unbody is an all-in-one platform that automates the entire process from data integration to deployment with one streamlined API."
+        "summary": "Unbody automates the entire process from data integration to deployment with one streamlined API to take the pain out of AI integration."
       },
       {
         "id": "160ecfb7",
-        "summary": "We handle everything from data integration to query parsing so you don’t need to juggle multiple platforms or tools."
+        "summary": "The comprehensive AI pipeline handles data integration, processing, and vectorization so you do not need to juggle multiple tools."
       },
       {
         "id": "20b9db53",
-        "summary": "We have slashed development time from hundreds of hours to just minutes, giving you a huge edge over your competition."
+        "summary": "Unbody allows you to go from idea to deployment in minutes, slashing development time significantly."
       },
       {
         "id": "8de61ac3",
-        "summary": "Unbody is designed with a near-zero learning curve, making AI integration easy even if you are not an AI expert."
+        "summary": "Unbody is designed with a near-zero learning curve so developers do not need to be AI experts."
       },
       {
         "id": "f5eaa6d8",
-        "summary": "We are built on open-source so you are not locked into proprietary technology and can scale with your needs."
+        "summary": "The platform is built on open-source technology, ensuring it is scalable and you are not locked into proprietary tech."
       },
       {
         "id": "b2d05166",
-        "summary": "Trying to build a solution in-house is going to cost you time, money, and probably your sanity, whereas Unbody offers a ready-made solution."
+        "summary": "Because AI is complex and expensive to build in-house, Unbody offers a ready-made solution to let you focus on growing your business."
       },
       {
         "id": "2e7419c7",
-        "summary": "If you have any questions or would like to know more, drop me an email."
+        "summary": "If you have any questions, you can drop me an email to have a chat."
       }
     ],
     "relatedTopics": [
-      "AI Engineering",
-      "Startup Strategy",
+      "Artificial Intelligence",
       "Software Architecture",
-      "Product Management"
+      "Startup Strategy",
+      "Data Engineering"
     ],
     "targetAudience": [
       "founders",
@@ -1634,190 +1789,190 @@
     "publishDate": "2025-05-28",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Generative AI requires a fundamental shift in how we manage UI state, moving from atomic CRUD requests to multi-stage, streaming, and interpretative flows. This post outlines the conceptual foundation for building robust generative user interfaces.",
+    "blurb": "Discover why treating generative AI flows like standard CRUD requests breaks your UI and how to adopt a mental model built for streaming, multi-stage contexts.",
     "keywords": [
       "generative UI",
       "RAG",
       "state management",
-      "frontend dev",
-      "streaming data",
+      "frontend architecture",
+      "streaming responses",
       "mental models",
-      "context awareness",
-      "retrieval augmented generation"
+      "context management",
+      "CRUD vs Generative"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "3c955db2",
-        "summary": "While wiring up the UI for a basic agentic RAG layer, I realized the state model felt incompatible with normal fetch/response flows."
+        "summary": "While wiring up a UI for a basic agentic RAG layer, the entire state model felt incompatible with the normal fetch/response flow."
       },
       {
         "id": "3a4c3ec9",
-        "summary": "I realized the problem wasn’t the code, but the mental model, as we were still thinking like CRUD developers."
+        "summary": "The problem wasn't the code, but the mental model of thinking like CRUD developers."
       },
       {
         "id": "d848d7d8",
-        "summary": "This post explains the conceptual foundation of what actually makes UI state management for generative flows different."
+        "summary": "This post explains the conceptual foundation of what makes UI state management for generative flows different."
       },
       {
         "id": "49168763",
-        "summary": "Before we talk about managing it, we need to define it."
+        "summary": "Before discussing management, we must first define generative data."
       },
       {
         "id": "d2dba9d5",
-        "summary": "Generative data is any output produced on the fly by a model, including text generation and RAG responses."
+        "summary": "Generative data is any output produced on the fly by a model rather than fetched from a static database."
       },
       {
         "id": "f1287b8b",
-        "summary": "To keep the discussion grounded, we’ll use RAG as the main example, though the principles apply to any generative pattern."
+        "summary": "To keep the discussion grounded, we will use Retrieval-Augmented Generation (RAG) as the main example."
       },
       {
         "id": "e6b06218",
-        "summary": "To make this clearer, it helps to contrast it with something we do understand: the CRUD model."
+        "summary": "To clarify the concept, it helps to contrast generative data with the CRUD model we already understand."
       },
       {
         "id": "6e515c7f",
-        "summary": "This image compares generative data versus CRUD data."
+        "summary": "An image compares generative data against CRUD data."
       },
       {
         "id": "4cf32b5a",
-        "summary": "RAG helps you combine a user’s question with relevant data from your own sources to generate a response."
+        "summary": "RAG is a pattern combining a user's question with relevant data sources to generate a response."
       },
       {
         "id": "df98e72a",
-        "summary": "This visual illustrates the RAG flow: retrieve, generate, and respond."
+        "summary": "An image illustrates the RAG flow of retrieve, generate, and respond."
       },
       {
         "id": "756adc72",
-        "summary": "The first step is to retrieve relevant content from your data, such as documents or database records."
+        "summary": "The first step is retrieving relevant content such as documents or database records from your data."
       },
       {
         "id": "8500e119",
-        "summary": "The second step is to generate an answer using that retrieved content as context."
+        "summary": "The second step is generating an answer using that retrieved content as context."
       },
       {
         "id": "dd6afa92",
-        "summary": "This setup grounds generation in real, retrievable context rather than just what the model was trained on."
+        "summary": "This setup grounds the generation in real, retrievable context instead of relying solely on training data."
       },
       {
         "id": "bc1c1be7",
-        "summary": "We’ll use this flow throughout the rest of the post as our working example."
+        "summary": "This flow serves as the working example for the concepts discussed in this post."
       },
       {
         "id": "deb93e40",
-        "summary": "In CRUD flows, the data is a fact, and it’s complete when it arrives."
+        "summary": "In CRUD flows, data is a complete fact that arrives after a standard request lifecycle."
       },
       {
         "id": "83520071",
-        "summary": "In generative flows, the data is an interpretation that is built in real time and often streamed."
+        "summary": "In generative flows, the response is an interpretation built in real time, often streamed and varying."
       },
       {
         "id": "2cc6482b",
-        "summary": "That distinction leads to three fundamental differences in how we need to think about state."
+        "summary": "The distinction between fact and interpretation leads to three fundamental differences in thinking about state."
       },
       {
         "id": "13804a15",
-        "summary": "A CRUD request is typically atomic: one request, one response."
+        "summary": "A typical CRUD request is atomic, consisting of one request and one response."
       },
       {
         "id": "14d28f69",
-        "summary": "This image depicts the CRUD one-shot atomic request and response model."
+        "summary": "An image depicts the atomic one-shot nature of CRUD requests and responses."
       },
       {
         "id": "88c9d37d",
-        "summary": "In RAG and most gen workflows, the process is multi-step with at least two stages."
+        "summary": "In RAG and most generative workflows, the process involves at least two stages."
       },
       {
         "id": "ba83736a",
-        "summary": "This graphic shows a minimal RAG multi-stage pipeline: retrieve then generate."
+        "summary": "An image shows a minimal multi-stage pipeline consisting of retrieval and generation."
       },
       {
         "id": "00073234",
-        "summary": "And that’s just the minimal case, as a more realistic setup might include additional steps."
+        "summary": "A realistic setup often includes more steps than just the minimal case."
       },
       {
         "id": "0d493112",
-        "summary": "This diagram displays a realistic multi-stage generative pipeline with additional steps."
+        "summary": "An image details a realistic multi-stage generative pipeline with additional steps."
       },
       {
         "id": "5615b274",
-        "summary": "Each of these stages can fail independently, so a single loading or error flag breaks immediately."
+        "summary": "Since each stage can fail or stream independently, a single loading flag breaks the state model."
       },
       {
         "id": "da422d40",
-        "summary": "In gen flows, the payload streams in over time—often token by token—rather than arriving all at once."
+        "summary": "Unlike CRUD payloads typically arriving at once, generative flows stream data over time."
       },
       {
         "id": "1f2781f5",
-        "summary": "Sometimes this streams sequentially, but other times it involves non-monotonic updates or image refinement."
+        "summary": "Streaming can be sequential, non-monotonic, or involve refinement depending on the model type."
       },
       {
         "id": "24acc92f",
-        "summary": "If you're not thinking in terms of partial state and streaming updates, you'll either show nothing or constantly overwrite your UI."
+        "summary": "Without thinking in terms of partial state and streaming updates, the UI will be unresponsive or erratic."
       },
       {
         "id": "0892730e",
-        "summary": "This illustration contrasts parcel delivery with streaming token-by-token output."
+        "summary": "An image compares traditional parcel delivery to streaming token-by-token output."
       },
       {
         "id": "c325567b",
-        "summary": "Here’s a simplified example of how gen output is typically handled in practice."
+        "summary": "Here is a simplified example of how generative output is typically handled in practice."
       },
       {
         "id": "c6a94248",
-        "summary": "You don’t get the data all at once; you build it as it arrives."
+        "summary": "You do not receive the data all at once but must build it as it arrives."
       },
       {
         "id": "b906aab9",
-        "summary": "In CRUD flows, the data is a fact that is precise, repeatable, and complete."
+        "summary": "In CRUD flows, the data is a precise, repeatable, and complete fact."
       },
       {
         "id": "1e04cc27",
-        "summary": "This visual comparison highlights that CRUD returns facts while generative returns interpretations."
+        "summary": "An image contrasts CRUD returning facts against generative systems returning interpretations."
       },
       {
         "id": "36ea7d9d",
-        "summary": "Generative responses are an interpretation shaped by input, context, and the model’s probabilistic behavior."
+        "summary": "Generative responses are interpretations shaped by input, context, and probability rather than facts."
       },
       {
         "id": "2b554e33",
-        "summary": "Even when grounded with the same input data, the output can vary slightly in tone or wording."
+        "summary": "Even with identical input, the generated output can vary in tone, wording, or structure."
       },
       {
         "id": "c70f0f37",
-        "summary": "In generative systems, the response is a version of the truth, unlike the absolute truth in CRUD."
+        "summary": "While the CRUD response is the truth, the generative response is merely a version of the truth."
       },
       {
         "id": "c83fe95d",
-        "summary": "That distinction changes what you can assume about the output and how you treat it in your UI."
+        "summary": "This distinction fundamentally changes output predictability and how it should be treated in the UI."
       },
       {
         "id": "8b9e566d",
-        "summary": "The way you manage state has to change once you understand that generative data is multi-stage, streamed, and interpretative."
+        "summary": "Understanding that generative data is multi-stage and interpretative necessitates a change in state management."
       },
       {
         "id": "17d64931",
-        "summary": "Generative outputs aren’t returned all at once; for example, you get a readable stream of text tokens."
+        "summary": "Generative endpoints often return a readable stream of text tokens rather than a complete result."
       },
       {
         "id": "806fe964",
-        "summary": "So instead of setting the final result, you append tokens as they arrive."
+        "summary": "Instead of setting a final result, you must append tokens as they arrive."
       },
       {
         "id": "1982406f",
-        "summary": "You also need to support canceling the stream immediately because tokens cost money and users might change their input."
+        "summary": "You also need to support canceling the stream immediately to save costs and handle user changes."
       },
       {
         "id": "b69b4af6",
-        "summary": "This graphic demonstrates streaming with append and cancel support."
+        "summary": "An image visualizes the need for append and cancel support during streaming."
       },
       {
         "id": "37b4d3da",
-        "summary": "Without cancel support, you’ll burn tokens unnecessarily."
+        "summary": "Failing to support cancellation leads to burning tokens unnecessarily."
       },
       {
         "id": "52b4caa5",
-        "summary": "Without append logic, you can’t reflect progress in the UI."
+        "summary": "Without append logic, you cannot reflect progress in the UI."
       },
       {
         "id": "13e0bfdd",
@@ -1825,23 +1980,23 @@
       },
       {
         "id": "3b93dbf4",
-        "summary": "The composition of pipeline stages—retrieval, augmentation, generation—is what we call context."
+        "summary": "The UI reacts to a pipeline where the composition of stages like retrieval and generation forms the context."
       },
       {
         "id": "84847fbd",
-        "summary": "You should treat the context as a first-class application state object, just like a Redux store."
+        "summary": "You should treat the context as a first-class application state object rather than a one-off response."
       },
       {
         "id": "2694ca7c",
-        "summary": "Here’s an example of what a structured context might look like in a RAG system."
+        "summary": "A structured context in a RAG system includes elements like retrieved records and conversation history."
       },
       {
         "id": "f5a593b0",
-        "summary": "This diagram details a sample context structure for a RAG system."
+        "summary": "An image shows a sample context structure for a RAG system."
       },
       {
         "id": "097423d2",
-        "summary": "The retrieved records, conversation history, and intermediate states are what made the output possible."
+        "summary": "A common mistake is discarding the intermediate states and records that made the output possible."
       },
       {
         "id": "1d7569ce",
@@ -1849,94 +2004,95 @@
       },
       {
         "id": "0cfa170b",
-        "summary": "This is the actual state of your generative UI."
+        "summary": "This context object represents the actual state of your generative UI."
       },
       {
         "id": "9143eb7a",
-        "summary": "From a frontend perspective, your component should be bound to the context representing what the model saw."
+        "summary": "The frontend component should be bound to this context, persisting what the model saw."
       },
       {
         "id": "792b5af7",
-        "summary": "When users regenerate or edit, this context is your truth, not the model’s output."
+        "summary": "When users regenerate or edit, this context serves as the single source of truth."
       },
       {
         "id": "e8043ad5",
-        "summary": "From a UI perspective, the context becomes a kinds of contract between the system and the user."
+        "summary": "The context becomes a contract stating that the output is the best interpretation given those inputs."
       },
       {
         "id": "a3f59715",
-        "summary": "It implies that given this context, this is the best interpretation we could generate."
+        "summary": "The system implies that given this specific context, the result is its best interpretation."
       },
       {
         "id": "3ba24c4c",
-        "summary": "This makes it easier to justify or explain things if your users ask why it said that."
+        "summary": "Preserving context makes it easier to explain why the model generated specific outputs."
       },
       {
         "id": "2c149098",
-        "summary": "Once you understand that generation is a pipeline, the next shift is in how you model state in your UI."
+        "summary": "Understanding generation as a pipeline leads to a shift in how you model state in your UI."
       },
       {
         "id": "ddf7f9fc",
-        "summary": "In a gen flow, you have multiple steps, so you often cannot get away with a simple isLoading flag."
+        "summary": "A simple loading flag is insufficient in gen flows because multiple steps have distinct behaviors."
       },
       {
         "id": "1f300d95",
-        "summary": "So your app needs to treat each stage as its own state machine."
+        "summary": "Your app needs to treat each stage of the pipeline as its own state machine."
       },
       {
         "id": "b41d134e",
-        "summary": "Union types guarantee that you’re never in conflicting states, like being both loading and done."
+        "summary": "Union types guarantee that you are never in conflicting states like being both loading and done."
       },
       {
         "id": "697420be",
-        "summary": "You can give precise feedback to the user, transitioning from retrieving sources to generating an answer."
+        "summary": "State machines allow you to give precise feedback to the user about specific stages."
       },
       {
         "id": "26d10291",
-        "summary": "You can retry only part of the flow, such as retrying just generation if retrieval was fine."
+        "summary": "This approach allows you to retry only part of the flow, such as just the generation step."
       },
       {
         "id": "fcbffefd",
-        "summary": "Your UI logic becomes much easier to manage when you switch on state."
+        "summary": "Using a switch on state makes managing UI logic much easier."
       },
       {
         "id": "dfa172d2",
-        "summary": "In generative flows, retries are a feature, not just a mechanism for network failures."
+        "summary": "In generative flows, retries are considered a feature rather than just error handling."
       },
       {
         "id": "aa9a278b",
-        "summary": "Sometimes the model fails to produce a valid output, or you just want a second version."
+        "summary": "Sometimes you need a retry because the model failed or you simply want a second version."
       },
       {
         "id": "27fa378a",
-        "summary": "Because every stage is separate, retries should also be stage-aware."
+        "summary": "Since every stage is separate, retries should also be stage-aware."
       },
       {
         "id": "3a981baa",
-        "summary": "This visual represents a stage-aware retry flow in generative pipelines."
+        "summary": "An image illustrates a stage-aware retry flow in generative pipelines."
       },
       {
         "id": "4e7faaf9",
-        "summary": "Managing UI state for generative data involves keeping track of context and understanding the shape of your pipeline."
+        "summary": "Managing UI state involves tracking context and building a UI that reflects the actual pipeline stages."
       },
       {
         "id": "2193fed3",
-        "summary": "This applies to RAG, calling OpenAI functions, chaining LLM tools, or any UI built on generative outputs."
+        "summary": "These principles apply to any UI built on top of generative outputs, including RAG and LLM tools."
       },
       {
         "id": "0787b125",
-        "summary": "We’re considering a follow-up post focused purely on the engineering mechanics if you're curious about that side."
+        "summary": "The author is considering a follow-up post focused on implementation-level patterns if there is interest."
       },
       {
         "id": "4042c9d0",
-        "summary": "I’d love to hear from you if you're building generative features and thinking about developer ergonomics."
+        "summary": "The author invites feedback from those building generative features and interested in developer ergonomics."
       }
     ],
     "relatedTopics": [
-      "frontend-architecture",
-      "generative-ai",
-      "user-experience",
-      "state-machines"
+      "Frontend Development",
+      "Artificial Intelligence",
+      "User Experience",
+      "Software Architecture",
+      "State Management"
     ],
     "targetAudience": [
       "developers",
@@ -1952,17 +2108,17 @@
     "publishDate": "2023-12-11",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Despite 2023 being a year of incredible advancements in AI, a stark contrast remains between these technological leaps and their limited real-world applications in business. This post explores the gap between passive data and actionable knowledge.",
+    "blurb": "Despite incredible technological leaps in 2023, a significant gap remains between AI advancement and its practical application in business. This essay explores why industries like law and healthcare are underutilizing AI and how low-code platforms can bridge this divide.",
     "keywords": [
       "AI advancement",
-      "business applications",
+      "practical application",
+      "business sector",
       "passive data",
       "actionable knowledge",
-      "legal tech",
-      "healthcare AI",
+      "legal sector",
+      "healthcare industry",
       "publishing industry",
       "democratize AI",
-      "low-code platform",
       "Unbody"
     ],
     "category": "essay",
@@ -1973,66 +2129,66 @@
       },
       {
         "id": "5b0a68c4",
-        "summary": "While 2023 was marked by incredible advancements in AI, there is a stark contrast between these technological leaps and their real-world applications in the business sector."
+        "summary": "As 2023 draws to a close, a critical observation emerges regarding the stark contrast between technological leaps and their real-world applications in the business sector."
       },
       {
         "id": "c0cce604",
-        "summary": "The potential for AI to transform passive data into actionable knowledge remains largely untapped in practical business applications."
+        "summary": "AI's potential to transform passive data into actionable knowledge remains largely untapped, which is not due to AI's inability but its limited practical application."
       },
       {
         "id": "bed8bf34",
-        "summary": "This section outlines examples of untapped AI potential in industries."
+        "summary": "This section outlines examples of Untapped AI Potential in Industries."
       },
       {
         "id": "1523a4bb",
-        "summary": "Specific industry scenarios highlight how AI's transformative potential remains largely untapped despite its capability to address critical business challenges."
+        "summary": "We dive into specific industry scenarios to highlight how AI's transformative potential remains largely untapped."
       },
       {
         "id": "ff637ffa",
-        "summary": "In the legal sector, AI can automate case research and predict legal outcomes, yet this application is rarely seen in practice."
+        "summary": "In the Legal Sector, AI can automate and expedite case research, yet this application is rarely seen in practice."
       },
       {
         "id": "bf490f9f",
-        "summary": "Adoption in the healthcare industry is sporadic and largely confined to experimental segments rather than widespread clinical practice."
+        "summary": "In the Healthcare Industry, AI has the potential to revolutionize patient diagnosis, yet its adoption is sporadic and largely confined to experimental segments."
       },
       {
         "id": "6187fc4b",
-        "summary": "The publishing industry continues to rely on traditional methods, with AI-driven innovations for content curation and layout design being more of an exception."
+        "summary": "The Publishing Industry continues to rely heavily on traditional methods, with AI-driven innovations being more of an exception than the norm."
       },
       {
         "id": "9ebc1482",
-        "summary": "These examples underscore a significant gap where practical application effectively addressing industry-specific challenges is still in its nascent stages."
+        "summary": "While AI could be a powerful tool, its practical application in addressing these industry-specific challenges is still in its nascent stages."
       },
       {
         "id": "360c84ef",
-        "summary": "The complexity of AI technology often focuses on enhancing capabilities rather than practical applications, limiting its use in business."
+        "summary": "The complexity of AI technology is a significant factor contributing to its limited application in business."
       },
       {
         "id": "f776259c",
-        "summary": "Technologically sophisticated tools frequently necessitate specialized knowledge to operate, creating a barrier to widespread adoption in everyday business operations."
+        "summary": "Tools that are technologically sophisticated aren't always user-friendly, presenting a barrier to their widespread adoption in everyday business operations."
       },
       {
         "id": "7831544e",
-        "summary": "Input from creative minds and business strategists is crucial to transform AI from a niche technology into a user-friendly tool."
+        "summary": "Input from a broader range of professionals is crucial for transforming AI from a complex, niche technology into a user-friendly tool."
       },
       {
         "id": "d800630e",
-        "summary": "Unbody was created as a low-code privacy-friendly platform to democratize AI technology and simplify tools for a wider audience."
+        "summary": "Unbody was created as a low-code privacy-friendly platform to democratize AI technology and make tools accessible to a wider audience."
       },
       {
         "id": "e4187b0a",
-        "summary": "We are ready to look at ways to help law firms, websites, and publishing leverage visual search and AI-driven content management."
+        "summary": "We are ready to explore ways we can help law firms, websites, and publishing effectively use AI."
       },
       {
         "id": "f6376709",
-        "summary": "As we look towards the future, unlocking AI's full potential requires bridging the gap between technological capabilities and practical applications."
+        "summary": "The key to unlocking AI's full potential in business lies in bridging the gap between its technological capabilities and practical applications."
       }
     ],
     "relatedTopics": [
       "Artificial Intelligence",
-      "Digital Transformation",
       "Business Strategy",
-      "Software Development"
+      "Digital Transformation",
+      "Low-code Platforms"
     ],
     "targetAudience": [
       "founders",
@@ -2049,318 +2205,317 @@
     "publishDate": "2025-03-05",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Learn how to upgrade from naive retrieval to Agentic RAG by parsing complex user queries into structured parameters. This guide demonstrates how to build a smart pipeline that understands potential constraints and filters using Unbody's JSON endpoint.",
+    "blurb": "Discover how to upgrade from naive RAG to robust Agentic RAG by parsing natural language queries into structured parameters using Unbody's generative JSON endpoint. This guide walks through extracting context, applying precise filters, and generating accurate responses for complex user constraints.",
     "keywords": [
       "Agentic RAG",
       "Unbody",
-      "JSON endpoint",
-      "query parsing",
-      "semantic search",
-      "retrieval-augmented generation",
-      "Zod schema",
-      "metadata filtering",
-      "Next.js example",
-      "AI engineering"
+      "JSON Endpoint",
+      "Zod Schema",
+      "Query Parsing",
+      "Semantic Search",
+      "Generative AI",
+      "Next.js"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "27fd25c1",
-        "summary": "I recently spoke at AI Thinkers Abu Dhabi about how a naive approach to RAG often isn't enough."
+        "summary": "The author discusses the limitations of naive RAG systems compared to robust approaches presented at AI Thinkers Abu Dhabi."
       },
       {
         "id": "d6643bfb",
-        "summary": "Real user queries, like asking for an Italian dish ready in under 30 minutes, can be nuanced."
+        "summary": "A complex user query example is provided: an Italian dish for two, no sausage, ready in under 30 minutes."
       },
       {
         "id": "d04215a4",
-        "summary": "Agentic RAG improves results by parsing the query into structured parameters like \"no sausage\" or \"under 30 minutes\"."
+        "summary": "Agentic RAG helps by parsing the query into structured parameters for precise retrieval instead of relying on naive systems."
       },
       {
         "id": "a933a8fc",
-        "summary": "Let’s see how to do this with Unbody step by step."
+        "summary": "The article proposes showing how to implement this system with Unbody step by step."
       },
       {
         "id": "ae7411aa",
-        "summary": "You need an Unbody project set up with your data already ingested and indexed."
+        "summary": "Step one requires an Unbody project set up with data, such as a collection of recipes, already ingested."
       },
       {
         "id": "1054424d",
-        "summary": "You need your API key and Project ID from the Unbody dashboard."
+        "summary": "Step two involves obtaining the API key and Project ID directly from the Unbody dashboard."
       },
       {
         "id": "b7a2dac8",
-        "summary": "If you haven’t set this up yet, check out the Unbody docs for a quick start."
+        "summary": "Users who haven't set up a project yet are directed to the Unbody docs for a quick start guide."
       },
       {
         "id": "f4db4d02",
-        "summary": "That’s it, now you can start calling Unbody’s APIs to search, filter, and generate."
+        "summary": "With setup complete, developers can start calling Unbody’s APIs to search, filter, and generate."
       },
       {
         "id": "79fabb35",
-        "summary": "Knowing the schema tells us exactly which parameters we can extract from a user’s query."
+        "summary": "Knowing the data schema is essential to efficiently extract parameters from a user's query, such as in a recipe collection."
       },
       {
         "id": "14a78f8c",
-        "summary": "Knowing these fields lets us decide which parts of the user’s query should be parsed and parameterized."
+        "summary": "The schema dictates what information is available and helps decide which parts of the user query should be parsed."
       },
       {
         "id": "ce5bd566",
-        "summary": "For example, a user might request an Italian dish with no sausage ready in under 30 minutes."
+        "summary": "A specific user query example is cited requesting an Italian dish with no sausage in under 30 minutes."
       },
       {
         "id": "22ecc706",
-        "summary": "We know to extract the concept, ingredients to exclude, and a time constraint from this query."
+        "summary": "From the query, the system knows to extract the concept, ingredients to exclude, and a time constraint."
       },
       {
         "id": "d029c818",
-        "summary": "RAG consists of Retrieval and Generation, where retrieval gathers context for the model."
+        "summary": "RAG consists of Retrieval and Generation, where retrieval is crucial for gathering context for the model."
       },
       {
         "id": "a6320035",
-        "summary": "One approach is to take the user’s entire query text."
+        "summary": "The first retrieval approach involves taking the user’s entire query as a single text string."
       },
       {
         "id": "e96f8b5d",
-        "summary": "Then feed the top documents into a text-generation prompt."
+        "summary": "The next step in the naive approach feeds the top documents into a text-generation prompt."
       },
       {
         "id": "c3e5344a",
-        "summary": "This naive system doesn’t actually understand the user’s intention and fails with multiple constraints."
+        "summary": "Naive systems fail with multiple constraints because they do not actually understand the user’s intention."
       },
       {
         "id": "a9974602",
-        "summary": "A better approach is to parse the user’s query into structured parameters."
+        "summary": "The first step in an Agentic approach is to parse the user’s query into structured parameters."
       },
       {
         "id": "a5123789",
-        "summary": "Then appy filters to our knowledge base, such as \"exclude sausage\" or \"max 30 minutes\"."
+        "summary": "The second step is to apply filters to the knowledge base based on the parsed parameters."
       },
       {
         "id": "d31a7e5e",
-        "summary": "Finally, generate the final response using only the truly relevant documents."
+        "summary": "The third step involves generating the final response using only the documents that are truly relevant."
       },
       {
         "id": "433ca57f",
-        "summary": "The general syntax we will be using is with Unbody’s chain syntax methods."
+        "summary": "The syntax implementation utilizes Unbody’s chain syntax methods for execution."
       },
       {
         "id": "fad47861",
-        "summary": "To translate this into a proper RAG query, we need to extract three pieces of information."
+        "summary": "Translating to a proper RAG query requires extracting three specific pieces of information."
       },
       {
         "id": "9bdb0ed5",
-        "summary": "First, we need main keywords or concepts to apply to semantic search."
+        "summary": "The first piece is the main keywords or concepts from the query for semantic search."
       },
       {
         "id": "fc4c6e5a",
-        "summary": "Second, we need any specific filters to pass to the where function."
+        "summary": "The second piece involves identifying any specific filters to pass to the where function."
       },
       {
         "id": "bde43ec4",
-        "summary": "Third, we need the prompt or task description for the generation step."
+        "summary": "The third piece is extracting the prompt or task description for the generate function."
       },
       {
         "id": "26e0cb98",
-        "summary": "We will use Unbody’s generative JSON endpoint which utilizes the Zod library to define output."
+        "summary": "Unbody’s generative JSON endpoint and the Zod library are used to validate and define the model output."
       },
       {
         "id": "7a0e5065",
-        "summary": "Unbody’s generative JSON receives two arguments: a set of messages and a Zod schema."
+        "summary": "Unbody’s generative JSON syntax accepts arguments for message role definitions and a Zod schema."
       },
       {
         "id": "87284b2d",
-        "summary": "In the Zod schema, we differentiate the shape of the JSON, starting with the concepts field."
+        "summary": "The Zod schema defines the shape of the generative JSON, starting with the extraction of a concepts field."
       },
       {
         "id": "9e53668f",
-        "summary": "We are expecting an array of strings or null if no concepts are extracted."
+        "summary": "The schema expects an array of strings or null if no concepts are extracted."
       },
       {
         "id": "bdf67b30",
-        "summary": "The describe method adds a note explaining that this field represents the main search terms."
+        "summary": "The describe method is used to add notes explaining that a field represents main search terms."
       },
       {
         "id": "c0ad1e75",
-        "summary": "Next, we capture ingredients that the user wants to include in the same way."
+        "summary": "The schema captures ingredients the user wants to include following the same method as concepts."
       },
       {
         "id": "d0aee620",
-        "summary": "The description clarifies that this field is for ingredients the user explicitly wants."
+        "summary": "A description clarifies that the field is for ingredients the user explicitly wants in the recipe."
       },
       {
         "id": "18684eaa",
-        "summary": "Example fields might include preferred cuisine types or time limits."
+        "summary": "The schema is expanded to include all fields expected from the query, such as cuisine types."
       },
       {
         "id": "cd4d332a",
-        "summary": "We can include preferred cuisine types in the schema."
+        "summary": "One of the expanded fields is includeCuisineTypes for identifying preferred cuisine types."
       },
       {
         "id": "309b3a5c",
-        "summary": "We can also include a maximum time constraint in minutes."
+        "summary": "Another field is totalTimeMinutesMax used to set a maximum time constraint."
       },
       {
         "id": "84f5420a",
-        "summary": "Here is the full Zod schema with descriptions for every field."
+        "summary": "The full Zod schema is presented with descriptions provided for every field."
       },
       {
         "id": "201dca5e",
-        "summary": "We create a function called queryParser and integrate the logic into it."
+        "summary": "A queryParser function is created to integrate the entire logic now that the schema is complete."
       },
       {
         "id": "b185a39f",
-        "summary": "We pass our complete querySchema to the generative endpoint."
+        "summary": "The complete querySchema is passed to the generative endpoint within the function."
       },
       {
         "id": "3ee874c9",
-        "summary": "The system message instructs the model to analyze the query."
+        "summary": "A system message is set to instruct the model to analyze the user's query."
       },
       {
         "id": "c39014f2",
-        "summary": "The returned payload provides a well-structured object containing all extracted parameters."
+        "summary": "The returned payload provides a well-structured object containing all extracted parameters after validation."
       },
       {
         "id": "151ac198",
-        "summary": "The model processes the user’s input and returns a structured JSON object for precise queries."
+        "summary": "This snippet creates a structured JSON object from the user's input for use in precise queries."
       },
       {
         "id": "a9b64be1",
-        "summary": "Now that we’ve parsed the query, it’s time to build the final RAG pipeline."
+        "summary": "Creating the final RAG pipeline begins after parsing the query into detailed parameters."
       },
       {
         "id": "443fdfbe",
-        "summary": "We search based on extracted concepts, falling back to the full query if needed."
+        "summary": "Search logic uses extracted concepts if available, otherwise it falls back to the full query."
       },
       {
         "id": "fb3d5acb",
-        "summary": "This ensures that our semantic search is as focused as possible."
+        "summary": "Prioritizing specific keywords ensures the semantic search remains as focused as possible."
       },
       {
         "id": "d7267af4",
-        "summary": "We must turn each extracted filter into a proper \"where\" clause."
+        "summary": "The complex part of the process involves turning extracted filters into proper where clauses."
       },
       {
         "id": "3b6ec909",
-        "summary": "If the query has an includeIngredients array, we want to add a filter for it."
+        "summary": "If the query includes ingredients, a filter is added to match the includeIngredients array."
       },
       {
         "id": "ccfc615c",
-        "summary": "We use a conditional to add this filter only when includeIngredients exists."
+        "summary": "A conditional check handles cases where includeIngredients is not provided in the query."
       },
       {
         "id": "9e9f6854",
-        "summary": "We conditionally spread the filter or simply add an empty array if it doesn't exist."
+        "summary": "The code conditionally spreads the filter if ingredients exist or adds an empty array if not."
       },
       {
         "id": "cfe366e9",
-        "summary": "If the query specifies ingredients to exclude, we add a filter for each item."
+        "summary": "Filters are added conditionally for ingredients to exclude, such as when a user says no sausage."
       },
       {
         "id": "1a9546e3",
-        "summary": "Each ingredient to exclude is mapped into a NotEqual filter conditionally."
+        "summary": "Excluded ingredients are mapped into a NotEqual filter and added only if they exist."
       },
       {
         "id": "e228a202",
-        "summary": "We are combining all filters using the And operator."
+        "summary": "The section discusses combining all filters using the And operator."
       },
       {
         "id": "71de6ab8",
-        "summary": "Finally, we combine all these filters into a single query."
+        "summary": "All the individual filters are combined into a single query object."
       },
       {
         "id": "94c4881f",
-        "summary": "This combined filter only adds a condition if that parameter exists."
+        "summary": "The final combined filter checks each parameter and adds a condition only if that parameter exists."
       },
       {
         "id": "8e09f9ca",
-        "summary": "We proceed to generating the final answer with the fromMany method."
+        "summary": "The final answer is generated using the generate fromMany method."
       },
       {
         "id": "76ba7129",
-        "summary": "We use the generation step to produce a final, coherent answer after retrieval."
+        "summary": "The generation step produces a final coherent answer after retrieval and filtering."
       },
       {
         "id": "7b2bb9d1",
-        "summary": "The system message instructs the model to consider the retrieved results when generating."
+        "summary": "The system message instructs the model to generate a response considering the retrieved results."
       },
       {
         "id": "0dac807b",
-        "summary": "This brings it all together into the complete RAG pipeline."
+        "summary": "The complete RAG pipeline is assembled in the final section."
       },
       {
         "id": "0c308e20",
-        "summary": "Here is what the full API handler might look like in a Next.js project."
+        "summary": "A full API handler example is shown, typically for use in a Next.js project."
       },
       {
         "id": "b6ed5c49",
-        "summary": "The query is processed by parseQuery to return formatted parameters like concepts and constraints."
+        "summary": "The parseQuery function processes the free-form query and returns a structured object with parameters."
       },
       {
         "id": "eefa90c9",
-        "summary": "The semantic search focuses specifically on the extracted concepts."
+        "summary": "Semantic search focuses on the extracted concepts found in the parsed object."
       },
       {
         "id": "f110489f",
-        "summary": "The filtering applies each filter conditionally using the And operator."
+        "summary": "The where function applies each filter conditionally using the And operator logic."
       },
       {
         "id": "2b1a2fa8",
-        "summary": "The autocut method limits our result set to a manageable size."
+        "summary": "The autocut method limits the result set to keep it manageable."
       },
       {
         "id": "cfe44799",
-        "summary": "Finally, the generate method produces a coherent answer integrating the retrieved documents."
+        "summary": "The generate fromMany method produces a coherent answer integrating the retrieved documents."
       },
       {
         "id": "42950006",
-        "summary": "Check out the full demo of this Agentic RAG system in action on YouTube."
+        "summary": "A full demo of the Agentic RAG system is available to watch on YouTube."
       },
       {
         "id": "f7b136b1",
-        "summary": "You can find the complete source code for this project on GitHub."
+        "summary": "Developers interested in the code can find the complete source on GitHub."
       },
       {
         "id": "8ef2f0f9",
-        "summary": "The source is available in the example Next.js repository under recipes."
+        "summary": "A specific GitHub link is provided for the recipes example project."
       },
       {
         "id": "e018a131",
-        "summary": "With Unbody’s Agentic RAG approach, you capture intention and filter precisely."
+        "summary": "Unbody’s Agentic RAG approach captures intention and filters precisely by breaking down complex queries."
       },
       {
         "id": "14db9c29",
-        "summary": "Are you ready to build smarter, AI-native applications?"
+        "summary": "The author asks if the reader is ready to build smarter AI-native applications."
       },
       {
         "id": "ded83c64",
-        "summary": "Experiment with the sample code and start tailoring your own Agentic RAG pipeline."
+        "summary": "Readers are encouraged to experiment with the sample code to tailor their own Agentic RAG pipeline."
       },
       {
         "id": "d1516119",
-        "summary": "Check out the Unbody documentation for further insights and advanced use cases."
+        "summary": "The Unbody documentation is recommended for further insights and advanced use cases."
       },
       {
         "id": "c477af01",
-        "summary": "Share your projects, ideas, or questions on our community forums."
+        "summary": "Creators are invited to share projects and join the conversation on community forums."
       },
       {
         "id": "e1244b2f",
-        "summary": "Consider joining our open-source community to help shape the future of intelligent applications."
+        "summary": "Developers passionate about AI-native development are encouraged to join the open-source community."
       },
       {
         "id": "ab176811",
-        "summary": "Happy building, and let’s push the boundaries of what our applications can do together."
+        "summary": "The post concludes by encouraging builders to push the boundaries of what applications can do."
       }
     ],
     "relatedTopics": [
       "Generative AI",
       "Search Algorithms",
-      "API Development",
+      "AI Agents",
       "Data Modeling"
     ],
     "targetAudience": [
-      "developers"
+      "developers",
+      "product-managers"
     ],
     "tone": "technical",
     "readingTime": 8
@@ -2371,76 +2526,75 @@
     "publishDate": "2023-12-13",
     "author": "na",
     "thumbnail": null,
-    "blurb": "Learn how to build an AI-powered meeting assistant in just 10 minutes that processes Google Meet recordings into automatic notes and action items. This guide demonstrates how to combine Unbody's AI backend with Appsmith's low-code frontend to create a powerful productivity tool without extensive coding.",
+    "blurb": "Learn how to build an AI-powered meeting assistant app that processes Google Meet recordings and generates summaries with almost no code using Unbody and Appsmith.",
     "keywords": [
       "AI meeting assistant",
-      "Google Meet automation",
+      "Google Meet",
       "Unbody",
       "Appsmith",
-      "low-code development",
-      "generative AI",
-      "GraphQL API",
-      "video transcription",
-      "text vectorizer",
-      "productivity tools"
+      "low-code",
+      "automation",
+      "GraphQL",
+      "action items",
+      "generative search"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "d78ab2f7",
-        "summary": "We will develop an AI-powered meeting assistant app to transform Google Meet recordings into automatically generated meeting notes using Unbody and Appsmith."
+        "summary": "This post explains how to develop an AI meeting assistant app that processes video recordings from Google Meet and generates notes using Unbody and Appsmith."
       },
       {
         "id": "2656d622",
-        "summary": "This section introduces the AI-powered meetings assistant app."
+        "summary": "Introducing the AI-powered meetings assistant app."
       },
       {
         "id": "2487d8d8",
-        "summary": "The app connects your Google Drive where recordings are saved to automatically capture transcription and generate meeting notes with key points in real-time."
+        "summary": "The app connects your Google Drive recordings to automatically capture audio transcriptions and generate meeting notes with key points in real-time."
       },
       {
         "id": "da807d9e",
-        "summary": "We will use Unbody to convert input video into intelligence and Appsmith to build the UI without extensive coding, offering a customized alternative to tools like Otter.ai."
+        "summary": "To develop this application, we will use Unbody to convert input video transcriptions into intelligence and Appsmith to build the UI without extensive coding."
       },
       {
         "id": "70a2e9d3",
-        "summary": "Unbody is at the heart of our tool, handling audio transformation to transcripts and creating AI assistant summaries via GraphQL API."
+        "summary": "Unbody is at the heart of our tool handling knowledge insertion, audio transformation, and magical extraction of action items via GraphQL API."
       },
       {
         "id": "83a46f06",
-        "summary": "Unbody can also aggregate and synchronize various types of files including text documents, PDFs, and videos from continuous sync sources like Google Drive or Slack."
+        "summary": "Unbody can also aggregate and synchronize various types of files including text documents, PDFs, spreadsheets, images, and videos from Google Drive or Slack."
       },
       {
         "id": "2d4b16c3",
-        "summary": "Appsmith serves as the frontend of our app, providing a customizable dashboard that fetches and displays data from Unbody's GraphQL API."
+        "summary": "Appsmith is an open-source low-code platform that serves as the frontend of our app, fetching data via the GraphQL exposed by Unbody."
       },
       {
         "id": "10b97213",
-        "summary": "Follow the one-click demo link to see the running app on Appsmith Cloud."
+        "summary": "Follow this one-click demo link to see the running app on Appsmith Cloud."
       },
       {
         "id": "b2f4527a",
-        "summary": "This image displays the architecture diagram of the AI meeting assistant workflow."
+        "summary": "Architecture diagram of the AI meeting assistant workflow."
       },
       {
         "id": "82e58139",
-        "summary": "Enable video recording during Google Meet sessions so recordings are uploaded automatically to the My Drive Meet Recordings folder."
+        "summary": "Enable video recording during your Google Meet sessions and recordings are uploaded automatically to the Meet Recordings folder in your Google Drive."
       },
       {
         "id": "8511f70c",
-        "summary": "Connect Google Drive as a content source to Unbody, where the AI-powered engine processes and indexes the content."
+        "summary": "Connect Google Drive as a content source to Unbody so its AI-powered engine can process and index the video transcription."
       },
       {
         "id": "40d8b4ff",
-        "summary": "Retrieve the result from Unbody’s content API using custom GraphQL queries to get a summary and identify action items."
+        "summary": "Retrieve the result from Unbody’s content API using GraphQL to get a summary of the meeting and identify specific action items."
       },
       {
         "id": "8219674f",
-        "summary": "Access the Appsmith dashboard to view the real-time meeting summary and action items."
+        "summary": "Access the Appsmith dashboard to view the meeting summary and action items for a real-time overview of tasks."
       },
       {
         "id": "88d5eb28",
-        "summary": "The picture illustrates the Meeting AI Assistant generated report on the Appsmith dashboard with example data."
+        "summary": "Meeting AI Assistant generated report on Appsmith dashboard."
       },
       {
         "id": "f3e801a3",
@@ -2452,7 +2606,7 @@
       },
       {
         "id": "19f39d00",
-        "summary": "This GIF shows the process of creating a Google Meet AI Assistant app with Unbody."
+        "summary": "The process of creating Google Meet AI Assistant app with Unbody."
       },
       {
         "id": "6e93a0fe",
@@ -2460,11 +2614,11 @@
       },
       {
         "id": "a85f843c",
-        "summary": "The project source code for Appsmith UI with sample GraphQL queries has already been implemented and is available in the GitHub repository."
+        "summary": "The project source code for Appsmith UI with sample GraphQL queries is available in the GitHub repository."
       },
       {
         "id": "010571e7",
-        "summary": "You must use Google Meet and meet the requirements to record a video meeting."
+        "summary": "You use Google Meet and meet the requirements to record a video meeting."
       },
       {
         "id": "793d6586",
@@ -2472,15 +2626,15 @@
       },
       {
         "id": "720de869",
-        "summary": "You must sign up for a new Appsmith account."
+        "summary": "You need to have an Appsmith account and sign up if necessary."
       },
       {
         "id": "90bfafdd",
-        "summary": "You need to fork the GitHub repo."
+        "summary": "You forked the GitHub repo for the project."
       },
       {
         "id": "65ab98d2",
-        "summary": "Step 1 involves activating a video recording in Google Meet."
+        "summary": "Step 1: Activate a video recording in Google Meet."
       },
       {
         "id": "78209f35",
@@ -2488,7 +2642,7 @@
       },
       {
         "id": "88fa8aae",
-        "summary": "This image shows starting a Google Meet recording to generate transcriptions."
+        "summary": "Starting a Google Meet recording to generate transcriptions."
       },
       {
         "id": "283fd29a",
@@ -2508,11 +2662,11 @@
       },
       {
         "id": "492b2eba",
-        "summary": "Access your Unbody Dashboard, create a new project, and configure the AI engines and features."
+        "summary": "Access your Unbody Dashboard to create a new project and configure the AI engines."
       },
       {
         "id": "6395e5e9",
-        "summary": "We are going to use two AI features: text-vectorizer and generative search."
+        "summary": "Unbody uses advanced AI technology like large language models and we will use text-vectorizer and generative search features."
       },
       {
         "id": "e2027230",
@@ -2520,23 +2674,23 @@
       },
       {
         "id": "35710f06",
-        "summary": "The text vectorizer creates a vector representation of transcriptions where the distance between two vectors measures their relatedness."
+        "summary": "Text Vectorizer is an algorithm that creates a vector representation of transcriptions where distance measures relatedness between concepts."
       },
       {
         "id": "9e6c1cbf",
-        "summary": "After Unbody indexes the data, it uses generative search engines like GPT to summarize what was discussed and identify action items."
+        "summary": "Unbody uses generative search engines like OpenAI to summarize discussions and identify action items similar to a human assistant."
       },
       {
         "id": "33ab72c7",
-        "summary": "Connect to Google Drive and optionally Google Calendar to include event details."
+        "summary": "Connect to Google Drive and optionally Google Calendar to include event details in the app."
       },
       {
         "id": "b5724d72",
-        "summary": "The image shows creating a new project in Unbody with data sources."
+        "summary": "Unbody create a new project with data sources."
       },
       {
         "id": "41ac273f",
-        "summary": "After you successfully connect to data sources, you should see Google Drive and Google Calendar in the sources list."
+        "summary": "After connecting data sources, you should see Google Drive and Google Calendar in the sources list."
       },
       {
         "id": "5cba7a78",
@@ -2548,7 +2702,7 @@
       },
       {
         "id": "56df153b",
-        "summary": "You can open the Unbody GraphQL playground to try existing queries from the repo or craft new queries."
+        "summary": "You can use the Unbody GraphQL playground to try existing queries that extract action items or fetch event booking details."
       },
       {
         "id": "3cc5890d",
@@ -2560,7 +2714,7 @@
       },
       {
         "id": "8736a71a",
-        "summary": "Next, import the existing Appsmith application from the GitHub repository to a new workspace in your Appsmith account."
+        "summary": "Import the existing Appsmith application from the GitHub repository into a new workspace in your Appsmith account."
       },
       {
         "id": "41b1fa44",
@@ -2568,7 +2722,7 @@
       },
       {
         "id": "57714c06",
-        "summary": "Once the import is complete, you’ll see the canvas ready for customization."
+        "summary": "Once the import is complete, you will see the canvas ready for customization."
       },
       {
         "id": "d7b76ab0",
@@ -2576,7 +2730,7 @@
       },
       {
         "id": "ed3c2c61",
-        "summary": "You need to find your personal API key and project ID generated in the Unbody Dashboard and manually configure them in the Appsmith data source headers."
+        "summary": "You must manually configure the data source headers with your personal API key and project ID generated in the Unbody Dashboard."
       },
       {
         "id": "35134c96",
@@ -2600,24 +2754,21 @@
       },
       {
         "id": "b233a20e",
-        "summary": "You now have a fully functional application using a RAG approach and Appsmith’s low-code interface to transform video recordings into actionable summaries."
+        "summary": "You now have a fully functional application utilizing a RAG approach to transform Google Meet recordings into actionable summaries."
       },
       {
         "id": "cf82c580",
-        "summary": "You can expand this setup by implementing a GraphQL query using the Generative Q&A feature to allow users to search for specific information."
+        "summary": "You can expand this setup by implementing a new GraphQL query using the Generative Q&A feature to allow users to search for specific information."
       }
     ],
     "relatedTopics": [
-      "Artificial Intelligence",
-      "Low-code Development",
+      "AI Development",
+      "Low-Code Tools",
       "Productivity Automation",
-      "Generative AI",
-      "Software Architecture"
+      "API Integration"
     ],
     "targetAudience": [
       "developers",
-      "founders",
-      "product-managers",
       "general"
     ],
     "tone": "technical",
@@ -2629,205 +2780,205 @@
     "publishDate": "2024-04-30",
     "author": "amir",
     "thumbnail": null,
-    "blurb": "Discover why 'AI-first' is becoming the new 'mobile-first' and what it truly means to build AI-native applications. This post breaks down the three pillars of AI-native design—personalization, context, and conversational interaction—and explains how to implement them without reinventing the wheel.",
+    "blurb": "AI-first is becoming the new mobile-first, but what defines an AI-native application? This post explores the shift towards adaptive, human-centric software and details the technical architecture required to build it.",
     "keywords": [
       "AI-native",
-      "mobile-first",
-      "personalization",
+      "AI-first strategy",
       "semantic search",
       "RAG",
-      "large language models",
-      "Unbody",
-      "software design",
       "data aggregation",
-      "generative AI"
+      "software design",
+      "Unbody",
+      "personalization",
+      "vectorizing",
+      "LLMs"
     ],
     "category": "explainer",
     "summary": [
       {
         "id": "966f6567",
-        "summary": "AI-first is becoming the new mobile-first, prompting a dive into the characteristics of AI-native apps."
+        "summary": "This post dives into the characteristics of AI-native apps as AI-first becomes the new mobile-first mindset."
       },
       {
         "id": "7e3fb4b5",
-        "summary": "The prevalence of LLMs necessitates a shift in user mentality and software design similar to the 'mobile-first' mindset."
+        "summary": "The shift in user mentality establishes a dialogue with software, necessitating a corresponding shift in design where AI functionalities will become standard."
       },
       {
         "id": "6db8968e",
-        "summary": "An AI-native app is defined as more human software that understands and adopts to the human user."
+        "summary": "An AI-native app is defined as a more human software that understands us and can adopt to the human user."
       },
       {
         "id": "23d07015",
-        "summary": "Software needs the ability to adapt and tailor to our individual needs and contexts, such as work versus home personas."
+        "summary": "Software should adapt and tailor to our individual needs and contexts, such as the different roles we embody at work versus at home."
       },
       {
         "id": "61fcedf3",
-        "summary": "A chatbot app at work must understand your company, department, and team to effectively search documents."
+        "summary": "A chatbot must understand your specific company and personal responsibilities to effectively search documents or summarize reports."
       },
       {
         "id": "ca4126d4",
-        "summary": "We need software to access and understand the data footprints we produce daily to provide a personalized experience."
+        "summary": "We need software to access and understand the data footprints we produce daily to provide a prioritized user experience."
       },
       {
         "id": "6bdd1c4a",
-        "summary": "Traditionally, CMS platforms require considerable manual effort to create and manage structured data."
+        "summary": "Traditionally, managing data for apps involves using CMS to curate and restructure content, which requires considerable manual effort."
       },
       {
         "id": "586a0a7f",
-        "summary": "Image illustrating traditional versus AI-native data management approaches for personalization."
+        "summary": "An illustration compares traditional versus AI-native data management approaches for personalization."
       },
       {
         "id": "4ed93f70",
-        "summary": "Much existing information, like FAQs or docs, traditionally requires re-curation to fit structured data requirements."
+        "summary": "Conventional methods require re-curating existing content like PDFs and Docs to fit structured data requirements and manually applying tags."
       },
       {
         "id": "5a338c04",
-        "summary": "AI-native applications use AI to transformation data, allowing us to maintain it in its original format and location."
+        "summary": "AI-native applications bypass traditional steps by utilizing language models to adapt data in its original format and location."
       },
       {
         "id": "6d651b9f",
-        "summary": "This process requires the capability to aggregate and process documents and data from all different locations."
+        "summary": "The process requires the capability to aggregate and process documents and data from all different locations and platforms."
       },
       {
         "id": "1c1fd044",
-        "summary": "A crucial aspect of AI-native apps is preserving the interconnected context of content rather than isolating it."
+        "summary": "The second crucial aspect is context, which involves linking isolated data points similar to the principle behind Hypertext."
       },
       {
         "id": "93c410f7",
-        "summary": "Image showing context awareness through semantically connected data sources."
+        "summary": "An image visualizes context awareness achieved through semantically connected data sources."
       },
       {
         "id": "89fcc0de",
-        "summary": "Making connections between different 'islands' of information defines context, which is a critical element for AI-native applications."
+        "summary": "Context involves making connections between different islands of information, such as technical documentation and community slack discussions."
       },
       {
         "id": "f6b3433d",
-        "summary": "We need semantically connected topics via features like 'semantic search' to provide contextually connected responses."
+        "summary": "Semantic search enables a deeper understanding and linking of content to provide contextually connected responses."
       },
       {
         "id": "472766f2",
-        "summary": "Users now expect to communicate with apps and websites through conversation, not just by clicking through options."
+        "summary": "Users now expect to communicate with apps and websites through conversation, rather than just seeking information by clicking options."
       },
       {
         "id": "e8d5c300",
-        "summary": "Image depicting the shift from information seeking to conversational interaction with software."
+        "summary": "An image depicts the user behavior shift from simple information seeking to conversational interaction with software."
       },
       {
         "id": "7721c6f8",
-        "summary": "There is a growing preference for using natural human language when interacting with software."
+        "summary": "The growing preference for natural human language interaction requires apps to develop capabilities for deeper semantic analysis."
       },
       {
         "id": "00592f15",
-        "summary": "To support interactive approaches, we need features like generative search, image captioning, and chatbots."
+        "summary": "To support interactive approaches, we need features like generative search, image captioning, and content classification."
       },
       {
         "id": "4ab3638c",
-        "summary": "Image showing a technical breakdown of AI-native app components."
+        "summary": "A diagram illustrates the technical breakdown of various AI-native app components."
       },
       {
         "id": "8caefcc0",
-        "summary": "The essential tech for AI-first apps breaks down into three main areas: aggregation, processing, and functions."
+        "summary": "The essential technology for AI-first apps breaks down into data aggregation, data processing, and functions."
       },
       {
         "id": "966f5265",
-        "summary": "Data Aggregation is about getting data from different places and making sure it all syncs up nicely."
+        "summary": "Data Aggregation focuses on getting data from different places and making sure it all syncs up nicely."
       },
       {
         "id": "737d7b71",
-        "summary": "Data Processing involves turning raw data into AI-ready data through cleaning, chunking, and vectorizing."
+        "summary": "Data Processing involves turning raw data into enhanced AI-ready data through cleaning, chunking, and vectorizing."
       },
       {
         "id": "301d45c2",
-        "summary": "The third area covers functions, borrowing from RAG but going beyond specific technical definitions."
+        "summary": "The functions division borrows from RAG but goes beyond it to avoid getting too technical."
       },
       {
         "id": "ee6c3d88",
-        "summary": "Data Retrieval acts as a supercharged search engine inside your app to find exactly what you need."
+        "summary": "Data Retrieval acts as a supercharged search engine inside your app to help you find exactly what you need quickly."
       },
       {
         "id": "3971e478",
-        "summary": "Data Augmentation is about making existing data better by adding new details or tweaking it for context."
+        "summary": "Data Augmentation makes existing data better by adding new details or tweaking it to understand different scenarios."
       },
       {
         "id": "14561d45",
-        "summary": "Data Generation creates new bits of content on the spot based on what users are asking for."
+        "summary": "Data Generation creates new bits of content right on the spot based on what users are asking for, borrowing from RAG principles."
       },
       {
         "id": "3a37827e",
-        "summary": "Here is a peek at what it looks like to assemble a system that can handle everything discussed."
+        "summary": "This section offers a peek at what it looks like to assemble a system that can handle all the discussed components."
       },
       {
         "id": "935180f0",
-        "summary": "Image illustrating the complexity of assembling a full AI-native system from scratch."
+        "summary": "An image displays the complexity involved in assembling a full AI-native system from scratch."
       },
       {
         "id": "659d10d2",
-        "summary": "Building this system generally requires Python knowledge and putting together about ten different components like LLMs and vector stores."
+        "summary": "Building this system requires familiarity with Python and assembling components like document parsers, embeddings, and LLM APIs."
       },
       {
         "id": "da4924ce",
-        "summary": "Beyond AI elements, real-world apps also utilize CDNs and media hosting to ensure performance."
+        "summary": "Beyond AI elements, real-world apps require functionalities like CDNs and video hosting, making development challenging."
       },
       {
         "id": "5336bc80",
-        "summary": "Unbody is developing an AI-as-a-service platform that automates the entire AI development pipeline for developers."
+        "summary": "Unbody is developing an AI-as-a-service platform that automates the entire AI development pipeline to solve these challenges."
       },
       {
         "id": "56b3cb46",
-        "summary": "Image demonstrating how Unbody simplifies AI-native app development."
+        "summary": "A visual explains how Unbody simplifies the process of AI-native app development."
       },
       {
         "id": "04cdec54",
-        "summary": "Unbody automates the aggregation and processing of data from sources like Google Drive and Slack in any format."
+        "summary": "Unbody automates the aggregation and processing of data from any source and format, from Google Drive to local video files."
       },
       {
         "id": "f6d6d691",
-        "summary": "The platform streamlines model management, enabling developers to choose from options like OpenAI or Hugging Face seamlessly."
+        "summary": "The platform streamlines AI model management by handling complexities of upgrades and deployments for models like OpenAI's GPTs."
       },
       {
         "id": "2fbbc2dd",
-        "summary": "Integrating AI functionalities into apps is made as simple as writing a single line of code via API or SDKs."
+        "summary": "Unbody enables delivery to the developer via an API or SDK, making integration as simple as writing a single line of code."
       },
       {
         "id": "3904c37e",
-        "summary": "Video clip demonstrating short Javascript semantic search functionality."
+        "summary": "A video demonstrates a short semantic search implementation in JavaScript."
       },
       {
         "id": "87e125d6",
-        "summary": "Just connect your data, select your AI stack, and start building with just one line of code."
+        "summary": "Developers can just connect data, select an AI stack, and start building with one line of code."
       },
       {
         "id": "632accc8",
-        "summary": "Here are a few examples of open-source AI-native products built using Unbody.io."
+        "summary": "The author shares examples of open-source AI-native products built using Unbody.io."
       },
       {
         "id": "87ae6fa7",
-        "summary": "Nextlog is an AI-native, open-source blogging framework built on Unbody.io that makes reading more dynamic."
+        "summary": "Nextlog is an AI-native, open-source blogging framework built on Unbody.io designed to make reading more contextual."
       },
       {
         "id": "199c5c0d",
-        "summary": "GitHub link to an example boilerplate for Unbody.io's typescript SDK in Next.Js."
+        "summary": "This link directs to an example boilerplate for Unbody.io's typescript SDK in Next.Js."
       },
       {
         "id": "cf498851",
-        "summary": "The Search Plugin makes searches feel as natural as conversation, showcasing practical tech applications."
+        "summary": "The Search Plugin creates search functionalities involving natural conversation, showcasing practical applications."
       },
       {
         "id": "d96d8f03",
-        "summary": "Image showing the Unbody-powered search plugin for websites and documentation."
+        "summary": "An image shows the Unbody-powered search plugin interface on a website."
       }
     ],
     "relatedTopics": [
-      "Software Architecture",
       "Artificial Intelligence",
-      "User Experience",
-      "Data Engineering",
-      "Product Management"
+      "Software Architecture",
+      "User Experience Design",
+      "Modern Web Development",
+      "Data Engineering"
     ],
     "targetAudience": [
       "developers",
-      "product-managers",
-      "founders"
+      "founders",
+      "product-managers"
     ],
     "tone": "technical",
     "readingTime": 10

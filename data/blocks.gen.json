@@ -438,6 +438,186 @@
     "content": "→ \\[🛠 [GitHub Repo](https://github.com/unbody-io/unbody)]"
   },
   {
+    "id": "3144a3e7",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 1,
+    "content": "We accept it because we don't have a name for it. We think the friction we feel—the fatigue, the scattered attention, the 32 tabs open at 4 PM—is just \"work.\""
+  },
+  {
+    "id": "a456ed4a",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 2,
+    "content": "It isn't. It is a symptom of a specific architectural failure."
+  },
+  {
+    "id": "f55a7ec6",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 3,
+    "content": "We assume that \"Apps\" and \"Websites\" are the natural state of software. We treat them like laws of physics. But they aren't."
+  },
+  {
+    "id": "9c68739e",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 4,
+    "content": "Software containers are a \"historical glitch\". They didn't emerge because they are how humans think. They emerged because of macro-level constraints on how we used to build and ship software:"
+  },
+  {
+    "id": "2098d868",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 5,
+    "content": "1. **Distribution:** Whether it was a floppy disk, an `.exe` file, or a SaaS domain, software had to be packaged into a standalone unit to be shipped, installed, or visited. We had to build \"containers\" just to get the logic to the user."
+  },
+  {
+    "id": "204c0ee5",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 6,
+    "content": "2. **Servers:** Vendors needed to ship one static, top-down interface to millions of users."
+  },
+  {
+    "id": "3a2d05d3",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 7,
+    "content": "Because of these logistical hurdles, software became something \"designed first and used second\"—a fixed shape handed down to you. We are forced to hop between these rigid, server-defined boxes to get anything done."
+  },
+  {
+    "id": "7b3a56a0",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 8,
+    "content": "The result is a system built on three anti-human pillars."
+  },
+  {
+    "id": "8ea77dd2",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 9,
+    "content": "In the physical world, tools come to you. In the digital world, you must travel to the tool."
+  },
+  {
+    "id": "d8a3b2ae",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 10,
+    "content": "You have to \"go to\" Gmail to email. You have to \"open\" Salesforce to update a deal. You have to \"launch\" Zoom to talk."
+  },
+  {
+    "id": "faeae739",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 11,
+    "content": "These boxes don't talk to each other. They are walled gardens of logic. You are not using a computer; you are visiting a series of disconnected rooms, over and over again."
+  },
+  {
+    "id": "06a2463e",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 12,
+    "content": "This physical separation creates a deeper cognitive fracture."
+  },
+  {
+    "id": "46b1c968",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 13,
+    "content": "I've been obsessed with this disconnect for years—I actually focused my grad project, [Re](https://github.com/amirhouieh/re-), on it back in 2016. What I found then, and what remains true today, is that we are trapped in the \"Page Era.\""
+  },
+  {
+    "id": "90a50f74",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 14,
+    "content": "The \"Page\" is a centralized model where content and UI are pre-defined top-down by the server. The server decides what the container looks like."
+  },
+  {
+    "id": "a148013f",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 15,
+    "content": "But as humans, we don't think in Pages or Apps. We explore **chunk-by-chunk**, navigating threads of relevant info."
+  },
+  {
+    "id": "13bdd9b5",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 16,
+    "content": "Think about it: You don't think \"I need to open Google Calendar.\" You think _\"What's happening Tuesday?\"_ But the OS doesn't understand that. It only understands \"Launch Container A.\" It forces you to translate your intent into its rigid language."
+  },
+  {
+    "id": "63187133",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 17,
+    "content": "![Server ships Pages but the mind follows Threads, visualizing the disconnect](./image-01.png \"The server ships Pages (grey boxes), but the mind follows Threads (red arrows). Visualizing the disconnect in Re (2016). [View full slides on GitHub](https://github.com/amirhouieh/re-/blob/master/resources/presentation_0.1_2.pdf)\")"
+  },
+  {
+    "id": "bf594f30",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 18,
+    "content": "Tabs are just the ultimate symptom of this mismatch. They are proof that the OS doesn't understand the thread of your work, so it forces _you_ to hold the state in your head."
+  },
+  {
+    "id": "03eea69a",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 19,
+    "content": "Because the logic is siloed and the abstraction is wrong, we pay a price."
+  },
+  {
+    "id": "24718806",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 20,
+    "content": "Since the boxes don't talk to each other, _you_ have to be the connection. You are the **human router**, manually copying context from one box to another, 50 times a day."
+  },
+  {
+    "id": "229fb741",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 21,
+    "content": "The result is a quiet kind of insanity: 32 tabs open, 7 SaaS tools in the loop for one simple task, and infinite \"where was that?\" micro-searches."
+  },
+  {
+    "id": "23829a6e",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 22,
+    "content": "You pay this tax with your attention, your time, and your nervous system."
+  },
+  {
+    "id": "b05a9a10",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 23,
+    "content": "It feels like the dam is finally breaking. You can feel the energy shifting in the builder community."
+  },
+  {
+    "id": "027c8585",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 24,
+    "content": "[Naval Ravikant (@naval)](https://x.com/naval) called it early with [\"UI is pre-AI\"](https://x.com/naval/status/1994906324468207765). And I love what the team at [AGI Inc](https://www.theagi.company/) is doing; they are proving that the future isn't about navigating menus, it's about pure intent. Check out [Div Garg (@divgarg)](https://x.com/divgarg)'s launch of [AGI Mobile](https://x.com/divgarg/status/2006404668407058466)."
+  },
+  {
+    "id": "57b454fc",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 25,
+    "content": "Then you have teams like [Zo](https://x.com/zocomputer) shipping the idea that [\"ideas are the new software\"](https://x.com/zocomputer/status/2009440738455769430) and unbundling the dev environment into a browser-native, personal intelligent cloud computer. You have [Wabi AI](https://x.com/wabi.ai) exploring what personal software actually looks like when it fits the user, not the masses."
+  },
+  {
+    "id": "e54ae5bf",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 26,
+    "content": "We are all circling the same truth: **The \"use\" of software is the bottleneck, not the build**."
+  },
+  {
+    "id": "3119c44e",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 27,
+    "content": "[x.com/amirhouieh/status/2007872633501860282?s=20](https://x.com/amirhouieh/status/2007872633501860282?s=20)"
+  },
+  {
+    "id": "4d2547fd",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 28,
+    "content": "It's exciting to see this wave rising. But I think there's one layer deeper we need to go. We don't just need agents that drive the old apps for us; we need to rethink the architecture so the \"app\" doesn't need to exist at all."
+  },
+  {
+    "id": "73692f05",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 29,
+    "content": "_This is Part 1 of a series. Next up, I want to talk about why \"Agents\" are just a transition step, and introduce the \"Faceless Data Layer.\"_"
+  },
+  {
+    "id": "66b01f45",
+    "slug": "end-of-container-era-apps-glitch",
+    "index": 30,
+    "content": "_(P.S. We're cooking up something in stealth that tackles exactly this. Can't wait to show you more soon.)_"
+  },
+  {
     "id": "41764f79",
     "slug": "delightree-ai-transformation",
     "index": 1,
