@@ -1,85 +1,97 @@
 {
-  "summary": "The Unbody blog explores the technical and strategic landscape of building 'AI-native' applications, serving as a guide for developers and founders transitioning from traditional software architectures to AI-driven systems. It documents the evolution of Unbody as an open-source, headless API—often described as the 'Supabase of the AI era'—which simplifies the ingestion of scattered data from sources like Google Drive and GitHub into a unified, reasoning-ready endpoint.\n\nBeyond product announcements, the content offers deep dives into the challenges of in-house RAG (Retrieval-Augmented Generation) development, arguing against the technical debt of custom infrastructure. It includes practical tutorials on low-code integration, UI state management for generative flows, and implementing Agentic RAG, aiming to help teams transform raw private data into intelligent, context-aware user experiences with minimal engineering overhead.",
+  "summary": "This blog serves as both a philosophical manifesto and a technical resource for the transition from traditional software architecture to AI-native applications. It explores the concept of the \"post-app\" era, arguing that software containers are a historical glitch and advocating for intent-based, context-aware computing. The content ranges from high-level essays defining \"AI-native\" versus \"AI-forced\" design to in-depth discussions on open-source infrastructure that unifies fragmented data silos into intelligent endpoints.\n\nBeyond theory, the blog provides practical guides for developers and business leaders navigating the complexities of AI adoption. It covers technical tutorials on building Agentic RAG systems, managing UI states for generative flows, and utilizing low-code tools like Appsmith. Through case studies and explainer posts, it demonstrates how Unbody's platform allows users to bypass the overhead of building custom AI engines, enabling the rapid deployment of autonomous agents and knowledge bases.",
   "keywords": [
-    "AI-native architecture",
-    "RAG",
-    "Retrieval-Augmented Generation",
-    "Data integration",
-    "Open source",
-    "Headless API",
-    "Generative UI",
-    "Agentic RAG",
-    "Low-code development",
-    "Technical debt",
-    "Data silos",
-    "SaaS infrastructure",
-    "Context-aware computing",
-    "Managed AI",
+    "AI-native Architecture",
+    "Retrieval-Augmented Generation (RAG)",
+    "Open Source",
+    "Data Silos",
+    "Intent-based Computing",
+    "Autonomous Agents",
+    "UI State Management",
+    "Generative AI",
+    "Low-code Development",
+    "GraphQL",
+    "Software Containers",
+    "Agentic Workflows",
+    "Context-aware Applications",
+    "Tech Stack Simplification",
+    "Vector Embeddings",
     "Appsmith",
-    "UI state management",
-    "Backend-as-a-Service",
-    "Vector search"
+    "Digital Transformation"
   ],
   "suggestiveQuestions": [
-    "What is the difference between 'AI-forced' and 'AI-native' applications?",
-    "Why should startups avoid building their own RAG infrastructure from scratch?",
-    "How can I unify data from Google Drive and GitHub for AI processing?",
-    "What are the best practices for managing UI state in generative AI flows?",
-    "How do I implement Agentic RAG using a JSON endpoint?",
-    "How can low-code tools like Appsmith be used with an AI backend?",
-    "What defines the 'Supabase of the AI era' architecture?"
+    "What is the difference between an AI-native application and an AI-forced one?",
+    "Why is the era of standalone software containers and apps coming to an end?",
+    "How can I build an Agentic RAG system that understands nuanced user queries?",
+    "What are the risks and costs associated with building in-house AI infrastructure?",
+    "How should UI state management change to accommodate generative data flows?",
+    "How can businesses unify scattered data from platforms like Google Drive into a single AI endpoint?",
+    "What are the benefits of using an open-source, modular backend for AI development?"
   ],
   "topicClusters": [
     {
-      "name": "The AI-Native Strategy & Philosophy",
+      "name": "Philosophy of AI-Native Design",
       "keywords": [
         "AI-native",
-        "AI-forced",
-        "SaaS strategy",
-        "Technical debt",
-        "Complexity"
+        "Post-app Era",
+        "Intent-based",
+        "Software Design",
+        "Human-centric"
       ],
       "postSlugs": [
+        "end-of-container-era-apps-glitch",
         "ai-forced-vs-ai-native",
-        "simplifying-ai-development",
-        "ai-is-complex",
-        "ai-in-2023",
-        "ai-native-app"
+        "ai-native-app",
+        "ai-in-2023"
       ]
     },
     {
-      "name": "Unbody Platform & Data Unification",
+      "name": "Platform Architecture & Integration",
       "keywords": [
-        "Open source",
-        "Data pipeline",
-        "Single endpoint",
-        "Case study",
-        "Data aggregation"
+        "Open Source",
+        "Data Unification",
+        "GraphQL",
+        "Infrastructure",
+        "Backend-as-a-Service"
       ],
       "postSlugs": [
         "oss-alpha",
-        "delightree-ai-transformation",
         "ai-for-your-data",
         "hello-world",
+        "simplifying-ai-development",
         "efficient-ai-integration"
       ]
     },
     {
-      "name": "Technical Implementation & Tutorials",
+      "name": "Technical Guides & Development",
       "keywords": [
         "Agentic RAG",
-        "UI state",
-        "Low-code",
+        "UI State",
         "Appsmith",
-        "Generative data flow"
+        "Zod Schema",
+        "Generative Flows"
       ],
       "postSlugs": [
         "gen-data-ui-state",
         "query-to-context",
         "gmeet-ai-assistant-appsmith"
       ]
+    },
+    {
+      "name": "Business Strategy & Case Studies",
+      "keywords": [
+        "Digital Transformation",
+        "Cost Analysis",
+        "In-house vs Platform",
+        "Case Study",
+        "Franchise Solutions"
+      ],
+      "postSlugs": [
+        "delightree-ai-transformation",
+        "ai-is-complex"
+      ]
     }
   ],
-  "totalPosts": 13,
-  "lastUpdated": "2026-02-25T15:50:44.907Z"
+  "totalPosts": 14,
+  "lastUpdated": "2026-03-02T11:22:14.341Z"
 }
