@@ -49,6 +49,14 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <SEO title={title} description={description} {...seo} />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RZLH23GN60" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-RZLH23GN60');
+    </script>
     <script>
     import { initThemeController } from "../scripts/theme-controller";
     initThemeController();
