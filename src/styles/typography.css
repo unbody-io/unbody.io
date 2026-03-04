@@ -380,4 +380,5 @@
 .prose :where(img, video),
 .article-content :where(img, video) {
   border-radius: 0.75rem;
+  max-width: 100%;
 }

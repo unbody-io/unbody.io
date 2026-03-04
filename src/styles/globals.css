@@ -63,8 +63,9 @@
   --overlay-top-mid-pos: 39%;
   --overlay-top-height-mobile: 95px;
   --overlay-top-height-desktop: 233px;
-  --overlay-bottom-start-alpha: 96%;
   --overlay-bottom-start-color: #ffffff;
+  --overlay-bottom-start-alpha: 96%;
+  --overlay-bottom-solid-pos: 20%;
   --overlay-bottom-mid-alpha: 43%;
   --overlay-bottom-mid-pos: 25%;
   --overlay-bottom-height-mobile: 239px;
@@ -109,8 +110,9 @@
   --overlay-top-mid-pos: 25%;
   --overlay-top-height-mobile: 83px;
   --overlay-top-height-desktop: 147px;
-  --overlay-bottom-start-alpha: 90%;
   --overlay-bottom-start-color: #000000;
+  --overlay-bottom-start-alpha: 90%;
+  --overlay-bottom-solid-pos: 25%;
   --overlay-bottom-mid-alpha: 50%;
   --overlay-bottom-mid-pos: 45%;
   --overlay-bottom-height-mobile: 192px;
@@ -142,6 +144,7 @@
   }
   html {
     scrollbar-width: none;
+    overflow-x: hidden;
   }
   html::-webkit-scrollbar {
     display: none;
@@ -212,16 +215,8 @@
   height: var(--overlay-bottom-height-mobile);
   background: linear-gradient(
     to top,
-    color-mix(
-      in oklch,
-      var(--overlay-bottom-start-color) var(--overlay-bottom-start-alpha),
-      transparent
-    ) 0%,
-    color-mix(
-      in oklch,
-      var(--overlay-bottom-start-color) var(--overlay-bottom-mid-alpha),
-      transparent
-    ) var(--overlay-bottom-mid-pos),
+    var(--overlay-bottom-start-color) 0%,
+    var(--overlay-bottom-start-color) var(--overlay-bottom-solid-pos),
     transparent 100%
   );
 }
@@ -233,5 +228,19 @@
 
   .overlay-mask-bottom {
     height: var(--overlay-bottom-height-desktop);
+    background: linear-gradient(
+      to top,
+      color-mix(
+        in oklch,
+        var(--overlay-bottom-start-color) var(--overlay-bottom-start-alpha),
+        transparent
+      ) 0%,
+      color-mix(
+        in oklch,
+        var(--overlay-bottom-start-color) var(--overlay-bottom-mid-alpha),
+        transparent
+      ) var(--overlay-bottom-mid-pos),
+      transparent 100%
+    );
   }
 }
