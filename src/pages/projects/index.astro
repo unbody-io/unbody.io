@@ -1,0 +1,52 @@
+---
+import { siteConfig } from "@/config/site";
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+import Base from "../../layouts/Base.astro";
+
+const title = siteConfig.pages.projects.title;
+const description = siteConfig.pages.projects.description;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: `${siteConfig.url}/projects`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+---
+
+<Base title={title} description={description} seo={{ jsonLd }}>
+  <header class="mb-16">
+    <h1 class="sr-only">Unbody Projects</h1>
+    <div
+      data-type="nav"
+      class="type-ui-md uppercase tracking-wider md:tracking-ultra text-foreground"
+    >
+      PROJECTS
+    </div>
+  </header>
+
+  <div class="space-y-12">
+    {projects.map((project) => (
+      <ProjectCard
+        slug={project.id}
+        title={project.data.title}
+        blurb={project.data.blurb}
+        status={project.data.status}
+        date={project.data.date}
+        tags={project.data.tags}
+        cover={project.data.cover}
+      />
+    ))}
+  </div>
+</Base>

@@ -1,0 +1,66 @@
+---
+import type { ProjectStatus } from "@/types/data.types";
+
+interface Props {
+  slug: string;
+  title: string;
+  blurb: string;
+  status: ProjectStatus;
+  date: string;
+  tags?: string[];
+  cover?: string;
+}
+
+const { slug, title, blurb, status, date, tags = [], cover } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<article class="text-muted-foreground">
+  <a href={`/projects/${slug}`} class="block group">
+    {cover && (
+      <div class="mb-4 overflow-hidden rounded-lg border border-border">
+        <img
+          src={cover}
+          alt={title}
+          class="w-full aspect-[2/1] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          loading="lazy"
+        />
+      </div>
+    )}
+
+    <div data-type="meta" class="type-meta-md mb-3 flex items-center gap-3">
+      <time datetime={date}>{formattedDate}</time>
+      <span class="opacity-30">|</span>
+      <span class="uppercase tracking-wider">{status}</span>
+    </div>
+
+    <div class="prose prose-card">
+      <h2 class="transition-colors duration-300">
+        {title}
+      </h2>
+
+      <p>{blurb}</p>
+    </div>
+
+    {tags.length > 0 && (
+      <div class="mt-3 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="type-meta-md px-2 py-0.5 rounded-full border border-border text-muted-foreground">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </a>
+</article>
+
+<style>
+  article:hover .prose h2 {
+    color: var(--primary);
+  }
+</style>

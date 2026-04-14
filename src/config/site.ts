@@ -19,6 +19,11 @@ export const siteConfig = {
       description:
         "Where we question, explore, experiment and build adaptive thinking tools.",
     },
+    projects: {
+      title: "Unbody Projects",
+      description:
+        "Projects and experiments from the Unbody team — tools, demos, and explorations in AI-native development.",
+    },
   },
 } as const;
 
