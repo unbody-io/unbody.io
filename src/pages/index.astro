@@ -1,28 +1,22 @@
 ---
 import { siteConfig } from "@/config/site";
 import Base from "../layouts/Base.astro";
+import Manifesto from "../components/Manifesto.astro";
 
-const { title, description } = siteConfig.pages.home;
+const { title, description } = siteConfig.pages.lab;
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: siteConfig.url,
+  isPartOf: {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
-    description: siteConfig.description,
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    sameAs: [
-      `https://twitter.com/${siteConfig.social.twitter}`,
-      `https://github.com/${siteConfig.social.github}`,
-    ],
-  },
-];
+};
 ---
 
 <Base
@@ -30,31 +24,11 @@ const jsonLd = [
   description={description}
   seo={{ jsonLd }}
 >
-  <div class="prose">
-    <header>
-      <h2 class="!mt-0">
-        The Supabase of A.I. Era
-      </h2>
-      <p class="type-body-md">
-        Build AI-native backends with built-in agents, vector storage, and APIs
-        — all from one modular, open-source stack.
-      </p>
-    </header>
-
+  <Manifesto />
+  <div class="mt-32 pb-12 flex flex-col items-center opacity-30">
+    <div class="w-px h-24 bg-gradient-to-b from-foreground to-transparent mb-8"></div>
+    <p class="type-ui-md uppercase tracking-wider md:tracking-ultra whitespace-nowrap">
+      Unbody Research Division
+    </p>
   </div>
-
-  <div class="mt-6">
-    <a
-      href="https://forms.gle/B34fYDGxEfZk82Ad8"
-      class="inline-flex items-center gap-3 rounded-full border border-foreground/20 px-[1.25em] py-[0.6em] hover:border-foreground/40 transition-colors duration-200"
-    >
-      <span class="type-ui-md uppercase tracking-wider text-muted-foreground">Beta</span>
-      <span class="w-px h-[0.75em] bg-foreground/20"></span>
-      <span class="type-ui-md uppercase tracking-wider text-foreground">Request access</span>
-    </a>
-  </div>
-
-  <p class="prose type-body-md mt-12 italic">
-    * We're currently directing our focus toward <a href="/lab">Unbody Lab</a>.
-  </p>
 </Base>
