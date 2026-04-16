@@ -1,0 +1,171 @@
+---
+import { siteConfig } from "@/config/site";
+import { getCollection, getEntry, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const entry = await getEntry("projects", slug!);
+if (!entry) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await render(entry);
+const { title, blurb, status, date, tags, github, website, cover, heroVideo } =
+  entry.data;
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const heroImage = cover;
+const hasHero = !!(heroImage || heroVideo);
+
+const projectUrl = `${siteConfig.url}/projects/${slug}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: title,
+  description: blurb,
+  url: projectUrl,
+  datePublished: date,
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  ...(tags.length > 0 && { keywords: tags }),
+};
+---
+
+<Base
+  showBackButton={true}
+  backButtonHref="/projects"
+  title={`${title} | Unbody Projects`}
+  description={blurb}
+  seo={{
+    ogType: "article",
+    article: {
+      publishedTime: date,
+      tags,
+    },
+    jsonLd,
+  }}
+>
+  <div class:list={["above-fold", hasHero && "has-hero"]}>
+    {hasHero && (
+      <div class="hero-bleed overflow-hidden flex-1 min-h-0">
+        {heroVideo ? (
+          <video
+            src={heroVideo}
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover"
+          />
+        ) : (
+          <img
+            src={heroImage}
+            alt={title}
+            class="w-full h-full object-cover"
+          />
+        )}
+      </div>
+    )}
+
+    <header class:list={["shrink-0 text-muted-foreground", hasHero && "mt-10"]}>
+      <div data-type="meta" class="type-meta-md mb-6 flex items-center gap-3">
+        <time datetime={date}>{formattedDate}</time>
+        <span class="opacity-30">|</span>
+        <span class="uppercase tracking-wider">{status}</span>
+      </div>
+
+      <h1 class="type-headline-xl mb-4 text-foreground">
+        {title}
+      </h1>
+
+      <p class="type-body-md mb-4">{blurb}</p>
+
+      {tags.length > 0 && (
+        <div class="mb-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="type-meta-md px-2 py-0.5 rounded-full border border-border">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {(github || website) && (
+        <div data-type="meta" class="type-meta-md flex items-center gap-3">
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-foreground transition-colors duration-200"
+            >
+              GitHub
+            </a>
+          )}
+          {github && website && <span class="opacity-30">|</span>}
+          {website && (
+            <a
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-foreground transition-colors duration-200"
+            >
+              Website
+            </a>
+          )}
+        </div>
+      )}
+    </header>
+  </div>
+
+  <article class="prose">
+    <Content />
+  </article>
+</Base>
+
+<style>
+  .above-fold {
+    display: flex;
+    flex-direction: column;
+    /* exactly one viewport: subtract the Base layout top padding */
+    height: calc(100dvh - 12rem);
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .above-fold {
+      height: calc(100dvh - 12rem);
+    }
+  }
+
+  .hero-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    /* pull up into the layout top padding so image starts at the page top */
+    margin-top: -7rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-bleed {
+      margin-top: -10rem;
+    }
+  }
+</style>

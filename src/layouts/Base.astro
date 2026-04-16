@@ -13,6 +13,7 @@ interface Props {
   description?: string;
   seo?: Partial<SEOProps>;
   showBackButton?: boolean;
+  backButtonHref?: string;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   description = siteConfig.description,
   seo,
   showBackButton = false,
+  backButtonHref = "/blog",
 } = Astro.props;
 ---
 
@@ -115,8 +117,8 @@ const {
             class="pointer-events-auto"
           >
             <a
-              href="/blog"
-              aria-label="Back to blog"
+              href={backButtonHref}
+              aria-label="Go back"
               class="h-[calc(1lh+1em)] w-[calc(1lh+1em)] rounded-full flex items-center justify-center text-foreground/80 hover:text-foreground hover:bg-foreground/5 focus-visible:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <svg

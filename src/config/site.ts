@@ -9,11 +9,6 @@ export const siteConfig = {
     github: "unbody-io",
   },
   pages: {
-    home: {
-      title: "Unbody — The Supabase of A.I. Era",
-      description:
-        "Build AI-native backends with built-in agents, vector storage, and APIs — all from one modular, open-source stack.",
-    },
     blog: {
       title: "Unbody Blog",
       description:
@@ -23,6 +18,11 @@ export const siteConfig = {
       title: "Unbody Lab",
       description:
         "Where we question, explore, experiment and build adaptive thinking tools.",
+    },
+    projects: {
+      title: "Unbody Projects",
+      description:
+        "Projects and experiments from the Unbody team — tools, demos, and explorations in AI-native development.",
     },
   },
 } as const;

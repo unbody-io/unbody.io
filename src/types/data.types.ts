@@ -1,3 +1,5 @@
+export type ProjectStatus = "experimental" | "alpha" | "active" | "archived"
+
 export type Category = "essay" | "update" | "case-study" | "event" | "explainer"
 
 export type TargetAudience =
