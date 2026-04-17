@@ -2982,5 +2982,64 @@
     ],
     "tone": "technical",
     "readingTime": 10
+  },
+  {
+    "slug": "adapt",
+    "title": "Adaptation Is All We Need",
+    "publishDate": "2026-04-16",
+    "author": "amir",
+    "thumbnail": null,
+    "blurb": "Memory in software isn't a memorizing problem — it's a learning problem. This post introduces Adapt, an open-source self-evolving memory layer that doesn't just store data but builds understanding, reshapes its own structure, and grows with what it encounters.",
+    "keywords": [
+      "Adapt",
+      "memory",
+      "self-evolving",
+      "Brain",
+      "Neurons",
+      "RAG",
+      "AI memory",
+      "open source",
+      "Unbody"
+    ],
+    "category": "essay",
+    "summary": [
+      {
+        "id": "adapt-01",
+        "summary": "Most software is configured once and can't move past it, which is breaking down fastest in AI memory systems."
+      },
+      {
+        "id": "adapt-02",
+        "summary": "Retrieval-based memory structurally can't handle questions where answers emerge from patterns across many data points over time."
+      },
+      {
+        "id": "adapt-03",
+        "summary": "We needed something that could pay attention as data came in and grow its own structure, so we built Adapt."
+      },
+      {
+        "id": "adapt-04",
+        "summary": "Every Adapt instance is a Brain made of Neurons that learn through cycles of observation and synthesis."
+      },
+      {
+        "id": "adapt-05",
+        "summary": "The Brain watches signals from all neurons and reconfigures itself — splitting, merging, creating, or pruning neurons as needed."
+      },
+      {
+        "id": "adapt-06",
+        "summary": "Adapt is open source, built at Unbody as a Node.js library where you bring the LLM and describe what you want understood."
+      }
+    ],
+    "relatedTopics": [
+      "Artificial Intelligence",
+      "Memory Systems",
+      "Software Architecture",
+      "Open Source"
+    ],
+    "targetAudience": [
+      "developers",
+      "founders",
+      "product-managers"
+    ],
+    "tone": "philosophical",
+    "readingTime": 5
   }
 ]
