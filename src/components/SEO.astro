@@ -7,6 +7,7 @@ export interface Props {
   canonical?: string;
   ogType?: "website" | "article";
   ogImage?: string;
+  ogContentImage?: string;
   article?: {
     publishedTime: string;
     author?: string;
@@ -21,6 +22,7 @@ const {
   canonical = new URL(Astro.url.pathname, siteConfig.url).href,
   ogType = "website",
   ogImage,
+  ogContentImage,
   article,
   jsonLd,
 } = Astro.props;
@@ -47,6 +49,7 @@ const absoluteOgImage = ogImage ?? getOgImagePath(Astro.url.pathname);
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={siteConfig.name} />
 <meta property="og:image" content={absoluteOgImage} />
+{ogContentImage && <meta name="unbody:og-content-image" content={ogContentImage} />}
 
 {article && (
   <>

@@ -1,21 +1,105 @@
 ---
 title: "Adapt"
-blurb: "A self-evolving memory layer for AI applications that doesn't memorize — it learns, adapts, and reshapes its own structure over time."
+blurb: "A self-evolving AI memory that learns by attention instead of recall. TypeScript SDK."
 status: "alpha"
 date: "2026-04-14"
-tags: ["AI", "memory", "local-first", "TypeScript"]
+tags: ["AI", "memory", "open-source", "TypeScript"]
 github: "https://github.com/unbody-io/adapt"
 website: "https://adapt.unbody.io"
-cover: "/projects/adapt/cover.png"
+cover: "/projects/adapt/cover.jpeg"
 heroVideo: "/projects/adapt/demo.mp4"
 ---
 
-There are questions you can only answer if you were paying attention along the way. Not because the answer is hidden — because it doesn't exist yet. It only forms from watching things unfold over time.
+[Adapt](https://adapt.unbody.io) is an open-source Node.js library for building AI memory systems that learn and evolve over time, rather than just storing and retrieving data.
 
-Most memory systems store and retrieve. That works when the answer already exists somewhere. But the questions that matter most — about patterns, relationships, shifts in behavior — can't be retrieved. They have to be built from everything together, over time.
+Most memory systems fail in two ways: they cannot reason across time, and they cannot adapt when data changes shape. They memorize instead of learning: a fixed structure trying to hold non-deterministic data. Adapt is my attempt to fix that.
 
-Adapt is built for those questions. It lives with your data and grows by it. Its structure on day one is different from its structure after a week, because it reshapes itself around what it encounters. You don't configure Adapt — it adapts.
+<figure>
+  <img
+    src="/projects/adapt/images/neuron-evolution.jpeg"
+    alt="A three-panel illustration showing glossy white fluid shapes evolving from a single blob on Day 1 to a connected cluster on Week 1 and a complex group of multiple cells on Month 1."
+  />
+  <figcaption>
+    Adapt's memory structure changes as it observes more data: one broad neuron can split into a more specific network over time.
+  </figcaption>
+</figure>
 
-Pretty much every project in our lab needed exactly this. A system that helps people understand themselves through their own data — noticing what they keep circling back to, what they avoid, how their priorities shift. A clinical co-pilot that tracks how a client's emotional framing evolves across months of sessions. A team assistant that notices knowledge gaps nobody anticipated and grows to cover them.
+## How it works
+
+Adapt runs on two components. A **Brain** orchestrates the system: routing incoming data, synthesizing answers, and monitoring whether the current memory structure still covers the domain. **Neurons** are specialists. Each neuron learns one slice of the domain by observing new data, scoring it by relevance, and compressing it into understanding instead of hoarding raw records.
+
+When the Brain detects gaps, redundancy, or overload, it reconfigures itself. It can split overloaded neurons, merge similar ones, or create new neurons for patterns it was ignoring. No schema migration. No manual reconfiguration loop.
+
+<figure>
+  <img
+    src="/projects/adapt/images/brain-setup.jpeg"
+    alt="A web interface showing instructions for configuring a Brain to process software team standup transcripts."
+  />
+  <figcaption>
+    The setup phase tells the Brain what kind of domain it is entering, then Adapt starts constructing its own memory structure from incoming data.
+  </figcaption>
+</figure>
+
+## Learning operations
+
+You steer Adapt with three operations:
+
+- `inject()` feeds the Brain new observations.
+- `signal()` nudges structural change when the current memory graph needs to adapt.
+- `adjust()` tunes a single neuron without rewriting the whole system.
+
+Querying is separate from learning. Questions consult accumulated neuron knowledge and return answers with relevance and confidence scores, so the system can explain not just what it knows, but how strongly each neuron contributed.
+
+<figure>
+  <img
+    src="/projects/adapt/images/live-conversation-learning.png"
+    alt="A diagram showing Adapt synthesizing three chronological summaries from a team call at five, seven, and eleven minutes."
+  />
+  <figcaption>
+    Adapt can update its understanding as a process unfolds, rather than waiting for a finished archive to retrieve from.
+  </figcaption>
+</figure>
+
+## Demo
+
+The current demo uses daily standup data to show how a Brain initializes, creates specialized neurons, and changes its coverage as more observations arrive.
+
+<figure>
+  <img
+    src="/projects/adapt/images/demo-initializing.png"
+    alt="The Adapt demo initialization screen with a dark circular shape surrounded by radiating contours and status messages about setting up a team member profile."
+  />
+  <figcaption>
+    During initialization, Adapt prepares the Brain and starts ingesting standup data.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/adapt/images/demo-active-neurons.png"
+    alt="The Adapt demo showing four dark circular neuron nodes, including Team Member Profiles and Technology Stack Inventory, on a light gray background."
+  />
+  <figcaption>
+    As data comes in, specialized neurons begin to represent distinct areas of organizational memory.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/adapt/images/demo-neuron-network.png"
+    alt="The Adapt demo showing a network visualization of four fuzzy black neuron nodes, including Team Member Profiles and Project Status and Blockers."
+  />
+  <figcaption>
+    The demo visualizes how neurons organize, observe, and summarize the data injected into the system.
+  </figcaption>
+</figure>
+
+## Links
+
+- Site: [adapt.unbody.io](https://adapt.unbody.io)
+- Docs: [adapt.unbody.io/docs](https://adapt.unbody.io/docs)
+- Core concepts: [adapt.unbody.io/docs/concepts](https://adapt.unbody.io/docs/concepts)
+- Source: [github.com/unbody-io/adapt](https://github.com/unbody-io/adapt)
+- Background: [Why I built Adapt](/blog/adapt)
 
 Adapt is fully open source under the MIT license.

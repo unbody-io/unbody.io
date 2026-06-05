@@ -1,4 +1,7 @@
 import React from "react";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { RenderFunctionInput } from "astro-opengraph-images";
 
 function normalize(pathname: string): string {
@@ -9,11 +12,27 @@ function getCategory(pathname: string): string {
   const p = normalize(pathname);
   if (p.startsWith("/blog")) return "blog";
   if (p.startsWith("/lab")) return "lab";
+  if (p.startsWith("/projects")) return "projects";
   return "about";
 }
 
 function getDisplayUrl(): string {
   return "unbody.io";
+}
+
+function getDisplayTitle(title: string): string {
+  return title
+    .replace(" | Unbody Blog", "")
+    .replace(" | Unbody Projects", "")
+    .replace(" | Unbody Lab", "");
+}
+
+function getFirstSentence(text?: string): string | undefined {
+  if (!text) return undefined;
+  const trimmed = text.trim();
+  const firstDot = trimmed.indexOf(".");
+  if (firstDot === -1) return trimmed;
+  return trimmed.slice(0, firstDot + 1).trim();
 }
 
 function hashString(str: string): number {
@@ -78,16 +97,49 @@ function isExternalImage(image: string): boolean {
   }
 }
 
+function getMimeType(assetPath: string): string {
+  const ext = path.extname(assetPath).toLowerCase();
+  if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg";
+  if (ext === ".png") return "image/png";
+  if (ext === ".webp") return "image/webp";
+  if (ext === ".gif") return "image/gif";
+  return "application/octet-stream";
+}
+
+async function getDistAssetDataUri(dir: URL, assetUrl?: string): Promise<string | undefined> {
+  if (!assetUrl) return undefined;
+
+  const pathname = new URL(assetUrl, "https://unbody.io").pathname;
+  const relativePath = decodeURIComponent(pathname).replace(/^\/+/, "");
+  const filePath = path.join(fileURLToPath(dir), relativePath);
+
+  try {
+    const data = await readFile(filePath);
+    return `data:${getMimeType(filePath)};base64,${data.toString("base64")}`;
+  } catch {
+    return undefined;
+  }
+}
+
 
 export default async function renderOgImage({
   title,
+  description,
   pathname,
   image,
+  dir,
+  document,
 }: RenderFunctionInput) {
   const category = getCategory(pathname);
   const displayUrl = getDisplayUrl();
-  const displayTitle = title.replace(" | Unbody Blog", "");
-  const hasRealImage = isExternalImage(image);
+  const displayTitle = getDisplayTitle(title);
+  const isProject = normalize(pathname).startsWith("/projects");
+  const projectSummary = isProject ? getFirstSentence(description) : undefined;
+  const contentImage = document
+    .querySelector("meta[name='unbody:og-content-image']")
+    ?.getAttribute("content");
+  const contentImageDataUri = await getDistAssetDataUri(dir, contentImage ?? undefined);
+  const displayImage = contentImageDataUri ?? (isExternalImage(image) ? image : undefined);
   const titleFontSize = Math.min(140, Math.max(48, Math.round(4200 / displayTitle.length)));
 
   return (
@@ -137,6 +189,21 @@ export default async function renderOgImage({
           {displayTitle}
         </div>
 
+        {projectSummary && (
+          <div
+            style={{
+              marginTop: "30px",
+              width: "100%",
+              fontSize: "30px",
+              lineHeight: 1.28,
+              color: "#4b5563",
+              fontFamily: "PX Grotesk Mono",
+            }}
+          >
+            {projectSummary}
+          </div>
+        )}
+
         {/* URL */}
         <div
           style={{
@@ -160,12 +227,12 @@ export default async function renderOgImage({
           borderRadius: "24px",
           overflow: "hidden",
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06)",
-          background: hasRealImage ? "transparent" : generateGrayGradient(pathname),
+          background: displayImage ? "transparent" : generateGrayGradient(pathname),
         }}
       >
-        {hasRealImage ? (
+        {displayImage ? (
           <img
-            src={image}
+            src={displayImage}
             style={{
               width: "100%",
               height: "100%",
