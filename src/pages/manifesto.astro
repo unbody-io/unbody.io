@@ -1,0 +1,34 @@
+---
+import { siteConfig } from "@/config/site";
+import Manifesto from "../components/Manifesto.astro";
+import Base from "../layouts/Base.astro";
+
+const { title, description } = siteConfig.pages.manifesto;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: `${siteConfig.url}/manifesto`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  seo={{ jsonLd }}
+>
+  <Manifesto />
+  <div class="mt-32 pb-12 flex flex-col items-center opacity-30">
+    <div class="w-px h-24 bg-gradient-to-b from-foreground to-transparent mb-8"></div>
+    <p class="type-ui-md uppercase tracking-wider md:tracking-ultra whitespace-nowrap">
+      Unbody Research Division
+    </p>
+  </div>
+</Base>

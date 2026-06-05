@@ -11,7 +11,7 @@ function normalize(pathname: string): string {
 function getCategory(pathname: string): string {
   const p = normalize(pathname);
   if (p.startsWith("/blog")) return "blog";
-  if (p.startsWith("/lab")) return "lab";
+  if (p.startsWith("/manifesto")) return "manifesto";
   if (p.startsWith("/projects")) return "projects";
   return "about";
 }
@@ -24,7 +24,7 @@ function getDisplayTitle(title: string): string {
   return title
     .replace(" | Unbody Blog", "")
     .replace(" | Unbody Projects", "")
-    .replace(" | Unbody Lab", "");
+    .replace(" | Unbody Manifesto", "");
 }
 
 function getFirstSentence(text?: string): string | undefined {

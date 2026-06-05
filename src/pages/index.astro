@@ -1,22 +1,73 @@
 ---
 import { siteConfig } from "@/config/site";
 import Base from "../layouts/Base.astro";
-import Manifesto from "../components/Manifesto.astro";
 
-const { title, description } = siteConfig.pages.lab;
+const { title, description } = siteConfig.pages.home;
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "WebSite",
   name: title,
   description,
   url: siteConfig.url,
-  isPartOf: {
-    "@type": "WebSite",
-    name: siteConfig.name,
-    url: siteConfig.url,
-  },
 };
+
+const productEndings = [
+  "a brain.",
+  "a mind.",
+  "a mind of its own.",
+  "judgment.",
+  "sense.",
+  "common sense.",
+  "a point of view.",
+  "a worldview.",
+  "opinions.",
+  "wit.",
+  "imagination.",
+  "curiosity.",
+  "a memory.",
+  "a past.",
+  "recall.",
+  "a sense of time.",
+  "foresight.",
+  "a heart.",
+  "empathy.",
+  "warmth.",
+  "compassion.",
+  "feeling.",
+  "emotion.",
+  "a soul.",
+  "a conscience.",
+  "a moral compass.",
+  "care.",
+  "scruples.",
+  "discretion.",
+  "integrity.",
+  "tact.",
+  "restraint.",
+  "grace.",
+  "manners.",
+  "a bedside manner.",
+  "patience.",
+  "humility.",
+  "instinct.",
+  "intuition.",
+  "a gut.",
+  "an eye.",
+  "attention.",
+  "awareness.",
+  "insight.",
+  "understanding.",
+  "taste.",
+  "a self.",
+  "character.",
+  "a personality.",
+  "a temperament.",
+  "a backbone.",
+  "nerve.",
+  "a pulse.",
+  "a will.",
+];
 ---
 
 <Base
@@ -24,11 +75,191 @@ const jsonLd = {
   description={description}
   seo={{ jsonLd }}
 >
-  <Manifesto />
-  <div class="mt-32 pb-12 flex flex-col items-center opacity-30">
-    <div class="w-px h-24 bg-gradient-to-b from-foreground to-transparent mb-8"></div>
-    <p class="type-ui-md uppercase tracking-wider md:tracking-ultra whitespace-nowrap">
-      Unbody Research Division
-    </p>
-  </div>
+  <section class="home-cycle" aria-label="Unbody Lab">
+    <p class="home-cycle__kicker">We're an R&amp;D lab.</p>
+    <h1 class="text-foreground">
+      <span>We build products with </span>
+      <span
+        class="home-cycle__action"
+        role="button"
+        tabindex="0"
+        data-scramble-text
+        data-texts={JSON.stringify(productEndings)}
+        data-steps="8"
+        data-interval="60"
+        data-pause="2500"
+        data-alert-test
+      >
+        a brain.
+      </span>
+    </h1>
+  </section>
+
+  <script>
+    const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
+    const rand = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+
+    function scramble(
+      target: string,
+      steps: number,
+      interval: number,
+      onFrame: (text: string) => void,
+      onDone: () => void,
+    ) {
+      let frame = 0;
+      const id = window.setInterval(() => {
+        onFrame(
+          target
+            .split("")
+            .map((char, index) =>
+              char === " " || index <= (frame / steps) * target.length
+                ? char
+                : rand(GLYPHS)
+            )
+            .join(""),
+        );
+
+        if (++frame > steps) {
+          onFrame(target);
+          window.clearInterval(id);
+          onDone();
+        }
+      }, interval);
+
+      return () => window.clearInterval(id);
+    }
+
+    function initScrambleText(root: ParentNode = document) {
+      root.querySelectorAll<HTMLElement>("[data-scramble-text]").forEach((el) => {
+        if (el.dataset.initialized === "true") return;
+        el.dataset.initialized = "true";
+
+        const texts = JSON.parse(el.dataset.texts ?? "[]") as string[];
+        const steps = Number(el.dataset.steps ?? 8);
+        const interval = Number(el.dataset.interval ?? 60);
+        const pause = Number(el.dataset.pause ?? 2000);
+        let index = 0;
+        let paused = false;
+        let cleanup: (() => void) | undefined;
+        let timeout: number | undefined;
+
+        function run() {
+          if (paused) return;
+          const current = texts[index % texts.length];
+          cleanup = scramble(current, steps, interval, (text) => {
+            el.textContent = text;
+          }, () => {
+            if (texts.length > 1) {
+              index++;
+              if (!paused) timeout = window.setTimeout(run, pause);
+            }
+          });
+        }
+
+        function stop() {
+          cleanup?.();
+          cleanup = undefined;
+          if (timeout) {
+            window.clearTimeout(timeout);
+            timeout = undefined;
+          }
+        }
+
+        function pauseAnimation() {
+          paused = true;
+          stop();
+        }
+
+        function resumeAnimation() {
+          if (!paused) return;
+          paused = false;
+          run();
+        }
+
+        run();
+        el.addEventListener("mouseenter", pauseAnimation);
+        el.addEventListener("mouseleave", resumeAnimation);
+        el.addEventListener("focusin", pauseAnimation);
+        el.addEventListener("focusout", resumeAnimation);
+        document.addEventListener("astro:before-swap", () => {
+          stop();
+        }, { once: true });
+      });
+    }
+
+    function initAlertActions(root: ParentNode = document) {
+      root.querySelectorAll<HTMLElement>("[data-alert-test]").forEach((el) => {
+        if (el.dataset.alertInitialized === "true") return;
+        el.dataset.alertInitialized = "true";
+        el.addEventListener("click", () => alert("test"));
+        el.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            alert("test");
+          }
+        });
+      });
+    }
+
+    initScrambleText();
+    initAlertActions();
+    document.addEventListener("astro:after-swap", () => initScrambleText());
+    document.addEventListener("astro:after-swap", () => initAlertActions());
+  </script>
 </Base>
+
+<style>
+  .home-cycle {
+    width: 100vw;
+    min-height: calc(100vh - 24rem);
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  .home-cycle__kicker {
+    margin: 0 0 0.75rem;
+    width: 100%;
+    font-family: var(--type-heading-family);
+    font-size: clamp(1.125rem, 3.3vw, 3.25rem);
+    line-height: 0.95;
+    font-weight: 500;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+
+  .home-cycle h1 {
+    margin: 0;
+    width: 100%;
+    min-height: 1.35em;
+    font-size: clamp(1.125rem, 3.3vw, 3.25rem);
+    font-family: var(--type-heading-family);
+    line-height: 0.95;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .home-cycle [data-scramble-text] {
+    display: inline-block;
+    white-space: pre;
+  }
+
+  .home-cycle__action {
+    display: inline-block;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .home-cycle__action:hover,
+  .home-cycle__action:focus-visible {
+    background: var(--foreground);
+    color: var(--background);
+    outline: none;
+  }
+</style>

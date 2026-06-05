@@ -9,13 +9,18 @@ export const siteConfig = {
     github: "unbody-io",
   },
   pages: {
+    home: {
+      title: "Unbody",
+      description:
+        "Unbody Lab builds adaptive thinking tools and explores AI's role in augmenting human cognition.",
+    },
     blog: {
       title: "Unbody Blog",
       description:
         "Insights on AI-native development, modular backends, and adaptive thinking tools from the Unbody team.",
     },
-    lab: {
-      title: "Unbody Lab",
+    manifesto: {
+      title: "Unbody Manifesto",
       description:
         "Where we question, explore, experiment and build adaptive thinking tools.",
     },
