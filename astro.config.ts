@@ -7,9 +7,7 @@ import { readFileSync } from "node:fs";
 import rehypeExternalLinks from "rehype-external-links";
 import renderOgImage from "./src/og-image";
 
-const instrumentSerif = readFileSync(
-  "node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff",
-);
+const geistPixelSquare = readFileSync("public/fonts/geist-pixel-square.ttf");
 
 export default defineConfig({
   site: "https://unbody.io",
@@ -21,10 +19,10 @@ export default defineConfig({
       options: {
         fonts: [
           {
-            name: "Instrument Serif",
-            weight: 400,
+            name: "Geist Pixel Square",
+            weight: 500,
             style: "normal",
-            data: instrumentSerif,
+            data: geistPixelSquare,
           },
           {
             name: "PX Grotesk Mono",

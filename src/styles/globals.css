@@ -2,12 +2,18 @@
 @import "tw-animate-css";
 @import "./typography.css";
 @import "@fontsource-variable/instrument-sans/standard.css";
-@import "@fontsource/instrument-serif/400.css";
 
 @font-face {
   font-family: "Sligoil";
   src: url("/fonts/sligoil-400.woff2") format("woff2");
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Pixel Square";
+  src: url("/fonts/geist-pixel-square.woff2") format("woff2");
+  font-weight: 500;
   font-display: swap;
 }
 

@@ -13,7 +13,7 @@
   /* Typography foundations */
   --type-body-family: "Instrument Sans Variable", sans-serif;
   --type-body-size: 100%;
-  --type-heading-family: "Instrument Serif", serif;
+  --type-heading-family: "Geist Pixel Square", var(--font-mono-family);
   --type-nav-family: var(--font-mono-family);
   --type-meta-family: var(--font-mono-family);
   --type-ui-family: var(--font-mono-family);
@@ -44,22 +44,22 @@
   /* Core role tokens */
   --type-headline-xl-size: var(--type-step-13);
   --type-headline-xl-line-height: 1.12;
-  --type-headline-xl-weight: 400;
+  --type-headline-xl-weight: 500;
   --type-headline-xl-tracking: 0rem;
 
   --type-headline-lg-size: var(--type-step-9);
   --type-headline-lg-line-height: 1.16;
-  --type-headline-lg-weight: 400;
+  --type-headline-lg-weight: 500;
   --type-headline-lg-tracking: 0rem;
 
   --type-headline-md-size: var(--type-step-7);
   --type-headline-md-line-height: 1.2;
-  --type-headline-md-weight: 400;
+  --type-headline-md-weight: 500;
   --type-headline-md-tracking: 0rem;
 
   --type-headline-sm-size: var(--type-step-4);
   --type-headline-sm-line-height: 1.18;
-  --type-headline-sm-weight: 400;
+  --type-headline-sm-weight: 500;
   --type-headline-sm-tracking: 0rem;
 
   --type-body-md-size: var(--type-step-2);

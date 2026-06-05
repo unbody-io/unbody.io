@@ -183,7 +183,8 @@ export default async function renderOgImage({
             fontSize: `${titleFontSize}px`,
             lineHeight: 1.12,
             color: "#1e293b",
-            fontFamily: "Instrument Serif",
+            fontFamily: "Geist Pixel Square",
+            fontWeight: 500,
           }}
         >
           {displayTitle}
