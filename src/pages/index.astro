@@ -69,12 +69,11 @@ const productEndings = [
   "a will.",
 ];
 
-const suggestedQueries = [
-  "What is the lab building now?",
-  "How does Unbody approach AI memory?",
-  "Walk me through their recent work.",
-  "How is Unbody rethinking apps?",
-  "How do I contact Unbody?",
+const suggestionLinks = [
+  { label: "See what we work on", href: "/projects" },
+  { label: "Read the latest blog posts", href: "/blog" },
+  { label: "Get in touch", href: "mailto:hello@unbody.io" },
+  { label: "Read Unbody's manifesto", href: "/manifesto" },
 ];
 ---
 
@@ -87,7 +86,7 @@ const suggestedQueries = [
     class="home-lab"
     aria-label="Unbody Lab"
     data-home-lab
-    style={`--suggestion-count: ${suggestedQueries.length + 1};`}
+    style={`--suggestion-count: ${suggestionLinks.length};`}
   >
     <div class="home-lab__gesture" data-home-lab-gesture>
       <p class="home-lab__kicker">Unbody R&amp;D Lab</p>
@@ -105,20 +104,15 @@ const suggestedQueries = [
       </h1>
 
       <div class="home-lab__suggestions" aria-label="Suggested prompts">
-        {suggestedQueries.map((query, index) => (
-          <span
+        {suggestionLinks.map((link, index) => (
+          <a
             class="home-lab__suggestion"
+            href={link.href}
             style={`--suggestion-index: ${index};`}
           >
-            {query}
-          </span>
+            {link.label}
+          </a>
         ))}
-        <span
-          class="home-lab__suggestion home-lab__suggestion--ask"
-          style={`--suggestion-index: ${suggestedQueries.length};`}
-        >
-          Ask anything...
-        </span>
       </div>
     </div>
   </section>
@@ -129,7 +123,7 @@ const suggestedQueries = [
     const INTRO_SUGGESTION_SETTLE_THRESHOLD = 48;
     const INTRO_SUGGESTION_CANCEL_MS = 260;
     const INTRO_WHEEL_DELTA_SCALE = 0.18;
-    const INTRO_INITIAL_HINT_OFFSET = 54;
+    const INTRO_INITIAL_HINT_OFFSET = 80;
 
     const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
     const rand = (arr) => arr[Math.floor(Math.random() * arr.length)] ?? "";
@@ -412,6 +406,8 @@ const suggestedQueries = [
     line-height: var(--type-ui-md-line-height);
     opacity: var(--suggestion-item-progress);
     padding: 0;
+    pointer-events: auto;
+    text-decoration: none;
     transform: translateY(calc((1 - var(--suggestion-item-progress)) * 0.45rem));
     transition:
       background-color 160ms ease,
@@ -420,13 +416,11 @@ const suggestedQueries = [
     will-change: opacity, filter, transform;
   }
 
-  .home-lab__suggestion:not(.home-lab__suggestion--ask):hover {
+  .home-lab__suggestion:hover,
+  .home-lab__suggestion:focus-visible {
     background: var(--foreground);
     color: var(--background);
-  }
-
-  .home-lab__suggestion--ask {
-    margin-top: 0.65rem;
+    outline: none;
   }
 
   @media (max-width: 720px) {
