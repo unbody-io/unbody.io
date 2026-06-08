@@ -25,28 +25,73 @@ const projects = (await getCollection("projects")).sort(
 );
 ---
 
-<Base title={title} description={description} seo={{ jsonLd }}>
-  <header class="mb-16">
-    <h1 class="sr-only">Unbody Projects</h1>
-    <div
-      data-type="nav"
-      class="type-ui-md uppercase tracking-wider md:tracking-ultra text-foreground"
-    >
-      PROJECTS
-    </div>
-  </header>
+<Base title={title} description={description} seo={{ jsonLd }} showEdgeMasks={false}>
+  <section class="projects-page">
+    <header class="projects-page__header">
+      <h1>Projects</h1>
+      <p>Adaptive thinking tools, prototypes, and partner work from Unbody Lab.</p>
+    </header>
 
-  <div class="space-y-12">
-    {projects.map((project) => (
-      <ProjectCard
-        slug={project.id}
-        title={project.data.title}
-        blurb={project.data.blurb}
-        status={project.data.status}
-        date={project.data.date}
-        tags={project.data.tags}
-        cover={project.data.cover}
-      />
-    ))}
-  </div>
+    <div class="projects-page__list">
+      {projects.map((project) => (
+        <ProjectCard
+          slug={project.id}
+          title={project.data.title}
+          blurb={project.data.blurb}
+          status={project.data.status}
+          date={project.data.date}
+          tags={project.data.tags}
+          cover={project.data.cover}
+        />
+      ))}
+    </div>
+  </section>
 </Base>
+
+<style>
+  .projects-page {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  .projects-page__header {
+    margin-bottom: clamp(3rem, 7vw, 6rem);
+  }
+
+  .projects-page__header h1 {
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--type-heading-family);
+    font-size: var(--type-ui-md-size);
+    font-weight: var(--type-ui-md-weight);
+    letter-spacing: 0;
+    line-height: var(--type-ui-md-line-height);
+    text-transform: uppercase;
+  }
+
+  .projects-page__header p {
+    max-width: 44rem;
+    margin: 0.75rem 0 0;
+    color: var(--muted-foreground);
+    font-family: var(--type-body-family);
+    font-size: var(--type-body-md-size);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: 1.45;
+  }
+
+  .projects-page__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+
+  @media (min-width: 72rem) {
+    .projects-page__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

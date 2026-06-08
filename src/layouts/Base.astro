@@ -14,6 +14,7 @@ interface Props {
   seo?: Partial<SEOProps>;
   showBackButton?: boolean;
   backButtonHref?: string;
+  showEdgeMasks?: boolean;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   seo,
   showBackButton = false,
   backButtonHref = "/blog",
+  showEdgeMasks = true,
 } = Astro.props;
 ---
 
@@ -83,11 +85,14 @@ const {
       <ShaderBackground />
     </div>
 
-    <!-- Top & Bottom Fade Masks -->
-    <div class="fixed top-0 left-0 w-full z-40 overlay-mask-top pointer-events-none">
-    </div>
-    <div class="fixed bottom-0 left-0 w-full z-40 overlay-mask-bottom pointer-events-none">
-    </div>
+    {showEdgeMasks && (
+      <>
+        <div class="fixed top-0 left-0 w-full z-40 overlay-mask-top pointer-events-none">
+        </div>
+        <div class="fixed bottom-0 left-0 w-full z-40 overlay-mask-bottom pointer-events-none">
+        </div>
+      </>
+    )}
 
     <Header />
 
