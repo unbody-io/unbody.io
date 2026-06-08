@@ -7,11 +7,14 @@ const triggerScrambleGlyphs = '!@#$%^&*_+-=|;:<>?~01'.split('');
 
 export function BlobTabs() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isCollapsing, setIsCollapsing] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const [triggerGlyphIndex, setTriggerGlyphIndex] = useState(0);
   const [triggerDisplayGlyph, setTriggerDisplayGlyph] = useState(triggerGlyphs[0]);
   const [showActiveHighlight, setShowActiveHighlight] = useState(false);
+  const [showThemeItem, setShowThemeItem] = useState(false);
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
   const [isHighlightMoving, setIsHighlightMoving] = useState(false);
   const [previousHighlightTab, setPreviousHighlightTab] = useState<string | null>(null);
   const highlightTimer = useRef<number | undefined>(undefined);
@@ -35,8 +38,9 @@ export function BlobTabs() {
   
   // Sizing & Spacing
   const TRIGGER_SIZE = 38;
-  const FIRST_TAB_GAP = 17;
-  const TAB_GAP = 10;
+  const FIRST_TAB_GAP = 0;
+  const TAB_GAP = -5;
+  const THEME_ITEM_GAP = 18;
   const TAB_BODY_PADDING_X = 18;
   const ACTIVE_PADDING_X = 9;
 
@@ -57,6 +61,7 @@ export function BlobTabs() {
     return { ...tab, labelWidth, bodyWidth, highlightWidth, center };
   });
   const [homeMetric, manifestoMetric, projectsMetric, blogMetric] = tabMetrics;
+  const themeItemCenter = -(TRIGGER_SIZE + THEME_ITEM_GAP);
   const highlightTab = hoveredTab ?? activeTab;
   const activeIndex = Math.max(0, tabMetrics.findIndex((tab) => tab.id === highlightTab));
   const activeHighlightWidth = tabMetrics[activeIndex]?.highlightWidth ?? 64;
@@ -70,8 +75,18 @@ export function BlobTabs() {
   const previousHighlightLeft = previousHighlightCenter - previousHighlightWidth / 2;
   const connectorLeft = Math.min(previousHighlightCenter, activeHighlightCenter) - 4;
   const connectorWidth = Math.abs(activeHighlightCenter - previousHighlightCenter) + 8;
-  const surfaceShellClass = "absolute h-[32px] -translate-x-1/2 -translate-y-1/2 rounded-full p-px bg-gradient-to-b from-surface-border/95 via-surface-border/45 to-surface-border/10 dark:from-surface-border/70 dark:via-surface-border/28 dark:to-surface-border/8";
-  const surfaceInnerClass = "block h-full w-full rounded-full bg-surface-elevated backdrop-blur-sm";
+  const surfaceShellClass = "absolute h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 p-px bg-gradient-to-b from-surface-border/95 via-surface-border/45 to-surface-border/10 dark:from-surface-border/70 dark:via-surface-border/28 dark:to-surface-border/8";
+  const surfaceInnerClass = "block h-full w-full bg-surface-elevated backdrop-blur-sm";
+  const tabRadiusClass = (index: number) => {
+    if (!isExpanded && !isCollapsing) return 'rounded-full';
+    if (index === 0) return 'rounded-l-full rounded-r-[0.45rem]';
+    if (index === tabs.length - 1) return 'rounded-r-full rounded-l-[0.45rem]';
+    return 'rounded-[0.45rem]';
+  };
+  const themeRadiusClass = () => {
+    if (!isExpanded && !isCollapsing) return 'rounded-full';
+    return 'rounded-l-full rounded-r-[0.45rem]';
+  };
 
   useLayoutEffect(() => {
     let cancelled = false;
@@ -178,6 +193,22 @@ export function BlobTabs() {
   }, []);
 
   useEffect(() => {
+    const syncTheme = (event?: Event) => {
+      const eventTheme = (event as CustomEvent<{ resolvedTheme?: 'light' | 'dark' }> | undefined)
+        ?.detail?.resolvedTheme;
+      const nextTheme = eventTheme ?? (document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      setResolvedTheme(nextTheme);
+    };
+
+    syncTheme();
+    window.addEventListener('unbody:theme-change', syncTheme);
+
+    return () => {
+      window.removeEventListener('unbody:theme-change', syncTheme);
+    };
+  }, []);
+
+  useEffect(() => {
     const previousTab = previousHighlightTarget.current;
     if (previousTab === highlightTab) return;
 
@@ -198,15 +229,22 @@ export function BlobTabs() {
     if (collapseTimer.current) window.clearTimeout(collapseTimer.current);
 
     if (isExpanded) {
+      setIsCollapsing(true);
       setHoveredTab(null);
       setShowActiveHighlight(false);
+      setShowThemeItem(false);
       collapseTimer.current = window.setTimeout(() => {
         setIsExpanded(false);
+        collapseTimer.current = window.setTimeout(() => {
+          setIsCollapsing(false);
+        }, 520);
       }, 90);
       return;
     }
 
+    setIsCollapsing(false);
     setIsExpanded(true);
+    setShowThemeItem(true);
     highlightTimer.current = window.setTimeout(() => {
       setShowActiveHighlight(true);
     }, 680);
@@ -233,6 +271,14 @@ export function BlobTabs() {
   const navigateTo = (tab: string, href: string) => {
     setActiveTab(tab);
     void navigate(href);
+  };
+
+  const toggleTheme = () => {
+    const controller = (window as Window & {
+      __unbodyThemeSync?: { setTheme?: (theme: 'light' | 'dark') => void };
+    }).__unbodyThemeSync;
+    const isDark = document.documentElement.classList.contains('dark');
+    controller?.setTheme?.(isDark ? 'light' : 'dark');
   };
 
   return (
@@ -284,8 +330,28 @@ export function BlobTabs() {
           <div className="absolute top-1/2 left-1/2 w-0 h-0">
             {/* Trigger Gooey Body */}
             <div className="absolute w-[38px] h-[38px] -translate-x-1/2 -translate-y-1/2 rounded-full p-px bg-gradient-to-b from-surface-border/95 via-surface-border/45 to-surface-border/10 dark:from-surface-border/70 dark:via-surface-border/28 dark:to-surface-border/8">
-              <span className={surfaceInnerClass} />
+              <span className={`${surfaceInnerClass} rounded-full`} />
             </div>
+
+            {/* Theme Gooey Body */}
+            <motion.div
+              initial={false}
+              animate={{
+                x: showThemeItem ? themeItemCenter : 0,
+                opacity: isExpanded || isCollapsing ? 1 : 0,
+              }}
+              transition={springConfig}
+              className="absolute left-0 top-0 w-0 h-0"
+            >
+              <motion.div
+                initial={false}
+                animate={{ width: TRIGGER_SIZE }}
+                transition={springConfig}
+                className={`${surfaceShellClass} ${themeRadiusClass()}`}
+              >
+                <span className={`${surfaceInnerClass} ${themeRadiusClass()}`} />
+              </motion.div>
+            </motion.div>
 
             {/* Home Gooey Body */}
             <motion.div
@@ -298,9 +364,9 @@ export function BlobTabs() {
                 initial={false}
                 animate={{ width: isExpanded ? homeMetric.bodyWidth : TRIGGER_SIZE }}
                 transition={{ ...springConfig, delay: delayHome }}
-                className={surfaceShellClass}
+                className={`${surfaceShellClass} ${tabRadiusClass(0)}`}
               >
-                <span className={surfaceInnerClass} />
+                <span className={`${surfaceInnerClass} ${tabRadiusClass(0)}`} />
               </motion.div>
 
               {/* Manifesto Gooey Body */}
@@ -314,9 +380,9 @@ export function BlobTabs() {
                   initial={false}
                   animate={{ width: isExpanded ? manifestoMetric.bodyWidth : TRIGGER_SIZE }}
                   transition={{ ...springConfig, delay: delayManifesto }}
-                  className={surfaceShellClass}
+                  className={`${surfaceShellClass} ${tabRadiusClass(1)}`}
                 >
-                  <span className={surfaceInnerClass} />
+                  <span className={`${surfaceInnerClass} ${tabRadiusClass(1)}`} />
                 </motion.div>
 
                 {/* Projects Gooey Body */}
@@ -330,9 +396,9 @@ export function BlobTabs() {
                     initial={false}
                     animate={{ width: isExpanded ? projectsMetric.bodyWidth : TRIGGER_SIZE }}
                     transition={{ ...springConfig, delay: delayProjects }}
-                    className={surfaceShellClass}
+                    className={`${surfaceShellClass} ${tabRadiusClass(2)}`}
                   >
-                    <span className={surfaceInnerClass} />
+                    <span className={`${surfaceInnerClass} ${tabRadiusClass(2)}`} />
                   </motion.div>
 
                   {/* Blog Gooey Body */}
@@ -346,9 +412,9 @@ export function BlobTabs() {
                       initial={false}
                       animate={{ width: isExpanded ? blogMetric.bodyWidth : TRIGGER_SIZE }}
                       transition={{ ...springConfig, delay: delayBlog }}
-                      className={surfaceShellClass}
+                      className={`${surfaceShellClass} ${tabRadiusClass(3)}`}
                     >
-                      <span className={surfaceInnerClass} />
+                      <span className={`${surfaceInnerClass} ${tabRadiusClass(3)}`} />
                     </motion.div>
                   </motion.div>
                 </motion.div>
@@ -365,7 +431,7 @@ export function BlobTabs() {
             style={{ filter: 'url(#active-gooey)' }}
           >
             <motion.span
-              className="absolute top-[-12px] h-[24px] rounded-full bg-foreground"
+              className="absolute top-[calc((1lh+0.75em)/-2)] h-[calc(1lh+0.75em)] rounded-full bg-foreground"
               initial={false}
               animate={{
                 x: previousHighlightLeft,
@@ -381,7 +447,7 @@ export function BlobTabs() {
               style={{ transformOrigin: 'center' }}
             />
             <motion.span
-              className="absolute top-[-12px] h-[24px] rounded-full bg-foreground"
+              className="absolute top-[calc((1lh+0.75em)/-2)] h-[calc(1lh+0.75em)] rounded-full bg-foreground"
               initial={false}
               animate={{
                 x: activeHighlightLeft,
@@ -420,6 +486,59 @@ export function BlobTabs() {
             />
           </div>
           
+          {/* Theme Foreground */}
+          <motion.div
+            initial={false}
+            animate={{
+              x: showThemeItem ? themeItemCenter : 0,
+              opacity: showThemeItem ? 1 : 0,
+            }}
+            transition={springConfig}
+            className="absolute left-0 top-0 w-0 h-0 pointer-events-none"
+          >
+            <motion.button
+              type="button"
+              aria-label={resolvedTheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+              onPointerEnter={() => setHoveredTab(null)}
+              onClick={toggleTheme}
+              initial={false}
+              animate={{ width: TRIGGER_SIZE, opacity: showThemeItem ? 1 : 0 }}
+              transition={springConfig}
+              className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 rounded-full outline-none select-none cursor-pointer overflow-hidden text-foreground/80 hover:text-foreground focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors ${
+                showThemeItem ? 'pointer-events-auto' : 'pointer-events-none'
+              }`}
+            >
+              {resolvedTheme === 'dark' ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[1em] w-[1em]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 1 0 9.8 9.8z" />
+                </svg>
+              ) : (
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[1em] w-[1em]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" />
+                </svg>
+              )}
+            </motion.button>
+          </motion.div>
+
           {/* Trigger Icon */}
           <motion.button
             onClick={toggleExpanded}
@@ -453,7 +572,7 @@ export function BlobTabs() {
                 initial={false}
                 animate={{ width: isExpanded ? homeMetric.bodyWidth : TRIGGER_SIZE, opacity: isExpanded ? 1 : 0 }}
                 transition={{ ...springConfig, delay: delayHome }}
-                className={`absolute z-[2] flex items-center justify-center h-[32px] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
+                className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
              >
                 <div className="relative z-10 flex items-center justify-center shrink-0 gap-1.5 whitespace-nowrap" style={{ width: homeMetric.bodyWidth }}>
                    <span ref={(node) => { labelRefs.current.home = node; }} style={activeTextStyle('home')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('home')}`}>Home</span>
@@ -475,7 +594,7 @@ export function BlobTabs() {
                    initial={false}
                    animate={{ width: isExpanded ? manifestoMetric.bodyWidth : TRIGGER_SIZE, opacity: isExpanded ? 1 : 0 }}
                    transition={{ ...springConfig, delay: delayManifesto }}
-                   className={`absolute z-[2] flex items-center justify-center h-[32px] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
+                   className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
                 >
                    <div className="relative z-10 flex items-center justify-center shrink-0 gap-1.5 whitespace-nowrap" style={{ width: manifestoMetric.bodyWidth }}>
                      <span ref={(node) => { labelRefs.current.manifesto = node; }} style={activeTextStyle('manifesto')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('manifesto')}`}>Manifesto</span>
@@ -497,7 +616,7 @@ export function BlobTabs() {
                       initial={false}
                       animate={{ width: isExpanded ? projectsMetric.bodyWidth : TRIGGER_SIZE, opacity: isExpanded ? 1 : 0 }}
                       transition={{ ...springConfig, delay: delayProjects }}
-                      className={`absolute z-[2] flex items-center justify-center h-[32px] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
+                      className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
                    >
                       <div className="relative z-10 flex items-center justify-center shrink-0 gap-1.5 whitespace-nowrap" style={{ width: projectsMetric.bodyWidth }}>
                          <span ref={(node) => { labelRefs.current.projects = node; }} style={activeTextStyle('projects')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('projects')}`}>Projects</span>
@@ -519,7 +638,7 @@ export function BlobTabs() {
                          initial={false}
                          animate={{ width: isExpanded ? blogMetric.bodyWidth : TRIGGER_SIZE, opacity: isExpanded ? 1 : 0 }}
                          transition={{ ...springConfig, delay: delayBlog }}
-                         className={`absolute z-[2] flex items-center justify-center h-[32px] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
+                         className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
                       >
                          <div className="relative z-10 flex items-center justify-center shrink-0 gap-1.5 whitespace-nowrap" style={{ width: blogMetric.bodyWidth }}>
                            <span ref={(node) => { labelRefs.current.blog = node; }} style={activeTextStyle('blog')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('blog')}`}>Blog</span>

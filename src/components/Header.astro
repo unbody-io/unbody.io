@@ -1,14 +1,5 @@
 ---
 import { BlobTabs } from "./BlobTabs";
-import ThemeToggle from "./ThemeToggle.astro";
-import TopLitSurface from "./TopLitSurface.astro";
-
-const navItems = [
-  { href: "/", label: "home" },
-  { href: "/manifesto", label: "manifesto" },
-  { href: "/projects", label: "projects" },
-  { href: "/blog", label: "blog" },
-];
 ---
 
 <header
@@ -24,150 +15,15 @@ const navItems = [
 >
   <div
     class:list={[
+      "w-full",
       "max-w-3xl",
       "mx-auto",
-      "w-full",
-      "flex",
-      "flex-col",
-      "items-start",
-      "justify-start",
-      "gap-3",
       "px-5",
+      "md:px-8",
     ]}
   >
-    <div
-      class:list={[
-        "flex",
-        "items-center",
-        "justify-start",
-        "gap-2",
-      ]}
-    >
-      <TopLitSurface
-        as="nav"
-        class:list={[
-          "relative",
-          "pointer-events-auto",
-        ]}
-      >
-        <ul
-          data-type="nav"
-          class:list={[
-            "flex",
-            "items-center",
-            "gap-[0.25em]",
-            "p-[0.25em]",
-            "m-0",
-            "list-none",
-            "type-ui-md",
-          ]}
-        >
-          {navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                data-nav-href={item.href}
-                class:list={[
-                  "inline-flex",
-                  "px-[1.25em]",
-                  "py-[0.5em]",
-                  "rounded-[999em]",
-                  "uppercase",
-                  "transition-colors",
-                  "duration-300",
-                  "relative",
-                  "z-10",
-                  "text-foreground/50",
-                  "hover:text-foreground",
-                  "hover:bg-foreground/5",
-                  "focus-visible:bg-foreground/5",
-                  "focus-visible:outline-none",
-                  "focus-visible:ring-2",
-                  "focus-visible:ring-foreground/70",
-                  "focus-visible:ring-offset-2",
-                  "focus-visible:ring-offset-background",
-                ]}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div
-          id="nav-pill"
-          class:list={[
-            "absolute",
-            "top-[0.25em]",
-            "bottom-[0.25em]",
-            "rounded-[999em]",
-            "bg-foreground",
-            "shadow-xl",
-            "transition-all",
-            "duration-300",
-            "ease-out",
-            "pointer-events-none",
-          ]}
-        >
-        </div>
-      </TopLitSurface>
-      <ThemeToggle />
-    </div>
-    <div class="pointer-events-auto pl-6">
+    <div class="pointer-events-auto w-[38px] -translate-x-[48px]">
       <BlobTabs client:load />
     </div>
   </div>
 </header>
-
-<script>
-function updateNav() {
-  const pathname = window.location.pathname;
-  const links = document.querySelectorAll<HTMLAnchorElement>(
-    "a[data-nav-href]",
-  );
-  const pill = document.getElementById("nav-pill");
-  if (!pill || !links.length) return;
-
-  links.forEach((link) => {
-    const href = link.dataset.navHref!;
-    const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-    if (active) {
-      link.classList.add(
-        "text-background",
-        "hover:text-background",
-        "cursor-default",
-      );
-      link.classList.remove("text-foreground/50", "hover:text-foreground");
-      link.setAttribute("aria-current", "page");
-      pill.style.left = `${link.offsetLeft}px`;
-      pill.style.width = `${link.offsetWidth}px`;
-    } else {
-      link.classList.remove(
-        "text-background",
-        "hover:text-background",
-        "cursor-default",
-      );
-      link.classList.add("text-foreground/50", "hover:text-foreground");
-      link.removeAttribute("aria-current");
-    }
-  });
-}
-
-// First load: snap pill into place (no transition)
-const pill = document.getElementById("nav-pill");
-if (pill) {
-  pill.style.transition = "none";
-  updateNav();
-  pill.offsetHeight; // force reflow
-  pill.style.transition = "";
-}
-
-// On navigation: pill slides to new position
-document.addEventListener("astro:after-swap", updateNav);
-
-// Re-sync pill when nav resizes (e.g. root font-size change)
-const nav = pill?.closest("nav");
-if (nav) {
-  new ResizeObserver(() => updateNav()).observe(nav);
-}
-</script>
