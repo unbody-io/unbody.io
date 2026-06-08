@@ -1,4 +1,5 @@
 ---
+import { BlobTabs } from "./BlobTabs";
 import ThemeToggle from "./ThemeToggle.astro";
 import TopLitSurface from "./TopLitSurface.astro";
 
@@ -27,80 +28,93 @@ const navItems = [
       "mx-auto",
       "w-full",
       "flex",
-      "items-center",
+      "flex-col",
+      "items-start",
       "justify-start",
-      "gap-2",
+      "gap-3",
       "px-5",
     ]}
   >
-    <TopLitSurface
-      as="nav"
-      class={[
-        "relative",
-        "pointer-events-auto",
-      ].join(" ")}
+    <div
+      class:list={[
+        "flex",
+        "items-center",
+        "justify-start",
+        "gap-2",
+      ]}
     >
-      <ul
-        data-type="nav"
+      <TopLitSurface
+        as="nav"
         class:list={[
-          "flex",
-          "items-center",
-          "gap-[0.25em]",
-          "p-[0.25em]",
-          "m-0",
-          "list-none",
-          "type-ui-md",
+          "relative",
+          "pointer-events-auto",
         ]}
       >
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              data-nav-href={item.href}
-              class:list={[
-                "inline-flex",
-                "px-[1.25em]",
-                "py-[0.5em]",
-                "rounded-[999em]",
-                "uppercase",
-                "transition-colors",
-                "duration-300",
-                "relative",
-                "z-10",
-                "text-foreground/50",
-                "hover:text-foreground",
-                "hover:bg-foreground/5",
-                "focus-visible:bg-foreground/5",
-                "focus-visible:outline-none",
-                "focus-visible:ring-2",
-                "focus-visible:ring-foreground/70",
-                "focus-visible:ring-offset-2",
-                "focus-visible:ring-offset-background",
-              ]}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <div
-        id="nav-pill"
-        class:list={[
-          "absolute",
-          "top-[0.25em]",
-          "bottom-[0.25em]",
-          "rounded-[999em]",
-          "bg-foreground",
-          "shadow-xl",
-          "transition-all",
-          "duration-300",
-          "ease-out",
-          "pointer-events-none",
-        ]}
-      >
-      </div>
-    </TopLitSurface>
-    <ThemeToggle />
+        <ul
+          data-type="nav"
+          class:list={[
+            "flex",
+            "items-center",
+            "gap-[0.25em]",
+            "p-[0.25em]",
+            "m-0",
+            "list-none",
+            "type-ui-md",
+          ]}
+        >
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                data-nav-href={item.href}
+                class:list={[
+                  "inline-flex",
+                  "px-[1.25em]",
+                  "py-[0.5em]",
+                  "rounded-[999em]",
+                  "uppercase",
+                  "transition-colors",
+                  "duration-300",
+                  "relative",
+                  "z-10",
+                  "text-foreground/50",
+                  "hover:text-foreground",
+                  "hover:bg-foreground/5",
+                  "focus-visible:bg-foreground/5",
+                  "focus-visible:outline-none",
+                  "focus-visible:ring-2",
+                  "focus-visible:ring-foreground/70",
+                  "focus-visible:ring-offset-2",
+                  "focus-visible:ring-offset-background",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div
+          id="nav-pill"
+          class:list={[
+            "absolute",
+            "top-[0.25em]",
+            "bottom-[0.25em]",
+            "rounded-[999em]",
+            "bg-foreground",
+            "shadow-xl",
+            "transition-all",
+            "duration-300",
+            "ease-out",
+            "pointer-events-none",
+          ]}
+        >
+        </div>
+      </TopLitSurface>
+      <ThemeToggle />
+    </div>
+    <div class="pointer-events-auto pl-6">
+      <BlobTabs client:load />
+    </div>
   </div>
 </header>
 
