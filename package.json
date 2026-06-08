@@ -10,6 +10,7 @@
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.7",
     "@astrojs/sitemap": "^3.7.0",
     "@paper-design/shaders": "^0.0.71",
     "@tailwindcss/typography": "^0.5.19",

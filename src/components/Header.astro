@@ -38,7 +38,6 @@ const SCROLL_SHIFT_THRESHOLD = 100;
 
 declare global {
   interface Window {
-    __unbodyNavShiftAfterSearch?: boolean;
     __unbodyNavOffsetReady?: boolean;
   }
 }
@@ -51,28 +50,17 @@ function updateSiteNavOffset() {
     Math.max(window.scrollY / SCROLL_SHIFT_THRESHOLD, 0),
     1,
   );
-  const shift = window.__unbodyNavShiftAfterSearch
-    ? NAV_SHIFT_PX
-    : NAV_SHIFT_PX * scrollProgress;
+  const shift = NAV_SHIFT_PX * scrollProgress;
 
   nav.style.transform = `translateX(-${shift}px)`;
 }
 
 function resetSiteNavOffset() {
-  window.__unbodyNavShiftAfterSearch = false;
   updateSiteNavOffset();
 }
 
 if (!window.__unbodyNavOffsetReady) {
   window.__unbodyNavOffsetReady = true;
-
-  window.addEventListener(
-    "unbody:thread-query-submitted",
-    () => {
-      window.__unbodyNavShiftAfterSearch = true;
-      updateSiteNavOffset();
-    },
-  );
 
   window.addEventListener("scroll", updateSiteNavOffset, { passive: true });
   window.addEventListener("resize", updateSiteNavOffset);
