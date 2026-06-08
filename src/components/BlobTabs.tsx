@@ -7,6 +7,7 @@ const triggerScrambleGlyphs = '!@#$%^&*_+-=|;:<>?~01'.split('');
 
 export function BlobTabs() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPinnedOpen, setIsPinnedOpen] = useState(false);
   const [isCollapsing, setIsCollapsing] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
@@ -21,6 +22,7 @@ export function BlobTabs() {
   const collapseTimer = useRef<number | undefined>(undefined);
   const highlightMoveTimer = useRef<number | undefined>(undefined);
   const triggerTimer = useRef<number | undefined>(undefined);
+  const isPinnedOpenRef = useRef(false);
   const previousHighlightTarget = useRef('home');
   const labelRefs = useRef<Record<string, HTMLSpanElement | null>>({});
   const [measuredLabelWidths, setMeasuredLabelWidths] = useState<Record<string, number>>({});
@@ -224,23 +226,9 @@ export function BlobTabs() {
     }, 360);
   }, [highlightTab, showActiveHighlight]);
 
-  const toggleExpanded = () => {
+  const openExpanded = () => {
     if (highlightTimer.current) window.clearTimeout(highlightTimer.current);
     if (collapseTimer.current) window.clearTimeout(collapseTimer.current);
-
-    if (isExpanded) {
-      setIsCollapsing(true);
-      setHoveredTab(null);
-      setShowActiveHighlight(false);
-      setShowThemeItem(false);
-      collapseTimer.current = window.setTimeout(() => {
-        setIsExpanded(false);
-        collapseTimer.current = window.setTimeout(() => {
-          setIsCollapsing(false);
-        }, 520);
-      }, 90);
-      return;
-    }
 
     setIsCollapsing(false);
     setIsExpanded(true);
@@ -248,6 +236,55 @@ export function BlobTabs() {
     highlightTimer.current = window.setTimeout(() => {
       setShowActiveHighlight(true);
     }, 680);
+  };
+
+  const closeExpanded = () => {
+    if (!isExpanded && !isCollapsing) return;
+
+    if (highlightTimer.current) window.clearTimeout(highlightTimer.current);
+    if (collapseTimer.current) window.clearTimeout(collapseTimer.current);
+
+    setIsCollapsing(true);
+    setHoveredTab(null);
+    setShowActiveHighlight(false);
+    setShowThemeItem(false);
+    collapseTimer.current = window.setTimeout(() => {
+      setIsExpanded(false);
+      collapseTimer.current = window.setTimeout(() => {
+        setIsCollapsing(false);
+      }, 520);
+    }, 90);
+  };
+
+  const setPinnedOpen = (nextPinned: boolean) => {
+    isPinnedOpenRef.current = nextPinned;
+    setIsPinnedOpen(nextPinned);
+  };
+
+  const toggleExpanded = () => {
+    if (isPinnedOpen) {
+      setPinnedOpen(false);
+      closeExpanded();
+      return;
+    }
+
+    if (isExpanded) {
+      setPinnedOpen(true);
+      return;
+    }
+
+    setPinnedOpen(true);
+    openExpanded();
+  };
+
+  const handleTriggerPointerEnter = () => {
+    if (isExpanded) return;
+    openExpanded();
+  };
+
+  const handleNavPointerLeave = () => {
+    setHoveredTab(null);
+    if (!isPinnedOpenRef.current) closeExpanded();
   };
 
   const activeTextClass = (tab: string) =>
@@ -285,7 +322,7 @@ export function BlobTabs() {
     <div
       className="relative flex items-center justify-center w-[38px] h-[38px] isolate type-ui-md"
       data-type="nav"
-      onPointerLeave={() => setHoveredTab(null)}
+      onPointerLeave={handleNavPointerLeave}
     >
       {/* SVG Filter for Mitosis/Gooey effect */}
       <svg className="absolute w-0 h-0" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -541,6 +578,7 @@ export function BlobTabs() {
 
           {/* Trigger Icon */}
           <motion.button
+            onPointerEnter={handleTriggerPointerEnter}
             onClick={toggleExpanded}
             aria-label={isExpanded ? 'Close navigation' : 'Open navigation'}
             className="absolute z-[20] flex items-center justify-center w-[38px] h-[38px] -translate-x-1/2 -translate-y-1/2 outline-none select-none pointer-events-auto cursor-pointer text-foreground"

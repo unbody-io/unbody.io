@@ -22,8 +22,62 @@ import { BlobTabs } from "./BlobTabs";
       "md:px-8",
     ]}
   >
-    <div class="pointer-events-auto w-[38px] -translate-x-[48px]">
+    <div
+      id="site-nav-offset"
+      class="pointer-events-auto w-[38px]"
+      style="transform: translateX(0); transition: transform 260ms ease;"
+    >
       <BlobTabs client:load />
     </div>
   </div>
 </header>
+
+<script>
+const NAV_SHIFT_PX = 48;
+const SCROLL_SHIFT_THRESHOLD = 100;
+
+declare global {
+  interface Window {
+    __unbodyNavShiftAfterSearch?: boolean;
+    __unbodyNavOffsetReady?: boolean;
+  }
+}
+
+function updateSiteNavOffset() {
+  const nav = document.getElementById("site-nav-offset");
+  if (!nav) return;
+
+  const scrollProgress = Math.min(
+    Math.max(window.scrollY / SCROLL_SHIFT_THRESHOLD, 0),
+    1,
+  );
+  const shift = window.__unbodyNavShiftAfterSearch
+    ? NAV_SHIFT_PX
+    : NAV_SHIFT_PX * scrollProgress;
+
+  nav.style.transform = `translateX(-${shift}px)`;
+}
+
+function resetSiteNavOffset() {
+  window.__unbodyNavShiftAfterSearch = false;
+  updateSiteNavOffset();
+}
+
+if (!window.__unbodyNavOffsetReady) {
+  window.__unbodyNavOffsetReady = true;
+
+  window.addEventListener(
+    "unbody:thread-query-submitted",
+    () => {
+      window.__unbodyNavShiftAfterSearch = true;
+      updateSiteNavOffset();
+    },
+  );
+
+  window.addEventListener("scroll", updateSiteNavOffset, { passive: true });
+  window.addEventListener("resize", updateSiteNavOffset);
+  document.addEventListener("astro:after-swap", resetSiteNavOffset);
+}
+
+updateSiteNavOffset();
+</script>
