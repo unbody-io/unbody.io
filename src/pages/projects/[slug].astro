@@ -191,11 +191,12 @@ const jsonLd = {
 
 <style>
   .project-showcase {
+    --project-page-inset: 1rem;
     position: relative;
     left: 50%;
     width: 100vw;
     margin-left: -50vw;
-    padding-inline: clamp(1.25rem, 4vw, 4rem);
+    padding-inline: var(--project-page-inset);
   }
 
   .project-showcase__header {
@@ -217,10 +218,10 @@ const jsonLd = {
     margin: 0;
     color: var(--foreground);
     font-family: var(--type-heading-family);
-    font-size: clamp(4rem, 12vw, 10rem);
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
     font-weight: 500;
     letter-spacing: 0;
-    line-height: 0.9;
+    line-height: 0.95;
   }
 
   .project-showcase__intro {
@@ -291,11 +292,11 @@ const jsonLd = {
   .project-showcase__media {
     display: flex;
     gap: clamp(1rem, 2vw, 1.5rem);
-    margin-inline: calc(clamp(1.25rem, 4vw, 4rem) * -1);
+    margin-inline: calc(var(--project-page-inset) * -1);
     overflow-x: auto;
-    padding-inline: clamp(1.25rem, 4vw, 4rem);
+    padding-inline: var(--project-page-inset);
     padding-bottom: 1rem;
-    scroll-padding-inline: clamp(1.25rem, 4vw, 4rem);
+    scroll-padding-inline: var(--project-page-inset);
     scroll-snap-type: x proximity;
     scrollbar-width: none;
   }
@@ -396,6 +397,10 @@ const jsonLd = {
   }
 
   @media (min-width: 768px) {
+    .project-showcase {
+      --project-page-inset: 2rem;
+    }
+
     .project-showcase__intro-copy {
       grid-column: span 5;
     }
@@ -413,10 +418,6 @@ const jsonLd = {
     .project-showcase__header {
       min-height: clamp(18rem, 42dvh, 26rem);
       gap: clamp(2rem, 7vh, 4rem);
-    }
-
-    .project-showcase__header h1 {
-      font-size: clamp(3.75rem, 18vw, 6.5rem);
     }
 
     .project-showcase__media-item {

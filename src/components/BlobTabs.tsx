@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import type { PointerEvent } from 'react';
 import { motion } from 'motion/react';
 import { navigate } from 'astro:transitions/client';
 
@@ -49,7 +50,7 @@ export function BlobTabs() {
   const tabs = [
     { id: 'home', href: '/', label: 'Home', fallbackLabelWidth: 34 },
     { id: 'manifesto', href: '/manifesto', label: 'Manifesto', fallbackLabelWidth: 78 },
-    { id: 'projects', href: '/projects', label: 'Projects', fallbackLabelWidth: 66 },
+    { id: 'projects', href: '/projects', label: 'Work', fallbackLabelWidth: 34 },
     { id: 'blog', href: '/blog', label: 'Blog', fallbackLabelWidth: 30 },
   ];
   let nextTabLeft = TRIGGER_SIZE / 2 + FIRST_TAB_GAP;
@@ -277,12 +278,14 @@ export function BlobTabs() {
     openExpanded();
   };
 
-  const handleTriggerPointerEnter = () => {
+  const handleTriggerPointerEnter = (event: PointerEvent<HTMLButtonElement>) => {
+    if (event.pointerType !== 'mouse') return;
     if (isExpanded) return;
     openExpanded();
   };
 
-  const handleNavPointerLeave = () => {
+  const handleNavPointerLeave = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse') return;
     setHoveredTab(null);
     if (!isPinnedOpenRef.current) closeExpanded();
   };
@@ -657,7 +660,7 @@ export function BlobTabs() {
                       className={`absolute z-[2] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 outline-none select-none cursor-pointer overflow-hidden ${!isExpanded ? 'pointer-events-none' : 'pointer-events-auto'}`}
                    >
                       <div className="relative z-10 flex items-center justify-center shrink-0 gap-1.5 whitespace-nowrap" style={{ width: projectsMetric.bodyWidth }}>
-                         <span ref={(node) => { labelRefs.current.projects = node; }} style={activeTextStyle('projects')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('projects')}`}>Projects</span>
+                         <span ref={(node) => { labelRefs.current.projects = node; }} style={activeTextStyle('projects')} className={`relative z-[30] text-[length:var(--type-ui-md-size)] font-medium tracking-[var(--type-ui-md-tracking)] uppercase transition-colors duration-200 ${activeTextClass('projects')}`}>Work</span>
                       </div>
                    </motion.button>
 

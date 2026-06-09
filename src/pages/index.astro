@@ -89,7 +89,7 @@ const suggestionLinks = [
     style={`--suggestion-count: ${suggestionLinks.length};`}
   >
     <div class="home-lab__gesture" data-home-lab-gesture>
-      <p class="home-lab__kicker">Unbody R&amp;D Lab</p>
+      <p class="home-lab__kicker">Unbody R&amp;D Lab.</p>
       <h1>
         <span>We build products with </span>
         <span
@@ -124,9 +124,16 @@ const suggestionLinks = [
     const INTRO_SUGGESTION_CANCEL_MS = 260;
     const INTRO_WHEEL_DELTA_SCALE = 0.18;
     const INTRO_INITIAL_HINT_OFFSET = 80;
+    const MOBILE_SCRAMBLE_QUERY = "(max-width: 767px)";
 
     const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
     const rand = (arr) => arr[Math.floor(Math.random() * arr.length)] ?? "";
+    const getWordCount = (text) => text.trim().split(/\s+/).filter(Boolean).length;
+    const getResponsiveScrambleTexts = (texts) => {
+      if (!window.matchMedia(MOBILE_SCRAMBLE_QUERY).matches) return texts;
+      const shortTexts = texts.filter((text) => getWordCount(text) <= 2);
+      return shortTexts.length > 0 ? shortTexts : texts;
+    };
 
     function scramble(target, steps, interval, onFrame, onDone) {
       let frame = 0;
@@ -158,10 +165,12 @@ const suggestionLinks = [
         if (!(el instanceof HTMLElement) || el.dataset.initialized === "true") return;
         el.dataset.initialized = "true";
 
-        const texts = JSON.parse(el.dataset.texts ?? "[]");
+        const rawTexts = JSON.parse(el.dataset.texts ?? "[]");
         const steps = Number(el.dataset.steps ?? 8);
         const interval = Number(el.dataset.interval ?? 60);
         const pause = Number(el.dataset.pause ?? 2000);
+        const mobileScrambleQuery = window.matchMedia(MOBILE_SCRAMBLE_QUERY);
+        let texts = getResponsiveScrambleTexts(rawTexts);
         let index = 0;
         let paused = false;
         let cleanup;
@@ -174,6 +183,17 @@ const suggestionLinks = [
             window.clearTimeout(timeout);
             timeout = undefined;
           }
+        }
+
+        function syncResponsiveTexts() {
+          const nextTexts = getResponsiveScrambleTexts(rawTexts);
+          if (nextTexts.join("\n") === texts.join("\n")) return;
+
+          stop();
+          texts = nextTexts;
+          index = 0;
+          if (texts[0]) el.textContent = texts[0];
+          if (!paused) run();
         }
 
         function run() {
@@ -201,11 +221,15 @@ const suggestionLinks = [
         }
 
         run();
+        mobileScrambleQuery.addEventListener("change", syncResponsiveTexts);
         el.addEventListener("mouseenter", pauseAnimation);
         el.addEventListener("mouseleave", resumeAnimation);
         el.addEventListener("focusin", pauseAnimation);
         el.addEventListener("focusout", resumeAnimation);
-        document.addEventListener("astro:before-swap", stop, { once: true });
+        document.addEventListener("astro:before-swap", () => {
+          stop();
+          mobileScrambleQuery.removeEventListener("change", syncResponsiveTexts);
+        }, { once: true });
       });
     }
 
