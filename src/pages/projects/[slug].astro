@@ -18,17 +18,59 @@ if (!entry) {
 }
 
 const { Content } = await render(entry);
-const { title, blurb, status, date, tags, github, website, cover, heroVideo } =
+const { title, blurb, date, tags, github, website, cover, heroVideo } =
   entry.data;
 
-const formattedDate = new Date(date).toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+const getAttribute = (markup: string, name: string) =>
+  markup.match(new RegExp(`${name}=["']([^"']+)["']`, "i"))?.[1];
 
-const heroImage = cover;
-const hasHero = !!(heroImage || heroVideo);
+const cleanCaption = (caption: string) =>
+  caption
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const figureImages = Array.from(entry.body.matchAll(/<figure>([\s\S]*?)<\/figure>/g))
+  .map((match) => {
+    const figure = match[1] ?? "";
+    const imageMarkup = figure.match(/<img\s+([^>]*?)\/?>/i)?.[0] ?? "";
+    const caption = figure.match(/<figcaption>([\s\S]*?)<\/figcaption>/i)?.[1] ?? "";
+    const src = getAttribute(imageMarkup, "src");
+
+    if (!src) return null;
+
+    return {
+      type: "image" as const,
+      src,
+      alt: getAttribute(imageMarkup, "alt") ?? title,
+      caption: cleanCaption(caption),
+    };
+  })
+  .filter(Boolean);
+
+const galleryImages = figureImages.filter(
+  (item): item is NonNullable<typeof item> => Boolean(item),
+);
+
+const mediaItems = [
+  ...(heroVideo
+    ? [{
+        type: "video" as const,
+        src: heroVideo,
+        alt: `${title} demo`,
+        caption: "",
+      }]
+    : []),
+  ...(cover
+    ? [{
+        type: "image" as const,
+        src: cover,
+        alt: title,
+        caption: "",
+      }]
+    : []),
+  ...galleryImages.filter((item) => item.src !== cover),
+];
 
 const projectUrl = `${siteConfig.url}/projects/${slug}`;
 const jsonLd = {
@@ -62,111 +104,324 @@ const jsonLd = {
     jsonLd,
   }}
 >
-  <div class:list={["above-fold", hasHero && "has-hero"]}>
-    {hasHero && (
-      <div class="hero-bleed overflow-hidden flex-1 min-h-0">
-        {heroVideo ? (
-          <video
-            src={heroVideo}
-            autoplay
-            loop
-            muted
-            playsinline
-            class="w-full h-full object-cover"
-          />
-        ) : (
-          <img
-            src={heroImage}
-            alt={title}
-            class="w-full h-full object-cover"
-          />
-        )}
+  <div class="project-showcase">
+    <header class="project-showcase__header">
+      <div class="project-showcase__title-block">
+        <h1>{title}</h1>
       </div>
+
+      <div class="project-showcase__intro">
+        <div class="project-showcase__intro-copy">
+          <p>{blurb}</p>
+          {tags.length > 0 && (
+            <div class="project-showcase__tags" aria-label="Project tags">
+              {tags.map((tag) => (
+                <span data-type="meta">{tag}</span>
+              ))}
+            </div>
+          )}
+          <a href="#project-description" class="project-showcase__read-more">
+            Read more
+          </a>
+        </div>
+      </div>
+    </header>
+
+    {mediaItems.length > 0 && (
+      <section class="project-showcase__media" aria-label={`${title} images`}>
+        {mediaItems.map((item, index) => (
+          <figure class="project-showcase__media-item">
+            {item.type === "video" ? (
+              <video
+                src={item.src}
+                autoplay
+                loop
+                muted
+                playsinline
+                aria-label={item.alt}
+              />
+            ) : (
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            )}
+            {item.caption && <figcaption>{item.caption}</figcaption>}
+          </figure>
+        ))}
+      </section>
     )}
 
-    <header class:list={["shrink-0 text-muted-foreground", hasHero && "mt-10"]}>
-      <div data-type="meta" class="type-meta-md mb-6 flex items-center gap-3">
-        <time datetime={date}>{formattedDate}</time>
-        <span class="opacity-30">|</span>
-        <span class="uppercase tracking-wider">{status}</span>
-      </div>
-
-      <h1 class="type-headline-xl mb-4 text-foreground">
-        {title}
-      </h1>
-
-      <p class="type-body-md mb-4">{blurb}</p>
-
-      {tags.length > 0 && (
-        <div class="mb-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span class="type-meta-md px-2 py-0.5 rounded-full border border-border">
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-
+    <section id="project-description" class="project-showcase__copy">
       {(github || website) && (
-        <div data-type="meta" class="type-meta-md flex items-center gap-3">
-          {github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline hover:text-foreground transition-colors duration-200"
-            >
-              GitHub
-            </a>
-          )}
-          {github && website && <span class="opacity-30">|</span>}
-          {website && (
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline hover:text-foreground transition-colors duration-200"
-            >
-              Website
-            </a>
+        <div class="project-showcase__details">
+          {(github || website) && (
+            <div data-type="meta" class="project-showcase__links">
+              {github && (
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              )}
+              {github && website && <span aria-hidden="true">|</span>}
+              {website && (
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Website
+                </a>
+              )}
+            </div>
           )}
         </div>
       )}
-    </header>
-  </div>
 
-  <article class="prose">
-    <Content />
-  </article>
+      <article class="prose project-showcase__body">
+        <Content />
+      </article>
+    </section>
+  </div>
 </Base>
 
 <style>
-  .above-fold {
+  .project-showcase {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  .project-showcase__header {
+    display: flex;
+    min-height: clamp(22rem, 48dvh, 34rem);
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(2.5rem, 8vh, 6rem);
+    margin-top: 0;
+    margin-bottom: clamp(1rem, 3vh, 2rem);
+  }
+
+  .project-showcase__title-block {
+    width: 100%;
+  }
+
+  .project-showcase__header h1 {
+    max-width: 12ch;
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--type-heading-family);
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 0.9;
+  }
+
+  .project-showcase__intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    align-items: end;
+  }
+
+  .project-showcase__intro-copy {
+    grid-column: span 12;
+    max-width: 24rem;
+  }
+
+  .project-showcase__intro p {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-family: var(--type-body-family);
+    font-size: var(--type-body-md-size);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: 1.55;
+  }
+
+  .project-showcase__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .project-showcase__tags span {
+    border-radius: 999px;
+    background: var(--foreground);
+    color: var(--background);
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    line-height: var(--type-ui-md-line-height);
+    padding: 0.2rem 0.55rem;
+    text-transform: uppercase;
+  }
+
+  .project-showcase__read-more {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 1.25rem;
+    border-radius: 0.25rem;
+    color: var(--muted-foreground);
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    line-height: var(--type-ui-md-line-height);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-transform: uppercase;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .project-showcase__read-more:hover,
+  .project-showcase__read-more:focus-visible {
+    background: var(--foreground);
+    color: var(--background);
+    outline: none;
+    text-decoration: none;
+  }
+
+  .project-showcase__media {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-inline: calc(clamp(1.25rem, 4vw, 4rem) * -1);
+    overflow-x: auto;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+    padding-bottom: 1rem;
+    scroll-padding-inline: clamp(1.25rem, 4vw, 4rem);
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .project-showcase__media::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-showcase__media-item {
+    position: relative;
+    flex: 0 0 auto;
+    height: clamp(18rem, 48vw, 38rem);
+    margin: 0;
+    overflow: hidden;
+    border-radius: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--surface-elevated);
+    box-shadow: 0 1px 0 color-mix(in oklch, var(--foreground) 6%, transparent);
+    scroll-snap-align: start;
+  }
+
+  .project-showcase__media-item img,
+  .project-showcase__media-item video {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transition: transform 1000ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-showcase__media-item:hover img,
+  .project-showcase__media-item:hover video {
+    transform: scale(1.035);
+  }
+
+  .project-showcase__media-item figcaption {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.25rem;
+    left: 1.5rem;
+    color: white;
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    line-height: 1.35;
+    opacity: 0;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 42%);
+    transform: translateY(0.5rem);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+
+  .project-showcase__media-item:hover figcaption {
+    opacity: 0.92;
+    transform: translateY(0);
+  }
+
+  .project-showcase__copy {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    margin-top: clamp(4rem, 10vh, 7rem);
+    scroll-margin-top: clamp(5rem, 12vh, 8rem);
+  }
+
+  .project-showcase__details {
+    grid-column: span 12;
     display: flex;
     flex-direction: column;
-    /* exactly one viewport: subtract the Base layout top padding */
-    height: calc(100dvh - 12rem);
-    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .project-showcase__links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted-foreground);
+  }
+
+  .project-showcase__links a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    transition: color 160ms ease;
+  }
+
+  .project-showcase__links a:hover,
+  .project-showcase__links a:focus-visible {
+    color: var(--foreground);
+  }
+
+  .project-showcase__body {
+    grid-column: span 12;
+    max-width: 48rem;
+  }
+
+  .project-showcase__body :global(figure:has(img)) {
+    display: none;
   }
 
   @media (min-width: 768px) {
-    .above-fold {
-      height: calc(100dvh - 12rem);
+    .project-showcase__intro-copy {
+      grid-column: span 5;
+    }
+
+    .project-showcase__details {
+      grid-column: span 3;
+    }
+
+    .project-showcase__body {
+      grid-column: 5 / span 7;
     }
   }
 
-  .hero-bleed {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
-    /* pull up into the layout top padding so image starts at the page top */
-    margin-top: -7rem;
-  }
+  @media (max-width: 767px) {
+    .project-showcase__header {
+      min-height: clamp(18rem, 42dvh, 26rem);
+      gap: clamp(2rem, 7vh, 4rem);
+    }
 
-  @media (min-width: 768px) {
-    .hero-bleed {
-      margin-top: -10rem;
+    .project-showcase__header h1 {
+      font-size: clamp(3.75rem, 18vw, 6.5rem);
+    }
+
+    .project-showcase__media-item {
+      height: 22rem;
+      max-width: calc(100vw - 2.5rem);
     }
   }
 </style>

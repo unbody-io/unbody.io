@@ -285,20 +285,20 @@ const suggestionLinks = [
         const onTouchEnd = () => scheduleSettle();
 
         setOffset(0);
-        section.addEventListener("wheel", onWheel, { passive: false });
-        section.addEventListener("touchstart", onTouchStart, { passive: false });
-        section.addEventListener("touchmove", onTouchMove, { passive: false });
-        section.addEventListener("touchend", onTouchEnd);
-        section.addEventListener("touchcancel", onTouchEnd);
+        window.addEventListener("wheel", onWheel, { passive: false });
+        document.addEventListener("touchstart", onTouchStart, { passive: false });
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
+        document.addEventListener("touchend", onTouchEnd);
+        document.addEventListener("touchcancel", onTouchEnd);
 
         document.addEventListener("astro:before-swap", () => {
           cancelSettleAnimation();
           if (settleTimer) window.clearTimeout(settleTimer);
-          section.removeEventListener("wheel", onWheel);
-          section.removeEventListener("touchstart", onTouchStart);
-          section.removeEventListener("touchmove", onTouchMove);
-          section.removeEventListener("touchend", onTouchEnd);
-          section.removeEventListener("touchcancel", onTouchEnd);
+          window.removeEventListener("wheel", onWheel);
+          document.removeEventListener("touchstart", onTouchStart);
+          document.removeEventListener("touchmove", onTouchMove);
+          document.removeEventListener("touchend", onTouchEnd);
+          document.removeEventListener("touchcancel", onTouchEnd);
         }, { once: true });
       });
     }

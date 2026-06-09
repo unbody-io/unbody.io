@@ -63,7 +63,7 @@ export function BlobTabs() {
     return { ...tab, labelWidth, bodyWidth, highlightWidth, center };
   });
   const [homeMetric, manifestoMetric, projectsMetric, blogMetric] = tabMetrics;
-  const themeItemCenter = -(TRIGGER_SIZE + THEME_ITEM_GAP);
+  const themeItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP;
   const highlightTab = hoveredTab ?? activeTab;
   const activeIndex = Math.max(0, tabMetrics.findIndex((tab) => tab.id === highlightTab));
   const activeHighlightWidth = tabMetrics[activeIndex]?.highlightWidth ?? 64;
@@ -87,7 +87,7 @@ export function BlobTabs() {
   };
   const themeRadiusClass = () => {
     if (!isExpanded && !isCollapsing) return 'rounded-full';
-    return 'rounded-l-full rounded-r-[0.45rem]';
+    return 'rounded-b-full rounded-t-[0.45rem]';
   };
 
   useLayoutEffect(() => {
@@ -374,7 +374,7 @@ export function BlobTabs() {
             <motion.div
               initial={false}
               animate={{
-                x: showThemeItem ? themeItemCenter : 0,
+                y: showThemeItem ? themeItemCenterY : 0,
                 opacity: isExpanded || isCollapsing ? 1 : 0,
               }}
               transition={springConfig}
@@ -527,7 +527,7 @@ export function BlobTabs() {
           <motion.div
             initial={false}
             animate={{
-              x: showThemeItem ? themeItemCenter : 0,
+              y: showThemeItem ? themeItemCenterY : 0,
               opacity: showThemeItem ? 1 : 0,
             }}
             transition={springConfig}

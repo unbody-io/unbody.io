@@ -7,65 +7,14 @@ import { BlobTabs } from "./BlobTabs";
   class:list={[
     "fixed",
     "top-4",
+    "left-4",
     "md:top-8",
-    "w-full",
+    "md:left-8",
     "z-[100]",
     "pointer-events-none",
   ]}
 >
-  <div
-    class:list={[
-      "w-full",
-      "max-w-3xl",
-      "mx-auto",
-      "px-5",
-      "md:px-8",
-    ]}
-  >
-    <div
-      id="site-nav-offset"
-      class="pointer-events-auto w-[38px]"
-      style="transform: translateX(0); transition: transform 260ms ease;"
-    >
-      <BlobTabs client:load />
-    </div>
+  <div class="pointer-events-auto w-[38px]">
+    <BlobTabs client:load />
   </div>
 </header>
-
-<script>
-const NAV_SHIFT_PX = 48;
-const SCROLL_SHIFT_THRESHOLD = 100;
-
-declare global {
-  interface Window {
-    __unbodyNavOffsetReady?: boolean;
-  }
-}
-
-function updateSiteNavOffset() {
-  const nav = document.getElementById("site-nav-offset");
-  if (!nav) return;
-
-  const scrollProgress = Math.min(
-    Math.max(window.scrollY / SCROLL_SHIFT_THRESHOLD, 0),
-    1,
-  );
-  const shift = NAV_SHIFT_PX * scrollProgress;
-
-  nav.style.transform = `translateX(-${shift}px)`;
-}
-
-function resetSiteNavOffset() {
-  updateSiteNavOffset();
-}
-
-if (!window.__unbodyNavOffsetReady) {
-  window.__unbodyNavOffsetReady = true;
-
-  window.addEventListener("scroll", updateSiteNavOffset, { passive: true });
-  window.addEventListener("resize", updateSiteNavOffset);
-  document.addEventListener("astro:after-swap", resetSiteNavOffset);
-}
-
-updateSiteNavOffset();
-</script>
