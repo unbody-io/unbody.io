@@ -22,7 +22,7 @@ const { title, blurb, date, tags, github, website, cover, heroVideo } =
   entry.data;
 
 const getAttribute = (markup: string, name: string) =>
-  markup.match(new RegExp(`${name}=["']([^"']+)["']`, "i"))?.[1];
+  markup.match(new RegExp(`${name}=("|')([\\s\\S]*?)\\1`, "i"))?.[2];
 
 const cleanCaption = (caption: string) =>
   caption
@@ -30,7 +30,9 @@ const cleanCaption = (caption: string) =>
     .replace(/\s+/g, " ")
     .trim();
 
-const figureImages = Array.from(entry.body.matchAll(/<figure>([\s\S]*?)<\/figure>/g))
+const entryBody = entry.body ?? "";
+
+const figureImages = Array.from(entryBody.matchAll(/<figure>([\s\S]*?)<\/figure>/g))
   .map((match) => {
     const figure = match[1] ?? "";
     const imageMarkup = figure.match(/<img\s+([^>]*?)\/?>/i)?.[0] ?? "";
@@ -58,14 +60,6 @@ const mediaItems = [
         type: "video" as const,
         src: heroVideo,
         alt: `${title} demo`,
-        caption: "",
-      }]
-    : []),
-  ...(cover
-    ? [{
-        type: "image" as const,
-        src: cover,
-        alt: title,
         caption: "",
       }]
     : []),
@@ -334,15 +328,20 @@ const jsonLd = {
 
   .project-showcase__media-item figcaption {
     position: absolute;
-    right: 1.5rem;
-    bottom: 1.25rem;
-    left: 1.5rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    max-height: min(42%, 10rem);
+    overflow: auto;
+    border-radius: 0.75rem;
+    background: rgb(0 0 0 / 72%);
     color: white;
     font-family: var(--type-ui-family);
     font-size: var(--type-ui-md-size);
     line-height: 1.35;
     opacity: 0;
-    text-shadow: 0 1px 12px rgb(0 0 0 / 42%);
+    padding: 0.7rem 0.8rem;
+    text-shadow: none;
     transform: translateY(0.5rem);
     transition:
       opacity 200ms ease,
@@ -396,6 +395,65 @@ const jsonLd = {
     display: none;
   }
 
+  .project-showcase__body :global(.project-recognition) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0 3.25rem;
+    padding-bottom: 2.75rem;
+    border-bottom: 1px solid color-mix(in oklch, var(--foreground) 14%, transparent);
+  }
+
+  .project-showcase__body :global(.project-recognition span) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    border: 1px solid color-mix(in oklch, var(--foreground) 14%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--foreground) 3.5%, transparent);
+    color: var(--foreground);
+    font-family: var(--type-body-family);
+    font-size: var(--type-body-md-size);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: 1.25;
+    padding: 0.48rem 1.05rem;
+  }
+
+  .project-showcase__body :global(.project-deliverables) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 1.25rem 0 2.75rem;
+  }
+
+  .project-showcase__body :global(.project-deliverables article) {
+    min-height: 8.75rem;
+    margin: 0;
+    border-radius: 0.5rem;
+    background: color-mix(in oklch, var(--foreground) 3.75%, transparent);
+    padding: 1.15rem;
+  }
+
+  .project-showcase__body :global(.project-deliverables p) {
+    margin: 0 0 0.45rem;
+    color: var(--muted-foreground);
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    font-weight: var(--type-ui-md-weight);
+    letter-spacing: var(--type-ui-md-tracking);
+    line-height: var(--type-ui-md-line-height);
+  }
+
+  .project-showcase__body :global(.project-deliverables h3) {
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--type-ui-family);
+    font-size: var(--type-headline-sm-size);
+    font-weight: var(--type-ui-md-weight);
+    letter-spacing: var(--type-headline-sm-tracking);
+    line-height: 1.13;
+  }
+
   @media (min-width: 768px) {
     .project-showcase {
       --project-page-inset: 2rem;
@@ -414,6 +472,12 @@ const jsonLd = {
     }
   }
 
+  @media (min-width: 1100px) {
+    .project-showcase__body :global(.project-deliverables) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 767px) {
     .project-showcase__header {
       min-height: clamp(18rem, 42dvh, 26rem);
@@ -423,6 +487,21 @@ const jsonLd = {
     .project-showcase__media-item {
       height: 22rem;
       max-width: calc(100vw - 2.5rem);
+    }
+
+    .project-showcase__body :global(.project-recognition) {
+      gap: 0.55rem;
+      margin-bottom: 2.25rem;
+      padding-bottom: 2rem;
+    }
+
+    .project-showcase__body :global(.project-recognition span) {
+      width: 100%;
+      border-radius: 1rem;
+    }
+
+    .project-showcase__body :global(.project-deliverables) {
+      grid-template-columns: 1fr;
     }
   }
 </style>
