@@ -404,7 +404,8 @@ const jsonLd = {
     border-bottom: 1px solid color-mix(in oklch, var(--foreground) 14%, transparent);
   }
 
-  .project-showcase__body :global(.project-recognition span) {
+  .project-showcase__body :global(.project-recognition span),
+  .project-showcase__body :global(.project-recognition a) {
     display: inline-flex;
     align-items: center;
     min-height: 2.5rem;
@@ -417,6 +418,18 @@ const jsonLd = {
     letter-spacing: var(--type-body-md-tracking);
     line-height: 1.25;
     padding: 0.48rem 1.05rem;
+    text-decoration: none;
+    transition:
+      background 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .project-showcase__body :global(.project-recognition a:hover),
+  .project-showcase__body :global(.project-recognition a:focus-visible) {
+    border-color: color-mix(in oklch, var(--foreground) 26%, transparent);
+    background: color-mix(in oklch, var(--foreground) 7%, transparent);
+    transform: translateY(-1px);
   }
 
   .project-showcase__body :global(.project-deliverables) {
@@ -495,13 +508,32 @@ const jsonLd = {
       padding-bottom: 2rem;
     }
 
-    .project-showcase__body :global(.project-recognition span) {
+    .project-showcase__body :global(.project-recognition span),
+    .project-showcase__body :global(.project-recognition a) {
       width: 100%;
       border-radius: 1rem;
     }
 
     .project-showcase__body :global(.project-deliverables) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .project-showcase__body :global(.project-deliverables article) {
+      min-height: 7.1rem;
+      padding: 0.85rem;
+    }
+
+    .project-showcase__body :global(.project-deliverables p) {
+      margin-bottom: 0.35rem;
+      font-size: var(--type-ui-sm-size);
+      line-height: var(--type-ui-sm-line-height);
+    }
+
+    .project-showcase__body :global(.project-deliverables h3) {
+      font-size: clamp(1.05rem, 4.9vw, 1.35rem);
+      line-height: 1.12;
     }
   }
 </style>
