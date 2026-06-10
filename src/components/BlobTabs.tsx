@@ -60,6 +60,7 @@ export function BlobTabs() {
   const TRIGGER_SIZE = 38;
   const FIRST_TAB_GAP = 0;
   const TAB_GAP = -5;
+  const BACK_ITEM_GAP = 10;
   const THEME_ITEM_GAP = 18;
   const STACKED_ITEM_GAP = 8;
   const TAB_BODY_PADDING_X = 18;
@@ -82,8 +83,10 @@ export function BlobTabs() {
     return { ...tab, labelWidth, bodyWidth, highlightWidth, center };
   });
   const [homeMetric, manifestoMetric, projectsMetric, blogMetric] = tabMetrics;
-  const backItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP;
-  const themeItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP + (canGoBack ? TRIGGER_SIZE + STACKED_ITEM_GAP : 0);
+  const backItemCenterY = TRIGGER_SIZE + BACK_ITEM_GAP;
+  const themeItemCenterY = canGoBack
+    ? backItemCenterY + TRIGGER_SIZE + STACKED_ITEM_GAP
+    : TRIGGER_SIZE + THEME_ITEM_GAP;
   const highlightTab = hoveredTab ?? activeTab;
   const activeIndex = Math.max(0, tabMetrics.findIndex((tab) => tab.id === highlightTab));
   const activeHighlightWidth = tabMetrics[activeIndex]?.highlightWidth ?? 64;

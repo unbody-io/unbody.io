@@ -27,7 +27,6 @@ const projectItems = projects.map((project) => ({
   slug: project.id,
   title: project.data.title,
   blurb: project.data.blurb,
-  tags: project.data.tags,
   cover: project.data.cover,
 }));
 ---
@@ -57,14 +56,6 @@ const projectItems = projects.map((project) => ({
             <div class="projects-page__copy">
               <h2>{project.title}</h2>
               <p>{project.blurb}</p>
-
-              {project.tags.length > 0 && (
-                <div class="projects-page__tags" aria-label={`${project.title} tags`}>
-                  {project.tags.map((tag) => (
-                    <span data-type="meta">{tag}</span>
-                  ))}
-                </div>
-              )}
             </div>
           </a>
         </article>
@@ -224,24 +215,6 @@ const projectItems = projects.map((project) => ({
     font-weight: var(--type-body-md-weight);
     letter-spacing: var(--type-body-md-tracking);
     line-height: 1.42;
-  }
-
-  .projects-page__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-top: 0.75rem;
-  }
-
-  .projects-page__tags span {
-    border-radius: 999px;
-    background: var(--foreground);
-    color: var(--background);
-    font-family: var(--type-ui-family);
-    font-size: var(--type-ui-md-size);
-    line-height: var(--type-ui-md-line-height);
-    padding: 0.15rem 0.45rem;
-    text-transform: uppercase;
   }
 
   @media (min-width: 768px) {

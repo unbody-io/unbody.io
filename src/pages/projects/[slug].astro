@@ -18,7 +18,7 @@ if (!entry) {
 }
 
 const { Content } = await render(entry);
-const { title, blurb, date, tags, github, website, cover, heroVideo } =
+const { title, blurb, date, tags, status, ctas, cover, heroVideo } =
   entry.data;
 
 const getAttribute = (markup: string, name: string) =>
@@ -111,16 +111,28 @@ const jsonLd = {
       <div class="project-showcase__intro">
         <div class="project-showcase__intro-copy">
           <p>{blurb}</p>
-          {tags.length > 0 && (
-            <div class="project-showcase__tags" aria-label="Project tags">
-              {tags.map((tag) => (
-                <span data-type="meta">{tag}</span>
-              ))}
-            </div>
-          )}
-          <a href="#project-description" class="project-showcase__read-more">
-            Read more
-          </a>
+          <div data-type="meta" class="project-showcase__status">
+            {status}
+          </div>
+          <div class="project-showcase__actions">
+            <a href="#project-description" class="project-showcase__read-more">
+              Read more
+            </a>
+            {ctas.length > 0 && (
+              <div class="project-showcase__cta-group">
+                {ctas.map((cta) => (
+                  <a
+                    class="project-showcase__cta"
+                    href={cta.link}
+                    target={cta.link.startsWith("http") ? "_blank" : undefined}
+                    rel={cta.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                  >
+                    {cta.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>
@@ -248,34 +260,6 @@ const jsonLd = {
     )}
 
     <section id="project-description" class="project-showcase__copy">
-      {(github || website) && (
-        <div class="project-showcase__details">
-          {(github || website) && (
-            <div data-type="meta" class="project-showcase__links">
-              {github && (
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
-              )}
-              {github && website && <span aria-hidden="true">|</span>}
-              {website && (
-                <a
-                  href={website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Website
-                </a>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
       <article class="prose project-showcase__body">
         <Content />
       </article>
@@ -340,28 +324,59 @@ const jsonLd = {
     line-height: 1.55;
   }
 
-  .project-showcase__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
+  .project-showcase__status {
+    width: fit-content;
     margin-top: 1rem;
-  }
-
-  .project-showcase__tags span {
-    border-radius: 999px;
-    background: var(--foreground);
-    color: var(--background);
+    color: var(--muted-foreground);
     font-family: var(--type-ui-family);
     font-size: var(--type-ui-md-size);
     line-height: var(--type-ui-md-line-height);
-    padding: 0.2rem 0.55rem;
     text-transform: uppercase;
+  }
+
+  .project-showcase__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1.35rem;
+    row-gap: 0.55rem;
+    margin-top: 1.35rem;
+  }
+
+  .project-showcase__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .project-showcase__cta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 2rem;
+    border-radius: 999px;
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    line-height: var(--type-ui-md-line-height);
+    padding: 0.28rem 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .project-showcase__cta {
+    border: 1px solid var(--foreground);
+    background: var(--foreground);
+    color: var(--background);
   }
 
   .project-showcase__read-more {
     display: inline-flex;
     width: fit-content;
-    margin-top: 1.25rem;
     border-radius: 0.25rem;
     color: var(--muted-foreground);
     font-family: var(--type-ui-family);
@@ -373,6 +388,18 @@ const jsonLd = {
     transition:
       background-color 160ms ease,
       color 160ms ease;
+  }
+
+  .project-showcase__cta:hover,
+  .project-showcase__cta:focus-visible {
+    outline: none;
+    transform: translateY(-1px);
+  }
+
+  .project-showcase__cta:hover,
+  .project-showcase__cta:focus-visible {
+    background: color-mix(in oklch, var(--foreground) 84%, var(--background));
+    border-color: color-mix(in oklch, var(--foreground) 84%, var(--background));
   }
 
   .project-showcase__read-more:hover,
@@ -413,6 +440,7 @@ const jsonLd = {
 
   .project-showcase__media-button {
     display: block;
+    width: 100%;
     height: 100%;
     margin: 0;
     border: 0;
@@ -692,31 +720,6 @@ const jsonLd = {
     scroll-margin-top: clamp(5rem, 12vh, 8rem);
   }
 
-  .project-showcase__details {
-    grid-column: span 12;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .project-showcase__links {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--muted-foreground);
-  }
-
-  .project-showcase__links a {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    transition: color 160ms ease;
-  }
-
-  .project-showcase__links a:hover,
-  .project-showcase__links a:focus-visible {
-    color: var(--foreground);
-  }
-
   .project-showcase__body {
     grid-column: span 12;
     max-width: 48rem;
@@ -828,9 +831,28 @@ const jsonLd = {
       gap: clamp(2rem, 7vh, 4rem);
     }
 
+    .project-showcase__media {
+      gap: 0.75rem;
+      padding-right: max(var(--project-page-inset), 18vw);
+    }
+
     .project-showcase__media-item {
-      height: 22rem;
-      max-width: calc(100vw - 2.5rem);
+      height: auto;
+      width: 85vw;
+      max-width: none;
+      flex-basis: 85vw;
+    }
+
+    .project-showcase__media-button {
+      cursor: default;
+    }
+
+    .project-showcase__media-item img,
+    .project-showcase__media-item video {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
     }
 
     .project-lightbox__slide {
@@ -839,28 +861,37 @@ const jsonLd = {
 
     .project-lightbox__viewport {
       grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
       gap: 1rem;
       padding: 1rem 1rem 4rem;
     }
 
     .project-lightbox__track {
+      order: 1;
       height: 100%;
       min-height: 18rem;
     }
 
     .project-lightbox__metadata {
+      order: 2;
       min-height: 0;
       justify-content: flex-end;
-      gap: 0.85rem;
-      padding-right: 3.5rem;
+      gap: 0;
+      padding-right: 0;
       padding-bottom: 0;
     }
 
+    .project-lightbox__metadata p {
+      display: none;
+    }
+
     .project-lightbox__metadata figcaption {
-      max-width: 13ch;
-      font-size: clamp(1.25rem, 6.5vw, 2rem);
-      line-height: 1.04;
+      max-width: min(34rem, 100%);
+      font-family: var(--type-ui-family);
+      font-size: clamp(0.72rem, 2.7vw, 0.9rem);
+      line-height: 1.35;
+      padding-right: 2.25rem;
+      text-wrap: pretty;
     }
 
     .project-lightbox__media-frame {
@@ -949,6 +980,7 @@ const jsonLd = {
     const slideCount = slides.length;
     const itemScrollStep = 640;
     const scrambleAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+-/:;<=>?@[]_{}~";
+    const narrowScreenQuery = window.matchMedia("(max-width: 767px)");
     let activeIndex = 0;
     let virtualScrollY = 0;
     let captionAnimationFrame = 0;
@@ -1223,6 +1255,8 @@ const jsonLd = {
       setScrollY(virtualScrollY + delta);
     };
 
+    const isNarrowScreen = () => narrowScreenQuery.matches;
+
     const close = ({
       fromHistory = false,
       restoreFocus = true,
@@ -1260,6 +1294,11 @@ const jsonLd = {
       trigger?: HTMLElement,
       { syncHistory = true }: { syncHistory?: boolean } = {},
     ) => {
+      if (isNarrowScreen()) {
+        if (!syncHistory) replaceWithoutMediaState();
+        return;
+      }
+
       if (trigger) lastFocusedElement = trigger;
       virtualScrollY = positiveModulo(index, slideCount) * itemScrollStep;
       applyStack(virtualScrollY);
@@ -1321,6 +1360,14 @@ const jsonLd = {
     setScrollY(0);
 
     const syncLightboxFromLocation = () => {
+      if (isNarrowScreen()) {
+        if (lightbox.dataset.open === "true") {
+          close({ fromHistory: true, restoreFocus: false });
+        }
+        replaceWithoutMediaState();
+        return;
+      }
+
       const mediaIndex = getMediaIndexFromLocation();
 
       if (mediaIndex === null) {
@@ -1336,6 +1383,7 @@ const jsonLd = {
     };
 
     window.addEventListener("popstate", syncLightboxFromLocation, { signal });
+    narrowScreenQuery.addEventListener("change", syncLightboxFromLocation, { signal });
     syncLightboxFromLocation();
 
     document.addEventListener("astro:before-swap", () => {
