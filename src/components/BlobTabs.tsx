@@ -5,6 +5,22 @@ import { navigate } from 'astro:transitions/client';
 
 const triggerGlyphs = ['Ú', 'Ŭ', 'Û', 'Ü', 'Ù', 'Ű', 'Ū', 'Ų', 'Ů', 'Ũ'];
 const triggerScrambleGlyphs = '!@#$%^&*_+-=|;:<>?~01'.split('');
+const historyIndexKey = '__unbodyNavigationIndex';
+const historyChangeEvent = 'unbody:history-change';
+
+type PatchedWindow = Window & {
+  __unbodyHistoryPatched?: boolean;
+};
+
+const getHistoryIndex = () => {
+  const value = window.history.state?.[historyIndexKey];
+  return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+};
+
+const withHistoryIndex = (state: unknown, index: number) => ({
+  ...(state && typeof state === 'object' ? state : {}),
+  [historyIndexKey]: index,
+});
 
 export function BlobTabs() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,6 +28,7 @@ export function BlobTabs() {
   const [isCollapsing, setIsCollapsing] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const [canGoBack, setCanGoBack] = useState(false);
   const [triggerGlyphIndex, setTriggerGlyphIndex] = useState(0);
   const [triggerDisplayGlyph, setTriggerDisplayGlyph] = useState(triggerGlyphs[0]);
   const [showActiveHighlight, setShowActiveHighlight] = useState(false);
@@ -44,6 +61,7 @@ export function BlobTabs() {
   const FIRST_TAB_GAP = 0;
   const TAB_GAP = -5;
   const THEME_ITEM_GAP = 18;
+  const STACKED_ITEM_GAP = 8;
   const TAB_BODY_PADDING_X = 18;
   const ACTIVE_PADDING_X = 9;
 
@@ -64,7 +82,8 @@ export function BlobTabs() {
     return { ...tab, labelWidth, bodyWidth, highlightWidth, center };
   });
   const [homeMetric, manifestoMetric, projectsMetric, blogMetric] = tabMetrics;
-  const themeItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP;
+  const backItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP;
+  const themeItemCenterY = TRIGGER_SIZE + THEME_ITEM_GAP + (canGoBack ? TRIGGER_SIZE + STACKED_ITEM_GAP : 0);
   const highlightTab = hoveredTab ?? activeTab;
   const activeIndex = Math.max(0, tabMetrics.findIndex((tab) => tab.id === highlightTab));
   const activeHighlightWidth = tabMetrics[activeIndex]?.highlightWidth ?? 64;
@@ -89,6 +108,81 @@ export function BlobTabs() {
   const themeRadiusClass = () => {
     if (!isExpanded && !isCollapsing) return 'rounded-full';
     return 'rounded-b-full rounded-t-[0.45rem]';
+  };
+
+  useEffect(() => {
+    const patchedWindow = window as PatchedWindow;
+    const dispatchHistoryChange = () => {
+      window.dispatchEvent(new CustomEvent(historyChangeEvent));
+    };
+
+    if (window.history.state?.[historyIndexKey] === undefined) {
+      window.history.replaceState(
+        withHistoryIndex(window.history.state, 0),
+        '',
+        window.location.href,
+      );
+    }
+
+    if (!patchedWindow.__unbodyHistoryPatched) {
+      const originalPushState = window.history.pushState.bind(window.history);
+      const originalReplaceState = window.history.replaceState.bind(window.history);
+
+      window.history.pushState = ((state: unknown, title: string, url?: string | URL | null) => {
+        const nextIndex = getHistoryIndex() + 1;
+        originalPushState(withHistoryIndex(state, nextIndex), title, url);
+        dispatchHistoryChange();
+      }) as History['pushState'];
+
+      window.history.replaceState = ((state: unknown, title: string, url?: string | URL | null) => {
+        originalReplaceState(withHistoryIndex(state, getHistoryIndex()), title, url);
+        dispatchHistoryChange();
+      }) as History['replaceState'];
+
+      patchedWindow.__unbodyHistoryPatched = true;
+    }
+
+    const syncCanGoBack = () => {
+      setCanGoBack(getHistoryIndex() > 0 || new URL(window.location.href).searchParams.has('media'));
+    };
+
+    syncCanGoBack();
+    window.addEventListener(historyChangeEvent, syncCanGoBack);
+    window.addEventListener('popstate', syncCanGoBack);
+    document.addEventListener('astro:after-swap', syncCanGoBack);
+
+    return () => {
+      window.removeEventListener(historyChangeEvent, syncCanGoBack);
+      window.removeEventListener('popstate', syncCanGoBack);
+      document.removeEventListener('astro:after-swap', syncCanGoBack);
+    };
+  }, []);
+
+  const goBack = () => {
+    setHoveredTab(null);
+    setPinnedOpen(false);
+    closeExpanded();
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('media') && getHistoryIndex() <= 0) {
+      url.searchParams.delete('media');
+      window.history.replaceState(
+        {
+          ...(window.history.state && typeof window.history.state === 'object'
+            ? window.history.state
+            : {}),
+          projectLightbox: false,
+        },
+        '',
+        url,
+      );
+      window.dispatchEvent(new PopStateEvent('popstate', { state: window.history.state }));
+      return;
+    }
+
+    if (canGoBack) {
+      window.history.back();
+    }
   };
 
   useLayoutEffect(() => {
@@ -373,6 +467,26 @@ export function BlobTabs() {
               <span className={`${surfaceInnerClass} rounded-full`} />
             </div>
 
+            {/* Back Gooey Body */}
+            <motion.div
+              initial={false}
+              animate={{
+                y: canGoBack ? backItemCenterY : 0,
+                opacity: canGoBack ? 1 : 0,
+              }}
+              transition={springConfig}
+              className="absolute left-0 top-0 w-0 h-0"
+            >
+              <motion.div
+                initial={false}
+                animate={{ width: TRIGGER_SIZE }}
+                transition={springConfig}
+                className={`${surfaceShellClass} rounded-full`}
+              >
+                <span className={`${surfaceInnerClass} rounded-full`} />
+              </motion.div>
+            </motion.div>
+
             {/* Theme Gooey Body */}
             <motion.div
               initial={false}
@@ -576,6 +690,43 @@ export function BlobTabs() {
                   <path d="M12 2v2.5M12 19.5V22M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2 12h2.5M19.5 12H22M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" />
                 </svg>
               )}
+            </motion.button>
+          </motion.div>
+
+          {/* Back Foreground */}
+          <motion.div
+            initial={false}
+            animate={{
+              y: canGoBack ? backItemCenterY : 0,
+              opacity: canGoBack ? 1 : 0,
+            }}
+            transition={springConfig}
+            className="absolute left-0 top-0 w-0 h-0 pointer-events-none"
+          >
+            <motion.button
+              type="button"
+              aria-label="Go back"
+              onPointerEnter={() => setHoveredTab(null)}
+              onClick={goBack}
+              initial={false}
+              animate={{ width: TRIGGER_SIZE, opacity: canGoBack ? 1 : 0 }}
+              transition={springConfig}
+              className={`absolute z-[3] flex items-center justify-center h-[calc(1lh+1.5em)] -translate-x-1/2 -translate-y-1/2 rounded-full outline-none select-none cursor-pointer overflow-hidden text-foreground/80 hover:text-foreground focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-colors ${
+                canGoBack ? 'pointer-events-auto' : 'pointer-events-none'
+              }`}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-[1em] w-[1em]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
             </motion.button>
           </motion.div>
 

@@ -90,8 +90,6 @@ const jsonLd = {
 ---
 
 <Base
-  showBackButton={true}
-  backButtonHref="/projects"
   title={`${title} | Unbody Projects`}
   description={blurb}
   seo={{
@@ -959,6 +957,8 @@ const jsonLd = {
     let captionProgress = 0;
     let touchStartY = 0;
     let lastFocusedElement: HTMLElement | null = null;
+    let restoreFocusAfterHistoryClose = false;
+    const mediaQueryKey = "media";
 
     const positiveModulo = (value: number, divisor: number) =>
       ((value % divisor) + divisor) % divisor;
@@ -966,6 +966,49 @@ const jsonLd = {
     const getScrambleGlyph = (index: number, tick: number) => {
       const glyphIndex = positiveModulo(index * 13 + tick * 7, scrambleAlphabet.length);
       return scrambleAlphabet[glyphIndex] ?? "";
+    };
+
+    const getMediaIndexFromLocation = () => {
+      const value = new URL(window.location.href).searchParams.get(mediaQueryKey);
+      if (!value) return null;
+
+      const index = Number(value) - 1;
+      return Number.isInteger(index) ? positiveModulo(index, slideCount) : null;
+    };
+
+    const pushMediaState = (index: number) => {
+      const url = new URL(window.location.href);
+      const nextMedia = String(index + 1);
+      if (url.searchParams.get(mediaQueryKey) === nextMedia) return;
+
+      url.searchParams.set(mediaQueryKey, nextMedia);
+      window.history.pushState(
+        {
+          ...(window.history.state && typeof window.history.state === "object"
+            ? window.history.state
+            : {}),
+          projectLightbox: true,
+        },
+        "",
+        url,
+      );
+    };
+
+    const replaceWithoutMediaState = () => {
+      const url = new URL(window.location.href);
+      if (!url.searchParams.has(mediaQueryKey)) return;
+
+      url.searchParams.delete(mediaQueryKey);
+      window.history.replaceState(
+        {
+          ...(window.history.state && typeof window.history.state === "object"
+            ? window.history.state
+            : {}),
+          projectLightbox: false,
+        },
+        "",
+        url,
+      );
     };
 
     const syncMediaMetrics = (
@@ -1180,7 +1223,26 @@ const jsonLd = {
       setScrollY(virtualScrollY + delta);
     };
 
-    const close = () => {
+    const close = ({
+      fromHistory = false,
+      restoreFocus = true,
+    }: {
+      fromHistory?: boolean;
+      restoreFocus?: boolean;
+    } = {}) => {
+      const hasMediaQuery = new URL(window.location.href).searchParams.has(mediaQueryKey);
+      if (
+        !fromHistory &&
+        hasMediaQuery &&
+        window.history.state?.projectLightbox === true
+      ) {
+        restoreFocusAfterHistoryClose = restoreFocus;
+        window.history.back();
+        return;
+      }
+
+      if (!fromHistory) replaceWithoutMediaState();
+
       lightbox.dataset.open = "false";
       lightbox.setAttribute("aria-hidden", "true");
       lightbox.setAttribute("inert", "");
@@ -1190,11 +1252,15 @@ const jsonLd = {
         window.cancelAnimationFrame(captionAnimationFrame);
         captionAnimationFrame = 0;
       }
-      lastFocusedElement?.focus();
+      if (restoreFocus) lastFocusedElement?.focus();
     };
 
-    const open = (index: number, trigger: HTMLElement) => {
-      lastFocusedElement = trigger;
+    const open = (
+      index: number,
+      trigger?: HTMLElement,
+      { syncHistory = true }: { syncHistory?: boolean } = {},
+    ) => {
+      if (trigger) lastFocusedElement = trigger;
       virtualScrollY = positiveModulo(index, slideCount) * itemScrollStep;
       applyStack(virtualScrollY);
       lightbox.dataset.open = "true";
@@ -1203,6 +1269,7 @@ const jsonLd = {
       document.documentElement.style.overflow = "hidden";
       closeButton?.focus();
       applyStack(virtualScrollY);
+      if (syncHistory) pushMediaState(positiveModulo(index, slideCount));
       startCaptionAnimation();
     };
 
@@ -1212,7 +1279,7 @@ const jsonLd = {
       }, { signal });
     });
 
-    closeButton?.addEventListener("click", close, { signal });
+    closeButton?.addEventListener("click", () => close(), { signal });
 
     dots.forEach((dot) => {
       dot.addEventListener("click", () => {
@@ -1252,6 +1319,24 @@ const jsonLd = {
     }, { signal });
 
     setScrollY(0);
+
+    const syncLightboxFromLocation = () => {
+      const mediaIndex = getMediaIndexFromLocation();
+
+      if (mediaIndex === null) {
+        if (lightbox.dataset.open === "true") {
+          const shouldRestoreFocus = restoreFocusAfterHistoryClose;
+          restoreFocusAfterHistoryClose = false;
+          close({ fromHistory: true, restoreFocus: shouldRestoreFocus });
+        }
+        return;
+      }
+
+      open(mediaIndex, undefined, { syncHistory: false });
+    };
+
+    window.addEventListener("popstate", syncLightboxFromLocation, { signal });
+    syncLightboxFromLocation();
 
     document.addEventListener("astro:before-swap", () => {
       document.documentElement.style.overflow = "";
