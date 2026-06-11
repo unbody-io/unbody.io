@@ -47,15 +47,15 @@ export function BlobTabs() {
 
   // Spring physics config - soft spring for raw gooey feel
   const springConfig = { type: 'spring', stiffness: 220, damping: 22, mass: 1 };
-  
+
   // Stagger delays for sequential mitosis effect
   const mergeDelay = 0.12;
-  
+
   const delayHome = isExpanded ? 0 : mergeDelay * 3;
   const delayManifesto = isExpanded ? mergeDelay : mergeDelay * 2;
   const delayProjects = isExpanded ? mergeDelay * 2 : mergeDelay;
   const delayBlog = isExpanded ? mergeDelay * 3 : 0;
-  
+
   // Sizing & Spacing
   const TRIGGER_SIZE = 38;
   const FIRST_TAB_GAP = 0;
@@ -429,14 +429,14 @@ export function BlobTabs() {
         <defs>
           <filter id="gooey" x="-400%" y="-200%" width="900%" height="500%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-            <feColorMatrix 
-              in="blur" 
-              mode="matrix" 
-              values="1 0 0 0 0  
-                      0 1 0 0 0  
-                      0 0 1 0 0  
-                      0 0 0 20 -9" 
-              result="goo" 
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 20 -9"
+              result="goo"
             />
           </filter>
           <filter id="active-gooey" x="-400%" y="-200%" width="900%" height="500%">
@@ -456,12 +456,12 @@ export function BlobTabs() {
       </svg>
 
       {/* Coordinate system stays in place, elements expand to the right */}
-      <motion.div 
+      <motion.div
         className="absolute top-1/2 left-1/2 w-0 h-0 pointer-events-none"
       >
         {/* Gooey Blob Layer (The melting glue body) */}
-        <div 
-          className="absolute w-[600px] h-[200px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" 
+        <div
+          className="absolute w-[600px] h-[200px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
           style={{ filter: 'url(#gooey) drop-shadow(0px 10px 15px rgba(0,0,0,0.10)) drop-shadow(0px 4px 6px rgba(0,0,0,0.06))' }}
         >
           <div className="absolute top-1/2 left-1/2 w-0 h-0">
@@ -642,7 +642,7 @@ export function BlobTabs() {
               style={{ transformOrigin: 'center' }}
             />
           </div>
-          
+
           {/* Theme Foreground */}
           <motion.div
             initial={false}
