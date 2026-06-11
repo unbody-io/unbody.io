@@ -179,26 +179,8 @@ const jsonLd = {
         aria-modal="true"
         inert
         role="dialog"
+        tabindex="-1"
       >
-        <button
-          class="project-lightbox__close"
-          type="button"
-          data-project-lightbox-close
-          aria-label="Close media carousel"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          >
-            <path d="M6 6l12 12" />
-            <path d="M18 6L6 18" />
-          </svg>
-        </button>
-
         <div class="project-lightbox__viewport">
           <div class="project-lightbox__metadata">
             <p data-project-lightbox-title>{title}</p>
@@ -541,7 +523,7 @@ const jsonLd = {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     margin: 0;
     --project-lightbox-radius: clamp(1.5rem, 3vw, 2.5rem);
@@ -553,7 +535,7 @@ const jsonLd = {
     transform:
       translate3d(0, var(--stack-y, 2rem), 0)
       scale(var(--stack-scale, 0.92));
-    transform-origin: center top;
+    transform-origin: center center;
     z-index: var(--stack-z, 0);
     will-change: filter, opacity, transform;
   }
@@ -566,9 +548,9 @@ const jsonLd = {
     display: flex;
     min-height: calc(100dvh - clamp(2rem, 4vw, 3rem));
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 1rem;
-    padding-bottom: clamp(4.5rem, 12vh, 7rem);
+    padding-top: calc(50dvh - clamp(1rem, 2vw, 1.5rem));
   }
 
   .project-lightbox__metadata p {
@@ -594,8 +576,8 @@ const jsonLd = {
 
   .project-lightbox__media-frame {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     min-width: 0;
@@ -615,7 +597,7 @@ const jsonLd = {
     height: 100%;
     max-width: 100%;
     object-fit: contain;
-    object-position: top left;
+    object-position: center center;
   }
 
   .project-lightbox__slide[data-media-orientation="landscape"] .project-lightbox__media-frame {
@@ -628,42 +610,8 @@ const jsonLd = {
     aspect-ratio: var(--media-aspect-ratio, 3 / 4);
     width: auto;
     height: 90%;
+    max-height: 90%;
     max-width: 100%;
-  }
-
-  .project-lightbox__close {
-    position: fixed;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    border: 0;
-    background: transparent;
-    color: var(--foreground);
-    cursor: pointer;
-    padding: 0;
-    transition:
-      color 160ms ease,
-      transform 160ms ease;
-  }
-
-  .project-lightbox__close:hover,
-  .project-lightbox__close:focus-visible {
-    color: var(--muted-foreground);
-    outline: none;
-    transform: scale(0.94);
-  }
-
-  .project-lightbox__close svg {
-    width: 1.7rem;
-    height: 1.7rem;
-  }
-
-  .project-lightbox__close {
-    top: max(1rem, env(safe-area-inset-top));
-    right: max(1rem, env(safe-area-inset-right));
   }
 
   .project-lightbox__dots {
@@ -958,9 +906,6 @@ const jsonLd = {
     const openers = Array.from(
       document.querySelectorAll<HTMLButtonElement>("[data-project-lightbox-open]"),
     );
-    const closeButton = lightbox.querySelector<HTMLButtonElement>(
-      "[data-project-lightbox-close]",
-    );
     const captionElement = lightbox.querySelector<HTMLElement>(
       "[data-project-lightbox-caption]",
     );
@@ -979,11 +924,14 @@ const jsonLd = {
     const captions = slides.map((slide) => slide.dataset.projectLightboxCaption ?? "");
     const slideCount = slides.length;
     const itemScrollStep = 640;
+    const maxScrollY = Math.max(0, (slideCount - 1) * itemScrollStep);
     const scrambleAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*+-/:;<=>?@[]_{}~";
     const narrowScreenQuery = window.matchMedia("(max-width: 767px)");
     let activeIndex = 0;
     let virtualScrollY = 0;
     let captionAnimationFrame = 0;
+    let snapAnimationFrame = 0;
+    let snapTimeout = 0;
     let captionFromIndex = 0;
     let captionToIndex = 0;
     let captionProgress = 0;
@@ -995,6 +943,9 @@ const jsonLd = {
     const positiveModulo = (value: number, divisor: number) =>
       ((value % divisor) + divisor) % divisor;
 
+    const clamp = (value: number, min: number, max: number) =>
+      Math.min(Math.max(value, min), max);
+
     const getScrambleGlyph = (index: number, tick: number) => {
       const glyphIndex = positiveModulo(index * 13 + tick * 7, scrambleAlphabet.length);
       return scrambleAlphabet[glyphIndex] ?? "";
@@ -1005,7 +956,7 @@ const jsonLd = {
       if (!value) return null;
 
       const index = Number(value) - 1;
-      return Number.isInteger(index) ? positiveModulo(index, slideCount) : null;
+      return Number.isInteger(index) ? clamp(index, 0, slideCount - 1) : null;
     };
 
     const pushMediaState = (index: number) => {
@@ -1142,30 +1093,28 @@ const jsonLd = {
       const rawProgress = scrollY / itemScrollStep;
       const baseProgress = Math.floor(rawProgress);
       const segmentProgress = rawProgress - baseProgress;
-      const baseIndex = positiveModulo(baseProgress, slideCount);
-      const nextIndex = positiveModulo(baseIndex + 1, slideCount);
+      const baseIndex = clamp(baseProgress, 0, slideCount - 1);
+      const nextIndex = clamp(baseIndex + 1, 0, slideCount - 1);
       const stackDepth = Math.min(3, slideCount - 1);
       const stackScaleStep = 0.045;
       const stackYStep = 14;
+      const incomingStartY = 104;
       captionFromIndex = baseIndex;
       captionToIndex = nextIndex;
-      captionProgress = segmentProgress;
+      captionProgress = baseIndex === nextIndex ? 0 : segmentProgress;
 
-      activeIndex = positiveModulo(
-        Math.round(rawProgress),
-        slideCount,
-      );
+      activeIndex = clamp(Math.round(rawProgress), 0, slideCount - 1);
 
       dots.forEach((dot, dotIndex) => {
         dot.setAttribute("aria-current", String(dotIndex === activeIndex));
       });
 
       slides.forEach((slide, slideIndex) => {
-        const forwardOffset = positiveModulo(slideIndex - baseIndex, slideCount);
-        const backwardOffset = positiveModulo(baseIndex - slideIndex, slideCount);
+        const forwardOffset = slideIndex - baseIndex;
+        const backwardOffset = baseIndex - slideIndex;
         const isActive = slideIndex === activeIndex;
         let scale = 0.94;
-        let y = "72dvh";
+        let y = `${incomingStartY}dvh`;
         let opacity = 0;
         let z = 0;
         let shadowDepth = 3;
@@ -1180,7 +1129,7 @@ const jsonLd = {
           blur = segmentProgress * 1.2;
         } else if (slideIndex === nextIndex) {
           scale = 1;
-          y = `${((1 - segmentProgress) * 72).toFixed(3)}dvh`;
+          y = `${((1 - segmentProgress) * incomingStartY).toFixed(3)}dvh`;
           opacity = 1;
           z = 40;
           shadowDepth = 1 - segmentProgress;
@@ -1194,7 +1143,7 @@ const jsonLd = {
           shadowDepth = layerDepth;
           blur = Math.min(3, layerDepth * 0.85);
         } else if (forwardOffset > 1 && forwardOffset <= stackDepth + 1) {
-          y = `${(72 + (forwardOffset - 1) * 10).toFixed(2)}dvh`;
+          y = `${(incomingStartY + (forwardOffset - 1) * 10).toFixed(2)}dvh`;
         }
 
         slide.style.setProperty("--stack-scale", scale.toFixed(4));
@@ -1231,27 +1180,86 @@ const jsonLd = {
     };
 
     const setScrollY = (nextScrollY: number) => {
-      virtualScrollY = nextScrollY;
+      virtualScrollY = clamp(nextScrollY, 0, maxScrollY);
       applyStack(virtualScrollY);
+    };
+
+    const cancelSnap = () => {
+      if (snapTimeout) {
+        window.clearTimeout(snapTimeout);
+        snapTimeout = 0;
+      }
+
+      if (snapAnimationFrame) {
+        window.cancelAnimationFrame(snapAnimationFrame);
+        snapAnimationFrame = 0;
+      }
+    };
+
+    const snapToNearestSlide = () => {
+      if (slideCount <= 1 || lightbox.dataset.open !== "true") return;
+
+      const startY = virtualScrollY;
+      const targetY = clamp(
+        Math.round(startY / itemScrollStep) * itemScrollStep,
+        0,
+        maxScrollY,
+      );
+      const distance = targetY - startY;
+
+      if (Math.abs(distance) < 0.5) {
+        setScrollY(targetY);
+        return;
+      }
+
+      const duration = 420;
+      const startTime = performance.now();
+
+      const animateSnap = (time: number) => {
+        const elapsed = time - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        setScrollY(startY + distance * easedProgress);
+
+        if (progress < 1) {
+          snapAnimationFrame = window.requestAnimationFrame(animateSnap);
+        } else {
+          snapAnimationFrame = 0;
+          setScrollY(targetY);
+        }
+      };
+
+      snapAnimationFrame = window.requestAnimationFrame(animateSnap);
+    };
+
+    const scheduleSnap = (delay = 120) => {
+      if (slideCount <= 1) return;
+      if (snapTimeout) window.clearTimeout(snapTimeout);
+
+      snapTimeout = window.setTimeout(() => {
+        snapTimeout = 0;
+        snapToNearestSlide();
+      }, delay);
     };
 
     const setActiveSlide = (index: number) => {
       if (slideCount === 0) return;
+      cancelSnap();
 
-      const requestedIndex = positiveModulo(index, slideCount);
-      const currentIndex = positiveModulo(
+      const requestedIndex = clamp(index, 0, slideCount - 1);
+      const currentIndex = clamp(
         Math.round(virtualScrollY / itemScrollStep),
-        slideCount,
+        0,
+        slideCount - 1,
       );
-      let step = requestedIndex - currentIndex;
-
-      if (step > slideCount / 2) step -= slideCount;
-      if (step < -slideCount / 2) step += slideCount;
+      const step = requestedIndex - currentIndex;
 
       setScrollY(virtualScrollY + step * itemScrollStep);
     };
 
     const scrollStack = (delta: number) => {
+      cancelSnap();
       setScrollY(virtualScrollY + delta);
     };
 
@@ -1282,6 +1290,7 @@ const jsonLd = {
       lightbox.setAttribute("inert", "");
       document.documentElement.style.overflow = "";
       videos.forEach((video) => video.pause());
+      cancelSnap();
       if (captionAnimationFrame) {
         window.cancelAnimationFrame(captionAnimationFrame);
         captionAnimationFrame = 0;
@@ -1300,15 +1309,16 @@ const jsonLd = {
       }
 
       if (trigger) lastFocusedElement = trigger;
-      virtualScrollY = positiveModulo(index, slideCount) * itemScrollStep;
+      cancelSnap();
+      virtualScrollY = clamp(index, 0, slideCount - 1) * itemScrollStep;
       applyStack(virtualScrollY);
       lightbox.dataset.open = "true";
       lightbox.setAttribute("aria-hidden", "false");
       lightbox.removeAttribute("inert");
       document.documentElement.style.overflow = "hidden";
-      closeButton?.focus();
+      lightbox.focus();
       applyStack(virtualScrollY);
-      if (syncHistory) pushMediaState(positiveModulo(index, slideCount));
+      if (syncHistory) pushMediaState(clamp(index, 0, slideCount - 1));
       startCaptionAnimation();
     };
 
@@ -1317,8 +1327,6 @@ const jsonLd = {
         open(Number(button.dataset.projectLightboxOpen ?? 0), button);
       }, { signal });
     });
-
-    closeButton?.addEventListener("click", () => close(), { signal });
 
     dots.forEach((dot) => {
       dot.addEventListener("click", () => {
@@ -1330,9 +1338,11 @@ const jsonLd = {
       if (lightbox.dataset.open !== "true") return;
       event.preventDefault();
       scrollStack(event.deltaY);
+      scheduleSnap();
     }, { signal, passive: false });
 
     lightbox.addEventListener("touchstart", (event) => {
+      cancelSnap();
       touchStartY = event.touches[0]?.clientY ?? 0;
     }, { signal, passive: true });
 
@@ -1343,7 +1353,18 @@ const jsonLd = {
       const delta = touchStartY - nextY;
       touchStartY = nextY;
       scrollStack(delta * 1.4);
+      scheduleSnap(160);
     }, { signal, passive: false });
+
+    lightbox.addEventListener("touchend", () => {
+      if (lightbox.dataset.open !== "true") return;
+      scheduleSnap(0);
+    }, { signal, passive: true });
+
+    lightbox.addEventListener("touchcancel", () => {
+      if (lightbox.dataset.open !== "true") return;
+      scheduleSnap(0);
+    }, { signal, passive: true });
 
     document.addEventListener("keydown", (event) => {
       if (lightbox.dataset.open !== "true") return;
@@ -1388,6 +1409,7 @@ const jsonLd = {
 
     document.addEventListener("astro:before-swap", () => {
       document.documentElement.style.overflow = "";
+      cancelSnap();
       if (captionAnimationFrame) {
         window.cancelAnimationFrame(captionAnimationFrame);
       }
