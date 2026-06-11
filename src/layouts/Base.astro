@@ -5,23 +5,20 @@ import Header from "../components/Header.astro";
 import SEO from "../components/SEO.astro";
 import type { Props as SEOProps } from "../components/SEO.astro";
 import ShaderBackground from "../components/ShaderBackground.astro";
-import TopLitSurface from "../components/TopLitSurface.astro";
 import "../styles/globals.css";
 
 interface Props {
   title?: string;
   description?: string;
   seo?: Partial<SEOProps>;
-  showBackButton?: boolean;
-  backButtonHref?: string;
+  showEdgeMasks?: boolean;
 }
 
 const {
   title = siteConfig.name,
   description = siteConfig.description,
   seo,
-  showBackButton = false,
-  backButtonHref = "/blog",
+  showEdgeMasks = true,
 } = Astro.props;
 ---
 
@@ -64,18 +61,6 @@ const {
     initThemeController();
     </script>
     <ClientRouter />
-    <style is:global>
-      @keyframes back-btn-in {
-        from { opacity: 0; transform: translateY(-180%); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      ::view-transition-new(back-button) {
-        animation: back-btn-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      ::view-transition-old(back-button) {
-        display: none;
-      }
-    </style>
   </head>
   <body class="overflow-x-hidden">
     <!-- Fixed Ambient Background -->
@@ -83,16 +68,19 @@ const {
       <ShaderBackground />
     </div>
 
-    <!-- Top & Bottom Fade Masks -->
-    <div class="fixed top-0 left-0 w-full z-40 overlay-mask-top pointer-events-none">
-    </div>
-    <div class="fixed bottom-0 left-0 w-full z-40 overlay-mask-bottom pointer-events-none">
-    </div>
+    {showEdgeMasks && (
+      <>
+        <div class="fixed top-0 left-0 w-full z-40 overlay-mask-top pointer-events-none">
+        </div>
+        <div class="fixed bottom-0 left-0 w-full z-40 overlay-mask-bottom pointer-events-none">
+        </div>
+      </>
+    )}
 
     <Header />
 
     <main class="min-h-screen relative flex flex-col items-center">
-      <div class="relative z-10 w-full max-w-3xl px-5 pt-28 pb-32 md:pt-40 md:pb-48">
+      <div class="relative z-10 w-full max-w-3xl px-5 pt-28 pb-32 md:px-8 md:pt-40 md:pb-48">
         <slot />
       </div>
     </main>
@@ -106,37 +94,5 @@ const {
       <a href="mailto:hello@unbody.io" class="underline">hello@unbody.io</a>
     </div>
 
-    {showBackButton && (
-      <div
-        transition:name="back-button"
-        class="md:hidden fixed top-4 left-0 right-0 z-[100] pointer-events-none"
-      >
-        <div class="max-w-3xl mx-auto w-full flex justify-end px-5">
-          <TopLitSurface
-            innerClass="flex items-center type-ui-md p-[0.25em]"
-            class="pointer-events-auto"
-          >
-            <a
-              href={backButtonHref}
-              aria-label="Go back"
-              class="h-[calc(1lh+1em)] w-[calc(1lh+1em)] rounded-full flex items-center justify-center text-foreground/80 hover:text-foreground hover:bg-foreground/5 focus-visible:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                class="h-[1em] w-[1em]"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </a>
-          </TopLitSurface>
-        </div>
-      </div>
-    )}
   </body>
 </html>

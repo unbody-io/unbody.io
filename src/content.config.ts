@@ -24,9 +24,13 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     blurb: z.string(),
-    status: z.enum(["experimental", "alpha", "active", "archived"]),
+    status: z.string(),
     date: z.string(),
     tags: z.array(z.string()).optional().default([]),
+    ctas: z.array(z.object({
+      label: z.string(),
+      link: z.string(),
+    })).optional().default([]),
     github: z.string().optional(),
     website: z.string().optional(),
     cover: z.string().optional(),
@@ -34,4 +38,15 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, projects };
+const pages = defineCollection({
+  loader: glob({
+    pattern: "**/index.{md,mdx}",
+    base: "./content/pages",
+    generateId: ({ entry }) => entry.replace(/\/index\.(md|mdx)$/, ""),
+  }),
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = { blog, projects, pages };

@@ -1,9 +1,14 @@
 ---
 title: "Adapt"
 blurb: "A self-evolving AI memory that learns by attention instead of recall. TypeScript SDK."
-status: "alpha"
+status: "Alpha / open source"
 date: "2026-04-14"
 tags: ["AI", "memory", "open-source", "TypeScript"]
+ctas:
+  - label: "Website"
+    link: "https://adapt.unbody.io"
+  - label: "GitHub"
+    link: "https://github.com/unbody-io/adapt"
 github: "https://github.com/unbody-io/adapt"
 website: "https://adapt.unbody.io"
 cover: "/projects/adapt/cover.jpeg"
@@ -12,7 +17,9 @@ heroVideo: "/projects/adapt/demo.mp4"
 
 [Adapt](https://adapt.unbody.io) is an open-source Node.js library for building AI memory systems that learn and evolve over time, rather than just storing and retrieving data.
 
-Most memory systems fail in two ways: they cannot reason across time, and they cannot adapt when data changes shape. They memorize instead of learning: a fixed structure trying to hold non-deterministic data. Adapt is my attempt to fix that.
+Most memory systems memorize instead of learn — a fixed structure trying to hold non-deterministic data, so they can't reason across time or adapt when the data changes shape. Adapt fixes that with two parts: a **Brain** that routes incoming data, synthesizes answers, and watches whether the current structure still covers the domain, and **Neurons** that each learn one slice of it by compressing observations into understanding instead of hoarding records. When the Brain detects gaps, redundancy, or overload, it reconfigures itself — splitting, merging, or creating neurons with no schema migration and no manual loop.
+
+You steer it with three operations — `inject()` to feed new observations, `signal()` to nudge structural change, and `adjust()` to tune a single neuron — while querying stays separate, returning answers with relevance and confidence scores so the system can explain how strongly each neuron contributed.
 
 <figure>
   <img
@@ -24,12 +31,6 @@ Most memory systems fail in two ways: they cannot reason across time, and they c
   </figcaption>
 </figure>
 
-## How it works
-
-Adapt runs on two components. A **Brain** orchestrates the system: routing incoming data, synthesizing answers, and monitoring whether the current memory structure still covers the domain. **Neurons** are specialists. Each neuron learns one slice of the domain by observing new data, scoring it by relevance, and compressing it into understanding instead of hoarding raw records.
-
-When the Brain detects gaps, redundancy, or overload, it reconfigures itself. It can split overloaded neurons, merge similar ones, or create new neurons for patterns it was ignoring. No schema migration. No manual reconfiguration loop.
-
 <figure>
   <img
     src="/projects/adapt/images/brain-setup.jpeg"
@@ -40,16 +41,6 @@ When the Brain detects gaps, redundancy, or overload, it reconfigures itself. It
   </figcaption>
 </figure>
 
-## Learning operations
-
-You steer Adapt with three operations:
-
-- `inject()` feeds the Brain new observations.
-- `signal()` nudges structural change when the current memory graph needs to adapt.
-- `adjust()` tunes a single neuron without rewriting the whole system.
-
-Querying is separate from learning. Questions consult accumulated neuron knowledge and return answers with relevance and confidence scores, so the system can explain not just what it knows, but how strongly each neuron contributed.
-
 <figure>
   <img
     src="/projects/adapt/images/live-conversation-learning.png"
@@ -59,10 +50,6 @@ Querying is separate from learning. Questions consult accumulated neuron knowled
     Adapt can update its understanding as a process unfolds, rather than waiting for a finished archive to retrieve from.
   </figcaption>
 </figure>
-
-## Demo
-
-The current demo uses daily standup data to show how a Brain initializes, creates specialized neurons, and changes its coverage as more observations arrive.
 
 <figure>
   <img

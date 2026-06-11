@@ -1,0 +1,133 @@
+---
+title: "Sibyl"
+blurb: "An AI companion for reproductive loss, helping women integrate their loss and find answers when healthcare often leaves them without either."
+status: "Clinical pilots / pre-launch"
+date: "2026-06-05"
+tags: ["AI", "pregnancy loss", "mental health", "iOS", "personalization"]
+ctas:
+  - label: "Website"
+    link: "https://www.sibyl.care/"
+cover: "/projects/sibyl/cover.png"
+website: "https://www.sibyl.care/"
+---
+
+## The gap we set out to fill
+
+Miscarriage and reproductive loss affect one in four women — and yet, for an experience this common, there's still no real system of care for what comes after the medical event. The clinical side of a loss gets handled; the emotional integration of it almost never does. Whether someone receives any guidance beyond the necessary physical checkup often comes down to which clinic they happened to walk into.
+
+Melissa Ablett-Jordaan, Sibyl's founder, experienced this firsthand across pregnancy losses of her own. Her vision was a companion that could be there at any hour. Not to replace clinical care, but to ensure that no woman had to navigate the aftermath of a loss alone, without answers, without context, and without feeling seen.
+
+## What we built together
+
+Melissa came to Unbody Lab with an early chat prototype and a clear conviction. Over two phases, we took ownership of Sibyl's product architecture, its AI memory and retrieval systems, the full UX and brand design, and a privacy-first implementation — bringing both the engineering and the design thinking under one roof.
+
+The first phase focused on making Sibyl meaningfully context-aware. Rather than wrapping a chat interface around an LLM, we built a memory layer that lets Sibyl adapt to each user over time, and a retrieval-augmented generation system grounded in a library of 60+ clinically reviewed articles across five topic areas. When a user asks a medical or emotional question, Sibyl's responses draw from that validated knowledge base. For anything requiring clinical judgment, Sibyl keeps a clear boundary: it refers users to their care provider and surfaces crisis resources when needed.
+
+The second phase pushed further. We asked a harder question: how do you personalize a journey of integration when everyone's processing is non-linear, moves at its own pace, and can look completely different from one loss to the next?
+
+Someone can spend two weeks in a positive, forward-moving state and then encounter something that brings them straight back into acute grief. The journey is not a linear timeline, so Sibyl is built to meet the user where they are, without demanding that they be anywhere else. Through the lenses of Mind, Body, and Life, Sibyl shapes each day's personalized suggestions from what the user has shared, becoming more attuned as context grows.
+
+On the home screen, that means Sibyl can surface articles and exercises that feel specific to what the user is carrying now, shaped by the initial situation they named in onboarding and what they explored recently in chat or a session. Sibyl suggests; it never prescribes. Users can follow the thread or explore freely, because we learned that the need for autonomy is as important as the need for guidance.
+
+## Design and research, not just infrastructure
+
+We were not handed a design spec. From the beginning, design, product thinking, and research were inseparable. We did our own research and received input from clinicians to understand what they offer patients navigating loss: which exercises have a clinically proven track record, which questions almost every woman seems to have, and which parts of the experience are usually left unspoken, such as navigating social events or conversations after a loss. That research shaped the features we considered most supportive: journaling sessions, guided exercises, peer stories, and a growing library of expert-reviewed material validated by Sibyl's clinical advisory board.
+
+The design principle that guided everything is simple: hold space, do not demand. The first screen a user sees after logging in requires a deliberate tap-and-hold for a few seconds before entering the app. That is not friction; it is an invitation to slow down, to arrive. The same intention carries through the rest of the experience: unhurried transitions, natural colors, calm textures, and a chat that responds slowly and gently. The visual language says the same thing the product does: you can be however you are in here, and you are seen.
+
+Privacy was never an afterthought. The data Sibyl handles is among the most personal imaginable. We built GDPR-compliant architecture from day one, ensuring user data is protected, even when evaluating the AI's performance. Sibyl was built with safety guardrails from the start. Because users often describe past distress in the present tense, we tuned the system to tell the difference between someone recounting a hard moment and someone in danger right now, so it can respond with care without misfiring. We also built a chat-lock feature with helplines, shaped by legal counsel and the emerging safety guidance for mental-health companions.
+
+## Where Sibyl is now
+
+Sibyl is preparing for its public launch on the iOS App Store. Two clinical pilots are currently underway. Early signals are encouraging: clinicians see Sibyl as a genuine extension of care, something they can offer patients from the moment of diagnosis. Users have 24-hour access to validated resources, a space to process what they are feeling, and validation through other women's stories that they are not alone in this. That last piece, the reduction of isolation, has emerged as one of the most meaningful outcomes.
+
+The roadmap ahead includes richer personalization by loss type and stage, such as recently diagnosed, recurrent loss, and trying again, as well as new exercise modalities. The architecture we built is designed to grow with that ambition.
+
+<figure>
+  <img
+    src="/projects/sibyl/images/home-recovery.png"
+    alt="Sibyl's home screen on iOS reading 'Recovery takes time - physically and emotionally. There's no rushing this,' with today's suggestions and a daily prompt card asking what the body needs today."
+  />
+  <figcaption>
+    Sibyl's home page draws on the user's latest interactions to create a personalized daily stack: a unique prompt, selected reading material, and a gentle exercise suggestion.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/sibyl/images/daily-prompt.png"
+    alt="A daily prompt screen asking 'What feels most present right now?' with a written reflection about a tiredness that comes from holding things together, and Save or 'Let it go' options."
+  />
+  <figcaption>
+    The daily prompt is refreshed each day, giving the user space to explore what feels present. Their answers also shape the personalized home page the following day.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/sibyl/images/sessions-library.png"
+    alt="A 'What life is asking of me' library screen with Body, Mind, and Life categories, Life selected, and session cards including 'When people ask how I am' and 'Appointment debrief.'"
+  />
+  <figcaption>
+    Support spans three arcs: mind, body, and life. Journaling sessions and clinically reviewed articles are organized around these lenses.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/sibyl/images/reading-materials.png"
+    alt="A Sibyl reading materials screen showing an article card titled 'Talking about miscarriage is never easy,' with badges for Article, Human Written, and Clinically Reviewed."
+  />
+  <figcaption>
+    The content system surfaces clinically reviewed articles so support is grounded in validated resources.
+  </figcaption>
+</figure>
+
+<figure>
+  <img
+    src="/projects/sibyl/images/chat.png"
+    alt="A chat screen where Sibyl responds with warmth about movement helping right now, asks how long it's been since the loss, and surfaces a 'Physical recovery audit' exercise card, with a footer noting Sibyl is not medical or mental health care."
+  />
+  <figcaption>
+    In chat mode, Sibyl responds with validation and a gentle tone, asks follow-up questions, and uses the reviewed articles as sources when grounded information is needed.
+  </figcaption>
+</figure>
+
+## Recognition
+
+<div class="project-recognition">
+  <a href="https://femtechinsider.com/innovation-finally-addresses-pregnancy-loss-from-digital-support-to-diagnostic-breakthroughs/" target="_blank" rel="noopener noreferrer">Featured in FemTech Insider</a>
+  <a href="https://www.einpresswire.com/article/886945223/springboard-enterprises-announces-2026-women-s-health-council-to-support-the-women-s-health-accelerator-program" target="_blank" rel="noopener noreferrer">Springboard Enterprises Women's Health Accelerator 2026</a>
+  <a href="https://www.sibyl.care/" target="_blank" rel="noopener noreferrer">Clinical guidance: Dr. Shai Mahesh, Dr. Heather Smith, Dr. Jeanette Mayse, ABPP</a>
+</div>
+
+## Deliverables
+
+<div class="project-deliverables">
+  <article>
+    <p>Phase 1</p>
+    <h3>AI chat with memory layer &amp; RAG</h3>
+  </article>
+  <article>
+    <p>Phase 2</p>
+    <h3>Personalized home &amp; journey experience</h3>
+  </article>
+  <article>
+    <p>Content system</p>
+    <h3>60+ clinically reviewed articles</h3>
+  </article>
+  <article>
+    <p>Design</p>
+    <h3>Full product UI, brand &amp; identity</h3>
+  </article>
+  <article>
+    <p>Infrastructure</p>
+    <h3>GDPR-compliant, privacy-first architecture</h3>
+  </article>
+  <article>
+    <p>Launch</p>
+    <h3>iOS App Store upcoming</h3>
+  </article>
+</div>
+
+Sibyl is the kind of work Unbody Lab exists to do: careful adaptive systems for moments where people need both intelligence and tenderness, and where trust has to be designed into every layer. We partner with a small number of teams a year building in this territory. If that's you, [get in touch](mailto:hello@unbody.io).

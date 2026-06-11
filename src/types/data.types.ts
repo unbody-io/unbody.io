@@ -1,4 +1,4 @@
-export type ProjectStatus = "experimental" | "alpha" | "active" | "archived"
+export type ProjectStatus = string
 
 export type Category = "essay" | "update" | "case-study" | "event" | "explainer"
 

@@ -1,7 +1,6 @@
 ---
 import { siteConfig } from "@/config/site";
 import { getCollection } from "astro:content";
-import ProjectCard from "../../components/ProjectCard.astro";
 import Base from "../../layouts/Base.astro";
 
 const title = siteConfig.pages.projects.title;
@@ -23,30 +22,221 @@ const jsonLd = {
 const projects = (await getCollection("projects")).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
+
+const projectItems = projects.map((project) => ({
+  slug: project.id,
+  title: project.data.title,
+  blurb: project.data.blurb,
+  cover: project.data.cover,
+}));
 ---
 
-<Base title={title} description={description} seo={{ jsonLd }}>
-  <header class="mb-16">
-    <h1 class="sr-only">Unbody Projects</h1>
-    <div
-      data-type="nav"
-      class="type-ui-md uppercase tracking-wider md:tracking-ultra text-foreground"
-    >
-      PROJECTS
-    </div>
-  </header>
+<Base title={title} description={description} seo={{ jsonLd }} showEdgeMasks={false}>
+  <section class="projects-page">
+    <header class="projects-page__header">
+      <div class="projects-page__title-block">
+        <h1>Projects &amp; Experimentations</h1>
+      </div>
 
-  <div class="space-y-12">
-    {projects.map((project) => (
-      <ProjectCard
-        slug={project.id}
-        title={project.data.title}
-        blurb={project.data.blurb}
-        status={project.data.status}
-        date={project.data.date}
-        tags={project.data.tags}
-        cover={project.data.cover}
-      />
-    ))}
-  </div>
+      <div class="projects-page__intro">
+        <p>Adaptive thinking tools, prototypes, and partner work from Unbody Lab.</p>
+      </div>
+    </header>
+
+    <div class="projects-page__list">
+      {projectItems.map((project) => (
+        <article class="projects-page__item">
+          <a href={`/projects/${project.slug}`} class="projects-page__link">
+            {project.cover && (
+              <figure class="projects-page__media">
+                <img src={project.cover} alt="" loading="lazy" />
+              </figure>
+            )}
+
+            <div class="projects-page__copy">
+              <h2>{project.title}</h2>
+              <p>{project.blurb}</p>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
 </Base>
+
+<style>
+  .projects-page {
+    --project-page-inset: 1rem;
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    padding-inline: var(--project-page-inset);
+    padding-bottom: 4rem;
+  }
+
+  .projects-page__header {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 8vh, 6rem);
+    margin-bottom: clamp(1rem, 3vh, 2rem);
+  }
+
+  .projects-page__title-block {
+    width: 100%;
+  }
+
+  .projects-page__header h1 {
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--type-heading-family);
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 0.95;
+  }
+
+  .projects-page__intro {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    align-items: end;
+  }
+
+  .projects-page__intro p {
+    grid-column: span 12;
+    max-width: 24rem;
+    margin: 0;
+    color: var(--muted-foreground);
+    font-family: var(--type-body-family);
+    font-size: var(--type-body-md-size);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: 1.55;
+  }
+
+  .projects-page__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 18rem));
+    justify-content: start;
+    gap: clamp(0.85rem, 1.6vw, 1.25rem);
+  }
+
+  .projects-page__item {
+    min-width: 0;
+  }
+
+  .projects-page__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0;
+    border-radius: clamp(1.1rem, 2vw, 1.65rem);
+    background:
+      linear-gradient(
+        to bottom,
+        color-mix(in oklch, var(--surface-border) 92%, transparent),
+        color-mix(in oklch, var(--surface-border) 22%, transparent) 28%,
+        transparent 68%
+      ),
+      var(--surface-elevated);
+    box-shadow:
+      0 1px 0 color-mix(in oklch, var(--surface-border) 70%, transparent) inset,
+      0 24px 60px -34px color-mix(in oklch, var(--foreground) 42%, transparent);
+    color: inherit;
+    padding: clamp(0.5rem, 1vw, 0.65rem);
+    text-decoration: none;
+    transition:
+      box-shadow 240ms ease,
+      transform 240ms ease;
+  }
+
+  .projects-page__link:hover,
+  .projects-page__link:focus-visible {
+    box-shadow:
+      0 1px 0 color-mix(in oklch, var(--surface-border) 85%, transparent) inset,
+      0 30px 72px -34px color-mix(in oklch, var(--foreground) 56%, transparent);
+    outline: none;
+    transform: translateY(-2px);
+  }
+
+  .projects-page__media {
+    position: relative;
+    height: clamp(9.5rem, 16vw, 12rem);
+    margin: 0;
+    overflow: hidden;
+    border-radius: clamp(0.85rem, 1.6vw, 1.25rem);
+    background: var(--surface-base);
+  }
+
+  .projects-page__media::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 18%),
+      inset 0 22px 54px rgb(0 0 0 / 18%);
+  }
+
+  .projects-page__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .projects-page__link:hover .projects-page__media img,
+  .projects-page__link:focus-visible .projects-page__media img {
+    transform: scale(1.035);
+  }
+
+  .projects-page__copy {
+    padding: clamp(1rem, 1.8vw, 1.25rem) clamp(0.5rem, 1vw, 0.8rem) clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  .projects-page__copy h2 {
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--type-heading-family);
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .projects-page__copy p {
+    max-width: 30rem;
+    margin: 0.75rem 0 0;
+    color: var(--muted-foreground);
+    font-family: var(--type-body-family);
+    font-size: var(--type-ui-md-size);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: 1.42;
+  }
+
+  @media (min-width: 768px) {
+    .projects-page__intro p {
+      grid-column: span 5;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .projects-page__list {
+      grid-template-columns: 1fr;
+      gap: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .projects-page__copy h2 {
+      font-size: clamp(1.9rem, 10vw, 2.8rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .projects-page {
+      --project-page-inset: 2rem;
+    }
+  }
+</style>

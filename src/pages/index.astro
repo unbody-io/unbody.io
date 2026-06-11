@@ -68,6 +68,13 @@ const productEndings = [
   "a pulse.",
   "a will.",
 ];
+
+const suggestionLinks = [
+  { label: "See what we work on", href: "/projects" },
+  { label: "Read the latest blog posts", href: "/blog" },
+  { label: "Get in touch", href: "mailto:hello@unbody.io" },
+  { label: "Read Unbody's manifesto", href: "/manifesto" },
+];
 ---
 
 <Base
@@ -75,37 +82,60 @@ const productEndings = [
   description={description}
   seo={{ jsonLd }}
 >
-  <section class="home-cycle" aria-label="Unbody Lab">
-    <p class="home-cycle__kicker">We're an R&amp;D lab.</p>
-    <h1 class="text-foreground">
-      <span>We build products with </span>
-      <span
-        class="home-cycle__action"
-        role="button"
-        tabindex="0"
-        data-scramble-text
-        data-texts={JSON.stringify(productEndings)}
-        data-steps="8"
-        data-interval="60"
-        data-pause="2500"
-        data-alert-test
-      >
-        a brain.
-      </span>
-    </h1>
+  <section
+    class="home-lab"
+    aria-label="Unbody Lab"
+    data-home-lab
+    style={`--suggestion-count: ${suggestionLinks.length};`}
+  >
+    <div class="home-lab__gesture" data-home-lab-gesture>
+      <p class="home-lab__kicker">Unbody R&amp;D Lab.</p>
+      <h1>
+        <span>We build products with </span>
+        <span
+          class="home-lab__action"
+          tabindex="0"
+          data-scramble-text
+          data-texts={JSON.stringify(productEndings)}
+          data-steps="8"
+          data-interval="60"
+          data-pause="2500"
+        >a brain.</span>
+      </h1>
+
+      <div class="home-lab__suggestions" aria-label="Suggested prompts">
+        {suggestionLinks.map((link, index) => (
+          <a
+            class="home-lab__suggestion"
+            href={link.href}
+            style={`--suggestion-index: ${index};`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
 
   <script>
     const GLYPHS = "!@#$%^&*_+-=|;:<>?~01".split("");
-    const rand = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
+    const INTRO_SUGGESTION_REVEAL_DISTANCE = 260;
+    const INTRO_SUGGESTION_SETTLE_THRESHOLD = 48;
+    const INTRO_SUGGESTION_CANCEL_MS = 260;
+    const INTRO_WHEEL_DELTA_SCALE = 0.18;
+    const INTRO_INITIAL_HINT_OFFSET = 80;
+    const MOBILE_SCRAMBLE_QUERY = "(max-width: 767px)";
 
-    function scramble(
-      target: string,
-      steps: number,
-      interval: number,
-      onFrame: (text: string) => void,
-      onDone: () => void,
-    ) {
+    const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+    const rand = (arr) => arr[Math.floor(Math.random() * arr.length)] ?? "";
+    const getWordCount = (text) => text.trim().split(/\s+/).filter(Boolean).length;
+    const getResponsiveScrambleTexts = (texts) => {
+      if (!window.matchMedia(MOBILE_SCRAMBLE_QUERY).matches) return texts;
+      const shortTexts = texts.filter((text) => getWordCount(text) <= 2);
+      return shortTexts.length > 0 ? shortTexts : texts;
+    };
+
+    function scramble(target, steps, interval, onFrame, onDone) {
       let frame = 0;
       const id = window.setInterval(() => {
         onFrame(
@@ -119,7 +149,8 @@ const productEndings = [
             .join(""),
         );
 
-        if (++frame > steps) {
+        frame += 1;
+        if (frame > steps) {
           onFrame(target);
           window.clearInterval(id);
           onDone();
@@ -129,32 +160,21 @@ const productEndings = [
       return () => window.clearInterval(id);
     }
 
-    function initScrambleText(root: ParentNode = document) {
-      root.querySelectorAll<HTMLElement>("[data-scramble-text]").forEach((el) => {
-        if (el.dataset.initialized === "true") return;
+    function initScrambleText(root = document) {
+      root.querySelectorAll("[data-scramble-text]").forEach((el) => {
+        if (!(el instanceof HTMLElement) || el.dataset.initialized === "true") return;
         el.dataset.initialized = "true";
 
-        const texts = JSON.parse(el.dataset.texts ?? "[]") as string[];
+        const rawTexts = JSON.parse(el.dataset.texts ?? "[]");
         const steps = Number(el.dataset.steps ?? 8);
         const interval = Number(el.dataset.interval ?? 60);
         const pause = Number(el.dataset.pause ?? 2000);
+        const mobileScrambleQuery = window.matchMedia(MOBILE_SCRAMBLE_QUERY);
+        let texts = getResponsiveScrambleTexts(rawTexts);
         let index = 0;
         let paused = false;
-        let cleanup: (() => void) | undefined;
-        let timeout: number | undefined;
-
-        function run() {
-          if (paused) return;
-          const current = texts[index % texts.length];
-          cleanup = scramble(current, steps, interval, (text) => {
-            el.textContent = text;
-          }, () => {
-            if (texts.length > 1) {
-              index++;
-              if (!paused) timeout = window.setTimeout(run, pause);
-            }
-          });
-        }
+        let cleanup;
+        let timeout;
 
         function stop() {
           cleanup?.();
@@ -163,6 +183,30 @@ const productEndings = [
             window.clearTimeout(timeout);
             timeout = undefined;
           }
+        }
+
+        function syncResponsiveTexts() {
+          const nextTexts = getResponsiveScrambleTexts(rawTexts);
+          if (nextTexts.join("\n") === texts.join("\n")) return;
+
+          stop();
+          texts = nextTexts;
+          index = 0;
+          if (texts[0]) el.textContent = texts[0];
+          if (!paused) run();
+        }
+
+        function run() {
+          if (paused || texts.length === 0) return;
+          const current = texts[index % texts.length];
+          cleanup = scramble(current, steps, interval, (text) => {
+            el.textContent = text;
+          }, () => {
+            if (texts.length > 1) {
+              index += 1;
+              if (!paused) timeout = window.setTimeout(run, pause);
+            }
+          });
         }
 
         function pauseAnimation() {
@@ -177,89 +221,242 @@ const productEndings = [
         }
 
         run();
+        mobileScrambleQuery.addEventListener("change", syncResponsiveTexts);
         el.addEventListener("mouseenter", pauseAnimation);
         el.addEventListener("mouseleave", resumeAnimation);
         el.addEventListener("focusin", pauseAnimation);
         el.addEventListener("focusout", resumeAnimation);
         document.addEventListener("astro:before-swap", () => {
           stop();
+          mobileScrambleQuery.removeEventListener("change", syncResponsiveTexts);
         }, { once: true });
       });
     }
 
-    function initAlertActions(root: ParentNode = document) {
-      root.querySelectorAll<HTMLElement>("[data-alert-test]").forEach((el) => {
-        if (el.dataset.alertInitialized === "true") return;
-        el.dataset.alertInitialized = "true";
-        el.addEventListener("click", () => alert("test"));
-        el.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            alert("test");
-          }
-        });
+    function initHomeLabGesture(root = document) {
+      root.querySelectorAll("[data-home-lab]").forEach((section) => {
+        if (!(section instanceof HTMLElement) || section.dataset.gestureInitialized === "true") return;
+        section.dataset.gestureInitialized = "true";
+
+        let offset = 0;
+        let settleTimer;
+        let animationFrame;
+        let touchStartY = 0;
+        let touchStartOffset = 0;
+
+        const setOffset = (nextOffset) => {
+          offset = clamp(nextOffset, 0, INTRO_SUGGESTION_REVEAL_DISTANCE);
+          const progress = offset / INTRO_SUGGESTION_REVEAL_DISTANCE;
+          const visualProgress = clamp(
+            progress + INTRO_INITIAL_HINT_OFFSET / INTRO_SUGGESTION_REVEAL_DISTANCE,
+          );
+          section.style.setProperty("--intro-progress", progress.toFixed(4));
+          section.style.setProperty("--intro-visual-progress", visualProgress.toFixed(4));
+        };
+
+        const cancelSettleAnimation = () => {
+          if (!animationFrame) return;
+          window.cancelAnimationFrame(animationFrame);
+          animationFrame = undefined;
+        };
+
+        const settleTo = (target) => {
+          cancelSettleAnimation();
+          const from = offset;
+          const start = performance.now();
+
+          const tick = (now) => {
+            const progress = clamp((now - start) / INTRO_SUGGESTION_CANCEL_MS);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setOffset(from + (target - from) * eased);
+
+            if (progress < 1) {
+              animationFrame = window.requestAnimationFrame(tick);
+            } else {
+              animationFrame = undefined;
+            }
+          };
+
+          animationFrame = window.requestAnimationFrame(tick);
+        };
+
+        const scheduleSettle = () => {
+          if (settleTimer) window.clearTimeout(settleTimer);
+          settleTimer = window.setTimeout(() => {
+            if (offset < INTRO_SUGGESTION_SETTLE_THRESHOLD) settleTo(0);
+          }, 120);
+        };
+
+        const onWheel = (event) => {
+          event.preventDefault();
+          cancelSettleAnimation();
+          setOffset(offset + event.deltaY * INTRO_WHEEL_DELTA_SCALE);
+          scheduleSettle();
+        };
+
+        const onTouchStart = (event) => {
+          cancelSettleAnimation();
+          touchStartY = event.touches[0]?.clientY ?? 0;
+          touchStartOffset = offset;
+        };
+
+        const onTouchMove = (event) => {
+          event.preventDefault();
+          const currentY = event.touches[0]?.clientY ?? touchStartY;
+          setOffset(touchStartOffset + touchStartY - currentY);
+        };
+
+        const onTouchEnd = () => scheduleSettle();
+
+        setOffset(0);
+        window.addEventListener("wheel", onWheel, { passive: false });
+        document.addEventListener("touchstart", onTouchStart, { passive: false });
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
+        document.addEventListener("touchend", onTouchEnd);
+        document.addEventListener("touchcancel", onTouchEnd);
+
+        document.addEventListener("astro:before-swap", () => {
+          cancelSettleAnimation();
+          if (settleTimer) window.clearTimeout(settleTimer);
+          window.removeEventListener("wheel", onWheel);
+          document.removeEventListener("touchstart", onTouchStart);
+          document.removeEventListener("touchmove", onTouchMove);
+          document.removeEventListener("touchend", onTouchEnd);
+          document.removeEventListener("touchcancel", onTouchEnd);
+        }, { once: true });
       });
     }
 
     initScrambleText();
-    initAlertActions();
-    document.addEventListener("astro:after-swap", () => initScrambleText());
-    document.addEventListener("astro:after-swap", () => initAlertActions());
+    initHomeLabGesture();
+    document.addEventListener("astro:after-swap", () => {
+      initScrambleText();
+      initHomeLabGesture();
+    });
   </script>
 </Base>
 
 <style>
-  .home-cycle {
-    width: 100vw;
-    min-height: calc(100vh - 24rem);
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
+  .home-lab {
+    --intro-progress: 0;
+    --intro-visual-progress: 0;
+    --suggestion-stagger: 0.5;
+    --suggestion-blur: 10px;
+    min-height: calc(100vh - 15rem);
+    min-height: calc(100dvh - 15rem);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding-inline: clamp(1.25rem, 5vw, 5rem);
+    padding-block: clamp(5rem, 12vh, 7rem) calc(7rem + env(safe-area-inset-bottom, 0px));
+    overscroll-behavior: none;
+    touch-action: none;
   }
 
-  .home-cycle__kicker {
+  .home-lab__gesture {
+    position: relative;
+    transform: translateY(calc(-1px * (50 + var(--intro-visual-progress) * 100)));
+    will-change: transform;
+  }
+
+  .home-lab__kicker {
     margin: 0 0 0.75rem;
-    width: 100%;
     font-family: var(--type-heading-family);
-    font-size: clamp(1.125rem, 3.3vw, 3.25rem);
-    line-height: 0.95;
+    font-size: clamp(1rem, 1.65vw, 1.625rem);
+    line-height: 1.12;
     font-weight: 500;
     color: var(--foreground);
     white-space: nowrap;
   }
 
-  .home-cycle h1 {
+  .home-lab h1 {
     margin: 0;
-    width: 100%;
     min-height: 1.35em;
-    font-size: clamp(1.125rem, 3.3vw, 3.25rem);
     font-family: var(--type-heading-family);
-    line-height: 0.95;
+    font-size: clamp(1rem, 1.65vw, 1.625rem);
+    line-height: 1.12;
     font-weight: 500;
+    color: var(--foreground);
     white-space: nowrap;
   }
 
-  .home-cycle [data-scramble-text] {
+  .home-lab__action {
     display: inline-block;
+    border-radius: 0.25rem;
+    text-align: left;
     white-space: pre;
   }
 
-  .home-cycle__action {
-    display: inline-block;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    text-align: left;
-  }
-
-  .home-cycle__action:hover,
-  .home-cycle__action:focus-visible {
+  .home-lab__action:hover,
+  .home-lab__action:focus-visible {
     background: var(--foreground);
     color: var(--background);
     outline: none;
+  }
+
+  .home-lab__suggestions {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    width: min(32rem, 100%);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    pointer-events: none;
+  }
+
+  .home-lab__suggestion {
+    --suggestion-item-progress: clamp(
+      0,
+      calc(
+        (
+          var(--intro-visual-progress) * var(--suggestion-count) -
+          var(--suggestion-index) * var(--suggestion-stagger)
+        ) / (1 + var(--suggestion-stagger))
+      ),
+      1
+    );
+    display: inline-flex;
+    max-width: 100%;
+    border-radius: 0.25rem;
+    color: color-mix(in srgb, var(--foreground) 62%, transparent);
+    filter: blur(calc((1 - var(--suggestion-item-progress)) * var(--suggestion-blur)));
+    font-family: var(--type-ui-family);
+    font-size: var(--type-ui-md-size);
+    font-weight: var(--type-body-md-weight);
+    letter-spacing: var(--type-body-md-tracking);
+    line-height: var(--type-ui-md-line-height);
+    opacity: var(--suggestion-item-progress);
+    padding: 0;
+    pointer-events: auto;
+    text-decoration: none;
+    transform: translateY(calc((1 - var(--suggestion-item-progress)) * 0.45rem));
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+    white-space: normal;
+    will-change: opacity, filter, transform;
+  }
+
+  .home-lab__suggestion:hover,
+  .home-lab__suggestion:focus-visible {
+    background: var(--foreground);
+    color: var(--background);
+    outline: none;
+  }
+
+  @media (max-width: 720px) {
+    .home-lab {
+      min-height: calc(100vh - 12rem);
+      min-height: calc(100dvh - 12rem);
+      padding-block: 4.5rem calc(7rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .home-lab__kicker,
+    .home-lab h1 {
+      font-size: clamp(1rem, 5vw, 1.625rem);
+    }
   }
 </style>

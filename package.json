@@ -10,6 +10,7 @@
     "lighthouse": "bun run scripts/lighthouse-summary.ts"
   },
   "dependencies": {
+    "@astrojs/react": "^5.0.7",
     "@astrojs/sitemap": "^3.7.0",
     "@paper-design/shaders": "^0.0.71",
     "@tailwindcss/typography": "^0.5.19",
@@ -17,7 +18,9 @@
     "astro": "^5",
     "astro-opengraph-images": "^1.14.3",
     "gray-matter": "^4.0.3",
-    "react": "^19.2.4",
+    "motion": "^12.40.0",
+    "react": "^19.2.7",
+    "react-dom": "19.2.7",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
